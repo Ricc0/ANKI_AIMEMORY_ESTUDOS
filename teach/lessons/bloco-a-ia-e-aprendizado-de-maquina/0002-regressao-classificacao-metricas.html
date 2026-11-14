@@ -155,17 +155,15 @@
   <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Em dados de teste, o R² não fica preso entre 0 e 1 e pode ser negativo.</div>
 </div>
 
-<div class="quiz" data-key="c">
-  <div class="q-num">Item 5 · Alternativas</div>
-  <p class="statement">O recall de um modelo de fraude subiu de 0,60 para 0,90 depois que o limiar foi reduzido. O que tende a acontecer com a precisão?</p>
-  <div class="options stack">
-    <button class="opt" data-answer="a">Ela sobe junto, porque as métricas andam juntas</button>
-    <button class="opt" data-answer="b">Ela não muda, porque não depende do limiar</button>
-    <button class="opt" data-answer="c">Ela cai, porque surgem muito mais alarmes falsos</button>
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 5 · Caso prático</div>
+  <p class="statement">Após a redução do limiar de decisão, o recall de um classificador de fraudes passou de 0,60 para 0,90. Nesse caso, a precisão tende a aumentar na mesma proporção, já que ambas as métricas variam no mesmo sentido.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="c">Isso. Um limiar mais baixo aponta mais casos: pega mais fraudes (recall sobe) e também mais notas normais (FP sobe, precisão cai).</div>
-  <div class="feedback" data-for="a">Não. Precisão e recall costumam disputar entre si. Ao baixar o limiar, os falsos positivos aumentam e a precisão cai.</div>
-  <div class="feedback" data-for="b">A precisão depende do limiar, sim: ele muda quantos casos são apontados. Ao baixá-lo, os falsos positivos aumentam e a precisão cai.</div>
+  <div class="feedback" data-for="errado">Isso. Um limiar mais baixo aponta mais casos: pega mais fraudes (recall sobe), mas também mais notas normais (FP sobe), e a precisão tende a <strong>cair</strong>.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Precisão e recall costumam disputar entre si. Baixar o limiar aumenta os falsos positivos e derruba a precisão.</div>
 </div>
 
 <h2>Fonte principal recomendada</h2>

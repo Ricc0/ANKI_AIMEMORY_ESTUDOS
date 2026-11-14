@@ -154,17 +154,15 @@
   <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É um dos exemplos clássicos de vazamento: o treino passa a conhecer a distribuição do teste.</div>
 </div>
 
-<div class="quiz" data-key="b">
-  <div class="q-num">Item 5 · Alternativas</div>
-  <p class="statement">Um modelo de fraude tem F1 de 0,98 no treino e 0,61 no teste. Qual medida ataca diretamente o problema?</p>
-  <div class="options stack">
-    <button class="opt" data-answer="a">Reduzir a regularização para o modelo captar mais padrões</button>
-    <button class="opt" data-answer="b">Aumentar a regularização para o modelo decorar menos ruído</button>
-    <button class="opt" data-answer="c">Acrescentar novas variáveis para o modelo ganhar mais complexidade</button>
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 5 · Caso prático</div>
+  <p class="statement">Um modelo de detecção de fraudes obteve F1 de 0,98 no conjunto de treinamento e de 0,61 no de teste. Para corrigir esse comportamento, recomenda-se reduzir a regularização, de modo que o modelo capte mais padrões dos dados.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="b">Isso. A diferença grande entre treino e teste é sobreajuste. Mais regularização, mais dados ou um modelo mais simples são as correções.</div>
-  <div class="feedback" data-for="a">Isso pioraria. Menos regularização serve para <em>subajuste</em>. Aqui o treino está ótimo e o teste ruim, ou seja, sobreajuste.</div>
-  <div class="feedback" data-for="c">Isso pioraria. Mais complexidade alimenta o sobreajuste. A correção é regularizar mais ou simplificar o modelo.</div>
+  <div class="feedback" data-for="errado">Isso. A diferença grande entre treino e teste é <strong>sobreajuste</strong>. A correção vai no sentido oposto: mais regularização, mais dados ou um modelo mais simples.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Menos regularização serve para subajuste. Aqui o treino está ótimo e o teste ruim, ou seja, sobreajuste.</div>
 </div>
 
 <h2>Fonte principal recomendada</h2>

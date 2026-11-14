@@ -148,17 +148,15 @@
   <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Anomalia ≠ fraude. O ponto marcado orienta a investigação, mas não prova nada.</div>
 </div>
 
-<div class="quiz" data-key="a">
-  <div class="q-num">Item 5 · Alternativas</div>
-  <p class="statement">Por que o IQR costuma ser preferível ao z-score para achar valores atípicos em pagamentos com alguns valores extremos?</p>
-  <div class="options stack">
-    <button class="opt" data-answer="a">Quartis são pouco afetados pelos próprios valores extremos</button>
-    <button class="opt" data-answer="b">Quartis exigem que os dados sigam distribuição normal</button>
-    <button class="opt" data-answer="c">Quartis analisam todas as variáveis da base simultaneamente</button>
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 5 · Caso prático</div>
+  <p class="statement">Na identificação de valores atípicos em uma base de pagamentos que contém alguns valores extremos, o critério do intervalo interquartil (IQR) tende a ser mais robusto que o z-score, pois os quartis são pouco afetados pelos próprios outliers.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="a">Isso. A média e o desvio-padrão do z-score são puxados pelos outliers. Os quartis, quase nada.</div>
-  <div class="feedback" data-for="b">É o contrário: o IQR <em>não</em> exige normalidade. A vantagem dele é a robustez aos extremos.</div>
-  <div class="feedback" data-for="c">Não. O IQR, como o z-score, olha uma variável por vez. A vantagem dele é a robustez aos extremos.</div>
+  <div class="feedback" data-for="certo">Isso. A média e o desvio-padrão do z-score são puxados pelos outliers. Os quartis quase não se mexem, e o IQR também não exige distribuição normal.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Os outliers inflam a média e o desvio usados no z-score, mas quase não alteram os quartis.</div>
 </div>
 
 <h2>Fonte principal recomendada</h2>

@@ -8,7 +8,7 @@
 
 ## Como as lições são feitas
 - Estrutura: kicker → h1 → lede → conceito → diagrama SVG → exemplo resolvido → pegadinhas → prática (quiz) → fonte principal → "pergunte ao professor" → navegação.
-- Quiz: `assets/quiz.js`, com `data-key` = resposta certa e um `.feedback[data-for]` por opção. Funciona com 2 (certo/errado) ou mais alternativas. As alternativas têm o **mesmo número de palavras**, e a posição da certa varia.
+- Quiz: `assets/quiz.js`, com `data-key` = resposta certa e um `.feedback[data-for]` por opção. **Banca Cebraspe: usar só itens certo/errado.** Alternar o gabarito e não deixar padrão (ex.: o item 1 sempre "errado"). Itens com redação de prova, em linguagem formal, e o feedback explica as duas escolhas.
 - `assets/metricas.js`: calculadora de matriz de confusão (componente reutilizável).
 - Glossário em `reference/glossario.html`. Termos novos entram lá e as lições seguem o glossário.
 

@@ -151,17 +151,15 @@
   <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Prever a classe mais comum é o baseline trivial da classificação.</div>
 </div>
 
-<div class="quiz" data-key="c">
-  <div class="q-num">Item 5 · Alternativas</div>
-  <p class="statement">Um modelo de risco de contratos chega a AUC de 0,99, enquanto modelos semelhantes na literatura ficam perto de 0,75. Qual a reação mais prudente?</p>
-  <div class="options stack">
-    <button class="opt" data-answer="a">Adotar o modelo imediatamente, pois superou a literatura</button>
-    <button class="opt" data-answer="b">Trocar por boosting, que costuma ter desempenho maior</button>
-    <button class="opt" data-answer="c">Investigar vazamento de dados antes de confiar nele</button>
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 5 · Caso prático</div>
+  <p class="statement">Um modelo de risco de contratos alcançou AUC de 0,99, ao passo que modelos semelhantes descritos na literatura ficam em torno de 0,75. Diante de desempenho tão superior, o modelo pode ser adotado de imediato, dispensando-se a verificação de vazamento de dados.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="c">Isso. Um desempenho bom demais é o sintoma clássico de vazamento. Verifique variáveis "do futuro" e a forma como os dados foram divididos.</div>
-  <div class="feedback" data-for="a">Arriscado. Um salto tão grande sobre a referência é o sintoma clássico de vazamento de dados. Investigue antes.</div>
-  <div class="feedback" data-for="b">Isso não ataca o problema. O resultado já é suspeitamente alto. O primeiro passo é investigar vazamento.</div>
+  <div class="feedback" data-for="errado">Isso. Um desempenho bom demais é o sintoma clássico de <strong>vazamento</strong>. Verifique variáveis "do futuro" e a forma como os dados foram divididos antes de confiar no resultado.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Um salto tão grande sobre a referência exige investigar vazamento de dados antes de adotar o modelo.</div>
 </div>
 
 <h2>Fonte principal recomendada</h2>

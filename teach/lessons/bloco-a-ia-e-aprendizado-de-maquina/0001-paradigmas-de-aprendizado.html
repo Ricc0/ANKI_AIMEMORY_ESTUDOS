@@ -192,17 +192,15 @@
   <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É exatamente essa a definição de reward hacking (ou <em>specification gaming</em>).</div>
 </div>
 
-<div class="quiz" data-key="b">
-  <div class="q-num">Item 5 · Alternativas</div>
-  <p class="statement">A CGU tem 200 mil notas fiscais, mas só 300 foram analisadas por auditores e marcadas como "fraude" ou "ok". Qual paradigma aproveita melhor essa base?</p>
-  <div class="options stack">
-    <button class="opt" data-answer="a">Por reforço, com recompensa por nota auditada</button>
-    <button class="opt" data-answer="b">Semissupervisionado, combinando notas rotuladas e não rotuladas</button>
-    <button class="opt" data-answer="c">Não supervisionado, ignorando todos os rótulos existentes</button>
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 5 · Caso prático</div>
+  <p class="statement">Um órgão dispõe de 200 mil notas fiscais, das quais apenas 300 foram analisadas e rotuladas por auditores como "fraude" ou "regular". Nessa situação, o aprendizado por reforço é a abordagem mais indicada para aproveitar também as notas não rotuladas.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="b">Isso. Poucos rótulos caros e muitos dados sem rótulo é o cenário típico do semissupervisionado. Lembre do risco: as suposições precisam valer.</div>
-  <div class="feedback" data-for="a">Não. Não há agente nem ambiente interativo aqui: há uma base fixa, com alguns rótulos. O cenário é semissupervisionado.</div>
-  <div class="feedback" data-for="c">Jogar fora os 300 rótulos desperdiça a informação mais cara que você tem. O cenário é semissupervisionado.</div>
+  <div class="feedback" data-for="errado">Isso. Não há agente nem ambiente interativo: há uma base fixa com poucos rótulos caros. Esse é o cenário típico do <strong>semissupervisionado</strong>.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Poucos rotulados e muitos sem rótulo, numa base fixa, apontam para o semissupervisionado. O reforço exige interação com um ambiente.</div>
 </div>
 
 <h2>Fonte principal recomendada</h2>
