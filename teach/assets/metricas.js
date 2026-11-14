@@ -5,10 +5,10 @@
 // recall e F1 a cada alteração. Os valores data-* são o cenário inicial.
 document.querySelectorAll('.calc-metricas').forEach(function (box) {
   const campos = [
-    ['vp', 'TP/VP · True Positive · fraude apontada como fraude'],
-    ['fn', 'FN · False Negative · fraude que passou'],
-    ['fp', 'FP · False Positive · alarme falso'],
-    ['vn', 'TN/VN · True Negative · normal tida como normal']
+    ['vp', 'TP/VP · True Positive · deu positivo e era mesmo'],
+    ['fn', 'FN · False Negative · deu negativo, mas era positivo'],
+    ['fp', 'FP · False Positive · deu positivo, mas era negativo'],
+    ['vn', 'TN/VN · True Negative · deu negativo e era mesmo']
   ];
   const grid = document.createElement('div');
   grid.className = 'calc-grid';

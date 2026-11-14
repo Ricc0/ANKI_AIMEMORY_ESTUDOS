@@ -11,8 +11,8 @@
   As duas grandes tarefas do supervisionado
   (<a href="0001-paradigmas-de-aprendizado.html">Lição 1</a>) se distinguem
   pelo formato da resposta, e cada uma tem suas métricas. A vitória desta
-  lição é entender por que um modelo com <strong>99% de acurácia (accuracy) pode não
-  servir para nada</strong><sup class="cite"><a href="#f1">[1]</a></sup>.
+  lição é entender por que um modelo com <strong>99% de acurácia (accuracy)
+  pode não servir para nada</strong><sup class="cite"><a href="#f1">[1]</a></sup>.
 </p>
 
 <div class="table-scroll">
@@ -20,7 +20,7 @@
     <caption>Regressão × classificação.</caption>
     <thead><tr><th></th><th>Regressão</th><th>Classificação</th></tr></thead>
     <tbody>
-      <tr><th>Prevê</th><td>Um <strong>valor contínuo</strong> (valor do contrato, prazo em dias)</td><td>Uma <strong>categoria</strong> (fraude/ok, tipo de irregularidade)</td></tr>
+      <tr><th>Prevê</th><td>Um <strong>número contínuo</strong> (preço de um apartamento, tempo de entrega em dias)</td><td>Uma <strong>categoria</strong> (spam/não spam, doente/saudável)</td></tr>
       <tr><th>Modelos</th><td>Regressão linear por OLS (Ordinary Least Squares · Mínimos Quadrados Ordinários, MQO), árvores, gradient boosting</td><td>Regressão logística, árvores, SVM, k-NN, Naive Bayes</td></tr>
       <tr><th>Métricas</th><td>MAE (EAM), MSE (EQM), RMSE (REQM), R²</td><td>Accuracy (acurácia), precision (precisão), recall (revocação), F1-score (medida F1), AUC-ROC (área sob a curva ROC)</td></tr>
     </tbody>
@@ -32,20 +32,20 @@
   A <strong>regressão logística é classificação</strong>. Ela calcula uma
   <em>probabilidade</em> com a função sigmoide e aplica um
   <span class="anchor">LIMIAR</span> (por exemplo 0,5) para decidir a
-  classe. O nome vem de ser uma regressão sobre o log das chances, mas a
-  tarefa que ela resolve é classificar.
+  classe: "probabilidade de spam = 0,83 → é spam". O nome vem de ser uma
+  regressão sobre o log das chances, mas a tarefa que ela resolve é classificar.
 </div>
 
 <h2>Métricas de regressão</h2>
 <div class="table-scroll">
   <table class="cmp">
-    <caption>Todas medem o erro = valor real − valor previsto.</caption>
+    <caption>Todas medem o erro = valor real − valor previsto. Exemplo: prever o preço de apartamentos.</caption>
     <thead><tr><th>Métrica</th><th>O que é</th><th>Quando usar</th></tr></thead>
     <tbody>
-      <tr><th>MAE<small>Mean Absolute Error<br>Erro Absoluto Médio (EAM)</small></th><td>Média de |erro|</td><td>Erro na unidade original, robusto a outliers ("erra em média R$ 12 mil")</td></tr>
+      <tr><th>MAE<small>Mean Absolute Error<br>Erro Absoluto Médio (EAM)</small></th><td>Média de |erro|</td><td>Erro na unidade original, robusto a outliers ("erra em média R$ 12 mil no preço")</td></tr>
       <tr><th>MSE<small>Mean Squared Error<br>Erro Quadrático Médio (EQM)</small></th><td>Média de erro²</td><td>Quando errar muito é bem pior que errar pouco. A unidade fica ao quadrado</td></tr>
       <tr><th>RMSE<small>Root Mean Squared Error<br>Raiz do Erro Quadrático Médio (REQM)</small></th><td>√MSE</td><td>Pune erros grandes, mas volta à unidade original</td></tr>
-      <tr><th>R²<small>Coefficient of Determination<br>Coeficiente de Determinação</small></th><td>Fração da variância explicada</td><td>1 = perfeito, 0 = igual a prever sempre a média, <strong>pode ser negativo</strong></td></tr>
+      <tr><th>R²<small>Coefficient of Determination<br>Coeficiente de Determinação</small></th><td>1 − (erro² do modelo / erro² de prever sempre a média)</td><td>1 = perfeito, 0 = igual a prever sempre a média, <strong>negativo = pior que a média</strong></td></tr>
     </tbody>
   </table>
 </div>
@@ -54,20 +54,36 @@
   existem alguns erros muito grandes puxando a média dos quadrados.
 </p>
 
+<div class="box">
+  <strong>Exemplo resolvido: como o R² fica negativo</strong>
+  <p>
+    Três apartamentos custam 10, 20 e 30 (em centenas de mil reais). A média
+    é 20. Quem chuta sempre a média erra 10, 0 e 10: soma dos erros² = 100 + 0 + 100 = <strong>200</strong>.
+  </p>
+  <p style="margin-bottom:0">
+    Um modelo ruim prevê 30, 10 e 20. Os erros são 20, 10 e 10: soma dos erros² =
+    400 + 100 + 100 = <strong>600</strong>. R² = 1 − 600/200 = <strong>−2</strong>.
+    O modelo é pior do que simplesmente chutar a média.
+  </p>
+</div>
+
 <h2>Métricas de classificação: tudo parte da matriz de confusão</h2>
 <p>
-  A matriz cruza duas coisas: o que <strong>era de verdade</strong> (as linhas) e o
-  que o <strong>modelo disse</strong> (as colunas). Os números abaixo são o cenário
-  da calculadora: 1.000 notas, das quais 50 são fraudes de verdade.
+  Pense num <strong>teste de COVID</strong>. O resultado do teste é
+  <strong>positivo</strong> ou <strong>negativo</strong>, e a pessoa
+  <strong>está</strong> ou <strong>não está</strong> com COVID de verdade. A
+  matriz cruza essas duas coisas: o que <strong>era de verdade</strong> (as
+  linhas) e o que o <strong>teste disse</strong> (as colunas).
 </p>
+<p>Cenário: <strong>1.000 pessoas</strong> testadas, das quais <strong>50</strong> estão realmente com COVID.</p>
 <div class="table-scroll">
   <table class="cmp">
-    <caption>Linhas = realidade (o que era para ser) · Colunas = previsão (o que o modelo disse).</caption>
-    <thead><tr><th></th><th>Modelo disse: FRAUDE<small>positivo</small></th><th>Modelo disse: OK<small>negativo</small></th><th>Total da realidade</th></tr></thead>
+    <caption>Linhas = realidade (o que era de verdade) · Colunas = o que o teste disse.</caption>
+    <thead><tr><th></th><th>Teste deu POSITIVO</th><th>Teste deu NEGATIVO</th><th>Total da realidade</th></tr></thead>
     <tbody>
-      <tr><th>Era fraude<small>positivo real</small></th><td><strong>VP = 40</strong><br>TP · True Positive · Verdadeiro Positivo<br><em>acertou: pegou a fraude</em></td><td><strong>FN = 10</strong><br>False Negative · Falso Negativo<br><em>errou: deixou a fraude passar</em></td><td><strong>50</strong> fraudes reais<br>(VP + FN)</td></tr>
-      <tr><th>Era normal<small>negativo real</small></th><td><strong>FP = 60</strong><br>False Positive · Falso Positivo<br><em>errou: alarme falso</em></td><td><strong>VN = 890</strong><br>TN · True Negative · Verdadeiro Negativo<br><em>acertou: liberou a nota boa</em></td><td><strong>950</strong> normais reais<br>(FP + VN)</td></tr>
-      <tr><th>Total da previsão</th><td><strong>100</strong> apontadas<br>(VP + FP)</td><td><strong>900</strong> liberadas<br>(FN + VN)</td><td><strong>1.000</strong></td></tr>
+      <tr><th>Está com COVID<small>positivo real</small></th><td><strong>VP = 40</strong><br>TP · True Positive · Verdadeiro Positivo<br><em>teste acertou: detectou o doente</em></td><td><strong>FN = 10</strong><br>False Negative · Falso Negativo<br><em>teste errou: a pessoa está doente e foi para casa achando que não</em></td><td><strong>50</strong> doentes de verdade<br>(VP + FN)</td></tr>
+      <tr><th>Não está com COVID<small>negativo real</small></th><td><strong>FP = 60</strong><br>False Positive · Falso Positivo<br><em>teste errou: pessoa saudável ficou em isolamento à toa</em></td><td><strong>VN = 890</strong><br>TN · True Negative · Verdadeiro Negativo<br><em>teste acertou: saudável e deu negativo</em></td><td><strong>950</strong> saudáveis de verdade<br>(FP + VN)</td></tr>
+      <tr><th>Total do teste</th><td><strong>100</strong> deram positivo<br>(VP + FP)</td><td><strong>900</strong> deram negativo<br>(FN + VN)</td><td><strong>1.000</strong></td></tr>
     </tbody>
   </table>
 </div>
@@ -80,24 +96,24 @@
   </p>
   <pre style="font-size:0.85rem;line-height:1.5">  FALSO      NEGATIVO
     │            │
-    │            └─ 2ª palavra do nome: o que o MODELO DISSE
-    │               (Negativo = disse "não é fraude")
+    │            └─ 2ª palavra do nome: o que o TESTE DISSE
+    │               (Negativo = o resultado deu negativo)
     │
-    └─ 1ª palavra do nome: o modelo ACERTOU ou ERROU?
+    └─ 1ª palavra do nome: o teste ACERTOU ou ERROU?
        (Falso = errou)</pre>
   <p style="margin:0.2rem 0">
-    Lendo junto: o modelo disse "não é fraude" e errou, então <strong>era fraude</strong>.
+    Lendo junto: o teste deu negativo e errou, então a pessoa <strong>está com COVID</strong>.
     Na sigla é igual: em <strong>FN</strong>, o <strong>F</strong> é a 1ª palavra (Falso)
     e o <strong>N</strong> é a 2ª (Negativo).
   </p>
   <div class="table-scroll">
     <table class="cmp">
-      <thead><tr><th>Nome</th><th>1ª palavra: acertou?</th><th>2ª palavra: o modelo disse</th><th>Na realidade era</th></tr></thead>
+      <thead><tr><th>Nome</th><th>1ª palavra: acertou?</th><th>2ª palavra: o teste deu</th><th>Na realidade a pessoa</th></tr></thead>
       <tbody>
-        <tr><th>Verdadeiro Positivo (VP)</th><td>Verdadeiro = acertou</td><td>Positivo = "é fraude"</td><td>fraude</td></tr>
-        <tr><th>Falso Positivo (FP)</th><td>Falso = errou</td><td>Positivo = "é fraude"</td><td>normal (alarme falso)</td></tr>
-        <tr><th>Falso Negativo (FN)</th><td>Falso = errou</td><td>Negativo = "não é fraude"</td><td>fraude (passou batido)</td></tr>
-        <tr><th>Verdadeiro Negativo (VN)</th><td>Verdadeiro = acertou</td><td>Negativo = "não é fraude"</td><td>normal</td></tr>
+        <tr><th>Verdadeiro Positivo (VP)</th><td>Verdadeiro = acertou</td><td>Positivo</td><td>está com COVID</td></tr>
+        <tr><th>Falso Positivo (FP)</th><td>Falso = errou</td><td>Positivo</td><td>está saudável</td></tr>
+        <tr><th>Falso Negativo (FN)</th><td>Falso = errou</td><td>Negativo</td><td>está com COVID</td></tr>
+        <tr><th>Verdadeiro Negativo (VN)</th><td>Verdadeiro = acertou</td><td>Negativo</td><td>está saudável</td></tr>
       </tbody>
     </table>
   </div>
@@ -109,11 +125,18 @@
 
 <div class="pegadinha">
   <span class="label">Pegadinha: o "negativo" do Falso Negativo</span>
-  O Falso Negativo <strong>não é um caso negativo</strong>. Ele é uma fraude real que
-  o modelo chamou de negativa. Por isso as fraudes reais são <strong>VP + FN</strong>
-  (a primeira linha) e as notas que o modelo apontou são <strong>VP + FP</strong>
-  (a primeira coluna). É dessas duas somas que nascem o recall (revocação) e a
-  precision (precisão).
+  O Falso Negativo <strong>não é uma pessoa saudável</strong>. É uma pessoa
+  <strong>doente</strong> cujo teste deu negativo. Por isso os doentes de verdade
+  são <strong>VP + FN</strong> (a primeira linha) e os testes positivos são
+  <strong>VP + FP</strong> (a primeira coluna). É dessas duas somas que nascem o
+  recall (revocação) e a precision (precisão).
+</div>
+
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Precision · Precisão = VP / (VP + FP)</strong> → divide pela <strong>coluna</strong>: <span class="anchor">DOS QUE DERAM POSITIVO</span>, quantos estão doentes mesmo? No cenário: 40 / 100 = 0,40.</p>
+  <p style="margin:0.2rem 0"><strong>Recall · Revocação = VP / (VP + FN)</strong> → divide pela <strong>linha</strong>: <span class="anchor">DOS QUE ESTÃO DOENTES</span>, quantos o teste pegou? No cenário: 40 / 50 = 0,80. Também se chama sensibilidade ou TPR (True Positive Rate · Taxa de Verdadeiros Positivos, TVP).</p>
+  <p style="margin:0.2rem 0"><strong>F1-score · Medida F1 = 2·P·R / (P + R)</strong> → média <em>harmônica</em>, que só fica alta se as duas forem altas.</p>
+  <p style="margin:0.2rem 0"><strong>AUC-ROC</strong> (Area Under the Curve – Receiver Operating Characteristic · Área sob a Curva ROC – Característica de Operação do Receptor) → cruza a TPR com a FPR (False Positive Rate · Taxa de Falsos Positivos, TFP) em <em>todos os limiares</em>: é a probabilidade de um doente receber nota maior que um saudável. 0,5 é chute e 1 é perfeito.</p>
 </div>
 
 <div class="quiz" data-key="certo">
@@ -123,8 +146,8 @@
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="certo">Isso. "Negativo" é o que o modelo disse; "Falso" diz que ele errou. Logo, na verdade era positivo (fraude).</div>
-  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Falso Negativo = o modelo disse negativo e errou, então o caso real era positivo.</div>
+  <div class="feedback" data-for="certo">Isso. "Negativo" é o que o teste disse; "Falso" diz que ele errou. Logo, a pessoa estava doente.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Falso Negativo = o teste deu negativo e errou, então o caso real era positivo (a pessoa está doente).</div>
 </div>
 
 <div class="quiz" data-key="errado">
@@ -134,59 +157,53 @@
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="errado">Isso. VP + FP é tudo o que o <strong>modelo apontou</strong> (a coluna). Os positivos reais são VP + FN (a linha). No cenário: 40 + 60 = 100 apontadas, mas 40 + 10 = 50 fraudes reais.</div>
-  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. VP + FP é o total que o modelo <em>apontou</em> como positivo (é o denominador da precision). Os positivos <em>reais</em> são VP + FN (o denominador do recall).</div>
-</div>
-
-<div class="box">
-  <p style="margin:0.2rem 0"><strong>Precision · Precisão = VP / (VP + FP)</strong> → <span class="anchor">DOS QUE APONTEI</span>, quantos eram fraude?</p>
-  <p style="margin:0.2rem 0"><strong>Recall · Revocação = VP / (VP + FN)</strong> (também chamado sensibilidade ou TPR, True Positive Rate · Taxa de Verdadeiros Positivos, TVP) → <span class="anchor">DAS FRAUDES QUE EXISTEM</span>, quantas eu peguei?</p>
-  <p style="margin:0.2rem 0"><strong>F1-score · Medida F1 = 2·P·R / (P + R)</strong> → média <em>harmônica</em>, que só fica alta se as duas forem altas.</p>
-  <p style="margin:0.2rem 0"><strong>AUC-ROC</strong> (Area Under the Curve – Receiver Operating Characteristic · Área sob a Curva ROC – Característica de Operação do Receptor) → cruza a TPR com a FPR (False Positive Rate · Taxa de Falsos Positivos, TFP) e avalia o modelo em <em>todos os limiares</em>: é a probabilidade de uma fraude receber nota maior que uma nota normal. 0,5 é chute e 1 é perfeito.</p>
+  <div class="feedback" data-for="errado">Isso. VP + FP é tudo o que <strong>deu positivo no teste</strong> (a coluna). Os doentes de verdade são VP + FN (a linha). No cenário: 40 + 60 = 100 testes positivos, mas 40 + 10 = 50 doentes.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. VP + FP é o total que <em>deu positivo</em> (é o denominador da precision). Os positivos <em>reais</em> são VP + FN (o denominador do recall).</div>
 </div>
 
 <h3>Experimente: mexa nos números</h3>
 <p>
-  O cenário inicial tem 1.000 notas, das quais 50 são fraudes (5%). O modelo apontou 100
-  notas e acertou 40 delas. Agora tente o modelo "preguiçoso" que nunca
-  aponta fraude: coloque <strong>VP = 0, FP = 0, FN = 50, VN = 950</strong>.
+  O cenário inicial é o da tabela: 1.000 pessoas, 50 doentes, 100 testes
+  positivos, dos quais 40 eram de doentes. Agora tente o <strong>teste preguiçoso</strong>,
+  que sempre dá negativo: coloque <strong>VP = 0, FP = 0, FN = 50, VN = 950</strong>.
 </p>
 <div class="calc-metricas" data-vp="40" data-fp="60" data-fn="10" data-vn="890"></div>
 <p>
-  O modelo preguiçoso tem <strong>95% de accuracy (acurácia) e recall (revocação) zero</strong>:
-  não pega nenhuma fraude e, mesmo assim, tem uma nota ótima. Por isso,
-  com <strong>classes desbalanceadas</strong>, a acurácia engana, e você
-  deve olhar precisão, recall e F1<sup class="cite"><a href="#f2">[2]</a></sup>.
+  O teste preguiçoso tem <strong>95% de accuracy (acurácia) e recall (revocação) zero</strong>:
+  não detecta nenhum doente e, mesmo assim, tem uma nota ótima, só porque a
+  maioria das pessoas é saudável. Por isso, quando uma classe é rara
+  (<strong>classes desbalanceadas</strong>), a acurácia engana, e você deve olhar
+  precision (precisão), recall (revocação) e F1-score (medida F1)<sup class="cite"><a href="#f2">[2]</a></sup>.
 </p>
 
 <div class="box">
   <strong>Exemplo resolvido: qual métrica priorizar?</strong>
   <p>
-    A equipe de auditoria só consegue examinar 100 casos por mês.
-    Cada alarme falso consome horas de um auditor.
+    <strong>Triagem de câncer:</strong> deixar um doente passar (FN) é gravíssimo; mandar
+    um saudável fazer um exame extra (FP) é só um incômodo. → <strong>Priorize o recall (revocação).</strong>
   </p>
   <p style="margin-bottom:0">
-    <strong>→ Priorize a precisão.</strong> O alarme falso é o erro caro
-    aqui. Se, ao contrário, deixar passar uma fraude grave for
-    inaceitável (desvio na saúde, por exemplo), priorize o
-    <strong>recall</strong>. As duas métricas disputam entre si: baixar o
-    limiar aumenta o recall e diminui a precisão.
+    <strong>Filtro de spam:</strong> jogar um e-mail importante no lixo (FP) é pior do que
+    deixar passar um spam (FN). → <strong>Priorize a precision (precisão).</strong> As duas
+    métricas disputam entre si: mudar o limiar para pegar mais casos aumenta o
+    recall e diminui a precision.
   </p>
 </div>
 
 <div class="pegadinha">
   <span class="label">Pegadinha: precisão e recall trocados</span>
-  A banca adora dar a fórmula de um com o nome do outro. Fixe o
-  denominador: a <strong>precisão</strong> divide pelo que o modelo
-  <em>apontou</em> (VP + FP). O <strong>recall</strong> divide pelo que
-  <em>realmente é</em> fraude (VP + FN).
+  A banca adora dar a fórmula de um com o nome do outro. Fixe o denominador:
+  a <strong>precision (precisão)</strong> divide pelo que <em>deu positivo</em>
+  (VP + FP). O <strong>recall (revocação)</strong> divide pelo que <em>realmente é</em>
+  positivo (VP + FN). Na prova: "realmente pertence à classe positiva" →
+  recall; "classificados como positivos" → precision.
 </div>
 
 <h2>Pratique: certo ou errado</h2>
 
 <div class="quiz" data-key="errado">
   <div class="q-num">Item 1</div>
-  <p class="statement">Por se tratar de um modelo de regressão, a regressão logística é indicada para prever valores contínuos, como o valor de um contrato.</p>
+  <p class="statement">Por se tratar de um modelo de regressão, a regressão logística é indicada para prever valores contínuos, como o preço de um imóvel.</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
@@ -197,13 +214,13 @@
 
 <div class="quiz" data-key="certo">
   <div class="q-num">Item 2</div>
-  <p class="statement">Em uma base com 1% de fraudes, um classificador que sempre prevê "não fraude" alcança acurácia (accuracy) de 99%, embora seu recall (revocação) seja nulo.</p>
+  <p class="statement">Para uma doença com prevalência de 1% na população, um teste que sempre apresenta resultado negativo alcança acurácia (accuracy) de 99%, embora seu recall (revocação) seja nulo.</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="certo">Isso. Ele acerta todos os 99% normais e erra todas as fraudes: VP = 0, então o recall é 0.</div>
-  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Teste na calculadora: VP = 0, FN = 10, FP = 0, VN = 990.</div>
+  <div class="feedback" data-for="certo">Isso. Em 1.000 pessoas, 10 doentes: VP = 0, FN = 10, FP = 0, VN = 990. Acurácia = 990/1.000 = 99%; recall = 0/10 = 0.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Teste na calculadora: VP = 0, FN = 10, FP = 0, VN = 990. Ele acerta todos os saudáveis (99%) e não detecta nenhum doente (recall 0).</div>
 </div>
 
 <div class="quiz" data-key="errado">
@@ -213,7 +230,7 @@
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="errado">Isso. Dividir pelo total de positivos <em>reais</em> (VP + FN) é a definição de <strong>recall</strong>. A precisão divide pelo que foi <em>apontado</em> (VP + FP).</div>
+  <div class="feedback" data-for="errado">Isso. Dividir pelo total de positivos <em>reais</em> (VP + FN, a linha) é a definição de <strong>recall</strong>. A precisão divide pelo que <em>deu positivo</em> (VP + FP, a coluna).</div>
   <div class="feedback" data-for="certo">O item está <strong>errado</strong>: ele descreve o recall. A precisão é VP / (VP + FP).</div>
 </div>
 
@@ -224,18 +241,18 @@
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="certo">Isso. R² = 0 equivale a prever a média. Abaixo disso, o modelo é pior que esse baseline trivial.</div>
-  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Em dados de teste, o R² não fica preso entre 0 e 1 e pode ser negativo.</div>
+  <div class="feedback" data-for="certo">Isso. Se o erro do modelo passa o erro da média, a razão passa de 1 e o R² fica negativo (veja o exemplo dos apartamentos: R² = −2).</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. R² = 1 − (erro do modelo / erro da média). Se o modelo erra mais que a média, o R² é negativo.</div>
 </div>
 
 <div class="quiz" data-key="errado">
   <div class="q-num">Item 5 · Caso prático</div>
-  <p class="statement">Após a redução do limiar de decisão, o recall (revocação) de um classificador de fraudes passou de 0,60 para 0,90. Nesse caso, a precisão (precision) tende a aumentar na mesma proporção, já que ambas as métricas variam no mesmo sentido.</p>
+  <p class="statement">Após a redução do limiar de decisão de um filtro de spam, o recall (revocação) passou de 0,60 para 0,90. Nesse caso, a precisão (precision) tende a aumentar na mesma proporção, já que ambas as métricas variam no mesmo sentido.</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="errado">Isso. Um limiar mais baixo aponta mais casos: pega mais fraudes (recall sobe), mas também mais notas normais (FP sobe), e a precisão tende a <strong>cair</strong>.</div>
+  <div class="feedback" data-for="errado">Isso. Com o limiar mais baixo, o filtro marca mais e-mails como spam: pega mais spam (recall sobe), mas também mais e-mails bons (FP sobe), e a precisão tende a <strong>cair</strong>.</div>
   <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Precisão e recall costumam disputar entre si. Baixar o limiar aumenta os falsos positivos e derruba a precisão.</div>
 </div>
 
