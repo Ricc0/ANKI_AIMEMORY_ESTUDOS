@@ -46,7 +46,7 @@ Tags: `anpd` `ia` `paradigmas`
 
 ## 8. O que é aprendizado <b>semissupervisionado</b> e quando ele é útil?
 
-Combina <b>poucos dados rotulados</b> com <b>muitos sem rótulo</b>.<br><br>É útil quando <b>rotular é caro</b>, como quando cada caso exige a análise de um auditor.
+Combina <b>poucos dados rotulados</b> com <b>muitos sem rótulo</b>.<br><br>É útil quando <b>rotular é caro</b>, como quando cada radiografia precisa ser laudada por um médico.
 
 Tags: `anpd` `ia` `semissupervisionado`
 

@@ -63,16 +63,16 @@
 </div>
 
 <div class="box">
-  <strong>Exemplo resolvido: quantas fraudes o teste precisa ter?</strong>
+  <strong>Exemplo resolvido: quantos doentes o teste precisa ter?</strong>
   <p>
-    O teste tem 100 fraudes, e o modelo acertou 80: recall (revocação) de 0,80.
+    O teste tem 100 pessoas doentes, e o modelo acertou 80: recall (revocação) de 0,80.
     Quão preciso é esse número? O desvio-padrão de uma proporção é
     √(p·(1−p)/n) = √(0,8 · 0,2 / 100) = <strong>0,04</strong>. O intervalo de 95% fica
     em torno de 0,80 ± 2 × 0,04, ou seja, de <strong>0,72 a 0,88</strong>.
   </p>
   <p style="margin-bottom:0">
     Se outro modelo tiver recall de 0,83 no mesmo teste, <strong>não dá para afirmar
-    que ele é melhor</strong>: a diferença está dentro da oscilação. Com 1.000 fraudes,
+    que ele é melhor</strong>: a diferença está dentro da oscilação. Com 1.000 doentes,
     o desvio cairia para cerca de 0,013.
   </p>
 </div>
@@ -87,9 +87,9 @@
     <caption>Mudanças de distribuição (dataset shift).</caption>
     <thead><tr><th>Tipo</th><th>O que muda</th><th>Exemplo</th></tr></thead>
     <tbody>
-      <tr><th>Covariáveis<small>covariate shift</small></th><td>A distribuição das variáveis de entrada X</td><td>Uma nova lei muda o perfil dos contratos firmados</td></tr>
-      <tr><th>Classes<small>prior / label shift</small></th><td>A proporção das classes</td><td>A fraude passa de 1% para 3% depois de uma crise</td></tr>
-      <tr><th>Conceito<small>concept drift</small></th><td>A relação entre X e y</td><td>Fraudadores aprendem a burlar o padrão que o modelo detectava</td></tr>
+      <tr><th>Covariáveis<small>covariate shift</small></th><td>A distribuição das variáveis de entrada X</td><td>O hospital troca o aparelho de raio-X, e as imagens passam a ter outro contraste</td></tr>
+      <tr><th>Classes<small>prior / label shift</small></th><td>A proporção das classes</td><td>A gripe passa de 1% para 10% dos atendimentos no inverno</td></tr>
+      <tr><th>Conceito<small>concept drift</small></th><td>A relação entre X e y</td><td>Spammers aprendem a escrever e-mails que burlam o filtro</td></tr>
     </tbody>
   </table>
 </div>

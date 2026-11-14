@@ -20,7 +20,7 @@ Estável é o resultado que pouco muda com pequenas mudanças nos dados ou na se
 
 Tags: `anpd,ia` `generalizacao`
 
-## 4. Qual o desvio de um recall de 0,80 medido em 100 fraudes?
+## 4. Qual o desvio de um recall (revocação) de 0,80 medido em 100 doentes?
 
 √(p(1−p)/n) = √(0,8·0,2/100) = <b>0,04</b>. O IC de 95% fica em cerca de <b>0,72 a 0,88</b>. Um modelo com 0,83 no mesmo teste não é comprovadamente melhor.
 
@@ -28,7 +28,7 @@ Tags: `anpd,ia` `generalizacao`
 
 ## 5. Covariate shift × prior shift × concept drift
 
-<b>Covariate shift</b>: muda a distribuição de X.<br><b>Prior (label) shift</b>: muda a proporção das classes.<br><b>Concept drift</b>: muda a <b>relação</b> entre X e y (ex.: fraudadores mudam de tática).<br><br>Defesas: teste out-of-time, monitoramento e retreino.
+<b>Covariate shift</b>: muda a distribuição de X (ex.: novo aparelho de raio-X muda o contraste das imagens).<br><b>Prior (label) shift</b>: muda a proporção das classes (ex.: gripe passa de 1% para 10% dos atendimentos no inverno).<br><b>Concept drift</b>: muda a <b>relação</b> entre X e y (ex.: spammers aprendem a burlar o filtro).<br><br>Defesas: teste out-of-time, monitoramento e retreino.
 
 Tags: `anpd,ia` `generalizacao` `pegadinha`
 

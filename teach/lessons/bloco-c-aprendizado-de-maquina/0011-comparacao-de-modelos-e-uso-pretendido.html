@@ -42,7 +42,7 @@
     <caption>Uso pretendido → métrica adequada.</caption>
     <thead><tr><th>Uso</th><th>Métrica</th><th>Por quê</th></tr></thead>
     <tbody>
-      <tr><th>Equipe só revisa os 100 casos de maior risco</th><td>Precision@k<small>precision at k · precisão nos k primeiros</small></td><td>Só importa quantos dos 100 casos priorizados são fraude</td></tr>
+      <tr><th>O posto de saúde só consegue chamar os 100 pacientes de maior risco</th><td>Precision@k<small>precision at k · precisão nos k primeiros</small></td><td>Só importa quantos dos 100 chamados estão doentes</td></tr>
       <tr><th>Não pode deixar passar nenhum caso grave</th><td>Recall<small>revocação</small></td><td>O custo está no FN (False Negative · Falso Negativo)</td></tr>
       <tr><th>O escore vira uma probabilidade usada em decisão</th><td>Calibração e Brier score<small>escore de Brier: média de (p − y)²</small></td><td>Um "risco de 70%" precisa acontecer em cerca de 70% dos casos</td></tr>
       <tr><th>Ranquear sem ter um limiar definido</th><td>AUC-ROC<small>área sob a curva ROC</small></td><td>Mede a ordenação em todos os limiares</td></tr>
@@ -54,22 +54,22 @@
 <div class="box">
   <strong>Exemplo resolvido: a AUC maior perdeu</strong>
   <p>
-    A auditoria analisa 100 convênios por mês. O modelo A tem AUC-ROC de 0,90 e,
-    entre os 100 primeiros do ranking, acerta 40 (precision@100 = 0,40). O
-    modelo B tem AUC-ROC de 0,88, mas acerta 55 dos 100 primeiros
-    (precision@100 = 0,55).
+    Um posto de saúde consegue chamar 100 pacientes por mês para um exame
+    preventivo. O modelo A tem AUC-ROC de 0,90 e, entre os 100 primeiros do
+    ranking, acerta 40 (precision@100 = 0,40). O modelo B tem AUC-ROC de 0,88,
+    mas acerta 55 dos 100 primeiros (precision@100 = 0,55).
   </p>
   <p style="margin-bottom:0">
-    <strong>Para o uso pretendido, B é melhor:</strong> são 15 irregularidades a mais
-    por mês com a mesma equipe. A AUC mede o ranking inteiro, inclusive milhares
-    de convênios que ninguém vai olhar.
+    <strong>Para o uso pretendido, B é melhor:</strong> são 15 diagnósticos a mais
+    por mês com a mesma equipe. A AUC mede o ranking inteiro, inclusive
+    milhares de pessoas que ninguém vai chamar.
   </p>
 </div>
 
 <h2>Adequação ao uso vai além da métrica</h2>
 <div class="box">
   <p style="margin:0.2rem 0"><strong>Explicabilidade:</strong> se a decisão é <em>unicamente</em> automatizada e afeta o titular, ele pode pedir revisão e informações sobre os critérios (LGPD, art. 20 e §1º). Um modelo impossível de explicar pode ser inadequado, mesmo sendo mais preciso.</p>
-  <p style="margin:0.2rem 0"><strong>Não discriminação:</strong> avaliar se o erro é muito maior para algum grupo (região, porte da empresa, perfil do cidadão). É o princípio do art. 6º, IX, da LGPD.</p>
+  <p style="margin:0.2rem 0"><strong>Não discriminação:</strong> avaliar se o erro é muito maior para algum grupo (região, idade, sexo). É o princípio do art. 6º, IX, da LGPD.</p>
   <p style="margin:0.2rem 0"><strong>Disponibilidade dos dados:</strong> toda variável precisa existir no momento da previsão (Lição 9).</p>
   <p style="margin:0.2rem 0"><strong>Custo, manutenção e auditabilidade:</strong> na administração pública, com desempenho parecido, vence o modelo mais simples (princípio da parcimônia).</p>
 </div>
@@ -85,7 +85,7 @@
 
 <div class="quiz" data-key="errado">
   <div class="q-num">Item 1</div>
-  <p class="statement">Na seleção de um modelo para apoio à auditoria, deve-se adotar sempre aquele que apresentar a maior acurácia (accuracy) no conjunto de teste, independentemente do custo dos erros e da capacidade operacional da equipe.</p>
+  <p class="statement">Na seleção de um modelo de apoio ao diagnóstico médico, deve-se adotar sempre aquele que apresentar a maior acurácia (accuracy) no conjunto de teste, independentemente do custo dos erros e da capacidade operacional da equipe.</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
@@ -118,12 +118,12 @@
 
 <div class="quiz" data-key="certo">
   <div class="q-num">Item 4</div>
-  <p class="statement">Quando a equipe de fiscalização consegue analisar apenas um número fixo de casos por período, a precisão (precision) entre os k casos de maior risco é métrica mais alinhada ao uso pretendido do que a área sob a curva ROC (AUC-ROC).</p>
+  <p class="statement">Quando a equipe de saúde consegue chamar apenas um número fixo de casos por período, a precisão (precision) entre os k casos de maior risco é métrica mais alinhada ao uso pretendido do que a área sob a curva ROC (AUC-ROC).</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="certo">Isso. Só os k primeiros do ranking viram trabalho de auditoria. A AUC avalia o ranking inteiro.</div>
+  <div class="feedback" data-for="certo">Isso. Só os k primeiros do ranking são chamados. A AUC avalia o ranking inteiro.</div>
   <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Com capacidade fixa, o que importa é a qualidade do topo do ranking (precision@k).</div>
 </div>
 

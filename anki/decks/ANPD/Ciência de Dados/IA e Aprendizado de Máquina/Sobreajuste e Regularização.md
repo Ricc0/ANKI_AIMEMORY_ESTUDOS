@@ -58,7 +58,7 @@ Tags: `anpd` `ia` `regularizacao`
 
 ## 10. O que é <b>vazamento de dados</b> (data leakage)?
 
-Quando informação que <b>não estaria disponível</b> na hora de prever (do teste ou do futuro) entra no treino.<br><br>Sintoma: desempenho <b>bom demais</b>. Exemplos: padronizar com os dados todos antes de dividir treino e teste, ou usar uma variável criada depois do fato (ex.: “processo instaurado” para prever fraude).
+Quando informação que <b>não estaria disponível</b> na hora de prever (do teste ou do futuro) entra no treino.<br><br>Sintoma: desempenho <b>bom demais</b>. Exemplos: padronizar com os dados todos antes de dividir treino e teste, ou usar uma variável criada depois do fato (ex.: "dias de internação" para prever se o paciente vai ser internado).
 
 Tags: `anpd` `ia` `overfitting` `pegadinha`
 

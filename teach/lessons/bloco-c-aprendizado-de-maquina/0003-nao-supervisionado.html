@@ -10,8 +10,7 @@
 <p class="lede">
   Sem rótulo, o modelo não prevê uma resposta: ele <strong>descreve</strong>
   os dados. Esta lição cobre as três tarefas que a banca cobra e as
-  armadilhas de cada uma. A mais importante para a CGU:
-  <strong>anomalia não é fraude</strong>.
+  armadilhas de cada uma. A mais importante: <strong>anomalia não é sinônimo de problema</strong>.
 </p>
 
 <h2>Agrupamento: três algoritmos, três ideias de "grupo"</h2>
@@ -91,14 +90,15 @@
 </div>
 
 <div class="box">
-  <strong>Exemplo resolvido: o contrato atípico</strong>
+  <strong>Exemplo resolvido: a conta de luz atípica</strong>
   <p style="margin-bottom:0">
-    O Isolation Forest marcou um contrato de obra com valor 8 vezes acima
-    da mediana do órgão. Isso é fraude? <strong>Não necessariamente.</strong>
-    Pode ser uma obra emergencial legítima. A detecção de anomalias costuma
-    ser não supervisionada justamente porque quase não há fraudes rotuladas.
-    O ponto marcado é um <span class="anchor">INDÍCIO</span> para o auditor
-    investigar, nunca uma prova.
+    O Isolation Forest marcou uma casa cuja conta de luz é 8 vezes maior que
+    a mediana do bairro. É um problema, como um fio com fuga de energia?
+    <strong>Não necessariamente.</strong> Pode ser só uma família que montou
+    um home office com ar-condicionado. A detecção de anomalias costuma ser
+    não supervisionada justamente porque quase não há exemplos rotulados de
+    "problema". O ponto marcado é um <span class="anchor">INDÍCIO</span> para
+    alguém verificar, nunca uma prova.
   </p>
 </div>
 
@@ -139,13 +139,13 @@
 
 <div class="quiz" data-key="errado">
   <div class="q-num">Item 4</div>
-  <p class="statement">Ponto identificado como anomalia por um modelo de Isolation Forest em base de pagamentos constitui prova suficiente de irregularidade.</p>
+  <p class="statement">Ponto identificado como anomalia por um modelo de Isolation Forest em leituras de sensores de uma máquina constitui prova suficiente de defeito no equipamento.</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
   <div class="feedback" data-for="errado">Isso. Anomalia é <strong>indício</strong> para investigar. Muitas anomalias são legítimas.</div>
-  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Anomalia ≠ fraude. O ponto marcado orienta a investigação, mas não prova nada.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Anomalia ≠ defeito. O ponto marcado orienta a investigação, mas não prova nada.</div>
 </div>
 
 <div class="quiz" data-key="certo">

@@ -22,13 +22,13 @@ Tags: `anpd,ia` `pegadinha` `validacao`
 
 ## 4. Quando usar divisão estratificada, por grupo ou temporal?
 
-<b>Estratificada</b>: classes desbalanceadas (mantém, por exemplo, 1% de fraude em cada conjunto).<br><b>Por grupo</b>: vários registros da mesma entidade (cada CNPJ fica inteiro de um lado).<br><b>Temporal</b> (out-of-time): dados com data, com treino no passado e teste no futuro.
+<b>Estratificada</b>: classes desbalanceadas (mantém, por exemplo, 1% de doentes em cada conjunto).<br><b>Por grupo</b>: vários registros da mesma pessoa (todas as radiografias de um paciente ficam do mesmo lado).<br><b>Temporal</b> (out-of-time): dados com data, com treino no passado e teste no futuro.
 
 Tags: `anpd,ia` `validacao`
 
-## 5. Por que dividir aleatoriamente por registro é um problema quando a mesma empresa aparece várias vezes?
+## 5. Por que dividir aleatoriamente por registro é um problema quando o mesmo paciente aparece várias vezes?
 
-O modelo reencontra no teste empresas que já viu no treino e "reconhece" o jeito delas. A nota infla e cai em produção, com empresas novas. A solução é dividir <b>por grupo</b> (GroupKFold).
+O modelo reencontra no teste pacientes que já viu no treino e "reconhece" detalhes deles (até do aparelho de raio-X). A nota infla e cai com pacientes novos. A solução é dividir <b>por grupo</b> (GroupKFold).
 
 Tags: `anpd,ia` `pegadinha` `validacao`
 

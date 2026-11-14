@@ -45,7 +45,7 @@
     <thead><tr><th>Variação</th><th>Como funciona</th><th>Quando usar</th></tr></thead>
     <tbody>
       <tr><th>Estratificada<small>Stratified k-fold</small></th><td>Cada fold mantém a proporção das classes</td><td>Classificação desbalanceada</td></tr>
-      <tr><th>Por grupo<small>Group k-fold</small></th><td>Cada grupo (empresa, paciente) fica inteiro num fold</td><td>Vários registros da mesma entidade</td></tr>
+      <tr><th>Por grupo<small>Group k-fold</small></th><td>Cada grupo (paciente, usuário) fica inteiro num fold</td><td>Vários registros da mesma entidade</td></tr>
       <tr><th>LOOCV<small>Leave-One-Out Cross-Validation · validação cruzada deixa-um-fora</small></th><td>k = n: cada registro valida sozinho uma vez</td><td>Bases muito pequenas. É caro, e a estimativa tem variância alta</td></tr>
       <tr><th>Repetida<small>Repeated k-fold</small></th><td>Repete o k-fold com sorteios diferentes</td><td>Quando se quer uma média ainda mais estável</td></tr>
       <tr><th>Aninhada<small>Nested cross-validation · validação cruzada aninhada</small></th><td>Um k-fold <em>interno</em> escolhe hiperparâmetros; um k-fold <em>externo</em> mede o desempenho</td><td>Quando a mesma validação seria usada para escolher e para medir</td></tr>
@@ -81,12 +81,12 @@
 </div>
 
 <div class="box">
-  <strong>Exemplo resolvido: previsão de gastos com diárias</strong>
+  <strong>Exemplo resolvido: previsão de vendas de uma sorveteria</strong>
   <p>
-    Você tem os gastos mensais com diárias de 2019 a 2025 e quer prever 2026.
-    Embaralhar os meses e fazer um k-fold comum deixaria o modelo treinar com
-    março de 2025 para "prever" fevereiro de 2025, uma informação que, na vida
-    real, ele nunca teria.
+    Você tem as vendas mensais de uma sorveteria de 2019 a 2025 e quer prever
+    2026. Embaralhar os meses e fazer um k-fold comum deixaria o modelo treinar
+    com março de 2025 para "prever" fevereiro de 2025, uma informação que, na
+    vida real, ele nunca teria.
   </p>
   <p style="margin-bottom:0">
     <strong>Correto:</strong> rodada 1 treina com 2019–2021 e valida 2022; rodada 2

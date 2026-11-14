@@ -17,13 +17,13 @@
 <h2>As cinco formas mais comuns</h2>
 <div class="table-scroll">
   <table class="cmp">
-    <caption>Tipos de vazamento, com exemplos do controle público.</caption>
+    <caption>Tipos de vazamento, com exemplos do dia a dia.</caption>
     <thead><tr><th>Tipo</th><th>O que acontece</th><th>Exemplo</th></tr></thead>
     <tbody>
-      <tr><th>Do alvo<small>target leakage</small></th><td>Uma variável carrega a própria resposta ou algo que só existe <em>depois</em> dela</td><td>Usar "processo administrativo instaurado" ou "valor ressarcido" para prever fraude</td></tr>
-      <tr><th>Pelo pré-processamento<small>train-test contamination</small></th><td>Padronização, imputação, seleção de variáveis ou balanceamento ajustados com a base <strong>inteira</strong>, antes de separar</td><td>Calcular média e desvio com todas as notas, inclusive as do teste, para padronizar</td></tr>
+      <tr><th>Do alvo<small>target leakage</small></th><td>Uma variável carrega a própria resposta ou algo que só existe <em>depois</em> dela</td><td>Usar "usa insulina" ou "data da alta hospitalar" para prever se o paciente tem diabetes ou vai ser internado</td></tr>
+      <tr><th>Pelo pré-processamento<small>train-test contamination</small></th><td>Padronização, imputação, seleção de variáveis ou balanceamento ajustados com a base <strong>inteira</strong>, antes de separar</td><td>Calcular média e desvio com todos os pacientes, inclusive os do teste, para padronizar</td></tr>
       <tr><th>Temporal</th><td>O treino usa dados posteriores ao período avaliado</td><td>Embaralhar meses de uma série; variável "média de gastos do ano" usada para prever o mês de março</td></tr>
-      <tr><th>Por grupo ou duplicata</th><td>A mesma entidade (ou registros quase idênticos) aparece no treino e no teste</td><td>Notas do mesmo fornecedor nos dois lados; nota original e nota corrigida separadas</td></tr>
+      <tr><th>Por grupo ou duplicata</th><td>A mesma entidade (ou registros quase idênticos) aparece no treino e no teste</td><td>Radiografias do mesmo paciente nos dois lados; a mesma foto salva duas vezes, uma em cada lado</td></tr>
       <tr><th>Pela escolha do modelo</th><td>O teste é usado para escolher hiperparâmetros ou variáveis</td><td>Testar 40 modelos no teste e reportar o melhor (Lição 7)</td></tr>
     </tbody>
   </table>
@@ -55,8 +55,7 @@
   <span class="label">Pegadinha: balancear antes de dividir</span>
   Aplicar SMOTE (Synthetic Minority Over-sampling Technique · técnica de
   sobreamostragem sintética da minoria), ou qualquer reamostragem, na base
-  inteira antes da divisão cria fraudes sintéticas no treino que são
-  "parentes" das fraudes do teste. A regra vale para todo pré-processamento:
+  inteira antes da divisão cria doentes sintéticos no treino que são "parentes" dos doentes do teste. A regra vale para todo pré-processamento:
   <strong>primeiro divide, depois ajusta só no treino</strong> e aplica no teste.
 </div>
 
@@ -74,14 +73,15 @@
 <div class="box">
   <strong>Exemplo resolvido 2: a variável boa demais</strong>
   <p>
-    Um modelo de risco de convênios atingiu AUC-ROC (área sob a curva ROC) de
-    0,99. A variável mais importante, de longe, era <code>data_ultima_diligencia</code>.
+    Um modelo que prevê se uma pessoa tem diabetes atingiu AUC-ROC (área sob a
+    curva ROC) de 0,99. A variável mais importante, de longe, era
+    <code>usa_insulina</code>.
   </p>
   <p style="margin-bottom:0">
-    <strong>Diagnóstico:</strong> diligências só acontecem <em>depois</em> que o convênio
-    já foi considerado suspeito. A variável é uma consequência do alvo, não uma
-    causa observável antes dele. É vazamento do alvo. Sem ela, a AUC cai para
-    0,78, que é o desempenho real.
+    <strong>Diagnóstico:</strong> só usa insulina quem <em>já foi</em> diagnosticado
+    com diabetes. A variável é uma consequência do alvo, não algo observável
+    antes dele. É vazamento do alvo. Sem ela, a AUC cai para 0,78, que é o
+    desempenho real.
   </p>
 </div>
 

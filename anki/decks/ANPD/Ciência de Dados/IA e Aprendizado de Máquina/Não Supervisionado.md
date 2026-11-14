@@ -50,9 +50,9 @@ Tags: `anpd` `ia` `reducao-dimensionalidade`
 
 Tags: `anomalias` `anpd` `ia`
 
-## 9. Por que a detecção de anomalias costuma ser não supervisionada, e anomalia é igual a fraude?
+## 9. Por que a detecção de anomalias costuma ser não supervisionada, e anomalia é sinônimo de problema?
 
-Porque há <b>poucos ou nenhum</b> exemplo rotulado de fraude.<br><br><b>Anomalia ≠ fraude</b>: o ponto marcado é só um <b>indício</b> para alguém investigar.
+Porque há <b>poucos ou nenhum</b> exemplo rotulado do problema (defeito, falha, vazamento).<br><br><b>Anomalia ≠ problema</b>: uma conta de luz 8 vezes acima da média pode ser só um home office com ar-condicionado. O ponto marcado é um <b>indício</b> para alguém verificar.
 
 Tags: `anomalias` `anpd` `ia` `pegadinha`
 

@@ -41,7 +41,7 @@
     <tbody>
       <tr><th>Treino</th><td>Ajustar os <strong>parâmetros</strong> do modelo</td><td>Os coeficientes da regressão logística, os cortes da árvore</td></tr>
       <tr><th>Validação</th><td>Escolher <strong>hiperparâmetros</strong> e comparar modelos candidatos</td><td>Profundidade da árvore, λ da regularização, "XGBoost ou Random Forest?"</td></tr>
-      <tr><th>Teste</th><td>Estimar, <strong>uma única vez</strong>, o desempenho do modelo final</td><td>"Em notas novas, o recall (revocação) esperado é 0,78"</td></tr>
+      <tr><th>Teste</th><td>Estimar, <strong>uma única vez</strong>, o desempenho do modelo final</td><td>"Em exames novos, o recall (revocação) esperado é 0,78"</td></tr>
     </tbody>
   </table>
 </div>
@@ -66,8 +66,8 @@
     <caption>A divisão aleatória simples nem sempre serve.</caption>
     <thead><tr><th>Situação</th><th>Divisão correta</th><th>Por quê</th></tr></thead>
     <tbody>
-      <tr><th>Classes desbalanceadas</th><td><strong>Estratificada</strong>: mantém a proporção das classes em cada conjunto</td><td>Com 1% de fraude, um sorteio pode deixar o teste com quase nenhuma fraude</td></tr>
-      <tr><th>Vários registros da mesma entidade</th><td><strong>Por grupo</strong>: cada CNPJ, paciente ou fornecedor fica inteiro de um lado só</td><td>Senão o modelo "reconhece" a empresa que já viu no treino, e a nota infla</td></tr>
+      <tr><th>Classes desbalanceadas</th><td><strong>Estratificada</strong>: mantém a proporção das classes em cada conjunto</td><td>Com 1% de doentes, um sorteio pode deixar o teste com quase nenhum doente</td></tr>
+      <tr><th>Vários registros da mesma entidade</th><td><strong>Por grupo</strong>: cada paciente ou usuário fica inteiro de um lado só</td><td>Senão o modelo "reconhece" o paciente que já viu no treino, e a nota infla</td></tr>
       <tr><th>Dados com tempo</th><td><strong>Temporal</strong> (<em>out-of-time</em>): treino no passado, teste no futuro</td><td>Em produção, o modelo sempre prevê o futuro com dados do passado</td></tr>
     </tbody>
   </table>
@@ -76,32 +76,32 @@
 <div class="box">
   <strong>Exemplo resolvido 1: por que estratificar</strong>
   <p>
-    Uma base tem 10.000 notas fiscais, das quais 100 são fraudes (1%). Você
-    separa 20% para teste, ou seja, 2.000 notas. Num sorteio simples, o
-    número esperado de fraudes no teste é 20, mas ele pode sair 12 ou 29.
-    Com tão poucas fraudes, o recall (revocação) medido oscila muito de um
+    Uma base tem 10.000 exames, dos quais 100 são de pessoas doentes (1%).
+    Você separa 20% para teste, ou seja, 2.000 exames. Num sorteio simples, o
+    número esperado de doentes no teste é 20, mas ele pode sair 12 ou 29.
+    Com tão poucos doentes, o recall (revocação) medido oscila muito de um
     sorteio para outro.
   </p>
   <p style="margin-bottom:0">
     <strong>Com divisão estratificada</strong>, o teste recebe exatamente 1% de
-    fraudes (20 notas) e o treino mantém as outras 80. A medida fica
+    doentes (20 exames) e o treino mantém os outros 80. A medida fica
     comparável entre execuções.
   </p>
 </div>
 
 <div class="box">
-  <strong>Exemplo resolvido 2: o mesmo fornecedor dos dois lados</strong>
+  <strong>Exemplo resolvido 2: o mesmo paciente dos dois lados</strong>
   <p>
-    Um modelo prevê se um contrato terá aditivo acima de 25%. A base tem
-    5 contratos por fornecedor, em média, e a divisão foi aleatória por
-    contrato. No teste, o F1-score (medida F1) deu 0,91. Em produção, com
-    fornecedores novos, caiu para 0,64.
+    Um modelo detecta pneumonia em radiografias. A base tem, em média,
+    5 radiografias por paciente, e a divisão foi aleatória por imagem. No
+    teste, o F1-score (medida F1) deu 0,91. Em outro hospital, com pacientes
+    novos, caiu para 0,64.
   </p>
   <p style="margin-bottom:0">
-    <strong>O que houve:</strong> o modelo aprendeu o "jeito" de cada fornecedor
-    e reencontrou os mesmos fornecedores no teste. A divisão correta era
-    <strong>por grupo</strong> (GroupKFold no scikit-learn): todos os contratos de
-    um fornecedor ficam ou no treino, ou no teste.
+    <strong>O que houve:</strong> o modelo aprendeu detalhes de cada paciente
+    (e até do aparelho de raio-X) e reencontrou os mesmos pacientes no teste.
+    A divisão correta era <strong>por grupo</strong> (GroupKFold no scikit-learn):
+    todas as radiografias de um paciente ficam ou no treino, ou no teste.
   </p>
 </div>
 
@@ -142,13 +142,13 @@
 
 <div class="quiz" data-key="errado">
   <div class="q-num">Item 4</div>
-  <p class="statement">Quando a base contém vários registros de uma mesma empresa, a divisão aleatória por registro é a mais indicada, pois garante que o modelo seja avaliado em empresas já conhecidas no treinamento.</p>
+  <p class="statement">Quando a base contém vários exames de um mesmo paciente, a divisão aleatória por exame é a mais indicada, pois garante que o modelo seja avaliado em pacientes já conhecidos no treinamento.</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
   </div>
-  <div class="feedback" data-for="errado">Isso. Avaliar em empresas já vistas infla a nota. O certo é dividir <strong>por grupo</strong>, com cada empresa de um lado só.</div>
-  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Se o objetivo é prever para empresas novas, a avaliação precisa usar empresas que o modelo não viu (divisão por grupo).</div>
+  <div class="feedback" data-for="errado">Isso. Avaliar em pacientes já vistos infla a nota. O certo é dividir <strong>por grupo</strong>, com cada paciente de um lado só.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Se o objetivo é prever para pacientes novos, a avaliação precisa usar pacientes que o modelo não viu (divisão por grupo).</div>
 </div>
 
 <div class="quiz" data-key="certo">

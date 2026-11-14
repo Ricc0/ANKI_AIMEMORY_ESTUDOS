@@ -112,7 +112,7 @@
                  ],
         "fields":  {
                        "Frente":  "O que é aprendizado \u003cb\u003esemissupervisionado\u003c/b\u003e e quando ele é útil?",
-                       "Verso":  "Combina \u003cb\u003epoucos dados rotulados\u003c/b\u003e com \u003cb\u003emuitos sem rótulo\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eÉ útil quando \u003cb\u003erotular é caro\u003c/b\u003e, como quando cada caso exige a análise de um auditor."
+                       "Verso":  "Combina \u003cb\u003epoucos dados rotulados\u003c/b\u003e com \u003cb\u003emuitos sem rótulo\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eÉ útil quando \u003cb\u003erotular é caro\u003c/b\u003e, como quando cada radiografia precisa ser laudada por um médico."
                    }
     },
     {
@@ -441,8 +441,8 @@
                      "pegadinha"
                  ],
         "fields":  {
-                       "Frente":  "Por que a detecção de anomalias costuma ser não supervisionada, e anomalia é igual a fraude?",
-                       "Verso":  "Porque há \u003cb\u003epoucos ou nenhum\u003c/b\u003e exemplo rotulado de fraude.\u003cbr\u003e\u003cbr\u003e\u003cb\u003eAnomalia ≠ fraude\u003c/b\u003e: o ponto marcado é só um \u003cb\u003eindício\u003c/b\u003e para alguém investigar."
+                       "Frente":  "Por que a detecção de anomalias costuma ser não supervisionada, e anomalia é sinônimo de problema?",
+                       "Verso":  "Porque há \u003cb\u003epoucos ou nenhum\u003c/b\u003e exemplo rotulado do problema (defeito, falha, vazamento).\u003cbr\u003e\u003cbr\u003e\u003cb\u003eAnomalia ≠ problema\u003c/b\u003e: uma conta de luz 8 vezes acima da média pode ser só um home office com ar-condicionado. O ponto marcado é um \u003cb\u003eindício\u003c/b\u003e para alguém verificar."
                    }
     },
     {
@@ -586,7 +586,7 @@
                  ],
         "fields":  {
                        "Frente":  "O que é \u003cb\u003evazamento de dados\u003c/b\u003e (data leakage)?",
-                       "Verso":  "Quando informação que \u003cb\u003enão estaria disponível\u003c/b\u003e na hora de prever (do teste ou do futuro) entra no treino.\u003cbr\u003e\u003cbr\u003eSintoma: desempenho \u003cb\u003ebom demais\u003c/b\u003e. Exemplos: padronizar com os dados todos antes de dividir treino e teste, ou usar uma variável criada depois do fato (ex.: “processo instaurado” para prever fraude)."
+                       "Verso":  "Quando informação que \u003cb\u003enão estaria disponível\u003c/b\u003e na hora de prever (do teste ou do futuro) entra no treino.\u003cbr\u003e\u003cbr\u003eSintoma: desempenho \u003cb\u003ebom demais\u003c/b\u003e. Exemplos: padronizar com os dados todos antes de dividir treino e teste, ou usar uma variável criada depois do fato (ex.: \"dias de internação\" para prever se o paciente vai ser internado)."
                    }
     },
     {
@@ -2129,7 +2129,7 @@
                  ],
         "fields":  {
                        "Frente":  "Quando usar divisão estratificada, por grupo ou temporal?",
-                       "Verso":  "\u003cb\u003eEstratificada\u003c/b\u003e: classes desbalanceadas (mantém, por exemplo, 1% de fraude em cada conjunto).\u003cbr\u003e\u003cb\u003ePor grupo\u003c/b\u003e: vários registros da mesma entidade (cada CNPJ fica inteiro de um lado).\u003cbr\u003e\u003cb\u003eTemporal\u003c/b\u003e (out-of-time): dados com data, com treino no passado e teste no futuro."
+                       "Verso":  "\u003cb\u003eEstratificada\u003c/b\u003e: classes desbalanceadas (mantém, por exemplo, 1% de doentes em cada conjunto).\u003cbr\u003e\u003cb\u003ePor grupo\u003c/b\u003e: vários registros da mesma pessoa (todas as radiografias de um paciente ficam do mesmo lado).\u003cbr\u003e\u003cb\u003eTemporal\u003c/b\u003e (out-of-time): dados com data, com treino no passado e teste no futuro."
                    }
     },
     {
@@ -2142,8 +2142,8 @@
                      "validacao"
                  ],
         "fields":  {
-                       "Frente":  "Por que dividir aleatoriamente por registro é um problema quando a mesma empresa aparece várias vezes?",
-                       "Verso":  "O modelo reencontra no teste empresas que já viu no treino e \"reconhece\" o jeito delas. A nota infla e cai em produção, com empresas novas. A solução é dividir \u003cb\u003epor grupo\u003c/b\u003e (GroupKFold)."
+                       "Frente":  "Por que dividir aleatoriamente por registro é um problema quando o mesmo paciente aparece várias vezes?",
+                       "Verso":  "O modelo reencontra no teste pacientes que já viu no treino e \"reconhece\" detalhes deles (até do aparelho de raio-X). A nota infla e cai com pacientes novos. A solução é dividir \u003cb\u003epor grupo\u003c/b\u003e (GroupKFold)."
                    }
     },
     {
@@ -2329,7 +2329,7 @@
                      "generalizacao"
                  ],
         "fields":  {
-                       "Frente":  "Qual o desvio de um recall de 0,80 medido em 100 fraudes?",
+                       "Frente":  "Qual o desvio de um recall (revocação) de 0,80 medido em 100 doentes?",
                        "Verso":  "√(p(1−p)/n) = √(0,8·0,2/100) = \u003cb\u003e0,04\u003c/b\u003e. O IC de 95% fica em cerca de \u003cb\u003e0,72 a 0,88\u003c/b\u003e. Um modelo com 0,83 no mesmo teste não é comprovadamente melhor."
                    }
     },
@@ -2344,7 +2344,7 @@
                  ],
         "fields":  {
                        "Frente":  "Covariate shift × prior shift × concept drift",
-                       "Verso":  "\u003cb\u003eCovariate shift\u003c/b\u003e: muda a distribuição de X.\u003cbr\u003e\u003cb\u003ePrior (label) shift\u003c/b\u003e: muda a proporção das classes.\u003cbr\u003e\u003cb\u003eConcept drift\u003c/b\u003e: muda a \u003cb\u003erelação\u003c/b\u003e entre X e y (ex.: fraudadores mudam de tática).\u003cbr\u003e\u003cbr\u003eDefesas: teste out-of-time, monitoramento e retreino."
+                       "Verso":  "\u003cb\u003eCovariate shift\u003c/b\u003e: muda a distribuição de X (ex.: novo aparelho de raio-X muda o contraste das imagens).\u003cbr\u003e\u003cb\u003ePrior (label) shift\u003c/b\u003e: muda a proporção das classes (ex.: gripe passa de 1% para 10% dos atendimentos no inverno).\u003cbr\u003e\u003cb\u003eConcept drift\u003c/b\u003e: muda a \u003cb\u003erelação\u003c/b\u003e entre X e y (ex.: spammers aprendem a burlar o filtro).\u003cbr\u003e\u003cbr\u003eDefesas: teste out-of-time, monitoramento e retreino."
                    }
     },
     {

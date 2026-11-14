@@ -44,8 +44,7 @@
 <h2>Supervisionado: aprender com gabarito</h2>
 <p>
   Você treina com pares <code>(X, y)</code>. <strong>X</strong> são as
-  características (valor da nota, CNPJ, data, órgão) e <strong>y</strong>
-  é a resposta certa ("fraude" ou "ok"). O modelo procura uma função
+  características (as palavras do e-mail, o remetente, o horário) e <strong>y</strong> é a resposta certa ("spam" ou "não spam"). O modelo procura uma função
   <code>f(X) ≈ y</code> que erre pouco <em>em dados que ele ainda não
   viu</em>. Ir bem nos dados de treino não basta. É daí que nasce o
   sobreajuste (<a href="0004-sobreajuste-vies-variancia-regularizacao.html">Lição 4</a>).
@@ -54,8 +53,7 @@
   O formato do <strong>y</strong> define a tarefa: se é um número, é
   <strong>regressão</strong>. Se é uma categoria, é <strong>classificação</strong>
   (<a href="0002-regressao-classificacao-metricas.html">Lição 2</a>). O
-  gargalo prático é o rótulo: alguém precisa dizer o que é fraude, e na
-  CGU isso costuma ser um auditor gastando horas em cada caso.
+  gargalo prático é o rótulo: alguém precisa dizer a resposta certa de cada exemplo. Para ensinar um modelo a achar pneumonia em radiografias, um médico precisa laudar milhares de imagens, uma por uma.
 </p>
 
 <h2>Não supervisionado: estrutura sem gabarito</h2>
@@ -92,8 +90,7 @@
 
 <div class="pegadinha">
   <span class="label">Pegadinha: "mais dados sempre ajudam"</span>
-  Se a fraude <strong>não</strong> forma um grupo separado (fraudadores
-  imitam notas normais, por exemplo), ou se os primeiros pseudo-rótulos
+  Se os spams <strong>não</strong> formam um grupo separado (spammers imitam e-mails normais, por exemplo), ou se os primeiros pseudo-rótulos
   saem errados, o modelo <strong>reforça o próprio erro</strong> a cada
   rodada. O resultado pode ficar <em>pior</em> do que treinar só com os
   rotulados.
@@ -138,12 +135,13 @@
 </div>
 
 <div class="pegadinha">
-  <span class="label">Pegadinha: reforço na auditoria</span>
+  <span class="label">Pegadinha: reforço onde não cabe</span>
   O reforço precisa de <strong>muita interação</strong> ou de um
-  simulador, e não dá para "testar" milhares de decisões reais de
-  fiscalização. Para dados tabulares com histórico, o supervisionado
-  costuma ser a escolha certa. Item que diga que o reforço é "a técnica
-  indicada para classificar notas fiscais" tende a estar errado.
+  simulador. Não dá para "testar" milhares de diagnósticos errados em
+  pacientes reais só para o agente aprender. Para dados com histórico e
+  resposta conhecida, o supervisionado costuma ser a escolha certa. Item que
+  diga que o reforço é "a técnica indicada para classificar e-mails como
+  spam" tende a estar errado.
 </div>
 
 <h2>Pratique: certo ou errado</h2>
@@ -194,7 +192,7 @@
 
 <div class="quiz" data-key="errado">
   <div class="q-num">Item 5 · Caso prático</div>
-  <p class="statement">Um órgão dispõe de 200 mil notas fiscais, das quais apenas 300 foram analisadas e rotuladas por auditores como "fraude" ou "regular". Nessa situação, o aprendizado por reforço é a abordagem mais indicada para aproveitar também as notas não rotuladas.</p>
+  <p class="statement">Um hospital dispõe de 200 mil radiografias, das quais apenas 300 foram laudadas por radiologistas como "pneumonia" ou "normal". Nessa situação, o aprendizado por reforço é a abordagem mais indicada para aproveitar também as radiografias sem laudo.</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
