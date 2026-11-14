@@ -9,7 +9,7 @@ tier: semantic
 type: Note
 generated:
   by: process:ai-memory/2.2.1
-  at: 2026-11-14T15:36:46Z
+  at: 2026-11-14T15:40:35Z
 ---
 # Missão: concurso da ANPD, usando o edital da CGU como roteiro de Ciência de Dados
 
@@ -18,5 +18,5 @@ O usuário **não vai prestar o concurso da CGU**. O alvo é o **concurso da ANP
 ## Implicações
 - Os itens de prática nas lições são **só certo/errado (Cebraspe)**.
 - Os exemplos podem ligar o técnico ao regulatório: decisão automatizada (LGPD, art. 20), anonimização, minimização e explicabilidade.
-- Os decks do Anki continuam como `CGU::...`, porque refletem o edital-roteiro. Renomear só se ele pedir.
+- Decks do Anki: `ANPD::Ciência de Dados::<Matéria>::<Assunto>`. Foram renomeados de `CGU::...` em 2026-11-14, a pedido do usuário. Tag `anpd`.
 - A trilha jurídica (LGPD/ANPD) fica no workspace próprio, `...\Pessoal\Anpd\teach_teste`. Este projeto de estudos cobre a trilha de ciência de dados.

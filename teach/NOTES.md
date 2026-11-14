@@ -2,7 +2,7 @@
 
 ## Preferências do aluno
 - Gosta de explicações **aprofundadas**, com intuição, exemplos de auditoria/fraude e tabelas comparativas.
-- Toda explicação vira **cards no Anki** (deck `CGU::<Matéria>::<Assunto>`) e tudo vai para o GitHub (`sync.ps1` na raiz do repositório).
+- Toda explicação vira **cards no Anki** (deck `ANPD::Ciência de Dados::<Matéria>::<Assunto>`) e tudo vai para o GitHub (`sync.ps1` na raiz do repositório).
 - Quer uma **lição HTML por tópico**, organizada em blocos, no mesmo estilo do workspace da ANPD (`assets/style.css` + `assets/quiz.js`).
 - Nada de estudo dentro do OneDrive: este workspace fica em `C:\Users\Henricco Santos\Estudos\ANKI_AIMEMORY_ESTUDOS\teach`.
 

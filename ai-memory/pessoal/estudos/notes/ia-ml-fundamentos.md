@@ -1,6 +1,6 @@
 ---
 tags:
-- cgu
+- anpd
 - ia
 - aprendizado-de-maquina
 - progresso
@@ -8,11 +8,11 @@ tier: semantic
 type: Note
 generated:
   by: process:ai-memory/2.2.1
-  at: 2026-11-14T15:16:50Z
+  at: 2026-11-14T15:40:36Z
 ---
-# IA e ML: fundamentos estudados (tópicos 1.1 e 1.2)
+# IA e ML: fundamentos estudados (tópicos 1.1 e 1.2 do edital-roteiro)
 
-Estudado em 2026-11-14, com explicação aprofundada e cards no Anki em `CGU::IA e Aprendizado de Máquina::*`.
+Estudado em 2026-11-14, com explicação aprofundada, cards no Anki em `ANPD::Ciência de Dados::IA e Aprendizado de Máquina::*` e as lições 0001–0005 do Bloco A (workspace `teach`).
 
 ## Cobertura
 - **Paradigmas**: supervisionado, não supervisionado, semissupervisionado (self-training, propagação de rótulos, suposições de suavidade/cluster/variedade) e reforço (estado/ação/recompensa/política, exploração × explotação, reward hacking).
@@ -22,8 +22,8 @@ Estudado em 2026-11-14, com explicação aprofundada e cards no Anki em `CGU::IA
 - **Ensembles**: bagging (paralelo, variância, Random Forest), boosting (sequencial, viés, AdaBoost/XGBoost), stacking.
 - **Baseline**: referências triviais por tarefa, sinal de vazamento, parcimônia na administração pública.
 
-## Pegadinhas recorrentes da banca
+## Pegadinhas recorrentes da banca (Cebraspe)
 Clustering e reforço não são supervisionados. Regressão logística é classificação. Bagging reduz variância e boosting reduz viés. L1 zera coeficientes e L2 não. Acurácia não serve com desbalanceamento. Desempenho bom demais sugere vazamento. t-SNE é para visualizar, não para medir distâncias.
 
 ## Cards
-51 cards no total nesses decks (7 da primeira explicação + 44 desta).
+51 cards nesses decks (7 da primeira explicação + 44 da explicação aprofundada).

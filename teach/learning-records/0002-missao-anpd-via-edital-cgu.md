@@ -8,4 +8,4 @@ O objetivo real é o **concurso da ANPD**, e não o da CGU. O edital da CGU (TI 
 ## Consequências para o ensino
 - Os itens de prática passaram a ser **só certo/errado** (padrão Cebraspe). As 5 questões de alternativas das lições 0001–0005 foram reescritas como itens C/E.
 - Os exemplos podem vir da proteção de dados (decisão automatizada, anonimização, minimização), não só da auditoria.
-- Os decks do Anki continuam com o nome `CGU::...`, porque refletem o edital usado como roteiro. Renomear só se o usuário pedir.
+- A pedido do usuário, os decks do Anki foram renomeados de `CGU::...` para `ANPD::Ciência de Dados::...` (51 cards movidos com `changeDeck`, sem perder o histórico) e a tag `cgu` virou `anpd`.
