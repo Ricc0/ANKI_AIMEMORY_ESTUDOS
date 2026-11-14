@@ -107,9 +107,14 @@ Push-Location $repo
 try {
     git add -A
     $pending = git status --porcelain
-    if (-not $pending) { Write-Host "Nada mudou; nenhum commit."; return }
-    git commit -m $Message | Out-Host
-    git push -u origin main | Out-Host
-    if ($LASTEXITCODE -ne 0) { throw "git push falhou" }
-    Write-Host "Commit e push feitos: $Message"
+    if ($pending) { git commit -m $Message | Out-Host } else { Write-Host "Nada mudou; nenhum commit novo." }
+    # Envia também commits que ficaram pendentes de um push anterior que falhou.
+    git rev-parse --verify --quiet origin/main 2>$null | Out-Null
+    $hasRemote = ($LASTEXITCODE -eq 0)
+    $ahead = if ($hasRemote) { [int](git rev-list --count origin/main..HEAD) } else { 1 }
+    if ($ahead -gt 0) {
+        git push -u origin main | Out-Host
+        if ($LASTEXITCODE -ne 0) { throw "git push falhou" }
+        Write-Host "Push feito ($ahead commit(s))."
+    } else { Write-Host "Tudo já estava no GitHub." }
 } finally { Pop-Location }

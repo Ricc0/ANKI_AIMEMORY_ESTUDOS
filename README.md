@@ -8,10 +8,10 @@ Backup versionado dos meus estudos para o concurso da CGU.
 
 ## Como atualizar
 
-Com o Anki aberto (para o AnkiConnect responder):
+O clone local fica em `C:\Users\Henricco Santos\Estudos\ANKI_AIMEMORY_ESTUDOS`, fora do OneDrive. Com o Anki aberto (para o AnkiConnect responder):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File sync.ps1 -Message "cards: <assunto>"
+powershell -ExecutionPolicy Bypass -File "C:\Users\Henricco Santos\Estudos\ANKI_AIMEMORY_ESTUDOS\sync.ps1" -Message "cards: <assunto>"
 ```
 
 O script exporta tudo, faz commit e dá push. Se nada mudou, não cria commit.
