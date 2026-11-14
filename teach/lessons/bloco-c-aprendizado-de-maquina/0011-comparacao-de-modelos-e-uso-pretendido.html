@@ -1,0 +1,156 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparação de modelos</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco C · Aprendizado de Máquina · Lição 11 · Parte 2: validação e generalização</div>
+<h1>Comparação de modelos e adequação ao uso pretendido</h1>
+<p class="lede">
+  "Qual modelo é melhor?" sempre esconde outra pergunta: <strong>melhor para
+  quê?</strong> Esta lição fecha a Parte 2 mostrando como comparar modelos de
+  forma justa e como escolher a métrica que reflete o <strong>uso real</strong>,
+  inclusive as exigências da LGPD para decisões automatizadas<sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<h2>Comparação justa: as mesmas condições para todos</h2>
+<div class="box">
+  <ol style="margin:0.2rem 0 0">
+    <li><strong>Mesmas partições.</strong> Todos os modelos são avaliados nos mesmos folds ou no mesmo teste. A comparação fica <em>pareada</em>.</li>
+    <li><strong>Sempre contra o baseline</strong> (Lição 5): a regra de negócio atual ou o modelo trivial.</li>
+    <li><strong>Diferença maior que a oscilação</strong> (Lição 10). Se não for, os modelos empatam.</li>
+    <li><strong>Teste intocado até o fim.</strong> Comparar 50 modelos na mesma validação e ficar com o melhor dá uma estimativa otimista (a "maldição do vencedor"). O número que vale é o do teste separado, ou o da validação cruzada aninhada (Lição 8).</li>
+  </ol>
+</div>
+
+<h3>Testes estatísticos que aparecem em prova</h3>
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Comparação estatística de dois classificadores<sup class="cite"><a href="#f2">[2]</a></sup>.</caption>
+    <thead><tr><th>Teste</th><th>Ideia</th><th>Cuidado</th></tr></thead>
+    <tbody>
+      <tr><th>McNemar</th><td>No <strong>mesmo teste</strong>, olha só os casos em que os modelos <em>discordam</em>: b = só A acertou; c = só B acertou. Estatística: (|b − c| − 1)² / (b + c), comparada a uma qui-quadrado com 1 grau de liberdade</td><td>Usa uma única divisão de teste</td></tr>
+      <tr><th>t pareado nos folds</th><td>Compara as métricas dos dois modelos fold a fold</td><td>Os treinos dos folds se sobrepõem, então o teste t simples subestima a variância e acusa diferença demais. Usa-se a versão corrigida (Nadeau e Bengio) ou o 5×2cv (Dietterich)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>A métrica tem que refletir o uso</h2>
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Uso pretendido → métrica adequada.</caption>
+    <thead><tr><th>Uso</th><th>Métrica</th><th>Por quê</th></tr></thead>
+    <tbody>
+      <tr><th>Equipe só revisa os 100 casos de maior risco</th><td>Precision@k<small>precision at k · precisão nos k primeiros</small></td><td>Só importa quantos dos 100 casos priorizados são fraude</td></tr>
+      <tr><th>Não pode deixar passar nenhum caso grave</th><td>Recall<small>revocação</small></td><td>O custo está no FN (False Negative · Falso Negativo)</td></tr>
+      <tr><th>O escore vira uma probabilidade usada em decisão</th><td>Calibração e Brier score<small>escore de Brier: média de (p − y)²</small></td><td>Um "risco de 70%" precisa acontecer em cerca de 70% dos casos</td></tr>
+      <tr><th>Ranquear sem ter um limiar definido</th><td>AUC-ROC<small>área sob a curva ROC</small></td><td>Mede a ordenação em todos os limiares</td></tr>
+      <tr><th>Custos diferentes para cada erro</th><td>Custo esperado = c<sub>FP</sub>·FP + c<sub>FN</sub>·FN</td><td>Escolhe-se o <strong>limiar</strong> que minimiza o custo, e não necessariamente 0,5</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido: a AUC maior perdeu</strong>
+  <p>
+    A auditoria analisa 100 convênios por mês. O modelo A tem AUC-ROC de 0,90 e,
+    entre os 100 primeiros do ranking, acerta 40 (precision@100 = 0,40). O
+    modelo B tem AUC-ROC de 0,88, mas acerta 55 dos 100 primeiros
+    (precision@100 = 0,55).
+  </p>
+  <p style="margin-bottom:0">
+    <strong>Para o uso pretendido, B é melhor:</strong> são 15 irregularidades a mais
+    por mês com a mesma equipe. A AUC mede o ranking inteiro, inclusive milhares
+    de convênios que ninguém vai olhar.
+  </p>
+</div>
+
+<h2>Adequação ao uso vai além da métrica</h2>
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Explicabilidade:</strong> se a decisão é <em>unicamente</em> automatizada e afeta o titular, ele pode pedir revisão e informações sobre os critérios (LGPD, art. 20 e §1º). Um modelo impossível de explicar pode ser inadequado, mesmo sendo mais preciso.</p>
+  <p style="margin:0.2rem 0"><strong>Não discriminação:</strong> avaliar se o erro é muito maior para algum grupo (região, porte da empresa, perfil do cidadão). É o princípio do art. 6º, IX, da LGPD.</p>
+  <p style="margin:0.2rem 0"><strong>Disponibilidade dos dados:</strong> toda variável precisa existir no momento da previsão (Lição 9).</p>
+  <p style="margin:0.2rem 0"><strong>Custo, manutenção e auditabilidade:</strong> na administração pública, com desempenho parecido, vence o modelo mais simples (princípio da parcimônia).</p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: "o modelo com maior acurácia é sempre o mais adequado"</span>
+  Falso por três motivos: a acurácia (accuracy) engana com classes
+  desbalanceadas; a métrica precisa refletir o custo dos erros e a capacidade
+  operacional; e interpretabilidade, equidade e custo também contam.
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">Na seleção de um modelo para apoio à auditoria, deve-se adotar sempre aquele que apresentar a maior acurácia (accuracy) no conjunto de teste, independentemente do custo dos erros e da capacidade operacional da equipe.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. A métrica precisa refletir o uso: custos de FP e FN, capacidade de revisão (precision@k) e desbalanceamento.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Acurácia não considera o custo dos erros nem a capacidade da equipe, e engana com classes raras.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 2</div>
+  <p class="statement">O teste de McNemar, aplicado a dois classificadores avaliados no mesmo conjunto de teste, baseia-se nos casos em que os classificadores divergem, ou seja, nos exemplos acertados por apenas um deles.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. Os casos em que ambos acertam ou ambos erram não ajudam a distinguir os modelos.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. O McNemar usa apenas as discordâncias (b e c).</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 3</div>
+  <p class="statement">O teste t pareado simples aplicado às métricas obtidas nos folds de uma validação cruzada é estatisticamente rigoroso, pois as partições de treino são independentes entre si.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Os treinos dos folds se sobrepõem; logo, <strong>não</strong> são independentes. O t simples subestima a variância, e por isso existem versões corrigidas.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Os conjuntos de treino dos folds compartilham a maior parte dos dados, e o teste t simples fica otimista.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">Quando a equipe de fiscalização consegue analisar apenas um número fixo de casos por período, a precisão (precision) entre os k casos de maior risco é métrica mais alinhada ao uso pretendido do que a área sob a curva ROC (AUC-ROC).</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. Só os k primeiros do ranking viram trabalho de auditoria. A AUC avalia o ranking inteiro.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Com capacidade fixa, o que importa é a qualidade do topo do ranking (precision@k).</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 5</div>
+  <p class="statement">O limiar de decisão de 0,5 é sempre o mais adequado em classificadores probabilísticos, independentemente dos custos associados aos falsos positivos e aos falsos negativos.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. O limiar deve minimizar o custo esperado, c<sub>FP</sub>·FP + c<sub>FN</sub>·FN. Com custos diferentes, raramente será 0,5.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. 0,5 só faz sentido com custos iguais e probabilidades calibradas. O limiar é escolhido conforme o custo dos erros.</div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">Hastie, Tibshirani e Friedman, <em>The Elements of Statistical Learning</em>, cap. 7 (avaliação e seleção de modelos). Para a comparação estatística, Dietterich (1998), "Approximate Statistical Tests for Comparing Supervised Classification Learning Algorithms", <em>Neural Computation</em> 10(7).</p>
+<p class="source" id="f1">[1] Hastie et al., <a href="https://hastie.su.domains/ElemStatLearn/" target="_blank" rel="noopener"><em>The Elements of Statistical Learning</em></a>; LGPD, arts. 6º, IX, e 20 (ver Bloco A, Lições 4 e 7). scikit-learn, <a href="https://scikit-learn.org/stable/modules/calibration.html" target="_blank" rel="noopener">Probability calibration</a>.</p>
+<p class="source" id="f2">[2] Dietterich, T. G. (1998), <em>Neural Computation</em> 10(7), 1895–1923; Nadeau, C. e Bengio, Y. (2003), "Inference for the Generalization Error", <em>Machine Learning</em> 52, 239–281.</p>
+
+<div class="ask-teacher">
+  Fechou a Parte 2. Quer um simulado misturando as Lições 7 a 11, no estilo
+  Cebraspe? Peça aqui na conversa.
+</div>
+
+<div class="nav">
+  <a href="0010-vies-variancia-generalizacao-estabilidade.html">← Lição 10: viés, variância e estabilidade</a>
+  <span>Fim da Parte 2 · validação e generalização</span>
+</div>
+
+<script src="../../assets/quiz.js"></script>

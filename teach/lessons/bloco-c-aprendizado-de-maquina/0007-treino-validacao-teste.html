@@ -1,0 +1,179 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treino, validação e teste</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco C · Aprendizado de Máquina · Lição 7 · Parte 2: validação e generalização</div>
+<h1>Separação de treino, validação e teste</h1>
+<p class="lede">
+  Um modelo só é útil se acerta <strong>dados que nunca viu</strong>. Para medir
+  isso sem se enganar, os dados são divididos em três conjuntos com papéis
+  diferentes. A vitória desta lição é saber <strong>para que serve cada um</strong>
+  e por que o conjunto de teste <strong>só pode ser usado uma vez</strong><sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<h2>Três conjuntos, três papéis</h2>
+<figure class="diagram">
+  <svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg">
+    <rect class="node accent-fill" x="20" y="30" width="270" height="44" rx="5"></rect>
+    <text x="155" y="50" text-anchor="middle" font-size="12">TREINO · 60–70%</text>
+    <text x="155" y="65" text-anchor="middle" font-size="9" class="muted">ajusta os parâmetros (pesos, cortes das árvores)</text>
+    <rect class="node accent-fill-2" x="295" y="30" width="80" height="44" rx="5"></rect>
+    <text x="335" y="50" text-anchor="middle" font-size="11">VALIDAÇÃO</text>
+    <text x="335" y="65" text-anchor="middle" font-size="8" class="muted">15–20% · escolhe</text>
+    <rect class="node bad-fill" x="380" y="30" width="80" height="44" rx="5"></rect>
+    <text x="420" y="50" text-anchor="middle" font-size="11">TESTE</text>
+    <text x="420" y="65" text-anchor="middle" font-size="8" class="muted">15–20% · mede</text>
+    <text x="155" y="100" text-anchor="middle" font-size="10" class="muted">"exercícios resolvidos"</text>
+    <text x="335" y="100" text-anchor="middle" font-size="10" class="muted">"simulados"</text>
+    <text x="420" y="100" text-anchor="middle" font-size="10" class="muted">"a prova"</text>
+    <text x="240" y="135" text-anchor="middle" font-size="9" class="muted">o teste fica trancado até o modelo final estar escolhido</text>
+  </svg>
+  <figcaption>As proporções são só referência. Com milhões de registros, 1% de teste já é muita coisa. Com poucos dados, prefira validação cruzada (Lição 8) no lugar de uma validação fixa.</figcaption>
+</figure>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>O que cada conjunto decide.</caption>
+    <thead><tr><th>Conjunto</th><th>Usado para</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><th>Treino</th><td>Ajustar os <strong>parâmetros</strong> do modelo</td><td>Os coeficientes da regressão logística, os cortes da árvore</td></tr>
+      <tr><th>Validação</th><td>Escolher <strong>hiperparâmetros</strong> e comparar modelos candidatos</td><td>Profundidade da árvore, λ da regularização, "XGBoost ou Random Forest?"</td></tr>
+      <tr><th>Teste</th><td>Estimar, <strong>uma única vez</strong>, o desempenho do modelo final</td><td>"Em notas novas, o recall (revocação) esperado é 0,78"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Parâmetro</strong>: aprendido pelo algoritmo a partir dos dados de treino (ex.: o peso de cada variável).</p>
+  <p style="margin:0.2rem 0"><strong>Hiperparâmetro</strong>: escolhido <em>por você</em>, antes do treino, e ajustado olhando a validação (ex.: k do k-NN, profundidade da árvore, λ).</p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: ajustar olhando o teste</span>
+  Se você testa 30 configurações e fica com a que foi melhor <strong>no teste</strong>,
+  o teste virou validação. A nota final fica <strong>otimista</strong>, porque você
+  escolheu justamente a configuração que deu sorte naquele conjunto. Isso se
+  chama <em>data snooping</em> (bisbilhotar os dados). Item que diga que "o
+  conjunto de teste deve ser usado para escolher os hiperparâmetros" está errado.
+</div>
+
+<h2>Como dividir sem estragar a medida</h2>
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>A divisão aleatória simples nem sempre serve.</caption>
+    <thead><tr><th>Situação</th><th>Divisão correta</th><th>Por quê</th></tr></thead>
+    <tbody>
+      <tr><th>Classes desbalanceadas</th><td><strong>Estratificada</strong>: mantém a proporção das classes em cada conjunto</td><td>Com 1% de fraude, um sorteio pode deixar o teste com quase nenhuma fraude</td></tr>
+      <tr><th>Vários registros da mesma entidade</th><td><strong>Por grupo</strong>: cada CNPJ, paciente ou fornecedor fica inteiro de um lado só</td><td>Senão o modelo "reconhece" a empresa que já viu no treino, e a nota infla</td></tr>
+      <tr><th>Dados com tempo</th><td><strong>Temporal</strong> (<em>out-of-time</em>): treino no passado, teste no futuro</td><td>Em produção, o modelo sempre prevê o futuro com dados do passado</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 1: por que estratificar</strong>
+  <p>
+    Uma base tem 10.000 notas fiscais, das quais 100 são fraudes (1%). Você
+    separa 20% para teste, ou seja, 2.000 notas. Num sorteio simples, o
+    número esperado de fraudes no teste é 20, mas ele pode sair 12 ou 29.
+    Com tão poucas fraudes, o recall (revocação) medido oscila muito de um
+    sorteio para outro.
+  </p>
+  <p style="margin-bottom:0">
+    <strong>Com divisão estratificada</strong>, o teste recebe exatamente 1% de
+    fraudes (20 notas) e o treino mantém as outras 80. A medida fica
+    comparável entre execuções.
+  </p>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 2: o mesmo fornecedor dos dois lados</strong>
+  <p>
+    Um modelo prevê se um contrato terá aditivo acima de 25%. A base tem
+    5 contratos por fornecedor, em média, e a divisão foi aleatória por
+    contrato. No teste, o F1-score (medida F1) deu 0,91. Em produção, com
+    fornecedores novos, caiu para 0,64.
+  </p>
+  <p style="margin-bottom:0">
+    <strong>O que houve:</strong> o modelo aprendeu o "jeito" de cada fornecedor
+    e reencontrou os mesmos fornecedores no teste. A divisão correta era
+    <strong>por grupo</strong> (GroupKFold no scikit-learn): todos os contratos de
+    um fornecedor ficam ou no treino, ou no teste.
+  </p>
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 1</div>
+  <p class="statement">O conjunto de validação é utilizado para a escolha de hiperparâmetros e a comparação entre modelos candidatos, ao passo que o conjunto de teste deve ser reservado para a estimativa final do desempenho do modelo escolhido.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. A validação escolhe, e o teste mede uma única vez.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É exatamente a divisão de papéis entre validação e teste.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 2</div>
+  <p class="statement">Para obter o melhor desempenho possível, recomenda-se testar diversas combinações de hiperparâmetros diretamente no conjunto de teste e adotar a combinação que nele apresentar maior acurácia (accuracy).</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Escolher pelo teste o transforma em validação, e a estimativa final fica otimista (<em>data snooping</em>).</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Hiperparâmetros são escolhidos na validação. Usado assim, o teste deixa de ser uma estimativa imparcial.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 3</div>
+  <p class="statement">Em problemas de classificação com classes fortemente desbalanceadas, a divisão estratificada preserva, em cada subconjunto, a proporção original das classes.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. É a definição de estratificação, essencial quando a classe positiva é rara.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Estratificar é justamente manter a proporção das classes em treino, validação e teste.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 4</div>
+  <p class="statement">Quando a base contém vários registros de uma mesma empresa, a divisão aleatória por registro é a mais indicada, pois garante que o modelo seja avaliado em empresas já conhecidas no treinamento.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Avaliar em empresas já vistas infla a nota. O certo é dividir <strong>por grupo</strong>, com cada empresa de um lado só.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Se o objetivo é prever para empresas novas, a avaliação precisa usar empresas que o modelo não viu (divisão por grupo).</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 5</div>
+  <p class="statement">Os hiperparâmetros de um modelo, como a profundidade máxima de uma árvore de decisão, são definidos antes do treinamento, e não aprendidos diretamente a partir dos dados de treino.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. Parâmetros são aprendidos no treino. Hiperparâmetros são escolhidos por fora, olhando a validação.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Profundidade, k do k-NN e λ são hiperparâmetros: você os define e compara na validação.</div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source"><em>An Introduction to Statistical Learning</em>, cap. 5 (métodos de reamostragem), seção 5.1, sobre a abordagem de conjunto de validação.</p>
+<p class="source" id="f1">[1] James et al., <em>An Introduction to Statistical Learning</em>, <a href="https://www.statlearning.com/" target="_blank" rel="noopener">statlearning.com</a>. Veja também scikit-learn, <a href="https://scikit-learn.org/stable/modules/cross_validation.html" target="_blank" rel="noopener">Cross-validation</a> (seções sobre estratificação e grupos).</p>
+
+<div class="ask-teacher">
+  Ficou na dúvida se um caso pede divisão estratificada, por grupo ou temporal?
+  Traga o exemplo aqui na conversa.
+</div>
+
+<div class="nav">
+  <a href="0006-classificacao-e-naive-bayes.html">← Lição 6: Naive Bayes</a>
+  <a href="0008-validacao-cruzada-e-temporal.html">Lição 8: validação cruzada e temporal →</a>
+</div>
+
+<script src="../../assets/quiz.js"></script>

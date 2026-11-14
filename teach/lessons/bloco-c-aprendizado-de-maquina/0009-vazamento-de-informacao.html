@@ -1,0 +1,161 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vazamento de informação</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco C · Aprendizado de Máquina · Lição 9 · Parte 2: validação e generalização</div>
+<h1>Vazamento de informação (data leakage)</h1>
+<p class="lede">
+  Vazamento é quando o modelo, durante o treino ou a avaliação, tem acesso a
+  uma informação que <strong>não estaria disponível no momento real da
+  previsão</strong>. O resultado é sempre o mesmo: uma nota <strong>boa demais</strong>
+  na avaliação e um modelo que decepciona em produção<sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<h2>As cinco formas mais comuns</h2>
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Tipos de vazamento, com exemplos do controle público.</caption>
+    <thead><tr><th>Tipo</th><th>O que acontece</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><th>Do alvo<small>target leakage</small></th><td>Uma variável carrega a própria resposta ou algo que só existe <em>depois</em> dela</td><td>Usar "processo administrativo instaurado" ou "valor ressarcido" para prever fraude</td></tr>
+      <tr><th>Pelo pré-processamento<small>train-test contamination</small></th><td>Padronização, imputação, seleção de variáveis ou balanceamento ajustados com a base <strong>inteira</strong>, antes de separar</td><td>Calcular média e desvio com todas as notas, inclusive as do teste, para padronizar</td></tr>
+      <tr><th>Temporal</th><td>O treino usa dados posteriores ao período avaliado</td><td>Embaralhar meses de uma série; variável "média de gastos do ano" usada para prever o mês de março</td></tr>
+      <tr><th>Por grupo ou duplicata</th><td>A mesma entidade (ou registros quase idênticos) aparece no treino e no teste</td><td>Notas do mesmo fornecedor nos dois lados; nota original e nota corrigida separadas</td></tr>
+      <tr><th>Pela escolha do modelo</th><td>O teste é usado para escolher hiperparâmetros ou variáveis</td><td>Testar 40 modelos no teste e reportar o melhor (Lição 7)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 1: o jeito errado de fazer validação cruzada</strong>
+  <p>
+    O exemplo clássico de Hastie, Tibshirani e Friedman<sup class="cite"><a href="#f2">[2]</a></sup>:
+    50 amostras, 5.000 variáveis <strong>totalmente aleatórias</strong> e um rótulo
+    também aleatório. A taxa de erro verdadeira de qualquer modelo é 50%,
+    porque não há nada para aprender.
+  </p>
+  <p>
+    <strong>Jeito errado:</strong> escolher as 100 variáveis mais correlacionadas com
+    o rótulo usando as 50 amostras e só <em>depois</em> fazer a validação cruzada.
+    O erro estimado sai perto de <strong>3%</strong>. As variáveis foram escolhidas
+    olhando também os folds de validação, então a validação já "conhecia" a
+    resposta.
+  </p>
+  <p style="margin-bottom:0">
+    <strong>Jeito certo:</strong> refazer a seleção de variáveis <strong>dentro de cada
+    fold</strong>, só com os dados de treino daquele fold. O erro estimado volta
+    para perto de 50%, que é a verdade.
+  </p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: balancear antes de dividir</span>
+  Aplicar SMOTE (Synthetic Minority Over-sampling Technique · técnica de
+  sobreamostragem sintética da minoria), ou qualquer reamostragem, na base
+  inteira antes da divisão cria fraudes sintéticas no treino que são
+  "parentes" das fraudes do teste. A regra vale para todo pré-processamento:
+  <strong>primeiro divide, depois ajusta só no treino</strong> e aplica no teste.
+</div>
+
+<h2>Como prevenir</h2>
+<div class="box">
+  <ol style="margin:0.2rem 0 0">
+    <li><strong>Divida primeiro.</strong> Separe o teste antes de qualquer análise ou transformação.</li>
+    <li><strong>Use pipelines.</strong> Coloque padronização, imputação e seleção dentro de um <code>Pipeline</code>, que é reajustado em cada fold da validação cruzada<sup class="cite"><a href="#f3">[3]</a></sup>.</li>
+    <li><strong>Pergunte "quando?" para cada variável.</strong> Ela existiria no momento da previsão? Se só existe depois do fato, saia com ela.</li>
+    <li><strong>Respeite o tempo e os grupos.</strong> Validação temporal para dados com data; divisão por grupo para entidades repetidas (Lições 7 e 8).</li>
+    <li><strong>Desconfie do bom demais.</strong> Compare com o baseline (Lição 5) e olhe a importância das variáveis: uma única variável dominando tudo costuma ser vazamento.</li>
+  </ol>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 2: a variável boa demais</strong>
+  <p>
+    Um modelo de risco de convênios atingiu AUC-ROC (área sob a curva ROC) de
+    0,99. A variável mais importante, de longe, era <code>data_ultima_diligencia</code>.
+  </p>
+  <p style="margin-bottom:0">
+    <strong>Diagnóstico:</strong> diligências só acontecem <em>depois</em> que o convênio
+    já foi considerado suspeito. A variável é uma consequência do alvo, não uma
+    causa observável antes dele. É vazamento do alvo. Sem ela, a AUC cai para
+    0,78, que é o desempenho real.
+  </p>
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">Para evitar vazamento de informação, recomenda-se padronizar as variáveis com média e desvio-padrão calculados sobre a base completa e, somente depois, separar os conjuntos de treino e teste.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. O item descreve exatamente uma forma de vazamento. As estatísticas devem ser calculadas só no treino e aplicadas ao teste.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Calcular a padronização com a base inteira deixa o treino "ver" o teste. Primeiro divide, depois ajusta só no treino.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 2</div>
+  <p class="statement">Configura vazamento do alvo a inclusão, entre as variáveis preditoras, de informação que somente é registrada após a ocorrência do evento que se pretende prever.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. Se a informação não existe no momento da previsão, o modelo está trapaceando.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É a definição de vazamento do alvo (target leakage).</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 3</div>
+  <p class="statement">A seleção das variáveis mais correlacionadas com o rótulo pode ser feita com toda a base antes da validação cruzada, desde que o modelo seja treinado dentro de cada fold.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. É o "jeito errado" clássico: a seleção já usou os rótulos da validação. Ela precisa ser refeita dentro de cada fold.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Selecionar variáveis com a base toda contamina a validação. No exemplo clássico, o erro estimado cai de 50% para cerca de 3%.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">Desempenho excepcionalmente alto na avaliação, aliado à predominância de uma única variável na importância do modelo, constitui indício de possível vazamento de informação.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. É o sintoma clássico. A investigação começa perguntando se aquela variável existiria no momento da previsão.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Nota boa demais com uma variável dominante é o principal sinal de alerta de vazamento.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 5</div>
+  <p class="statement">A aplicação de técnicas de sobreamostragem, como o SMOTE, sobre toda a base antes da divisão entre treino e teste é prática recomendada, pois garante a mesma proporção de classes em ambos os conjuntos.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Os exemplos sintéticos nascem de vizinhos que podem estar no teste. A reamostragem vai só no treino. Para manter a proporção das classes, use divisão estratificada.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Sobreamostrar antes de dividir é vazamento. A proporção de classes se garante com estratificação, não com SMOTE na base toda.</div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">Hastie, Tibshirani e Friedman, <em>The Elements of Statistical Learning</em>, seção 7.10.2 ("The Wrong and Right Way to Do Cross-validation"). Gratuito.</p>
+<p class="source" id="f1">[1] Kaufman, Rosset, Perlich e Stitelman, "Leakage in data mining: formulation, detection, and avoidance", <em>ACM TKDD</em> 6(4), 2012, <a href="https://doi.org/10.1145/2382577.2382579" target="_blank" rel="noopener">doi:10.1145/2382577.2382579</a>.</p>
+<p class="source" id="f2">[2] Hastie, Tibshirani e Friedman, <a href="https://hastie.su.domains/ElemStatLearn/" target="_blank" rel="noopener"><em>The Elements of Statistical Learning</em></a>, 2ª ed., seção 7.10.2.</p>
+<p class="source" id="f3">[3] scikit-learn, <a href="https://scikit-learn.org/stable/common_pitfalls.html" target="_blank" rel="noopener">Common pitfalls and recommended practices: data leakage</a>.</p>
+
+<div class="ask-teacher">
+  Quer testar se uma variável de um caso real é vazamento? Traga a lista de
+  variáveis aqui na conversa e a gente analisa uma por uma.
+</div>
+
+<div class="nav">
+  <a href="0008-validacao-cruzada-e-temporal.html">← Lição 8: validação cruzada e temporal</a>
+  <a href="0010-vies-variancia-generalizacao-estabilidade.html">Lição 10: viés, variância e estabilidade →</a>
+</div>
+
+<script src="../../assets/quiz.js"></script>

@@ -1,0 +1,170 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validação cruzada e temporal</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco C · Aprendizado de Máquina · Lição 8 · Parte 2: validação e generalização</div>
+<h1>Validação cruzada e validação temporal</h1>
+<p class="lede">
+  Uma única divisão de validação depende da sorte do sorteio. A
+  <strong>validação cruzada</strong> repete a divisão várias vezes e tira a média.
+  Mas, quando os dados têm tempo, embaralhar é proibido: aí entra a
+  <strong>validação temporal</strong><sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<h2>k-fold: todo dado vira validação uma vez</h2>
+<figure class="diagram">
+  <svg viewBox="0 0 480 175" xmlns="http://www.w3.org/2000/svg">
+    <text x="20" y="20" font-size="10" class="muted">rodada</text>
+    <g font-size="10">
+      <text x="30" y="43">1</text><text x="30" y="68">2</text><text x="30" y="93">3</text><text x="30" y="118">4</text><text x="30" y="143">5</text>
+    </g>
+    <!-- 5 linhas x 5 blocos; o bloco de validação muda de posição -->
+    <g>
+      <rect class="node bad-fill" x="50" y="30" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="130" y="30" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="210" y="30" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="290" y="30" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="370" y="30" width="78" height="18" rx="3"></rect>
+      <rect class="node accent-fill" x="50" y="55" width="78" height="18" rx="3"></rect><rect class="node bad-fill" x="130" y="55" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="210" y="55" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="290" y="55" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="370" y="55" width="78" height="18" rx="3"></rect>
+      <rect class="node accent-fill" x="50" y="80" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="130" y="80" width="78" height="18" rx="3"></rect><rect class="node bad-fill" x="210" y="80" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="290" y="80" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="370" y="80" width="78" height="18" rx="3"></rect>
+      <rect class="node accent-fill" x="50" y="105" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="130" y="105" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="210" y="105" width="78" height="18" rx="3"></rect><rect class="node bad-fill" x="290" y="105" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="370" y="105" width="78" height="18" rx="3"></rect>
+      <rect class="node accent-fill" x="50" y="130" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="130" y="130" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="210" y="130" width="78" height="18" rx="3"></rect><rect class="node accent-fill" x="290" y="130" width="78" height="18" rx="3"></rect><rect class="node bad-fill" x="370" y="130" width="78" height="18" rx="3"></rect>
+    </g>
+    <text x="250" y="168" text-anchor="middle" font-size="9" class="muted">azul = treino · vermelho = validação · resultado final = média (e desvio) das 5 rodadas</text>
+  </svg>
+  <figcaption>Validação cruzada com k = 5: os dados viram 5 partes (<em>folds</em>). Em cada rodada, uma parte valida e as outras quatro treinam.</figcaption>
+</figure>
+
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Por que é melhor que uma divisão só:</strong> todo registro é usado uma vez na validação, e a média de k rodadas é mais estável. O <strong>desvio-padrão</strong> entre as rodadas ainda mostra o quanto o resultado oscila (Lição 10).</p>
+  <p style="margin:0.2rem 0"><strong>Custo:</strong> treina k vezes. Valores usuais: <strong>k = 5 ou 10</strong>.</p>
+</div>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Variações que a banca cobra<sup class="cite"><a href="#f2">[2]</a></sup>.</caption>
+    <thead><tr><th>Variação</th><th>Como funciona</th><th>Quando usar</th></tr></thead>
+    <tbody>
+      <tr><th>Estratificada<small>Stratified k-fold</small></th><td>Cada fold mantém a proporção das classes</td><td>Classificação desbalanceada</td></tr>
+      <tr><th>Por grupo<small>Group k-fold</small></th><td>Cada grupo (empresa, paciente) fica inteiro num fold</td><td>Vários registros da mesma entidade</td></tr>
+      <tr><th>LOOCV<small>Leave-One-Out Cross-Validation · validação cruzada deixa-um-fora</small></th><td>k = n: cada registro valida sozinho uma vez</td><td>Bases muito pequenas. É caro, e a estimativa tem variância alta</td></tr>
+      <tr><th>Repetida<small>Repeated k-fold</small></th><td>Repete o k-fold com sorteios diferentes</td><td>Quando se quer uma média ainda mais estável</td></tr>
+      <tr><th>Aninhada<small>Nested cross-validation · validação cruzada aninhada</small></th><td>Um k-fold <em>interno</em> escolhe hiperparâmetros; um k-fold <em>externo</em> mede o desempenho</td><td>Quando a mesma validação seria usada para escolher e para medir</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: escolher e medir com o mesmo k-fold</span>
+  Se você escolhe o melhor de 50 modelos pela média do k-fold e reporta
+  <strong>essa mesma média</strong> como desempenho esperado, ela é otimista: você
+  ficou com o vencedor justamente onde ele deu sorte. Para medir sem viés, use
+  um teste separado ou a <strong>validação cruzada aninhada</strong>.
+</div>
+
+<h2>Validação temporal: nunca use o futuro para prever o passado</h2>
+<figure class="diagram">
+  <svg viewBox="0 0 480 140" xmlns="http://www.w3.org/2000/svg">
+    <text x="240" y="16" text-anchor="middle" font-size="10" class="muted">tempo →</text>
+    <rect class="node accent-fill" x="40" y="28" width="120" height="16" rx="3"></rect><rect class="node bad-fill" x="164" y="28" width="50" height="16" rx="3"></rect>
+    <rect class="node accent-fill" x="40" y="54" width="174" height="16" rx="3"></rect><rect class="node bad-fill" x="218" y="54" width="50" height="16" rx="3"></rect>
+    <rect class="node accent-fill" x="40" y="80" width="228" height="16" rx="3"></rect><rect class="node bad-fill" x="272" y="80" width="50" height="16" rx="3"></rect>
+    <rect class="node accent-fill" x="40" y="106" width="282" height="16" rx="3"></rect><rect class="node bad-fill" x="326" y="106" width="50" height="16" rx="3"></rect>
+    <text x="400" y="40" font-size="9" class="muted">rodada 1</text><text x="400" y="66" font-size="9" class="muted">rodada 2</text><text x="400" y="92" font-size="9" class="muted">rodada 3</text><text x="400" y="118" font-size="9" class="muted">rodada 4</text>
+  </svg>
+  <figcaption>Janela expansiva (origem móvel): o treino cresce e a validação é sempre o período <strong>seguinte</strong>. Na janela deslizante, o treino tem tamanho fixo e "anda" junto.</figcaption>
+</figure>
+
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Janela expansiva</strong> (<em>expanding window</em>, origem móvel): usa todo o passado disponível. É o <code>TimeSeriesSplit</code> do scikit-learn.</p>
+  <p style="margin:0.2rem 0"><strong>Janela deslizante</strong> (<em>sliding/rolling window</em>): usa só os últimos N meses. Serve quando o passado distante já não representa o presente.</p>
+  <p style="margin:0.2rem 0"><strong>Intervalo de separação</strong> (<em>gap</em> ou embargo): deixa um período vazio entre treino e validação, para que variáveis calculadas com janelas (ex.: "média dos últimos 30 dias") não carreguem informação do período de validação.</p>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido: previsão de gastos com diárias</strong>
+  <p>
+    Você tem os gastos mensais com diárias de 2019 a 2025 e quer prever 2026.
+    Embaralhar os meses e fazer um k-fold comum deixaria o modelo treinar com
+    março de 2025 para "prever" fevereiro de 2025, uma informação que, na vida
+    real, ele nunca teria.
+  </p>
+  <p style="margin-bottom:0">
+    <strong>Correto:</strong> rodada 1 treina com 2019–2021 e valida 2022; rodada 2
+    treina com 2019–2022 e valida 2023; e assim por diante. A nota final é a
+    média das rodadas, e ela mede o que importa: prever o período seguinte.
+  </p>
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 1</div>
+  <p class="statement">Na validação cruzada k-fold, cada observação é utilizada exatamente uma vez no conjunto de validação, e o desempenho estimado corresponde à média obtida nas k rodadas.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. Cada fold valida uma vez, e o resultado é a média, de preferência acompanhada do desvio.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É a definição do k-fold.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 2</div>
+  <p class="statement">Em séries temporais, a validação cruzada k-fold com embaralhamento aleatório das observações é a técnica mais adequada, por garantir que cada período seja usado tanto no treino quanto na validação.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Embaralhar deixa o modelo usar o futuro para prever o passado. O certo é a validação temporal, com treino sempre anterior à validação.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Em dados temporais, embaralhar vaza informação do futuro. Use janela expansiva ou deslizante.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 3</div>
+  <p class="statement">A validação cruzada deixa-um-fora (LOOCV, leave-one-out cross-validation) corresponde ao k-fold com k igual a 2 e é a variante de menor custo computacional.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Na LOOCV, k = n (número de observações): é a variante <strong>mais</strong> cara, porque treina n modelos.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. LOOCV é k = n, e não k = 2. Treina um modelo por observação, então é a mais custosa.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">A validação cruzada aninhada utiliza um laço interno para a seleção de hiperparâmetros e um laço externo para a estimativa do desempenho, o que reduz o viés otimista de escolher e avaliar o modelo nas mesmas partições.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. O laço externo mede modelos cujos hiperparâmetros foram escolhidos sem ver aquele fold.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É exatamente para isso que existe a validação aninhada.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 5</div>
+  <p class="statement">Na validação temporal com janela expansiva, o conjunto de treino incorpora, a cada rodada, os períodos anteriores ao bloco de validação, que é sempre posterior ao treino.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. O treino cresce e a validação é sempre o período seguinte.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É a definição da janela expansiva (origem móvel).</div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source"><em>An Introduction to Statistical Learning</em>, cap. 5 (k-fold e LOOCV). Para séries temporais, Hyndman e Athanasopoulos, <em>Forecasting: Principles and Practice</em>, seção 5.10.</p>
+<p class="source" id="f1">[1] Hyndman e Athanasopoulos, <a href="https://otexts.com/fpp3/tscv.html" target="_blank" rel="noopener">Time series cross-validation</a>, <em>FPP3</em>, gratuito.</p>
+<p class="source" id="f2">[2] scikit-learn, <a href="https://scikit-learn.org/stable/modules/cross_validation.html" target="_blank" rel="noopener">Cross-validation: evaluating estimator performance</a> (StratifiedKFold, GroupKFold, LeaveOneOut, TimeSeriesSplit, nested CV). James et al., <a href="https://www.statlearning.com/" target="_blank" rel="noopener">ISLR</a>, cap. 5.</p>
+
+<div class="ask-teacher">
+  Ficou na dúvida sobre quando usar janela expansiva ou deslizante, ou sobre
+  por que a validação aninhada é necessária? Pergunte aqui na conversa.
+</div>
+
+<div class="nav">
+  <a href="0007-treino-validacao-teste.html">← Lição 7: treino, validação e teste</a>
+  <a href="0009-vazamento-de-informacao.html">Lição 9: vazamento de informação →</a>
+</div>
+
+<script src="../../assets/quiz.js"></script>

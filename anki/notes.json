@@ -2077,5 +2077,368 @@
                        "Frente":  "ETL × ELT",
                        "Verso":  "\u003cb\u003eETL\u003c/b\u003e: transforma \u003cb\u003eantes\u003c/b\u003e de carregar no destino.\u003cbr\u003e\u003cb\u003eELT\u003c/b\u003e: carrega o dado bruto e transforma \u003cb\u003edepois\u003c/b\u003e, dentro do destino. Mais flexível para mudar regras, mas guarda mais dado bruto."
                    }
+    },
+    {
+        "noteId":  1794673819534,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::07 Treino, validação e teste",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Para que serve cada conjunto: treino, validação e teste?",
+                       "Verso":  "\u003cb\u003eTreino\u003c/b\u003e: ajusta os \u003cb\u003eparâmetros\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eValidação\u003c/b\u003e: escolhe \u003cb\u003ehiperparâmetros\u003c/b\u003e e compara modelos.\u003cbr\u003e\u003cb\u003eTeste\u003c/b\u003e: mede o modelo final \u003cb\u003euma única vez\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eAnalogia: exercícios, simulados e a prova."
+                   }
+    },
+    {
+        "noteId":  1794673819535,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::07 Treino, validação e teste",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pegadinha",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Parâmetro × hiperparâmetro",
+                       "Verso":  "\u003cb\u003eParâmetro\u003c/b\u003e: aprendido pelo algoritmo no treino (ex.: pesos da regressão logística).\u003cbr\u003e\u003cb\u003eHiperparâmetro\u003c/b\u003e: definido antes do treino e escolhido na validação (ex.: profundidade da árvore, k do k-NN, λ)."
+                   }
+    },
+    {
+        "noteId":  1794673819536,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::07 Treino, validação e teste",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pegadinha",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "O que acontece se você escolhe hiperparâmetros olhando o teste?",
+                       "Verso":  "O teste vira validação e a estimativa final fica \u003cb\u003eotimista\u003c/b\u003e, porque você ficou com a configuração que deu sorte naquele conjunto. Isso se chama \u003cb\u003edata snooping\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794673819537,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::07 Treino, validação e teste",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Quando usar divisão estratificada, por grupo ou temporal?",
+                       "Verso":  "\u003cb\u003eEstratificada\u003c/b\u003e: classes desbalanceadas (mantém, por exemplo, 1% de fraude em cada conjunto).\u003cbr\u003e\u003cb\u003ePor grupo\u003c/b\u003e: vários registros da mesma entidade (cada CNPJ fica inteiro de um lado).\u003cbr\u003e\u003cb\u003eTemporal\u003c/b\u003e (out-of-time): dados com data, com treino no passado e teste no futuro."
+                   }
+    },
+    {
+        "noteId":  1794673819538,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::07 Treino, validação e teste",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pegadinha",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que dividir aleatoriamente por registro é um problema quando a mesma empresa aparece várias vezes?",
+                       "Verso":  "O modelo reencontra no teste empresas que já viu no treino e \"reconhece\" o jeito delas. A nota infla e cai em produção, com empresas novas. A solução é dividir \u003cb\u003epor grupo\u003c/b\u003e (GroupKFold)."
+                   }
+    },
+    {
+        "noteId":  1794673819539,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::08 Validação cruzada e temporal",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Como funciona a validação cruzada k-fold?",
+                       "Verso":  "Divide os dados em k partes. Em cada rodada, uma parte valida e as k − 1 restantes treinam. Cada observação valida \u003cb\u003eexatamente uma vez\u003c/b\u003e. O resultado é a \u003cb\u003emédia\u003c/b\u003e (e o desvio) das k rodadas. Valores usuais: k = 5 ou 10."
+                   }
+    },
+    {
+        "noteId":  1794673819540,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::08 Validação cruzada e temporal",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pegadinha",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é a LOOCV?",
+                       "Verso":  "\u003cb\u003eLOOCV\u003c/b\u003e (Leave-One-Out Cross-Validation · validação cruzada deixa-um-fora): k = n, com cada observação validando sozinha. É a variante \u003cb\u003emais cara\u003c/b\u003e (n treinos), tem viés baixo e variância alta na estimativa. \u003cb\u003eNão\u003c/b\u003e é k = 2."
+                   }
+    },
+    {
+        "noteId":  1794673819541,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::08 Validação cruzada e temporal",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Para que serve a validação cruzada aninhada?",
+                       "Verso":  "\u003cb\u003eNested cross-validation\u003c/b\u003e (validação cruzada aninhada): um laço \u003cb\u003einterno\u003c/b\u003e escolhe os hiperparâmetros e um laço \u003cb\u003eexterno\u003c/b\u003e mede o desempenho. Evita o viés otimista de escolher e medir com as mesmas partições."
+                   }
+    },
+    {
+        "noteId":  1794673819542,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::08 Validação cruzada e temporal",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pegadinha",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Pode-se usar k-fold com embaralhamento em séries temporais?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Embaralhar deixa o modelo usar o futuro para prever o passado. Use a \u003cb\u003evalidação temporal\u003c/b\u003e, com o treino sempre anterior à validação."
+                   }
+    },
+    {
+        "noteId":  1794673819543,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::08 Validação cruzada e temporal",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Janela expansiva × janela deslizante × gap",
+                       "Verso":  "\u003cb\u003eJanela expansiva\u003c/b\u003e (origem móvel, TimeSeriesSplit): o treino cresce, e a validação é sempre o período seguinte.\u003cbr\u003e\u003cb\u003eJanela deslizante\u003c/b\u003e: o treino tem tamanho fixo e anda junto.\u003cbr\u003e\u003cb\u003eGap\u003c/b\u003e (embargo): período vazio entre treino e validação, para que variáveis de janela não vazem."
+                   }
+    },
+    {
+        "noteId":  1794673819544,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::09 Vazamento de informação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "vazamento"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é vazamento de informação (data leakage)?",
+                       "Verso":  "Quando o modelo, no treino ou na avaliação, usa informação que \u003cb\u003enão estaria disponível no momento real da previsão\u003c/b\u003e. Sintoma: nota boa demais na avaliação e queda em produção."
+                   }
+    },
+    {
+        "noteId":  1794673819545,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::09 Vazamento de informação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "vazamento"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais os principais tipos de vazamento?",
+                       "Verso":  "1. \u003cb\u003eDo alvo\u003c/b\u003e (target leakage): variável que só existe depois do evento.\u003cbr\u003e2. \u003cb\u003ePré-processamento\u003c/b\u003e na base inteira (padronização, seleção, SMOTE).\u003cbr\u003e3. \u003cb\u003eTemporal\u003c/b\u003e: usar o futuro.\u003cbr\u003e4. \u003cb\u003eGrupo/duplicata\u003c/b\u003e: a mesma entidade nos dois lados.\u003cbr\u003e5. \u003cb\u003eEscolha do modelo\u003c/b\u003e pelo teste."
+                   }
+    },
+    {
+        "noteId":  1794673819546,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::09 Vazamento de informação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pegadinha",
+                     "vazamento"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual o \"jeito errado de fazer validação cruzada\" (Hastie et al.)?",
+                       "Verso":  "Selecionar as variáveis mais correlacionadas com o rótulo usando \u003cb\u003etoda a base\u003c/b\u003e e só depois fazer o k-fold. Com 5.000 variáveis aleatórias e 50 amostras, o erro estimado sai perto de \u003cb\u003e3%\u003c/b\u003e, quando o real é 50%. A seleção deve ser refeita \u003cb\u003edentro de cada fold\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794673819547,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::09 Vazamento de informação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pegadinha",
+                     "vazamento"
+                 ],
+        "fields":  {
+                       "Frente":  "Pode-se aplicar SMOTE na base toda antes de dividir?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e SMOTE (Synthetic Minority Over-sampling Technique · sobreamostragem sintética da minoria) cria exemplos a partir de vizinhos que podem estar no teste. Reamostragem vai \u003cb\u003esó no treino\u003c/b\u003e. A proporção das classes se garante com estratificação."
+                   }
+    },
+    {
+        "noteId":  1794673819548,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::09 Vazamento de informação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "vazamento"
+                 ],
+        "fields":  {
+                       "Frente":  "Como prevenir vazamento?",
+                       "Verso":  "Dividir \u003cb\u003eprimeiro\u003c/b\u003e; usar \u003cb\u003epipelines\u003c/b\u003e reajustados em cada fold; perguntar \"essa variável existe no momento da previsão?\"; respeitar \u003cb\u003etempo e grupos\u003c/b\u003e; desconfiar de nota \u003cb\u003eboa demais\u003c/b\u003e e de uma variável dominante na importância."
+                   }
+    },
+    {
+        "noteId":  1794673819549,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::10 Viés, variância e estabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "generalizacao",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O que a curva de aprendizado mostra no alto viés e na alta variância?",
+                       "Verso":  "\u003cb\u003eAlto viés\u003c/b\u003e: as curvas de treino e validação se encontram cedo, num erro alto. Mais dados \u003cb\u003enão\u003c/b\u003e ajudam.\u003cbr\u003e\u003cb\u003eAlta variância\u003c/b\u003e: lacuna grande entre as curvas, que diminui com mais dados. Mais dados, regularização ou simplificação ajudam."
+                   }
+    },
+    {
+        "noteId":  1794673819550,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::10 Viés, variância e estabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "generalizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Curva de aprendizado × curva de validação",
+                       "Verso":  "\u003cb\u003eCurva de aprendizado\u003c/b\u003e (learning curve): erro × tamanho do treino.\u003cbr\u003e\u003cb\u003eCurva de validação\u003c/b\u003e (validation curve): erro × um hiperparâmetro (ex.: profundidade), que mostra onde começa o sobreajuste."
+                   }
+    },
+    {
+        "noteId":  1794673819551,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::10 Viés, variância e estabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "generalizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é um resultado estável e como medir a estabilidade?",
+                       "Verso":  "Estável é o resultado que pouco muda com pequenas mudanças nos dados ou na semente. Mede-se com \u003cb\u003emédia ± desvio-padrão\u003c/b\u003e entre folds ou sementes, ou com um \u003cb\u003eintervalo por bootstrap\u003c/b\u003e. Diferença menor que a oscilação não é diferença."
+                   }
+    },
+    {
+        "noteId":  1794673819552,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::10 Viés, variância e estabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "generalizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual o desvio de um recall de 0,80 medido em 100 fraudes?",
+                       "Verso":  "√(p(1−p)/n) = √(0,8·0,2/100) = \u003cb\u003e0,04\u003c/b\u003e. O IC de 95% fica em cerca de \u003cb\u003e0,72 a 0,88\u003c/b\u003e. Um modelo com 0,83 no mesmo teste não é comprovadamente melhor."
+                   }
+    },
+    {
+        "noteId":  1794673819553,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::10 Viés, variância e estabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "generalizacao",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Covariate shift × prior shift × concept drift",
+                       "Verso":  "\u003cb\u003eCovariate shift\u003c/b\u003e: muda a distribuição de X.\u003cbr\u003e\u003cb\u003ePrior (label) shift\u003c/b\u003e: muda a proporção das classes.\u003cbr\u003e\u003cb\u003eConcept drift\u003c/b\u003e: muda a \u003cb\u003erelação\u003c/b\u003e entre X e y (ex.: fraudadores mudam de tática).\u003cbr\u003e\u003cbr\u003eDefesas: teste out-of-time, monitoramento e retreino."
+                   }
+    },
+    {
+        "noteId":  1794673819554,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as regras para uma comparação justa entre modelos?",
+                       "Verso":  "Mesmas partições para todos (comparação \u003cb\u003epareada\u003c/b\u003e); sempre contra o \u003cb\u003ebaseline\u003c/b\u003e; diferença maior que a \u003cb\u003eoscilação\u003c/b\u003e; teste intocado até o fim (evita a \"maldição do vencedor\" de escolher entre muitos na mesma validação)."
+                   }
+    },
+    {
+        "noteId":  1794673819555,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Como funciona o teste de McNemar?",
+                       "Verso":  "Compara dois classificadores no \u003cb\u003emesmo teste\u003c/b\u003e usando só as \u003cb\u003ediscordâncias\u003c/b\u003e: b = só A acertou, c = só B acertou. Estatística: (|b − c| − 1)² / (b + c), comparada a uma χ² com 1 grau de liberdade."
+                   }
+    },
+    {
+        "noteId":  1794673819556,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O teste t pareado simples nos folds do k-fold é rigoroso?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Os treinos dos folds se sobrepõem, então não são independentes. O t simples subestima a variância e acusa diferença demais. Usam-se a versão corrigida (Nadeau e Bengio) ou o 5×2cv (Dietterich)."
+                   }
+    },
+    {
+        "noteId":  1794673819557,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual métrica usar quando a equipe só revisa k casos por mês?",
+                       "Verso":  "\u003cb\u003ePrecision@k\u003c/b\u003e (precision at k · precisão nos k primeiros): quantos dos k casos de maior risco são positivos. A AUC-ROC (área sob a curva ROC) avalia o ranking inteiro, inclusive casos que ninguém vai olhar."
+                   }
+    },
+    {
+        "noteId":  1794673819558,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O limiar de 0,5 é sempre o ideal?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Escolhe-se o limiar que minimiza o custo esperado: c\u003csub\u003eFP\u003c/sub\u003e·FP + c\u003csub\u003eFN\u003c/sub\u003e·FN (False Positive · Falso Positivo; False Negative · Falso Negativo). Com custos diferentes, raramente será 0,5."
+                   }
+    },
+    {
+        "noteId":  1794673819559,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é calibração e como medi-la?",
+                       "Verso":  "Um modelo é calibrado quando \"risco de 70%\" acontece em cerca de 70% dos casos. Mede-se com o \u003cb\u003eBrier score\u003c/b\u003e (escore de Brier: média de (p − y)²) e com o diagrama de confiabilidade."
+                   }
+    },
+    {
+        "noteId":  1794673819560,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao",
+                     "lgpd"
+                 ],
+        "fields":  {
+                       "Frente":  "Além da métrica, o que define se um modelo é adequado ao uso?",
+                       "Verso":  "\u003cb\u003eExplicabilidade\u003c/b\u003e (LGPD, art. 20: revisão e critérios de decisões unicamente automatizadas); \u003cb\u003enão discriminação\u003c/b\u003e (art. 6º, IX); dados disponíveis no momento da previsão; custo, manutenção e auditabilidade (parcimônia)."
+                   }
     }
 ]

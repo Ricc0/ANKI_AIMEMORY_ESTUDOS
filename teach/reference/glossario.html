@@ -61,6 +61,25 @@
   <tr><th>Dropout / early stopping</th><td>Desligar neurônios ao acaso / parar quando a validação piora.</td></tr>
 </tbody></table></div>
 
+<h2>Validação e generalização</h2>
+<div class="table-scroll"><table class="cmp"><tbody>
+  <tr><th>Treino / validação / teste</th><td>Ajusta parâmetros / escolhe hiperparâmetros e modelos / mede uma única vez.</td></tr>
+  <tr><th>Hiperparâmetro</th><td>Definido antes do treino (profundidade, k, λ) e escolhido na validação.</td></tr>
+  <tr><th>Estratificada / por grupo</th><td>Mantém a proporção das classes / mantém cada entidade inteira de um lado.</td></tr>
+  <tr><th>Out-of-time</th><td>Teste fora do tempo: treina no passado, testa no futuro.</td></tr>
+  <tr><th>LOOCV</th><td><em>Leave-One-Out Cross-Validation</em> · validação cruzada deixa-um-fora: k = n. Cara, e com variância alta.</td></tr>
+  <tr><th>Nested CV</th><td><em>Nested cross-validation</em> · validação cruzada aninhada: laço interno escolhe, laço externo mede.</td></tr>
+  <tr><th>Janela expansiva / deslizante</th><td>Validação temporal: o treino cresce / o treino tem tamanho fixo. Gap (embargo) separa treino e validação.</td></tr>
+  <tr><th>Target leakage</th><td>Vazamento do alvo: variável que só existe depois do evento previsto.</td></tr>
+  <tr><th>Contaminação</th><td>Pré-processamento (padronização, seleção, SMOTE) ajustado na base inteira antes de dividir.</td></tr>
+  <tr><th>Curva de aprendizado</th><td>Erro × tamanho do treino. Alto viés: curvas juntas e altas. Alta variância: lacuna grande que encolhe.</td></tr>
+  <tr><th>Estabilidade</th><td>Média ± desvio entre folds ou sementes; intervalo por bootstrap.</td></tr>
+  <tr><th>Dataset shift</th><td>Covariate shift (muda X), prior shift (muda a proporção das classes), concept drift (muda a relação X→y).</td></tr>
+  <tr><th>McNemar</th><td>Compara dois classificadores no mesmo teste pelas discordâncias: (|b − c| − 1)² / (b + c).</td></tr>
+  <tr><th>Precision@k</th><td><em>Precision at k</em> · precisão nos k primeiros: acertos entre os k casos de maior risco.</td></tr>
+  <tr><th>Brier score</th><td>Escore de Brier: média de (p − y)². Mede a calibração das probabilidades.</td></tr>
+</tbody></table></div>
+
 <h2>Ensembles e baseline</h2>
 <div class="table-scroll"><table class="cmp"><tbody>
   <tr><th>Bagging</th><td>Paralelo, bootstrap, média/voto. Reduz <strong>variância</strong>.</td></tr>

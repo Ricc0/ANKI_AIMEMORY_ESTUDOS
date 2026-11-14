@@ -36,6 +36,12 @@ if ($ankiOk) {
     # Envia/recebe cards e revisões do AnkiWeb (celular). Exige login feito uma vez no Anki.
     try { [void](Invoke-Anki 'sync'); Write-Host "AnkiWeb: sincronizado (celular recebe os cards novos)." }
     catch { Write-Warning "AnkiWeb não sincronizou: $($_.Exception.Message). Faça login uma vez em Ferramentas > Sincronizar no Anki." }
+    # O sync continua em segundo plano: espera a coleção ficar livre (até 2 min).
+    $livre = $false
+    for ($i = 0; $i -lt 60 -and -not $livre; $i++) {
+        try { [void](Invoke-Anki 'findNotes' @{ query = 'deck:*' }); $livre = $true } catch { Start-Sleep 2 }
+    }
+    if (-not $livre) { throw "O Anki continua ocupado após o sync. Rode o sync.ps1 de novo em instantes." }
 
     $ankiDir = Join-Path $repo 'anki'
     if (Test-Path $ankiDir) { Remove-Item -Recurse -Force $ankiDir }
