@@ -1,0 +1,104 @@
+[
+    {
+        "noteId":  1794668388731,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "paradigmas"
+                 ],
+        "fields":  {
+                       "Frente":  "O que caracteriza o \u003cb\u003eaprendizado supervisionado\u003c/b\u003e?",
+                       "Verso":  "Cada exemplo de treino vem com a \u003cb\u003eresposta certa (rótulo)\u003c/b\u003e. O modelo aprende a relação entrada → rótulo.\u003cbr\u003e\u003cbr\u003eEx.: e-mails marcados como spam / não spam.\u003cbr\u003eTarefas típicas: \u003cb\u003eclassificação\u003c/b\u003e e \u003cb\u003eregressão\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794668388734,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "paradigmas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Agrupamento (\u003ci\u003eclustering\u003c/i\u003e) é aprendizado supervisionado?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e É \u003cb\u003enão supervisionado\u003c/b\u003e: os dados não têm rótulo, e o algoritmo descobre sozinho grupos de itens parecidos.\u003cbr\u003e\u003cbr\u003eEx.: K-means separando clientes por perfil de compra."
+                   }
+    },
+    {
+        "noteId":  1794668388735,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "paradigmas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual a diferença entre \u003cb\u003eclassificação\u003c/b\u003e e \u003cb\u003eagrupamento\u003c/b\u003e?",
+                       "Verso":  "\u003cb\u003eClassificação\u003c/b\u003e: as classes \u003cb\u003ejá existem\u003c/b\u003e e vêm nos dados de treino (supervisionado).\u003cbr\u003e\u003cb\u003eAgrupamento\u003c/b\u003e: os grupos \u003cb\u003esão descobertos\u003c/b\u003e pelo algoritmo, sem rótulo (não supervisionado)."
+                   }
+    },
+    {
+        "noteId":  1794668388736,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "paradigmas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Aprendizado por reforço é supervisionado?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Não existe um rótulo com a resposta certa por exemplo, só uma \u003cb\u003erecompensa\u003c/b\u003e pelas ações. É um \u003cb\u003eterceiro paradigma\u003c/b\u003e, separado do supervisionado e do não supervisionado."
+                   }
+    },
+    {
+        "noteId":  1794668388737,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "paradigmas"
+                 ],
+        "fields":  {
+                       "Frente":  "Como funciona o \u003cb\u003eaprendizado por reforço\u003c/b\u003e?",
+                       "Verso":  "Um \u003cb\u003eagente\u003c/b\u003e age num \u003cb\u003eambiente\u003c/b\u003e e recebe \u003cb\u003erecompensas ou punições\u003c/b\u003e. Por tentativa e erro, aprende a sequência de ações que maximiza a recompensa total.\u003cbr\u003e\u003cbr\u003eEx.: robô aprendendo a andar (+1 se avança, −1 se cai), jogos."
+                   }
+    },
+    {
+        "noteId":  1794668388738,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "paradigmas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que a recompensa do reforço \u003cb\u003enão\u003c/b\u003e equivale ao rótulo do supervisionado?",
+                       "Verso":  "O rótulo diz \u003cb\u003equal seria a resposta certa\u003c/b\u003e. A recompensa só dá uma \u003cb\u003enota\u003c/b\u003e para a ação tomada, sem dizer qual ação seria a correta, e muitas vezes chega \u003cb\u003eatrasada\u003c/b\u003e (ex.: no xadrez, só no fim da partida)."
+                   }
+    },
+    {
+        "noteId":  1794668388739,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "paradigmas"
+                 ],
+        "fields":  {
+                       "Frente":  "O que cada paradigma recebe para aprender: supervisionado, não supervisionado e por reforço?",
+                       "Verso":  "\u003cb\u003eSupervisionado\u003c/b\u003e: dados \u003cb\u003ecom rótulo\u003c/b\u003e (classificação, regressão).\u003cbr\u003e\u003cb\u003eNão supervisionado\u003c/b\u003e: dados \u003cb\u003esem rótulo\u003c/b\u003e (agrupamento, redução de dimensionalidade).\u003cbr\u003e\u003cb\u003eReforço\u003c/b\u003e: \u003cb\u003erecompensa\u003c/b\u003e pelas ações (jogos, robótica)."
+                   }
+    }
+]
