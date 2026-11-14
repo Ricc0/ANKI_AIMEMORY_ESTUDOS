@@ -1,0 +1,190 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regressão, classificação e métricas</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco A · IA e Aprendizado de Máquina · Lição 2</div>
+<h1>Regressão, classificação e como medir cada uma</h1>
+<p class="lede">
+  As duas grandes tarefas do supervisionado
+  (<a href="0001-paradigmas-de-aprendizado.html">Lição 1</a>) se distinguem
+  pelo formato da resposta, e cada uma tem suas métricas. A vitória desta
+  lição é entender por que um modelo com <strong>99% de acurácia pode não
+  servir para nada</strong><sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Regressão × classificação.</caption>
+    <thead><tr><th></th><th>Regressão</th><th>Classificação</th></tr></thead>
+    <tbody>
+      <tr><th>Prevê</th><td>Um <strong>valor contínuo</strong> (valor do contrato, prazo em dias)</td><td>Uma <strong>categoria</strong> (fraude/ok, tipo de irregularidade)</td></tr>
+      <tr><th>Modelos</th><td>Regressão linear, árvores, gradient boosting</td><td>Regressão logística, árvores, SVM, k-NN, Naive Bayes</td></tr>
+      <tr><th>Métricas</th><td>MAE, MSE, RMSE, R²</td><td>Acurácia, precisão, recall, F1, AUC-ROC</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: o nome engana</span>
+  A <strong>regressão logística é classificação</strong>. Ela calcula uma
+  <em>probabilidade</em> com a função sigmoide e aplica um
+  <span class="anchor">LIMIAR</span> (por exemplo 0,5) para decidir a
+  classe. O nome vem de ser uma regressão sobre o log das chances, mas a
+  tarefa que ela resolve é classificar.
+</div>
+
+<h2>Métricas de regressão</h2>
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Todas medem o erro = valor real − valor previsto.</caption>
+    <thead><tr><th>Métrica</th><th>O que é</th><th>Quando usar</th></tr></thead>
+    <tbody>
+      <tr><th>MAE</th><td>Média de |erro|</td><td>Erro na unidade original, robusto a outliers ("erra em média R$ 12 mil")</td></tr>
+      <tr><th>MSE</th><td>Média de erro²</td><td>Quando errar muito é bem pior que errar pouco. A unidade fica ao quadrado</td></tr>
+      <tr><th>RMSE</th><td>√MSE</td><td>Pune erros grandes, mas volta à unidade original</td></tr>
+      <tr><th>R²</th><td>Fração da variância explicada</td><td>1 = perfeito, 0 = igual a prever sempre a média, <strong>pode ser negativo</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>
+  Uma dica de leitura: se o RMSE é <strong>bem maior</strong> que o MAE,
+  existem alguns erros muito grandes puxando a média dos quadrados.
+</p>
+
+<h2>Métricas de classificação: tudo parte da matriz de confusão</h2>
+<div class="table-scroll">
+  <table class="cmp">
+    <thead><tr><th></th><th>Previsto: fraude</th><th>Previsto: ok</th></tr></thead>
+    <tbody>
+      <tr><th>Real: fraude</th><td><strong>VP</strong> · verdadeiro positivo</td><td><strong>FN</strong> · fraude que passou</td></tr>
+      <tr><th>Real: ok</th><td><strong>FP</strong> · alarme falso</td><td><strong>VN</strong> · verdadeiro negativo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Precisão = VP / (VP + FP)</strong> → <span class="anchor">DOS QUE APONTEI</span>, quantos eram fraude?</p>
+  <p style="margin:0.2rem 0"><strong>Recall = VP / (VP + FN)</strong> → <span class="anchor">DAS FRAUDES QUE EXISTEM</span>, quantas eu peguei?</p>
+  <p style="margin:0.2rem 0"><strong>F1 = 2·P·R / (P + R)</strong> → média <em>harmônica</em>, que só fica alta se as duas forem altas.</p>
+  <p style="margin:0.2rem 0"><strong>AUC-ROC</strong> → avalia o modelo em <em>todos os limiares</em>: é a probabilidade de uma fraude receber nota maior que uma nota normal. 0,5 é chute e 1 é perfeito.</p>
+</div>
+
+<h3>Experimente: mexa nos números</h3>
+<p>
+  O cenário inicial tem 1.000 notas, das quais 50 são fraudes (5%). O modelo apontou 100
+  notas e acertou 40 delas. Agora tente o modelo "preguiçoso" que nunca
+  aponta fraude: coloque <strong>VP = 0, FP = 0, FN = 50, VN = 950</strong>.
+</p>
+<div class="calc-metricas" data-vp="40" data-fp="60" data-fn="10" data-vn="890"></div>
+<p>
+  O modelo preguiçoso tem <strong>95% de acurácia e recall zero</strong>:
+  não pega nenhuma fraude e, mesmo assim, tem uma nota ótima. Por isso,
+  com <strong>classes desbalanceadas</strong>, a acurácia engana, e você
+  deve olhar precisão, recall e F1<sup class="cite"><a href="#f2">[2]</a></sup>.
+</p>
+
+<div class="box">
+  <strong>Exemplo resolvido: qual métrica priorizar?</strong>
+  <p>
+    A equipe de auditoria só consegue examinar 100 casos por mês.
+    Cada alarme falso consome horas de um auditor.
+  </p>
+  <p style="margin-bottom:0">
+    <strong>→ Priorize a precisão.</strong> O alarme falso é o erro caro
+    aqui. Se, ao contrário, deixar passar uma fraude grave for
+    inaceitável (desvio na saúde, por exemplo), priorize o
+    <strong>recall</strong>. As duas métricas disputam entre si: baixar o
+    limiar aumenta o recall e diminui a precisão.
+  </p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: precisão e recall trocados</span>
+  A banca adora dar a fórmula de um com o nome do outro. Fixe o
+  denominador: a <strong>precisão</strong> divide pelo que o modelo
+  <em>apontou</em> (VP + FP). O <strong>recall</strong> divide pelo que
+  <em>realmente é</em> fraude (VP + FN).
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">Por se tratar de um modelo de regressão, a regressão logística é indicada para prever valores contínuos, como o valor de um contrato.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Apesar do nome, a regressão logística é um modelo de <strong>classificação</strong>: gera uma probabilidade e, com um limiar, uma classe.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. A regressão logística classifica. Para valor contínuo, use regressão linear, árvores de regressão e afins.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 2</div>
+  <p class="statement">Em uma base com 1% de fraudes, um classificador que sempre prevê "não fraude" alcança acurácia de 99%, embora seu recall seja nulo.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. Ele acerta todos os 99% normais e erra todas as fraudes: VP = 0, então o recall é 0.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Teste na calculadora: VP = 0, FN = 10, FP = 0, VN = 990.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 3</div>
+  <p class="statement">A precisão de um classificador é dada pela razão entre os verdadeiros positivos e o total de exemplos que realmente pertencem à classe positiva.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Dividir pelo total de positivos <em>reais</em> (VP + FN) é a definição de <strong>recall</strong>. A precisão divide pelo que foi <em>apontado</em> (VP + FP).</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>: ele descreve o recall. A precisão é VP / (VP + FP).</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">O coeficiente de determinação R² pode assumir valores negativos quando o modelo apresenta desempenho inferior ao de prever sempre a média.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. R² = 0 equivale a prever a média. Abaixo disso, o modelo é pior que esse baseline trivial.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Em dados de teste, o R² não fica preso entre 0 e 1 e pode ser negativo.</div>
+</div>
+
+<div class="quiz" data-key="c">
+  <div class="q-num">Item 5 · Alternativas</div>
+  <p class="statement">O recall de um modelo de fraude subiu de 0,60 para 0,90 depois que o limiar foi reduzido. O que tende a acontecer com a precisão?</p>
+  <div class="options stack">
+    <button class="opt" data-answer="a">Ela sobe junto, porque as métricas andam juntas</button>
+    <button class="opt" data-answer="b">Ela não muda, porque não depende do limiar</button>
+    <button class="opt" data-answer="c">Ela cai, porque surgem muito mais alarmes falsos</button>
+  </div>
+  <div class="feedback" data-for="c">Isso. Um limiar mais baixo aponta mais casos: pega mais fraudes (recall sobe) e também mais notas normais (FP sobe, precisão cai).</div>
+  <div class="feedback" data-for="a">Não. Precisão e recall costumam disputar entre si. Ao baixar o limiar, os falsos positivos aumentam e a precisão cai.</div>
+  <div class="feedback" data-for="b">A precisão depende do limiar, sim: ele muda quantos casos são apontados. Ao baixá-lo, os falsos positivos aumentam e a precisão cai.</div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  <em>An Introduction to Statistical Learning</em>, cap. 3 (regressão linear) e
+  cap. 4 (classificação, regressão logística e matriz de confusão).
+</p>
+<p class="source" id="f1">[1] James et al., <em>An Introduction to Statistical Learning</em>, <a href="https://www.statlearning.com/" target="_blank" rel="noopener">statlearning.com</a>.</p>
+<p class="source" id="f2">[2] scikit-learn, <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener">Metrics and scoring</a>. Veja também o <a href="https://developers.google.com/machine-learning/crash-course" target="_blank" rel="noopener">Google ML Crash Course</a>, módulo de classificação.</p>
+
+<div class="ask-teacher">
+  Ainda confunde precisão com recall? Pergunte aqui na conversa: dá para
+  treinar com mais cenários na calculadora até a diferença virar reflexo.
+</div>
+
+<div class="nav">
+  <a href="0001-paradigmas-de-aprendizado.html">← Lição 1: paradigmas</a>
+  <a href="0003-nao-supervisionado.html">Lição 3: não supervisionado →</a>
+</div>
+
+<script src="../../assets/quiz.js"></script>
+<script src="../../assets/metricas.js"></script>

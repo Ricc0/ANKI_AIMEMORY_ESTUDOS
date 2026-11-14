@@ -1,0 +1,393 @@
+/* Shared stylesheet for the CGU teaching workspace (adapted from the ANPD workspace).
+   Tufte-inspired: quiet typography, generous whitespace, print-friendly. */
+
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --paper: #fdfcf9;
+  --paper-raised: #f4f1ea;
+  --accent: #8a3324;
+  --accent-soft: #c96a52;
+  --rule: #d8d2c4;
+  --ok: #2f6f4f;
+  --bad: #a3372c;
+  --code-bg: #f0ede4;
+  --max-width: 42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8e4da;
+    --ink-soft: #b3ada0;
+    --paper: #1c1a17;
+    --paper-raised: #262320;
+    --accent: #e2977e;
+    --accent-soft: #c96a52;
+    --rule: #3a352c;
+    --ok: #7fbf9f;
+    --bad: #e2887e;
+    --code-bg: #262320;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink: #e8e4da;
+  --ink-soft: #b3ada0;
+  --paper: #1c1a17;
+  --paper-raised: #262320;
+  --accent: #e2977e;
+  --accent-soft: #c96a52;
+  --rule: #3a352c;
+  --ok: #7fbf9f;
+  --bad: #e2887e;
+  --code-bg: #262320;
+}
+
+:root[data-theme="light"] {
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --paper: #fdfcf9;
+  --paper-raised: #f4f1ea;
+  --accent: #8a3324;
+  --accent-soft: #c96a52;
+  --rule: #d8d2c4;
+  --ok: #2f6f4f;
+  --bad: #a3372c;
+  --code-bg: #f0ede4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+  font-size: 1.05rem;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 1.9rem;
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin: 2.2rem 0 0.8rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--accent);
+}
+
+p { margin: 0.9rem 0; }
+
+.kicker {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.6rem;
+}
+
+.lede {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+a { color: var(--accent); text-decoration-color: var(--accent-soft); }
+a:hover { text-decoration-thickness: 2px; }
+
+code, .formula {
+  font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  font-size: 0.92em;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+pre code { background: none; padding: 0; }
+
+.box {
+  background: var(--paper-raised);
+  border-left: 3px solid var(--accent);
+  padding: 1rem 1.2rem;
+  margin: 1.4rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.box.formula-box { text-align: center; font-size: 1.15rem; }
+
+.pegadinha {
+  background: var(--paper-raised);
+  border-left: 3px solid var(--bad);
+  padding: 1rem 1.2rem;
+  margin: 1.4rem 0;
+  border-radius: 0 4px 4px 0;
+}
+.pegadinha .label {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--bad);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.source {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+ul, ol { padding-left: 1.3rem; }
+li { margin: 0.35rem 0; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem 0;
+}
+
+.nav {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.ask-teacher {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  background: var(--paper-raised);
+  padding: 0.9rem 1.1rem;
+  border-radius: 6px;
+  margin-top: 2rem;
+  color: var(--ink-soft);
+}
+
+/* Figure / diagram component */
+figure.diagram {
+  margin: 1.6rem 0;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--paper-raised);
+  border-radius: 8px;
+  text-align: center;
+}
+figure.diagram svg { max-width: 100%; height: auto; }
+figure.diagram figcaption {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+  text-align: left;
+}
+.diagram text { fill: var(--ink); font-family: -apple-system, "Segoe UI", sans-serif; }
+.diagram .muted { fill: var(--ink-soft); }
+.diagram .accent-fill { fill: var(--accent); fill-opacity: 0.22; stroke: var(--accent); }
+.diagram .accent-fill-2 { fill: var(--accent-soft); fill-opacity: 0.22; stroke: var(--accent-soft); }
+.diagram .ok-fill { fill: var(--ok); fill-opacity: 0.18; stroke: var(--ok); }
+.diagram .bad-fill { fill: var(--bad); fill-opacity: 0.18; stroke: var(--bad); }
+.diagram line, .diagram path.arrow { stroke: var(--ink-soft); stroke-width: 1.5; fill: none; }
+.diagram rect.node { fill: var(--paper); stroke: var(--rule); stroke-width: 1.5; }
+
+/* Inline citation links */
+sup.cite { font-size: 0.72em; }
+sup.cite a { text-decoration: none; }
+
+/* Quiz component (certo/errado, Cebraspe-style) */
+.quiz {
+  margin: 1.6rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.1rem 1.2rem;
+}
+.quiz .q-num {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+.quiz .statement { margin: 0.5rem 0 0.8rem; }
+.quiz .options {
+  display: flex;
+  gap: 0.6rem;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+}
+.quiz button.opt {
+  cursor: pointer;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  font-family: inherit;
+}
+.quiz button.opt:hover { border-color: var(--accent); }
+.quiz .feedback {
+  margin-top: 0.7rem;
+  font-size: 0.92rem;
+  display: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 5px;
+}
+.quiz .feedback.show { display: block; }
+.quiz .feedback.correct { background: rgba(47,111,79,0.12); color: var(--ok); }
+.quiz .feedback.incorrect { background: rgba(163,55,44,0.12); color: var(--bad); }
+.quiz button.opt.chosen-correct { border-color: var(--ok); }
+.quiz button.opt.chosen-incorrect { border-color: var(--bad); }
+
+/* Português na prática — loop de língua portuguesa embutido nas lições.
+   Usa o próprio texto legal da lição como matéria-prima (interleaving). */
+.portugues {
+  background: var(--paper-raised);
+  border-left: 3px solid var(--ok);
+  padding: 1rem 1.2rem;
+  margin: 1.4rem 0;
+  border-radius: 0 4px 4px 0;
+}
+.portugues .label {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--ok);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* Etiqueta de peso/prioridade no edital (aposta do guia DOM, jul/2026) */
+.tag {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 0.1em 0.45em;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  white-space: nowrap;
+}
+.tag.max   { background: rgba(163,55,44,0.16); color: var(--bad); }
+.tag.alta  { background: rgba(138,51,36,0.15); color: var(--accent); }
+.tag.media { background: rgba(47,111,79,0.15); color: var(--ok); }
+
+/* Blocos congelados (pausados) no índice */
+.frozen { opacity: 0.6; }
+.frozen h2 { border-bottom-style: dashed; }
+.badge-frozen {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 0.1em 0.45em;
+  border-radius: 3px;
+  background: var(--code-bg);
+  color: var(--ink-soft);
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+/* Tabela de comparação (compacta, print-friendly). Envolver em
+   <div class="table-scroll"> para rolar em telas estreitas. */
+.table-scroll { overflow-x: auto; margin: 1.4rem 0; }
+table.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+}
+table.cmp caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+table.cmp th, table.cmp td {
+  border: 1px solid var(--rule);
+  padding: 0.5rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+table.cmp thead th { background: var(--paper-raised); font-weight: 700; }
+table.cmp tbody th { background: var(--paper-raised); color: var(--accent); white-space: nowrap; }
+
+/* Palavra-âncora: destaque leve para o gatilho de memória de um conceito */
+.anchor {
+  background: rgba(138,51,36,0.12);
+  border-radius: 3px;
+  padding: 0.05em 0.35em;
+  font-weight: 600;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9em;
+}
+
+@media print {
+  body { max-width: none; padding: 0.5in; }
+  .ask-teacher, .nav { display: none; }
+  .table-scroll { overflow-x: visible; }
+}
+
+/* Calculadora de matriz de confusão (assets/metricas.js) */
+.calc-metricas {
+  margin: 1.4rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+}
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1rem; }
+.calc-grid label { display: flex; flex-direction: column; gap: 0.25rem; color: var(--ink-soft); }
+.calc-grid input {
+  font: inherit; font-size: 1rem; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--rule); border-radius: 5px; padding: 0.35rem 0.5rem; width: 100%;
+}
+.calc-grid input:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+.calc-out { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-top: 1rem; }
+.calc-metric { background: var(--paper-raised); border-radius: 5px; padding: 0.55rem 0.6rem; display: flex; flex-direction: column; }
+.calc-name { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+.calc-val { font-size: 1.3rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.calc-formula { font-size: 0.72rem; color: var(--ink-soft); }
+@media (max-width: 560px) {
+  .calc-grid { grid-template-columns: 1fr; }
+  .calc-out { grid-template-columns: 1fr 1fr; }
+}
+
+/* Quiz de alternativas: empilha as opções */
+.quiz .options.stack { flex-direction: column; align-items: stretch; }
+.quiz .options.stack button.opt { text-align: left; }

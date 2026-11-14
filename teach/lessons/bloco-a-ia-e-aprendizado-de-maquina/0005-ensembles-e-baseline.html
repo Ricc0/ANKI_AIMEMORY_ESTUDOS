@@ -1,0 +1,186 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ensembles e baseline</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco A · IA e Aprendizado de Máquina · Lição 5</div>
+<h1>Ensembles e a comparação com o baseline</h1>
+<p class="lede">
+  Combinar vários modelos costuma vencer um modelo sozinho, mas
+  <strong>vencer o quê, exatamente?</strong> Esta lição junta as duas
+  ideias: como os comitês de modelos funcionam e por que todo modelo
+  precisa ser comparado com uma solução trivial antes de ser
+  adotado<sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<h2>Por que um comitê funciona</h2>
+<p>
+  Se vários modelos erram de formas <strong>diferentes</strong>, os erros
+  se compensam na média ou na votação. Por isso o segredo é ter modelos
+  <em>diversos</em>: dez cópias do mesmo modelo não ajudam em nada.
+</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+    <text x="115" y="16" text-anchor="middle" font-size="11">BAGGING · paralelo</text>
+    <rect class="node accent-fill-2" x="20" y="30" width="55" height="30" rx="5"></rect><text x="47" y="49" text-anchor="middle" font-size="9">árvore 1</text>
+    <rect class="node accent-fill-2" x="88" y="30" width="55" height="30" rx="5"></rect><text x="115" y="49" text-anchor="middle" font-size="9">árvore 2</text>
+    <rect class="node accent-fill-2" x="156" y="30" width="55" height="30" rx="5"></rect><text x="183" y="49" text-anchor="middle" font-size="9">árvore 3</text>
+    <line x1="47" y1="60" x2="115" y2="105"></line><line x1="115" y1="60" x2="115" y2="105"></line><line x1="183" y1="60" x2="115" y2="105"></line>
+    <rect class="node accent-fill" x="65" y="105" width="100" height="30" rx="5"></rect><text x="115" y="124" text-anchor="middle" font-size="9.5">média / votação</text>
+    <text x="115" y="155" text-anchor="middle" font-size="9" class="muted">cada uma numa amostra bootstrap</text>
+    <text x="115" y="170" text-anchor="middle" font-size="10" style="fill:var(--accent)">↓ variância</text>
+
+    <text x="360" y="16" text-anchor="middle" font-size="11">BOOSTING · sequencial</text>
+    <rect class="node accent-fill-2" x="255" y="60" width="55" height="30" rx="5"></rect><text x="282" y="79" text-anchor="middle" font-size="9">fraco 1</text>
+    <rect class="node accent-fill-2" x="333" y="60" width="55" height="30" rx="5"></rect><text x="360" y="79" text-anchor="middle" font-size="9">fraco 2</text>
+    <rect class="node accent-fill-2" x="411" y="60" width="55" height="30" rx="5"></rect><text x="438" y="79" text-anchor="middle" font-size="9">fraco 3</text>
+    <line x1="310" y1="75" x2="333" y2="75"></line><line x1="388" y1="75" x2="411" y2="75"></line>
+    <text x="321" y="56" text-anchor="middle" font-size="8" class="muted">erros</text>
+    <text x="399" y="56" text-anchor="middle" font-size="8" class="muted">erros</text>
+    <text x="360" y="155" text-anchor="middle" font-size="9" class="muted">cada um corrige o anterior</text>
+    <text x="360" y="170" text-anchor="middle" font-size="10" style="fill:var(--accent)">↓ viés</text>
+
+    <text x="240" y="194" text-anchor="middle" font-size="9" class="muted">gancho: bagging = paralelo → variância · boosting = sequencial → viés</text>
+  </svg>
+  <figcaption>No bagging, os modelos são treinados ao mesmo tempo e de forma independente. No boosting, cada modelo só é treinado depois de ver os erros do anterior.</figcaption>
+</figure>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Os três tipos de ensemble<sup class="cite"><a href="#f2">[2]</a></sup>.</caption>
+    <thead><tr><th></th><th>Como treina</th><th>Reduz</th><th>Exemplos</th></tr></thead>
+    <tbody>
+      <tr><th>Bagging</th><td>Em <strong>paralelo</strong>, cada modelo numa amostra bootstrap (com reposição). Combina por média ou votação</td><td><strong>Variância</strong></td><td>Random Forest, que também sorteia variáveis em cada divisão para deixar as árvores menos parecidas</td></tr>
+      <tr><th>Boosting</th><td>Em <strong>sequência</strong>, com modelos fracos (árvores rasas), cada um focado nos erros do anterior</td><td><strong>Viés</strong></td><td>AdaBoost (aumenta o peso dos exemplos errados); Gradient Boosting, XGBoost e LightGBM (ajustam os resíduos)</td></tr>
+      <tr><th>Stacking</th><td>Um <strong>meta-modelo</strong> aprende a combinar previsões de modelos diferentes, feitas fora da amostra</td><td>Depende</td><td>Árvore + SVM + logística → meta-modelo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: boosting não é imune</span>
+  Como insiste nos erros, o boosting pode <strong>decorar ruído e
+  outliers</strong>, ou seja, sofrer sobreajuste. Para controlar, use taxa de
+  aprendizado baixa, limite de profundidade e de número de árvores, e
+  early stopping (<a href="0004-sobreajuste-vies-variancia-regularizacao.html">Lição 4</a>).
+  O custo de todo ensemble é a perda de <strong>interpretabilidade</strong>:
+  não dá para explicar 500 árvores a um gestor.
+</div>
+
+<h2>Baseline: 0,80 comparado com o quê?</h2>
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Referências triviais por tarefa<sup class="cite"><a href="#f3">[3]</a></sup>.</caption>
+    <thead><tr><th>Tarefa</th><th>Baseline</th></tr></thead>
+    <tbody>
+      <tr><th>Classificação</th><td>Prever sempre a classe mais comum</td></tr>
+      <tr><th>Regressão</th><td>Prever sempre a média ou a mediana</td></tr>
+      <tr><th>Série temporal</th><td>Repetir o último valor (naive)</td></tr>
+      <tr><th>Qualquer uma</th><td>Uma regra de negócio ("aditivo acima de 25% → revisar") ou uma regressão linear/logística</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box">
+  <strong>Os três papéis do baseline</strong>
+  <ol style="margin:0.4rem 0 0">
+    <li><strong>Justificar (ou não) a complexidade.</strong> Se o XGBoost ganha por 0,01 de uma regra simples, ele não paga o custo de manutenção e de explicação.</li>
+    <li><strong>Servir de alarme de vazamento.</strong> Se até o modelo trivial vai bem demais, ou se o seu modelo dá um salto absurdo, provavelmente algo vazou.</li>
+    <li><strong>Atender à parcimônia no setor público.</strong> Decisões administrativas precisam ser <span class="anchor">MOTIVADAS</span>, auditáveis e explicáveis. Com desempenho parecido, o modelo mais simples ganha, como diz a navalha de Occam.</li>
+  </ol>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido: vale trocar?</strong>
+  <p style="margin-bottom:0">
+    Hoje a CGU usa a regra "aditivo acima de 25% → revisar", que tem F1
+    de 0,55. Um XGBoost chegou a 0,57 no teste. <strong>Vale a troca?</strong>
+    Provavelmente não. O ganho é pequeno, e o modelo é mais caro, mais
+    difícil de explicar ao gestor e mais difícil de defender perante os
+    órgãos de controle. Se o ganho fosse para 0,80, aí sim a conversa
+    mudaria.
+  </p>
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">No boosting, os modelos são treinados de forma independente e em paralelo, o que reduz principalmente a variância do conjunto.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. O item descreve o <strong>bagging</strong>. O boosting é sequencial e reduz principalmente o viés.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>: troca bagging por boosting. Bagging = paralelo e variância. Boosting = sequencial e viés.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 2</div>
+  <p class="statement">O Random Forest, além de usar amostras bootstrap, sorteia um subconjunto de variáveis a cada divisão, o que reduz a correlação entre as árvores.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. Árvores menos parecidas erram de formas diferentes, e a média reduz mais a variância.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É justamente o que diferencia o Random Forest do bagging puro de árvores.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 3</div>
+  <p class="statement">Por corrigir sequencialmente os erros dos modelos anteriores, o boosting não está sujeito a sobreajuste, dispensando regularização.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Insistir nos erros pode levar a decorar ruído e outliers. Taxa de aprendizado, profundidade e early stopping controlam esse risco.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. O boosting pode sobreajustar e precisa de regularização.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">Em problemas de classificação, um baseline adequado consiste em prever sempre a classe majoritária, servindo de referência mínima de desempenho.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. É o baseline clássico (DummyClassifier no scikit-learn). Um modelo que não o supera com folga não se justifica.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Prever a classe mais comum é o baseline trivial da classificação.</div>
+</div>
+
+<div class="quiz" data-key="c">
+  <div class="q-num">Item 5 · Alternativas</div>
+  <p class="statement">Um modelo de risco de contratos chega a AUC de 0,99, enquanto modelos semelhantes na literatura ficam perto de 0,75. Qual a reação mais prudente?</p>
+  <div class="options stack">
+    <button class="opt" data-answer="a">Adotar o modelo imediatamente, pois superou a literatura</button>
+    <button class="opt" data-answer="b">Trocar por boosting, que costuma ter desempenho maior</button>
+    <button class="opt" data-answer="c">Investigar vazamento de dados antes de confiar nele</button>
+  </div>
+  <div class="feedback" data-for="c">Isso. Um desempenho bom demais é o sintoma clássico de vazamento. Verifique variáveis "do futuro" e a forma como os dados foram divididos.</div>
+  <div class="feedback" data-for="a">Arriscado. Um salto tão grande sobre a referência é o sintoma clássico de vazamento de dados. Investigue antes.</div>
+  <div class="feedback" data-for="b">Isso não ataca o problema. O resultado já é suspeitamente alto. O primeiro passo é investigar vazamento.</div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  <em>An Introduction to Statistical Learning</em>, cap. 8 (árvores, bagging,
+  Random Forest e boosting), com comparações empíricas claras.
+</p>
+<p class="source" id="f1">[1] James et al., <em>An Introduction to Statistical Learning</em>, <a href="https://www.statlearning.com/" target="_blank" rel="noopener">statlearning.com</a>.</p>
+<p class="source" id="f2">[2] scikit-learn, <a href="https://scikit-learn.org/stable/modules/ensemble.html" target="_blank" rel="noopener">Ensembles: gradient boosting, random forests, bagging, voting, stacking</a>.</p>
+<p class="source" id="f3">[3] scikit-learn, <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener">Metrics and scoring</a>, seção sobre dummy estimators (baselines).</p>
+
+<div class="ask-teacher">
+  Quer ver como seria um baseline para um problema real da CGU, como
+  sobrepreço em licitações? Pergunte aqui na conversa.
+</div>
+
+<div class="nav">
+  <a href="0004-sobreajuste-vies-variancia-regularizacao.html">← Lição 4: sobreajuste</a>
+  <span>Próximo: modelos em detalhe (árvores, k-NN, SVM, Naive Bayes)</span>
+</div>
+
+<script src="../../assets/quiz.js"></script>

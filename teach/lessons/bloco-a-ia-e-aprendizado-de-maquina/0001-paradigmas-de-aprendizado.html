@@ -1,0 +1,229 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paradigmas de aprendizado</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco A · IA e Aprendizado de Máquina · Lição 1</div>
+<h1>Os quatro paradigmas de aprendizado</h1>
+<p class="lede">
+  Supervisionado, não supervisionado, semissupervisionado e por reforço.
+  Para não confundir os quatro, faça sempre a mesma pergunta:
+  <strong>que informação o modelo recebe para aprender?</strong> Quase toda
+  pegadinha de prova sobre esse tema sai daí<sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+    <rect class="node accent-fill" x="20" y="15" width="210" height="80" rx="6"></rect>
+    <text x="125" y="38" text-anchor="middle" font-size="12">SUPERVISIONADO</text>
+    <text x="125" y="58" text-anchor="middle" font-size="10" class="muted">recebe X + rótulo y</text>
+    <text x="125" y="76" text-anchor="middle" font-size="9" class="muted">"estudar com gabarito"</text>
+
+    <rect class="node accent-fill-2" x="250" y="15" width="210" height="80" rx="6"></rect>
+    <text x="355" y="38" text-anchor="middle" font-size="12">NÃO SUPERVISIONADO</text>
+    <text x="355" y="58" text-anchor="middle" font-size="10" class="muted">recebe só X</text>
+    <text x="355" y="76" text-anchor="middle" font-size="9" class="muted">"achar estrutura sozinho"</text>
+
+    <rect class="node accent-fill-2" x="20" y="110" width="210" height="80" rx="6"></rect>
+    <text x="125" y="133" text-anchor="middle" font-size="12">SEMISSUPERVISIONADO</text>
+    <text x="125" y="153" text-anchor="middle" font-size="10" class="muted">poucos rótulos + muito X</text>
+    <text x="125" y="171" text-anchor="middle" font-size="9" class="muted">"gabarito de só 5 questões"</text>
+
+    <rect class="node accent-fill" x="250" y="110" width="210" height="80" rx="6"></rect>
+    <text x="355" y="133" text-anchor="middle" font-size="12">POR REFORÇO</text>
+    <text x="355" y="153" text-anchor="middle" font-size="10" class="muted">recebe recompensa pela ação</text>
+    <text x="355" y="171" text-anchor="middle" font-size="9" class="muted">"nota, sem gabarito"</text>
+
+    <text x="240" y="212" text-anchor="middle" font-size="9" class="muted">só o supervisionado tem a resposta certa para cada exemplo</text>
+  </svg>
+  <figcaption>O gancho de memória é o tipo de informação que chega ao modelo. O semissupervisionado fica no meio do caminho, e o reforço é um terceiro paradigma, à parte.</figcaption>
+</figure>
+
+<h2>Supervisionado: aprender com gabarito</h2>
+<p>
+  Você treina com pares <code>(X, y)</code>. <strong>X</strong> são as
+  características (valor da nota, CNPJ, data, órgão) e <strong>y</strong>
+  é a resposta certa ("fraude" ou "ok"). O modelo procura uma função
+  <code>f(X) ≈ y</code> que erre pouco <em>em dados que ele ainda não
+  viu</em>. Ir bem nos dados de treino não basta. É daí que nasce o
+  sobreajuste (<a href="0004-sobreajuste-vies-variancia-regularizacao.html">Lição 4</a>).
+</p>
+<p>
+  O formato do <strong>y</strong> define a tarefa: se é um número, é
+  <strong>regressão</strong>. Se é uma categoria, é <strong>classificação</strong>
+  (<a href="0002-regressao-classificacao-metricas.html">Lição 2</a>). O
+  gargalo prático é o rótulo: alguém precisa dizer o que é fraude, e na
+  CGU isso costuma ser um auditor gastando horas em cada caso.
+</p>
+
+<h2>Não supervisionado: estrutura sem gabarito</h2>
+<p>
+  Só existe <strong>X</strong>. O modelo não prevê uma resposta. Ele
+  <em>descreve</em> os dados: quais itens se parecem (agrupamento), quais
+  variáveis carregam a mesma informação (redução de dimensionalidade) e
+  quais pontos fogem do padrão (anomalias), como mostra a
+  <a href="0003-nao-supervisionado.html">Lição 3</a>.
+  Não existe "acerto" objetivo: um especialista precisa interpretar se
+  os grupos encontrados fazem sentido para o negócio.
+</p>
+
+<h2>Semissupervisionado: o meio-termo</h2>
+<p>
+  Você tem <strong>poucos rotulados e muitos sem rótulo</strong>. A ideia é
+  usar a <em>forma</em> dos dados sem rótulo para traçar a fronteira que os
+  poucos rotulados não conseguem definir sozinhos<sup class="cite"><a href="#f2">[2]</a></sup>.
+</p>
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Self-training:</strong> treina com os
+    rotulados, prevê os demais, aceita como <span class="anchor">PSEUDO-RÓTULO</span>
+    só os casos de maior confiança, retreina e repete.</p>
+  <p style="margin:0.2rem 0"><strong>Propagação de rótulos:</strong> monta
+    um grafo de vizinhança, e o rótulo "escorre" de um ponto para os
+    vizinhos próximos.</p>
+</div>
+<p>O método só funciona se valerem três suposições:</p>
+<ul>
+  <li><strong>Suavidade:</strong> pontos próximos têm o mesmo rótulo.</li>
+  <li><strong>Cluster:</strong> a fronteira entre classes passa por regiões com poucos dados.</li>
+  <li><strong>Variedade (manifold):</strong> os dados vivem numa estrutura de dimensão menor do que o número de variáveis.</li>
+</ul>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: "mais dados sempre ajudam"</span>
+  Se a fraude <strong>não</strong> forma um grupo separado (fraudadores
+  imitam notas normais, por exemplo), ou se os primeiros pseudo-rótulos
+  saem errados, o modelo <strong>reforça o próprio erro</strong> a cada
+  rodada. O resultado pode ficar <em>pior</em> do que treinar só com os
+  rotulados.
+</div>
+
+<h2>Por reforço: aprender agindo</h2>
+<p>
+  Não existe um conjunto de dados fixo. Um <strong>agente</strong> observa
+  um <strong>estado</strong>, escolhe uma <strong>ação</strong>, o
+  <strong>ambiente</strong> muda e devolve uma <strong>recompensa</strong>.
+  O agente aprende uma <strong>política</strong> (qual ação tomar em cada
+  estado) que maximize a <em>recompensa acumulada</em>, normalmente com um
+  desconto γ sobre o futuro<sup class="cite"><a href="#f3">[3]</a></sup>.
+</p>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Rótulo × recompensa: por que o reforço não é supervisionado.</caption>
+    <thead><tr><th></th><th>Rótulo (supervisionado)</th><th>Recompensa (reforço)</th></tr></thead>
+    <tbody>
+      <tr><th>Diz a resposta certa?</th><td>Sim, para cada exemplo</td><td>Não, só dá uma nota para a ação tomada</td></tr>
+      <tr><th>Quando chega?</th><td>Junto com o exemplo</td><td>Muitas vezes <em>atrasada</em> (só no fim do jogo)</td></tr>
+      <tr><th>De onde vêm os dados?</th><td>Base fixa</td><td>Da interação do agente com o ambiente</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box">
+  <strong>Três ideias que a banca cobra</strong>
+  <ul style="margin:0.4rem 0 0">
+    <li><strong>Exploração × explotação:</strong> se o agente só repete o
+      que já deu certo, nunca descobre algo melhor. Se só testa coisas
+      novas, nunca aproveita o que aprendeu. Uma solução clássica é o
+      <em>ε-greedy</em>, que explora ao acaso com probabilidade ε.</li>
+    <li><strong>Atribuição de crédito:</strong> com recompensa atrasada,
+      é difícil saber qual das 80 jogadas decidiu a partida.</li>
+    <li><strong>Reward hacking:</strong> o agente otimiza a recompensa
+      <em>que você escreveu</em>, não o objetivo <em>que você queria</em><sup class="cite"><a href="#f4">[4]</a></sup>.
+      Se você premia "processos encerrados", ele aprende a encerrar
+      processos sem resolvê-los.</li>
+  </ul>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: reforço na auditoria</span>
+  O reforço precisa de <strong>muita interação</strong> ou de um
+  simulador, e não dá para "testar" milhares de decisões reais de
+  fiscalização. Para dados tabulares com histórico, o supervisionado
+  costuma ser a escolha certa. Item que diga que o reforço é "a técnica
+  indicada para classificar notas fiscais" tende a estar errado.
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">O agrupamento (clustering) é uma técnica de aprendizado supervisionado, pois o algoritmo distribui os dados em classes.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. O agrupamento é <strong>não supervisionado</strong>: os grupos são <em>descobertos</em>, não vêm rotulados. Quem usa classes já conhecidas é a classificação.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. No agrupamento não há rótulo. Os grupos são descobertos pelo algoritmo. "Classes conhecidas no treino" é classificação.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 2</div>
+  <p class="statement">No aprendizado por reforço, a recompensa cumpre o mesmo papel do rótulo no aprendizado supervisionado, indicando ao agente a ação correta em cada estado.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. A recompensa só <strong>avalia</strong> a ação tomada. Ela não diz qual seria a ação correta e pode chegar atrasada.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. O rótulo traz a resposta certa. A recompensa só dá uma nota, sem gabarito.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 3</div>
+  <p class="statement">No aprendizado semissupervisionado, se as suposições de suavidade ou de cluster não se verificarem, o desempenho pode ser inferior ao obtido apenas com os dados rotulados.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. Pseudo-rótulos errados se propagam, e o modelo reforça o próprio erro.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Os dados não rotulados só ajudam se as suposições valerem. Caso contrário, podem piorar o modelo.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">Reward hacking ocorre quando o agente maximiza a recompensa definida por meio de um atalho que não cumpre o objetivo pretendido pelo projetista.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. É a recompensa mal especificada sendo explorada pelo agente.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. É exatamente essa a definição de reward hacking (ou <em>specification gaming</em>).</div>
+</div>
+
+<div class="quiz" data-key="b">
+  <div class="q-num">Item 5 · Alternativas</div>
+  <p class="statement">A CGU tem 200 mil notas fiscais, mas só 300 foram analisadas por auditores e marcadas como "fraude" ou "ok". Qual paradigma aproveita melhor essa base?</p>
+  <div class="options stack">
+    <button class="opt" data-answer="a">Por reforço, com recompensa por nota auditada</button>
+    <button class="opt" data-answer="b">Semissupervisionado, combinando notas rotuladas e não rotuladas</button>
+    <button class="opt" data-answer="c">Não supervisionado, ignorando todos os rótulos existentes</button>
+  </div>
+  <div class="feedback" data-for="b">Isso. Poucos rótulos caros e muitos dados sem rótulo é o cenário típico do semissupervisionado. Lembre do risco: as suposições precisam valer.</div>
+  <div class="feedback" data-for="a">Não. Não há agente nem ambiente interativo aqui: há uma base fixa, com alguns rótulos. O cenário é semissupervisionado.</div>
+  <div class="feedback" data-for="c">Jogar fora os 300 rótulos desperdiça a informação mais cara que você tem. O cenário é semissupervisionado.</div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  <em>An Introduction to Statistical Learning</em>, cap. 1 e 2, que distinguem
+  supervisionado de não supervisionado com exemplos claros.
+</p>
+<p class="source" id="f1">[1] James, Witten, Hastie e Tibshirani, <em>An Introduction to Statistical Learning</em>, PDF gratuito em <a href="https://www.statlearning.com/" target="_blank" rel="noopener">statlearning.com</a>.</p>
+<p class="source" id="f2">[2] scikit-learn, <a href="https://scikit-learn.org/stable/modules/semi_supervised.html" target="_blank" rel="noopener">Semi-supervised learning</a> (self-training e label propagation).</p>
+<p class="source" id="f3">[3] Sutton e Barto, <em>Reinforcement Learning: An Introduction</em>, 2ª ed., <a href="http://incompleteideas.net/book/the-book-2nd.html" target="_blank" rel="noopener">incompleteideas.net</a>, cap. 1 e 3.</p>
+<p class="source" id="f4">[4] DeepMind, <a href="https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/" target="_blank" rel="noopener">Specification gaming: the flip side of AI ingenuity</a>.</p>
+
+<div class="ask-teacher">
+  Ficou alguma dúvida sobre por que a recompensa não é um rótulo, ou sobre
+  quando o semissupervisionado piora o modelo? Pergunte aqui na conversa,
+  antes de seguir para as tarefas e métricas.
+</div>
+
+<div class="nav">
+  <span>Início do bloco</span>
+  <a href="0002-regressao-classificacao-metricas.html">Lição 2: regressão, classificação e métricas →</a>
+</div>
+
+<script src="../../assets/quiz.js"></script>

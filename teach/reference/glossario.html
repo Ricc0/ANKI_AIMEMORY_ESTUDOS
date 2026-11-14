@@ -1,0 +1,68 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossário de IA e ML</title>
+<link rel="stylesheet" href="../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../lessons/index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Referência · Bloco A</div>
+<h1>Glossário de IA e Aprendizado de Máquina</h1>
+<p class="lede">Uma linha por termo, com o gatilho de memória e a pegadinha mais comum. As lições seguem estas definições.</p>
+
+<h2>Paradigmas</h2>
+<div class="table-scroll"><table class="cmp"><tbody>
+  <tr><th>Supervisionado</th><td>Treina com X + rótulo y. Tarefas: regressão e classificação.</td></tr>
+  <tr><th>Não supervisionado</th><td>Só X. Tarefas: agrupamento, redução de dimensionalidade, anomalias. <strong>Clustering está aqui.</strong></td></tr>
+  <tr><th>Semissupervisionado</th><td>Poucos rotulados + muitos sem rótulo. Self-training, propagação de rótulos. Pode piorar se as suposições falharem.</td></tr>
+  <tr><th>Por reforço</th><td>Agente, ambiente, estado, ação, recompensa, política. Recompensa ≠ rótulo.</td></tr>
+  <tr><th>Exploração × explotação</th><td>Testar o novo × repetir o melhor conhecido (ε-greedy).</td></tr>
+  <tr><th>Reward hacking</th><td>Maximizar a recompensa por um atalho que não cumpre o objetivo.</td></tr>
+</tbody></table></div>
+
+<h2>Métricas</h2>
+<div class="table-scroll"><table class="cmp"><tbody>
+  <tr><th>MAE / MSE / RMSE</th><td>|erro| médio / erro² médio / √MSE. O MSE e o RMSE punem os erros grandes.</td></tr>
+  <tr><th>R²</th><td>Variância explicada. 0 = prever a média. Pode ser negativo.</td></tr>
+  <tr><th>Precisão</th><td>VP / (VP + FP): dos que apontei, quantos acertei.</td></tr>
+  <tr><th>Recall</th><td>VP / (VP + FN): das fraudes reais, quantas peguei.</td></tr>
+  <tr><th>F1</th><td>Média harmônica de precisão e recall.</td></tr>
+  <tr><th>AUC-ROC</th><td>Desempenho em todos os limiares. 0,5 = chute, 1 = perfeito.</td></tr>
+  <tr><th>Acurácia</th><td>(VP + VN) / total. Engana com classes desbalanceadas.</td></tr>
+</tbody></table></div>
+
+<h2>Não supervisionado</h2>
+<div class="table-scroll"><table class="cmp"><tbody>
+  <tr><th>k-means</th><td>Exige k, supõe grupos esféricos, não marca ruído.</td></tr>
+  <tr><th>Hierárquico</th><td>Gera um dendrograma. Corta-se a árvore para escolher os grupos.</td></tr>
+  <tr><th>DBSCAN</th><td>Agrupa por densidade (eps, minPts). Sem k, formatos arbitrários, marca ruído.</td></tr>
+  <tr><th>PCA</th><td>Linear, componentes não correlacionados ordenados por variância. Padronize antes.</td></tr>
+  <tr><th>t-SNE / UMAP</th><td>Não lineares, para visualizar. Distâncias entre grupos não são confiáveis.</td></tr>
+  <tr><th>Seleção × extração</th><td>Escolher colunas existentes (Lasso) × criar colunas novas (PCA).</td></tr>
+  <tr><th>Maldição da dimensionalidade</th><td>Muitas variáveis: dados esparsos e distâncias sem sentido.</td></tr>
+  <tr><th>Isolation Forest</th><td>A anomalia é isolada com poucos cortes aleatórios.</td></tr>
+  <tr><th>Autoencoder</th><td>Anomalia = erro de reconstrução alto.</td></tr>
+  <tr><th>Anomalia</th><td>Indício para investigar, <strong>não</strong> prova de fraude.</td></tr>
+</tbody></table></div>
+
+<h2>Generalização</h2>
+<div class="table-scroll"><table class="cmp"><tbody>
+  <tr><th>Subajuste</th><td>Erro alto no treino e no teste. Alto viés.</td></tr>
+  <tr><th>Sobreajuste</th><td>Erro baixo no treino e alto no teste. Alta variância.</td></tr>
+  <tr><th>Viés-variância</th><td>Erro = viés² + variância + ruído irredutível.</td></tr>
+  <tr><th>k-fold</th><td>k partições, treina em k−1, testa na restante, faz a média.</td></tr>
+  <tr><th>Vazamento (leakage)</th><td>Informação do teste ou do futuro no treino. Sintoma: bom demais.</td></tr>
+  <tr><th>L1 (Lasso)</th><td>Penaliza |w|. Zera coeficientes e seleciona variáveis.</td></tr>
+  <tr><th>L2 (Ridge)</th><td>Penaliza w². Encolhe sem zerar e lida bem com variáveis correlacionadas.</td></tr>
+  <tr><th>λ</th><td>Maior = modelo mais simples. Exagerar leva a subajuste.</td></tr>
+  <tr><th>Dropout / early stopping</th><td>Desligar neurônios ao acaso / parar quando a validação piora.</td></tr>
+</tbody></table></div>
+
+<h2>Ensembles e baseline</h2>
+<div class="table-scroll"><table class="cmp"><tbody>
+  <tr><th>Bagging</th><td>Paralelo, bootstrap, média/voto. Reduz <strong>variância</strong>.</td></tr>
+  <tr><th>Random Forest</th><td>Bagging de árvores + sorteio de variáveis em cada divisão.</td></tr>
+  <tr><th>Boosting</th><td>Sequencial, cada modelo corrige o anterior. Reduz <strong>viés</strong>. Pode sobreajustar.</td></tr>
+  <tr><th>Stacking</th><td>Meta-modelo combina as previsões de modelos diferentes.</td></tr>
+  <tr><th>Baseline</th><td>Classe mais comum / média / último valor / regra de negócio.</td></tr>
+  <tr><th>Parcimônia</th><td>Com desempenho parecido, fica o modelo mais simples e explicável.</td></tr>
+</tbody></table></div>

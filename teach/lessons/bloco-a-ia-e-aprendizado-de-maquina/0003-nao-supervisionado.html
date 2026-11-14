@@ -1,0 +1,184 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agrupamento, dimensionalidade e anomalias</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco A · IA e Aprendizado de Máquina · Lição 3</div>
+<h1>Não supervisionado: agrupamento, dimensionalidade e anomalias</h1>
+<p class="lede">
+  Sem rótulo, o modelo não prevê uma resposta: ele <strong>descreve</strong>
+  os dados. Esta lição cobre as três tarefas que a banca cobra e as
+  armadilhas de cada uma. A mais importante para a CGU:
+  <strong>anomalia não é fraude</strong>.
+</p>
+
+<h2>Agrupamento: três algoritmos, três ideias de "grupo"</h2>
+
+<figure class="diagram">
+  <svg viewBox="0 0 480 190" xmlns="http://www.w3.org/2000/svg">
+    <text x="120" y="18" text-anchor="middle" font-size="11">k-means: grupos "esféricos"</text>
+    <circle cx="75" cy="85" r="38" class="accent-fill"></circle>
+    <circle cx="165" cy="95" r="38" class="accent-fill-2"></circle>
+    <circle cx="65" cy="80" r="3" class="ok-fill"></circle><circle cx="85" cy="95" r="3" class="ok-fill"></circle><circle cx="70" cy="100" r="3" class="ok-fill"></circle><circle cx="90" cy="72" r="3" class="ok-fill"></circle>
+    <circle cx="160" cy="90" r="3" class="ok-fill"></circle><circle cx="175" cy="105" r="3" class="ok-fill"></circle><circle cx="150" cy="105" r="3" class="ok-fill"></circle><circle cx="178" cy="82" r="3" class="ok-fill"></circle>
+    <text x="120" y="160" text-anchor="middle" font-size="9" class="muted">precisa de k · todo ponto entra num grupo</text>
+
+    <text x="360" y="18" text-anchor="middle" font-size="11">DBSCAN: grupos por densidade</text>
+    <path d="M 270 110 Q 310 40 360 80 Q 400 110 440 60" class="arrow" style="stroke:var(--accent);stroke-width:16;stroke-opacity:0.22;stroke-linecap:round"></path>
+    <circle cx="275" cy="105" r="3" class="ok-fill"></circle><circle cx="295" cy="75" r="3" class="ok-fill"></circle><circle cx="320" cy="60" r="3" class="ok-fill"></circle><circle cx="345" cy="72" r="3" class="ok-fill"></circle><circle cx="370" cy="88" r="3" class="ok-fill"></circle><circle cx="400" cy="95" r="3" class="ok-fill"></circle><circle cx="425" cy="75" r="3" class="ok-fill"></circle>
+    <circle cx="300" cy="140" r="4" class="bad-fill"></circle><circle cx="440" cy="135" r="4" class="bad-fill"></circle>
+    <text x="370" y="145" text-anchor="middle" font-size="9" class="muted">pontos vermelhos = ruído</text>
+    <text x="360" y="160" text-anchor="middle" font-size="9" class="muted">sem k · qualquer formato · marca ruído</text>
+
+    <text x="240" y="183" text-anchor="middle" font-size="9" class="muted">o k-means cortaria essa "banana" em pedaços redondos; o DBSCAN a reconhece inteira</text>
+  </svg>
+  <figcaption>O k-means pensa em centros e distâncias, e o DBSCAN pensa em vizinhança densa. O hierárquico, por sua vez, monta uma árvore (dendrograma) de junções.</figcaption>
+</figure>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Comparação dos algoritmos de agrupamento<sup class="cite"><a href="#f1">[1]</a></sup>.</caption>
+    <thead><tr><th>Algoritmo</th><th>Como pensa</th><th>Pontos fortes</th><th>Limitações</th></tr></thead>
+    <tbody>
+      <tr><th>k-means</th><td>Escolhe k centros, liga cada ponto ao mais próximo, recalcula e repete</td><td>Rápido e simples</td><td>Exige <strong>k</strong> (cotovelo, silhueta). Supõe grupos <strong>esféricos</strong>. Sensível a escala, outliers e ao ponto de partida. Sem noção de ruído</td></tr>
+      <tr><th>Hierárquico</th><td>Junta os grupos mais próximos passo a passo e desenha um <strong>dendrograma</strong></td><td>Não exige k antes: você <em>corta a árvore</em> na altura desejada</td><td>Pesado com muitos pontos</td></tr>
+      <tr><th>DBSCAN</th><td>Grupo = região <strong>densa</strong> (minPts vizinhos dentro de um raio eps)</td><td>Formatos arbitrários, sem k, marca <strong>ruído</strong></td><td>Sofre quando os grupos têm densidades muito diferentes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Redução de dimensionalidade</h2>
+<p>
+  <strong>Por que reduzir?</strong> Pela <span class="anchor">MALDIÇÃO DA DIMENSIONALIDADE</span>.
+  Com centenas de variáveis, o espaço fica tão grande que os dados ficam
+  esparsos e todo ponto fica longe de todo ponto. Métodos baseados em
+  distância, como k-NN e k-means, perdem o sentido, e seriam necessários
+  exponencialmente mais dados.
+</p>
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>PCA:</strong> é <em>linear</em>. Encontra as direções em que os dados mais variam e as usa como novos eixos (componentes), sem correlação entre si e ordenados pela variância que preservam<sup class="cite"><a href="#f2">[2]</a></sup>. Exige <strong>padronizar</strong> as variáveis antes (senão quem tem números grandes, como valores em reais, domina) e os componentes perdem o significado de negócio.</p>
+  <p style="margin:0.2rem 0"><strong>t-SNE e UMAP:</strong> são <em>não lineares</em> e preservam a vizinhança local. Servem para <strong>ver</strong> os dados em 2D.</p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: lendo um gráfico de t-SNE</span>
+  No gráfico de t-SNE, o <strong>tamanho</strong> dos grupos e a
+  <strong>distância entre eles</strong> não significam nada confiável<sup class="cite"><a href="#f3">[3]</a></sup>.
+  Um item que diga "o grupo A está mais distante do C, logo é mais
+  diferente" a partir de um t-SNE está errado.
+</div>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Seleção × extração de variáveis.</caption>
+    <thead><tr><th></th><th>Seleção</th><th>Extração</th></tr></thead>
+    <tbody>
+      <tr><th>O que faz</th><td>Escolhe colunas que <strong>já existem</strong></td><td>Cria <strong>colunas novas</strong> combinando as originais</td></tr>
+      <tr><th>Exemplo</th><td>Lasso (L1), filtros por correlação</td><td>PCA</td></tr>
+      <tr><th>Interpretação</th><td>Mantida</td><td>Perdida em boa parte</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Detecção de anomalias</h2>
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>z-score</strong> (|z| &gt; 3) e <strong>IQR</strong> (fora de Q1 − 1,5·IQR ou de Q3 + 1,5·IQR): simples e olham uma variável por vez. O IQR é mais robusto, porque a média e o desvio usados no z-score são puxados pelos próprios outliers.</p>
+  <p style="margin:0.2rem 0"><strong>Isolation Forest:</strong> faz cortes aleatórios nos dados. Um ponto anômalo fica <em>isolado com poucos cortes</em>, enquanto um normal, no meio da multidão, precisa de muitos<sup class="cite"><a href="#f4">[4]</a></sup>.</p>
+  <p style="margin:0.2rem 0"><strong>One-Class SVM:</strong> aprende a fronteira do que é normal. O que cai fora dela é suspeito.</p>
+  <p style="margin:0.2rem 0"><strong>Autoencoder:</strong> uma rede neural aprende a comprimir e reconstruir dados normais. Quando ela reconstrói mal um ponto (<em>erro de reconstrução alto</em>), é porque ele não se parece com o que ela conhece.</p>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido: o contrato atípico</strong>
+  <p style="margin-bottom:0">
+    O Isolation Forest marcou um contrato de obra com valor 8 vezes acima
+    da mediana do órgão. Isso é fraude? <strong>Não necessariamente.</strong>
+    Pode ser uma obra emergencial legítima. A detecção de anomalias costuma
+    ser não supervisionada justamente porque quase não há fraudes rotuladas.
+    O ponto marcado é um <span class="anchor">INDÍCIO</span> para o auditor
+    investigar, nunca uma prova.
+  </p>
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">O algoritmo k-means dispensa a definição prévia do número de grupos e é capaz de identificar agrupamentos de formato arbitrário.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. O item descreve o <strong>DBSCAN</strong>. O k-means exige k e supõe grupos esféricos.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Quem dispensa k e acha formatos arbitrários é o DBSCAN. O k-means precisa de k.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 2</div>
+  <p class="statement">O PCA é uma técnica linear de extração de variáveis que gera componentes não correlacionados, ordenados pela proporção de variância preservada.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. O PCA é linear, faz extração (cria variáveis novas) e gera componentes ortogonais ordenados por variância.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>: é a definição do PCA. Cuidado só para não confundir extração com seleção.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 3</div>
+  <p class="statement">Em um gráfico gerado por t-SNE, a distância entre dois agrupamentos indica com fidelidade o grau de diferença entre eles no espaço original.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. O t-SNE preserva a vizinhança <em>local</em>. As distâncias globais e o tamanho dos grupos não são confiáveis.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. O t-SNE serve para visualizar a vizinhança local. A distância entre grupos no gráfico não tem significado confiável.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 4</div>
+  <p class="statement">Ponto identificado como anomalia por um modelo de Isolation Forest em base de pagamentos constitui prova suficiente de irregularidade.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. Anomalia é <strong>indício</strong> para investigar. Muitas anomalias são legítimas.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Anomalia ≠ fraude. O ponto marcado orienta a investigação, mas não prova nada.</div>
+</div>
+
+<div class="quiz" data-key="a">
+  <div class="q-num">Item 5 · Alternativas</div>
+  <p class="statement">Por que o IQR costuma ser preferível ao z-score para achar valores atípicos em pagamentos com alguns valores extremos?</p>
+  <div class="options stack">
+    <button class="opt" data-answer="a">Quartis são pouco afetados pelos próprios valores extremos</button>
+    <button class="opt" data-answer="b">Quartis exigem que os dados sigam distribuição normal</button>
+    <button class="opt" data-answer="c">Quartis analisam todas as variáveis da base simultaneamente</button>
+  </div>
+  <div class="feedback" data-for="a">Isso. A média e o desvio-padrão do z-score são puxados pelos outliers. Os quartis, quase nada.</div>
+  <div class="feedback" data-for="b">É o contrário: o IQR <em>não</em> exige normalidade. A vantagem dele é a robustez aos extremos.</div>
+  <div class="feedback" data-for="c">Não. O IQR, como o z-score, olha uma variável por vez. A vantagem dele é a robustez aos extremos.</div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  <em>An Introduction to Statistical Learning</em>, cap. 12 (aprendizado não
+  supervisionado: PCA, k-means e agrupamento hierárquico).
+</p>
+<p class="source" id="f1">[1] scikit-learn, <a href="https://scikit-learn.org/stable/modules/clustering.html" target="_blank" rel="noopener">Clustering</a>, com uma tabela comparativa dos algoritmos.</p>
+<p class="source" id="f2">[2] scikit-learn, <a href="https://scikit-learn.org/stable/modules/decomposition.html" target="_blank" rel="noopener">Decomposing signals in components (PCA)</a>.</p>
+<p class="source" id="f3">[3] Wattenberg, Viégas e Johnson, <a href="https://distill.pub/2016/misread-tsne/" target="_blank" rel="noopener">How to Use t-SNE Effectively</a>, Distill, 2016.</p>
+<p class="source" id="f4">[4] scikit-learn, <a href="https://scikit-learn.org/stable/modules/outlier_detection.html" target="_blank" rel="noopener">Novelty and Outlier Detection</a>.</p>
+
+<div class="ask-teacher">
+  Ficou na dúvida sobre como escolher k, ou sobre quando o DBSCAN falha?
+  Pergunte aqui na conversa.
+</div>
+
+<div class="nav">
+  <a href="0002-regressao-classificacao-metricas.html">← Lição 2: métricas</a>
+  <a href="0004-sobreajuste-vies-variancia-regularizacao.html">Lição 4: sobreajuste e regularização →</a>
+</div>
+
+<script src="../../assets/quiz.js"></script>
