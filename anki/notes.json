@@ -100,5 +100,636 @@
                        "Frente":  "O que cada paradigma recebe para aprender: supervisionado, não supervisionado e por reforço?",
                        "Verso":  "\u003cb\u003eSupervisionado\u003c/b\u003e: dados \u003cb\u003ecom rótulo\u003c/b\u003e (classificação, regressão).\u003cbr\u003e\u003cb\u003eNão supervisionado\u003c/b\u003e: dados \u003cb\u003esem rótulo\u003c/b\u003e (agrupamento, redução de dimensionalidade).\u003cbr\u003e\u003cb\u003eReforço\u003c/b\u003e: \u003cb\u003erecompensa\u003c/b\u003e pelas ações (jogos, robótica)."
                    }
+    },
+    {
+        "noteId":  1794669388155,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "semissupervisionado"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é aprendizado \u003cb\u003esemissupervisionado\u003c/b\u003e e quando ele é útil?",
+                       "Verso":  "Combina \u003cb\u003epoucos dados rotulados\u003c/b\u003e com \u003cb\u003emuitos sem rótulo\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eÉ útil quando \u003cb\u003erotular é caro\u003c/b\u003e, como quando cada caso exige a análise de um auditor."
+                   }
+    },
+    {
+        "noteId":  1794669388156,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "semissupervisionado"
+                 ],
+        "fields":  {
+                       "Frente":  "Como funciona o \u003cb\u003eself-training\u003c/b\u003e (autotreinamento)?",
+                       "Verso":  "1. Treina com os poucos dados rotulados.\u003cbr\u003e2. Prevê os não rotulados e aceita como \u003cb\u003epseudo-rótulo\u003c/b\u003e só os de \u003cb\u003emaior confiança\u003c/b\u003e.\u003cbr\u003e3. Junta esses ao treino e \u003cb\u003eretreina\u003c/b\u003e.\u003cbr\u003e4. Repete o ciclo."
+                   }
+    },
+    {
+        "noteId":  1794669388157,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "pegadinha",
+                     "semissupervisionado"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais suposições o semissupervisionado exige e o que acontece se falharem?",
+                       "Verso":  "Suposições: \u003cb\u003esuavidade\u003c/b\u003e (pontos próximos têm o mesmo rótulo), \u003cb\u003ecluster\u003c/b\u003e (a fronteira passa por regiões vazias) e \u003cb\u003evariedade\u003c/b\u003e (os dados vivem numa estrutura de menor dimensão).\u003cbr\u003e\u003cbr\u003eSe falharem, ou se os primeiros pseudo-rótulos estiverem errados, o \u003cb\u003eerro se propaga\u003c/b\u003e e o resultado pode ficar \u003cb\u003epior do que usar só os rotulados\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794669388158,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "reforco"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais os elementos do aprendizado por reforço?",
+                       "Verso":  "\u003cb\u003eAgente\u003c/b\u003e, \u003cb\u003eambiente\u003c/b\u003e, \u003cb\u003eestado\u003c/b\u003e (situação atual), \u003cb\u003eação\u003c/b\u003e, \u003cb\u003erecompensa\u003c/b\u003e (retorno imediato) e \u003cb\u003epolítica\u003c/b\u003e (regra estado → ação).\u003cbr\u003e\u003cbr\u003eO objetivo é maximizar a \u003cb\u003erecompensa acumulada\u003c/b\u003e (retorno), normalmente com desconto γ para recompensas futuras."
+                   }
+    },
+    {
+        "noteId":  1794669388159,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "reforco"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é o dilema \u003cb\u003eexploração × explotação\u003c/b\u003e?",
+                       "Verso":  "\u003cb\u003eExploração\u003c/b\u003e: testar ações novas para descobrir se são melhores.\u003cbr\u003e\u003cb\u003eExplotação\u003c/b\u003e: repetir a melhor ação já conhecida.\u003cbr\u003e\u003cbr\u003eSó explotar trava o agente numa solução ruim. Só explorar nunca aproveita o que aprendeu. Ex.: ε-greedy, que explora ao acaso com probabilidade ε."
+                   }
+    },
+    {
+        "noteId":  1794669388160,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "pegadinha",
+                     "reforco"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é \u003cb\u003ereward hacking\u003c/b\u003e?",
+                       "Verso":  "O agente acha um \u003cb\u003eatalho\u003c/b\u003e que maximiza a recompensa \u003cb\u003esem cumprir o objetivo real\u003c/b\u003e. Acontece porque a recompensa foi mal especificada."
+                   }
+    },
+    {
+        "noteId":  1794669388161,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "reforco"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais os limites do aprendizado por reforço?",
+                       "Verso":  "Precisa de \u003cb\u003emuita interação\u003c/b\u003e ou de um \u003cb\u003esimulador\u003c/b\u003e. A recompensa pode ser \u003cb\u003eatrasada\u003c/b\u003e, o que dificulta saber qual ação foi a responsável (atribuição de crédito). \u003cb\u003eDefinir a recompensa\u003c/b\u003e é difícil e há risco de reward hacking.\u003cbr\u003e\u003cbr\u003eRaramente é a ferramenta certa para dados tabulares comuns."
+                   }
+    },
+    {
+        "noteId":  1794669388162,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "tarefas"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual a diferença entre \u003cb\u003eregressão\u003c/b\u003e e \u003cb\u003eclassificação\u003c/b\u003e?",
+                       "Verso":  "\u003cb\u003eRegressão\u003c/b\u003e: prevê um \u003cb\u003evalor contínuo\u003c/b\u003e (valor de contrato, prazo em dias).\u003cbr\u003e\u003cb\u003eClassificação\u003c/b\u003e: prevê uma \u003cb\u003ecategoria\u003c/b\u003e (fraude/não fraude, tipo de irregularidade)."
+                   }
+    },
+    {
+        "noteId":  1794669388163,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "pegadinha",
+                     "tarefas"
+                 ],
+        "fields":  {
+                       "Frente":  "Regressão logística é um modelo de regressão?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e É um modelo de \u003cb\u003eclassificação\u003c/b\u003e. Ela calcula uma \u003cb\u003eprobabilidade\u003c/b\u003e (função sigmoide) e aplica um \u003cb\u003elimiar\u003c/b\u003e (ex.: 0,5) para decidir a classe."
+                   }
+    },
+    {
+        "noteId":  1794669388164,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "metricas"
+                 ],
+        "fields":  {
+                       "Frente":  "MAE, MSE, RMSE e R²: o que mede cada um?",
+                       "Verso":  "\u003cb\u003eMAE\u003c/b\u003e: média do |erro|. Fica na mesma unidade e é mais robusto a outliers.\u003cbr\u003e\u003cb\u003eMSE\u003c/b\u003e: média do erro². Pune muito os erros grandes, e a unidade fica ao quadrado.\u003cbr\u003e\u003cb\u003eRMSE\u003c/b\u003e: raiz do MSE, de volta à unidade original.\u003cbr\u003e\u003cb\u003eR²\u003c/b\u003e: fração da variância explicada. 1 = perfeito, 0 = igual a prever a média, negativo = pior que a média."
+                   }
+    },
+    {
+        "noteId":  1794669388165,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "metricas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Precisão × recall: o que cada um responde?",
+                       "Verso":  "\u003cb\u003ePrecisão\u003c/b\u003e = VP / (VP + FP): \u003ci\u003edos casos que o modelo apontou como fraude, quantos eram fraude?\u003c/i\u003e\u003cbr\u003e\u003cb\u003eRecall\u003c/b\u003e (sensibilidade) = VP / (VP + FN): \u003ci\u003ede todas as fraudes reais, quantas o modelo pegou?\u003c/i\u003e"
+                   }
+    },
+    {
+        "noteId":  1794669388166,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "metricas"
+                 ],
+        "fields":  {
+                       "Frente":  "Quando priorizar recall e quando priorizar precisão?",
+                       "Verso":  "\u003cb\u003eRecall\u003c/b\u003e: quando \u003cb\u003edeixar passar\u003c/b\u003e um caso é caro (fraude não detectada, doença).\u003cbr\u003e\u003cb\u003ePrecisão\u003c/b\u003e: quando o \u003cb\u003ealarme falso\u003c/b\u003e é caro (equipe de auditoria limitada, acusar inocente).\u003cbr\u003e\u003cbr\u003eSubir um costuma baixar o outro (mexendo no limiar)."
+                   }
+    },
+    {
+        "noteId":  1794669388167,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "metricas"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é o \u003cb\u003eF1-score\u003c/b\u003e?",
+                       "Verso":  "É a \u003cb\u003emédia harmônica\u003c/b\u003e entre precisão e recall: 2·P·R / (P + R).\u003cbr\u003e\u003cbr\u003eEle só fica alto se as \u003cb\u003eduas\u003c/b\u003e métricas forem altas e pune quando uma delas é baixa."
+                   }
+    },
+    {
+        "noteId":  1794669388168,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "metricas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que a acurácia engana com classes desbalanceadas?",
+                       "Verso":  "Com 1% de fraude, um modelo que diz \u003cb\u003esempre “não é fraude”\u003c/b\u003e acerta \u003cb\u003e99%\u003c/b\u003e, mas tem \u003cb\u003erecall 0\u003c/b\u003e: não pega nenhuma fraude.\u003cbr\u003e\u003cbr\u003eNesse caso, use precisão, recall, F1 e AUC."
+                   }
+    },
+    {
+        "noteId":  1794669388169,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "metricas"
+                 ],
+        "fields":  {
+                       "Frente":  "O que mede a \u003cb\u003eAUC-ROC\u003c/b\u003e?",
+                       "Verso":  "A curva ROC mostra a taxa de verdadeiros positivos × a taxa de falsos positivos em \u003cb\u003etodos os limiares\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eAUC = área sob a curva = probabilidade de o modelo dar nota maior a um positivo do que a um negativo. \u003cb\u003e0,5 = aleatório\u003c/b\u003e, \u003cb\u003e1 = perfeito\u003c/b\u003e. Não depende do limiar escolhido."
+                   }
+    },
+    {
+        "noteId":  1794669388170,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "agrupamento",
+                     "cgu",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as limitações do \u003cb\u003ek-means\u003c/b\u003e?",
+                       "Verso":  "• É preciso \u003cb\u003edefinir k\u003c/b\u003e antes (cotovelo, silhueta).\u003cbr\u003e• Assume grupos \u003cb\u003eesféricos\u003c/b\u003e e de tamanho parecido.\u003cbr\u003e• É sensível a \u003cb\u003eoutliers\u003c/b\u003e, à \u003cb\u003eescala\u003c/b\u003e das variáveis e à \u003cb\u003einicialização\u003c/b\u003e.\u003cbr\u003e• Todo ponto cai em algum grupo, sem noção de ruído."
+                   }
+    },
+    {
+        "noteId":  1794669388171,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "agrupamento",
+                     "cgu",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "Como funciona o \u003cb\u003eDBSCAN\u003c/b\u003e e qual sua vantagem?",
+                       "Verso":  "Agrupa por \u003cb\u003edensidade\u003c/b\u003e (parâmetros eps e minPts): regiões densas viram grupos e pontos isolados viram \u003cb\u003eruído\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eVantagens: \u003cb\u003enão precisa definir k\u003c/b\u003e e acha grupos de \u003cb\u003equalquer formato\u003c/b\u003e. Fraqueza: grupos com densidades muito diferentes."
+                   }
+    },
+    {
+        "noteId":  1794669388172,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "agrupamento",
+                     "cgu",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é o agrupamento \u003cb\u003ehierárquico\u003c/b\u003e?",
+                       "Verso":  "Junta (aglomerativo) ou divide (divisivo) grupos passo a passo e gera uma árvore chamada \u003cb\u003edendrograma\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003ePara escolher o número de grupos, \u003cb\u003ecorta-se\u003c/b\u003e o dendrograma numa altura. Não exige k antes."
+                   }
+    },
+    {
+        "noteId":  1794669388173,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "reducao-dimensionalidade"
+                 ],
+        "fields":  {
+                       "Frente":  "O que faz o \u003cb\u003ePCA\u003c/b\u003e?",
+                       "Verso":  "Redução de dimensionalidade \u003cb\u003elinear\u003c/b\u003e: cria \u003cb\u003ecomponentes principais\u003c/b\u003e não correlacionados (ortogonais), ordenados pela \u003cb\u003evariância\u003c/b\u003e que preservam.\u003cbr\u003e\u003cbr\u003eExige \u003cb\u003epadronizar\u003c/b\u003e as variáveis antes. Custo: os componentes são difíceis de interpretar."
+                   }
+    },
+    {
+        "noteId":  1794669388174,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "pegadinha",
+                     "reducao-dimensionalidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Para que servem t-SNE e UMAP, e qual o cuidado?",
+                       "Verso":  "São técnicas \u003cb\u003enão lineares\u003c/b\u003e, usadas principalmente para \u003cb\u003evisualizar\u003c/b\u003e dados em 2D/3D.\u003cbr\u003e\u003cbr\u003eCuidado: as distâncias entre grupos e o tamanho dos grupos no gráfico \u003cb\u003enão têm significado confiável\u003c/b\u003e. Não substituem o PCA como pré-processamento geral."
+                   }
+    },
+    {
+        "noteId":  1794669388175,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "pegadinha",
+                     "reducao-dimensionalidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Seleção × extração de variáveis",
+                       "Verso":  "\u003cb\u003eSeleção\u003c/b\u003e: escolhe um subconjunto das colunas \u003cb\u003eque já existem\u003c/b\u003e (ex.: Lasso). Mantém a interpretação.\u003cbr\u003e\u003cb\u003eExtração\u003c/b\u003e: cria \u003cb\u003evariáveis novas\u003c/b\u003e combinando as originais (ex.: PCA)."
+                   }
+    },
+    {
+        "noteId":  1794669388176,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "reducao-dimensionalidade"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é a \u003cb\u003emaldição da dimensionalidade\u003c/b\u003e?",
+                       "Verso":  "Com muitas variáveis, os dados ficam \u003cb\u003eesparsos\u003c/b\u003e, as \u003cb\u003edistâncias perdem o significado\u003c/b\u003e (tudo fica longe de tudo) e é preciso \u003cb\u003eexponencialmente mais dados\u003c/b\u003e. Prejudica principalmente k-NN e agrupamento."
+                   }
+    },
+    {
+        "noteId":  1794669388177,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anomalias",
+                     "cgu",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as técnicas de detecção de anomalias?",
+                       "Verso":  "• \u003cb\u003ez-score\u003c/b\u003e: |z| \u003e 3. \u003cb\u003eIQR\u003c/b\u003e: fora de [Q1 − 1,5·IQR ; Q3 + 1,5·IQR].\u003cbr\u003e• \u003cb\u003eIsolation Forest\u003c/b\u003e: anomalias são isoladas com \u003cb\u003epoucos cortes\u003c/b\u003e aleatórios.\u003cbr\u003e• \u003cb\u003eOne-Class SVM\u003c/b\u003e: aprende a fronteira do que é normal.\u003cbr\u003e• \u003cb\u003eAutoencoder\u003c/b\u003e: anomalia = \u003cb\u003eerro de reconstrução\u003c/b\u003e alto."
+                   }
+    },
+    {
+        "noteId":  1794669388178,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anomalias",
+                     "cgu",
+                     "ia",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que a detecção de anomalias costuma ser não supervisionada, e anomalia é igual a fraude?",
+                       "Verso":  "Porque há \u003cb\u003epoucos ou nenhum\u003c/b\u003e exemplo rotulado de fraude.\u003cbr\u003e\u003cbr\u003e\u003cb\u003eAnomalia ≠ fraude\u003c/b\u003e: o ponto marcado é só um \u003cb\u003eindício\u003c/b\u003e para alguém investigar."
+                   }
+    },
+    {
+        "noteId":  1794669388179,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "overfitting",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Subajuste × sobreajuste: como ficam os erros de treino e de teste?",
+                       "Verso":  "\u003cb\u003eSubajuste\u003c/b\u003e: erro \u003cb\u003ealto no treino\u003c/b\u003e e alto no teste. Modelo simples demais, com \u003cb\u003ealto viés\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eSobreajuste\u003c/b\u003e: erro \u003cb\u003emuito baixo no treino\u003c/b\u003e e alto no teste. Modelo que decorou o ruído, com \u003cb\u003ealta variância\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794669388180,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "overfitting"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual o sinal típico de sobreajuste?",
+                       "Verso":  "Uma \u003cb\u003ediferença grande\u003c/b\u003e entre o desempenho no \u003cb\u003etreino\u003c/b\u003e (ótimo) e no \u003cb\u003eteste\u003c/b\u003e (ruim). Por isso, avalie sempre em dados que o modelo \u003cb\u003enão viu\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794669388181,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "overfitting"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é o trade-off viés-variância?",
+                       "Verso":  "\u003cb\u003eViés\u003c/b\u003e: erro por suposições simplistas demais (gera subajuste).\u003cbr\u003e\u003cb\u003eVariância\u003c/b\u003e: o quanto o modelo muda se o treino mudar (gera sobreajuste).\u003cbr\u003e\u003cbr\u003eErro esperado = viés² + variância + \u003cb\u003eruído irredutível\u003c/b\u003e. Aumentar a complexidade baixa o viés e sobe a variância."
+                   }
+    },
+    {
+        "noteId":  1794669388182,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "overfitting",
+                     "validacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Holdout × validação cruzada k-fold",
+                       "Verso":  "\u003cb\u003eHoldout\u003c/b\u003e: separa uma parte fixa para teste. É simples, mas depende da sorte da divisão.\u003cbr\u003e\u003cb\u003ek-fold\u003c/b\u003e: divide em k partes, treina em k−1, testa na que sobrou e repete k vezes fazendo a média. A estimativa fica mais \u003cb\u003eestável\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eEm séries temporais, \u003cb\u003enão embaralhar\u003c/b\u003e os dados: treine no passado e teste no futuro."
+                   }
+    },
+    {
+        "noteId":  1794669388183,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "overfitting"
+                 ],
+        "fields":  {
+                       "Frente":  "Como corrigir subajuste e como corrigir sobreajuste?",
+                       "Verso":  "\u003cb\u003eSubajuste\u003c/b\u003e: modelo mais complexo, mais variáveis, \u003cb\u003emenos\u003c/b\u003e regularização.\u003cbr\u003e\u003cb\u003eSobreajuste\u003c/b\u003e: mais dados, \u003cb\u003emais\u003c/b\u003e regularização, modelo mais simples, early stopping, poda, dropout e validação cruzada."
+                   }
+    },
+    {
+        "noteId":  1794669388184,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "pegadinha",
+                     "regularizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "L1 (Lasso) × L2 (Ridge)",
+                       "Verso":  "\u003cb\u003eL1\u003c/b\u003e: penaliza |w| e \u003cb\u003ezera\u003c/b\u003e coeficientes, então também faz \u003cb\u003eseleção de variáveis\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eL2\u003c/b\u003e: penaliza w² e \u003cb\u003eencolhe sem zerar\u003c/b\u003e. Lida bem com variáveis \u003cb\u003ecorrelacionadas\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eElastic Net\u003c/b\u003e: combina as duas."
+                   }
+    },
+    {
+        "noteId":  1794669388185,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "regularizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "O que acontece quando se aumenta o λ da regularização?",
+                       "Verso":  "A penalidade fica mais forte e o modelo fica \u003cb\u003emais simples\u003c/b\u003e (coeficientes menores). Isso reduz o sobreajuste, mas \u003cb\u003eexagerar leva a subajuste\u003c/b\u003e. λ = 0 é o mesmo que não regularizar."
+                   }
+    },
+    {
+        "noteId":  1794669388186,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "regularizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que a L1 zera coeficientes e a L2 não?",
+                       "Verso":  "A região da L1 é um \u003cb\u003elosango\u003c/b\u003e, com cantos sobre os eixos, e a solução ótima tende a cair num canto, onde um coeficiente é 0.\u003cbr\u003eA da L2 é um \u003cb\u003ecírculo\u003c/b\u003e: a força da penalidade diminui junto com w, então w encolhe mas quase nunca chega a 0."
+                   }
+    },
+    {
+        "noteId":  1794669388187,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "regularizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "O que são \u003cb\u003edropout\u003c/b\u003e e \u003cb\u003eearly stopping\u003c/b\u003e?",
+                       "Verso":  "\u003cb\u003eDropout\u003c/b\u003e (redes neurais): desliga neurônios ao acaso durante o treino, o que impede a rede de depender de poucos caminhos.\u003cbr\u003e\u003cb\u003eEarly stopping\u003c/b\u003e: \u003cb\u003epara o treino\u003c/b\u003e quando o erro de validação começa a subir."
+                   }
+    },
+    {
+        "noteId":  1794669388188,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ia",
+                     "overfitting",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é \u003cb\u003evazamento de dados\u003c/b\u003e (data leakage)?",
+                       "Verso":  "Quando informação que \u003cb\u003enão estaria disponível\u003c/b\u003e na hora de prever (do teste ou do futuro) entra no treino.\u003cbr\u003e\u003cbr\u003eSintoma: desempenho \u003cb\u003ebom demais\u003c/b\u003e. Exemplos: padronizar com os dados todos antes de dividir treino e teste, ou usar uma variável criada depois do fato (ex.: “processo instaurado” para prever fraude)."
+                   }
+    },
+    {
+        "noteId":  1794669388189,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ensembles",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é um \u003cb\u003eensemble\u003c/b\u003e e por que funciona?",
+                       "Verso":  "É a combinação de vários modelos num resultado melhor que o de cada um sozinho.\u003cbr\u003e\u003cbr\u003eFunciona porque, se os modelos erram de formas \u003cb\u003ediferentes\u003c/b\u003e (erros pouco correlacionados), os erros se \u003cb\u003ecompensam\u003c/b\u003e na média ou na votação."
+                   }
+    },
+    {
+        "noteId":  1794669388190,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ensembles",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "Como funciona o \u003cb\u003ebagging\u003c/b\u003e?",
+                       "Verso":  "Treina modelos \u003cb\u003eem paralelo\u003c/b\u003e, cada um numa amostra \u003cb\u003ebootstrap\u003c/b\u003e (sorteada com reposição), e combina por \u003cb\u003emédia\u003c/b\u003e (regressão) ou \u003cb\u003evotação\u003c/b\u003e (classificação).\u003cbr\u003e\u003cbr\u003eEfeito principal: \u003cb\u003ereduz a variância\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794669388191,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ensembles",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "O que o Random Forest acrescenta ao bagging de árvores?",
+                       "Verso":  "Além do bootstrap, \u003cb\u003esorteia um subconjunto de variáveis\u003c/b\u003e em cada divisão da árvore. Isso deixa as árvores \u003cb\u003emenos correlacionadas\u003c/b\u003e entre si, e a média reduz mais a variância."
+                   }
+    },
+    {
+        "noteId":  1794669388192,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ensembles",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "Como funciona o \u003cb\u003eboosting\u003c/b\u003e?",
+                       "Verso":  "Treina modelos fracos \u003cb\u003eem sequência\u003c/b\u003e, e cada um foca nos \u003cb\u003eerros do anterior\u003c/b\u003e.\u003cbr\u003e• \u003cb\u003eAdaBoost\u003c/b\u003e: aumenta o peso dos exemplos errados.\u003cbr\u003e• \u003cb\u003eGradient Boosting\u003c/b\u003e (XGBoost, LightGBM): cada árvore ajusta os \u003cb\u003eresíduos\u003c/b\u003e (o gradiente do erro).\u003cbr\u003e\u003cbr\u003eEfeito principal: \u003cb\u003ereduz o viés\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794669388193,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ensembles",
+                     "ia",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O boosting pode sofrer sobreajuste?",
+                       "Verso":  "\u003cb\u003eSim.\u003c/b\u003e Como insiste nos erros, pode decorar ruído e outliers. Para controlar: \u003cb\u003etaxa de aprendizado\u003c/b\u003e baixa, limite de \u003cb\u003enúmero e profundidade\u003c/b\u003e das árvores, \u003cb\u003eearly stopping\u003c/b\u003e e regularização."
+                   }
+    },
+    {
+        "noteId":  1794669388194,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ensembles",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é \u003cb\u003estacking\u003c/b\u003e?",
+                       "Verso":  "Um \u003cb\u003emeta-modelo\u003c/b\u003e aprende a combinar as previsões de modelos \u003cb\u003ediferentes\u003c/b\u003e (ex.: árvore + SVM + logística). Ele é treinado com previsões feitas fora da amostra, para não vazar informação."
+                   }
+    },
+    {
+        "noteId":  1794669388195,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "cgu",
+                     "ensembles",
+                     "ia",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Bagging × boosting: qual é paralelo e o que cada um reduz?",
+                       "Verso":  "\u003cb\u003eBagging\u003c/b\u003e = \u003cb\u003eparalelo\u003c/b\u003e, reduz \u003cb\u003evariância\u003c/b\u003e (ex.: Random Forest).\u003cbr\u003e\u003cb\u003eBoosting\u003c/b\u003e = \u003cb\u003esequencial\u003c/b\u003e, reduz \u003cb\u003eviés\u003c/b\u003e (ex.: XGBoost).\u003cbr\u003e\u003cbr\u003eCusto dos dois: perdem \u003cb\u003einterpretabilidade\u003c/b\u003e e ficam mais pesados."
+                   }
+    },
+    {
+        "noteId":  1794669388196,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Baseline",
+        "modelName":  "Básico",
+        "tags":  [
+                     "baseline",
+                     "cgu",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é um \u003cb\u003ebaseline\u003c/b\u003e e quais os exemplos por tarefa?",
+                       "Verso":  "Um ponto de referência \u003cb\u003etrivial\u003c/b\u003e para comparar o modelo:\u003cbr\u003e• Classificação: prever sempre a \u003cb\u003eclasse mais comum\u003c/b\u003e.\u003cbr\u003e• Regressão: prever sempre a \u003cb\u003emédia/mediana\u003c/b\u003e.\u003cbr\u003e• Série temporal: repetir o \u003cb\u003eúltimo valor\u003c/b\u003e (naive).\u003cbr\u003e• Também valem regras de negócio simples e regressão linear/logística."
+                   }
+    },
+    {
+        "noteId":  1794669388197,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Baseline",
+        "modelName":  "Básico",
+        "tags":  [
+                     "baseline",
+                     "cgu",
+                     "ia"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que comparar o modelo com um baseline?",
+                       "Verso":  "Um modelo complexo que \u003cb\u003enão supera o baseline com folga\u003c/b\u003e não se justifica: custa mais, é mais difícil de explicar e de manter.\u003cbr\u003e\u003cbr\u003eAlém disso, se um modelo simples demais já vai \u003cb\u003emuito bem\u003c/b\u003e, desconfie de \u003cb\u003evazamento de dados\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794669388198,
+        "deckName":  "CGU::IA e Aprendizado de Máquina::Baseline",
+        "modelName":  "Básico",
+        "tags":  [
+                     "baseline",
+                     "cgu",
+                     "ia",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que, na administração pública, o modelo simples costuma ganhar quando o ganho é pequeno?",
+                       "Verso":  "Porque \u003cb\u003einterpretabilidade\u003c/b\u003e, \u003cb\u003eauditabilidade\u003c/b\u003e e a \u003cb\u003emotivação\u003c/b\u003e das decisões pesam muito. Pelo princípio da \u003cb\u003eparcimônia\u003c/b\u003e (navalha de Occam), com desempenho parecido, fica o modelo mais simples."
+                   }
     }
 ]
