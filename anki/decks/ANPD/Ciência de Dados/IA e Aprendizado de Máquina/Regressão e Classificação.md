@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação
 
-8 card(s).
+13 card(s).
 
 ## 1. Qual a diferença entre <b>regressão</b> e <b>classificação</b>?
 
@@ -49,4 +49,34 @@ Tags: `anpd` `ia` `metricas` `pegadinha`
 A curva ROC cruza a <b>TPR</b> (True Positive Rate · Taxa de Verdadeiros Positivos, TVP) com a <b>FPR</b> (False Positive Rate · Taxa de Falsos Positivos, TFP) em <b>todos os limiares</b>.<br><br>AUC = área sob a curva = probabilidade de o modelo dar nota maior a um positivo do que a um negativo. <b>0,5 = aleatório</b>, <b>1 = perfeito</b>. Não depende do limiar escolhido.
 
 Tags: `anpd` `ia` `metricas`
+
+## 9. Como ler os nomes VP, FN, FP e VN sem decorar?
+
+<b>Segunda palavra = o que o modelo disse</b> (Positivo = apontou fraude; Negativo = disse ok).<br><b>Primeira palavra = se ele acertou</b> (Verdadeiro = acertou; Falso = errou).<br><br>Ex.: <b>Falso Negativo</b> = disse "ok" e errou, logo <b>era fraude</b>. <b>Falso Positivo</b> = disse "fraude" e errou, logo <b>era normal</b>.
+
+Tags: `anpd,ia` `matriz-confusao` `metricas` `pegadinha`
+
+## 10. Na matriz de confusão, o que somam as linhas e as colunas?
+
+<b>Linhas = realidade</b>: VP + FN = positivos reais (fraudes de verdade); FP + VN = negativos reais.<br><b>Colunas = previsão</b>: VP + FP = o que o modelo apontou; FN + VN = o que ele liberou.<br><br>Ex.: 40 + 10 = 50 fraudes reais; 40 + 60 = 100 apontadas.
+
+Tags: `anpd,ia` `matriz-confusao` `metricas`
+
+## 11. Qual o denominador da precision (precisão) e qual o do recall (revocação)?
+
+<b>Precision · Precisão</b> = VP / (VP + FP): divide pela <b>coluna</b>, ou seja, pelo que o modelo <b>apontou</b>.<br><b>Recall · Revocação</b> = VP / (VP + FN): divide pela <b>linha</b>, ou seja, pelo que <b>realmente é</b> positivo.<br><br>"Total que realmente pertence à classe positiva" é o denominador do <b>recall</b>.
+
+Tags: `anpd,ia` `matriz-confusao` `metricas` `pegadinha`
+
+## 12. 1.000 notas, 10 fraudes, modelo que sempre diz "não fraude": quanto vale cada quadrado e cada métrica?
+
+VP = 0 · FN = 10 · FP = 0 · VN = 990.<br><b>Accuracy · Acurácia</b> = (0 + 990) / 1.000 = <b>99%</b>.<br><b>Recall · Revocação</b> = 0 / (0 + 10) = <b>0</b>.<br><b>Precision · Precisão</b> = 0 / 0: indefinida, porque ele não apontou nada.
+
+Tags: `anpd,ia` `matriz-confusao` `metricas` `pegadinha`
+
+## 13. Por que o R² (Coefficient of Determination · Coeficiente de Determinação) pode ser negativo?
+
+<b>R² = 1 − SQres / SQtot</b>: a soma dos erros² do modelo dividida pela soma dos erros² de prever sempre a média.<br><br>Se o modelo erra <b>mais</b> que a média, SQres &gt; SQtot e o R² fica <b>negativo</b>. Ex.: reais 10, 20, 30 (média 20, SQtot = 200); previstos 30, 10, 20 → SQres = 400 + 100 + 100 = 600 → R² = 1 − 3 = <b>−2</b>.
+
+Tags: `anpd,ia` `metricas` `pegadinha` `regressao`
 

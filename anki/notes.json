@@ -2440,5 +2440,79 @@
                        "Frente":  "Além da métrica, o que define se um modelo é adequado ao uso?",
                        "Verso":  "\u003cb\u003eExplicabilidade\u003c/b\u003e (LGPD, art. 20: revisão e critérios de decisões unicamente automatizadas); \u003cb\u003enão discriminação\u003c/b\u003e (art. 6º, IX); dados disponíveis no momento da previsão; custo, manutenção e auditabilidade (parcimônia)."
                    }
+    },
+    {
+        "noteId":  1794677510982,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "matriz-confusao",
+                     "metricas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Como ler os nomes VP, FN, FP e VN sem decorar?",
+                       "Verso":  "\u003cb\u003eSegunda palavra = o que o modelo disse\u003c/b\u003e (Positivo = apontou fraude; Negativo = disse ok).\u003cbr\u003e\u003cb\u003ePrimeira palavra = se ele acertou\u003c/b\u003e (Verdadeiro = acertou; Falso = errou).\u003cbr\u003e\u003cbr\u003eEx.: \u003cb\u003eFalso Negativo\u003c/b\u003e = disse \"ok\" e errou, logo \u003cb\u003eera fraude\u003c/b\u003e. \u003cb\u003eFalso Positivo\u003c/b\u003e = disse \"fraude\" e errou, logo \u003cb\u003eera normal\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794677510983,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "matriz-confusao",
+                     "metricas"
+                 ],
+        "fields":  {
+                       "Frente":  "Na matriz de confusão, o que somam as linhas e as colunas?",
+                       "Verso":  "\u003cb\u003eLinhas = realidade\u003c/b\u003e: VP + FN = positivos reais (fraudes de verdade); FP + VN = negativos reais.\u003cbr\u003e\u003cb\u003eColunas = previsão\u003c/b\u003e: VP + FP = o que o modelo apontou; FN + VN = o que ele liberou.\u003cbr\u003e\u003cbr\u003eEx.: 40 + 10 = 50 fraudes reais; 40 + 60 = 100 apontadas."
+                   }
+    },
+    {
+        "noteId":  1794677510984,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "matriz-confusao",
+                     "metricas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual o denominador da precision (precisão) e qual o do recall (revocação)?",
+                       "Verso":  "\u003cb\u003ePrecision · Precisão\u003c/b\u003e = VP / (VP + FP): divide pela \u003cb\u003ecoluna\u003c/b\u003e, ou seja, pelo que o modelo \u003cb\u003eapontou\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eRecall · Revocação\u003c/b\u003e = VP / (VP + FN): divide pela \u003cb\u003elinha\u003c/b\u003e, ou seja, pelo que \u003cb\u003erealmente é\u003c/b\u003e positivo.\u003cbr\u003e\u003cbr\u003e\"Total que realmente pertence à classe positiva\" é o denominador do \u003cb\u003erecall\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794677510985,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "matriz-confusao",
+                     "metricas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "1.000 notas, 10 fraudes, modelo que sempre diz \"não fraude\": quanto vale cada quadrado e cada métrica?",
+                       "Verso":  "VP = 0 · FN = 10 · FP = 0 · VN = 990.\u003cbr\u003e\u003cb\u003eAccuracy · Acurácia\u003c/b\u003e = (0 + 990) / 1.000 = \u003cb\u003e99%\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eRecall · Revocação\u003c/b\u003e = 0 / (0 + 10) = \u003cb\u003e0\u003c/b\u003e.\u003cbr\u003e\u003cb\u003ePrecision · Precisão\u003c/b\u003e = 0 / 0: indefinida, porque ele não apontou nada."
+                   }
+    },
+    {
+        "noteId":  1794677510986,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "metricas",
+                     "pegadinha",
+                     "regressao"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que o R² (Coefficient of Determination · Coeficiente de Determinação) pode ser negativo?",
+                       "Verso":  "\u003cb\u003eR² = 1 − SQres / SQtot\u003c/b\u003e: a soma dos erros² do modelo dividida pela soma dos erros² de prever sempre a média.\u003cbr\u003e\u003cbr\u003eSe o modelo erra \u003cb\u003emais\u003c/b\u003e que a média, SQres \u0026gt; SQtot e o R² fica \u003cb\u003enegativo\u003c/b\u003e. Ex.: reais 10, 20, 30 (média 20, SQtot = 200); previstos 30, 10, 20 → SQres = 400 + 100 + 100 = 600 → R² = 1 − 3 = \u003cb\u003e−2\u003c/b\u003e."
+                   }
     }
 ]

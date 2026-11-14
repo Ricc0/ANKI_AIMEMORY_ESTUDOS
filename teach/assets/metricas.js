@@ -29,6 +29,9 @@ document.querySelectorAll('.calc-metricas').forEach(function (box) {
   out.className = 'calc-out';
   box.appendChild(grid);
   box.appendChild(out);
+  const totais = document.createElement('div');
+  totais.className = 'calc-totais';
+  box.appendChild(totais);
 
   function pct(x) { return isFinite(x) ? (x * 100).toFixed(1).replace('.', ',') + '%' : '—'; }
   function recalc() {
@@ -50,6 +53,10 @@ document.querySelectorAll('.calc-metricas').forEach(function (box) {
         '</span><span class="calc-val">' + pct(l[2]) +
         '</span><span class="calc-formula">' + l[1] + '</span></div>';
     }).join('');
+    totais.innerHTML =
+      '<span><b>Realidade:</b> ' + (v.vp + v.fn) + ' positivos reais (VP+FN) · ' + (v.fp + v.vn) + ' negativos reais (FP+VN)</span>' +
+      '<span><b>Modelo:</b> apontou ' + (v.vp + v.fp) + ' (VP+FP) · liberou ' + (v.fn + v.vn) + ' (FN+VN)</span>' +
+      '<span><b>Total:</b> ' + total + '</span>';
   }
   recalc();
 });

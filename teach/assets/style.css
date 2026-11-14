@@ -381,6 +381,7 @@ table.cmp th small { display: block; white-space: normal; font-weight: 400; font
   border: 1px solid var(--rule); border-radius: 5px; padding: 0.35rem 0.5rem; width: 100%;
 }
 .calc-grid input:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+.calc-totais { display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; margin-top: 0.8rem; font-size: 0.8rem; color: var(--ink-soft); }
 .calc-out { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-top: 1rem; }
 .calc-metric { background: var(--paper-raised); border-radius: 5px; padding: 0.55rem 0.6rem; display: flex; flex-direction: column; }
 .calc-name { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }

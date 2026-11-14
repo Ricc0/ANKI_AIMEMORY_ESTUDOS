@@ -55,14 +55,67 @@
 </p>
 
 <h2>Métricas de classificação: tudo parte da matriz de confusão</h2>
+<p>
+  A matriz cruza duas coisas: o que <strong>era de verdade</strong> (as linhas) e o
+  que o <strong>modelo disse</strong> (as colunas). Os números abaixo são o cenário
+  da calculadora: 1.000 notas, das quais 50 são fraudes de verdade.
+</p>
 <div class="table-scroll">
   <table class="cmp">
-    <thead><tr><th></th><th>Previsto: fraude</th><th>Previsto: ok</th></tr></thead>
+    <caption>Linhas = realidade (o que era para ser) · Colunas = previsão (o que o modelo disse).</caption>
+    <thead><tr><th></th><th>Modelo disse: FRAUDE<small>positivo</small></th><th>Modelo disse: OK<small>negativo</small></th><th>Total da realidade</th></tr></thead>
     <tbody>
-      <tr><th>Real: fraude</th><td><strong>TP / VP</strong> · True Positive · Verdadeiro Positivo</td><td><strong>FN</strong> · False Negative · Falso Negativo (fraude que passou)</td></tr>
-      <tr><th>Real: ok</th><td><strong>FP</strong> · False Positive · Falso Positivo (alarme falso)</td><td><strong>TN / VN</strong> · True Negative · Verdadeiro Negativo</td></tr>
+      <tr><th>Era fraude<small>positivo real</small></th><td><strong>VP = 40</strong><br>TP · True Positive · Verdadeiro Positivo<br><em>acertou: pegou a fraude</em></td><td><strong>FN = 10</strong><br>False Negative · Falso Negativo<br><em>errou: deixou a fraude passar</em></td><td><strong>50</strong> fraudes reais<br>(VP + FN)</td></tr>
+      <tr><th>Era normal<small>negativo real</small></th><td><strong>FP = 60</strong><br>False Positive · Falso Positivo<br><em>errou: alarme falso</em></td><td><strong>VN = 890</strong><br>TN · True Negative · Verdadeiro Negativo<br><em>acertou: liberou a nota boa</em></td><td><strong>950</strong> normais reais<br>(FP + VN)</td></tr>
+      <tr><th>Total da previsão</th><td><strong>100</strong> apontadas<br>(VP + FP)</td><td><strong>900</strong> liberadas<br>(FN + VN)</td><td><strong>1.000</strong></td></tr>
     </tbody>
   </table>
+</div>
+
+<div class="box">
+  <strong>Como ler os nomes sem decorar</strong>
+  <p style="margin:0.4rem 0 0.2rem">Cada nome tem duas palavras, e cada uma responde uma pergunta:</p>
+  <ul style="margin:0.2rem 0">
+    <li><strong>A segunda palavra</strong> é <span class="anchor">O QUE O MODELO DISSE</span>: <em>Positivo</em> = apontou fraude; <em>Negativo</em> = disse que está ok.</li>
+    <li><strong>A primeira palavra</strong> diz <span class="anchor">SE ELE ACERTOU</span>: <em>Verdadeiro</em> = acertou; <em>Falso</em> = errou.</li>
+  </ul>
+  <p style="margin:0.4rem 0 0">
+    Então <strong>Falso Negativo</strong> = o modelo disse "ok" (negativo) e <em>errou</em>:
+    na verdade <strong>era fraude</strong>. E <strong>Falso Positivo</strong> = o modelo
+    disse "fraude" e errou: <strong>era uma nota normal</strong>. Para saber o que era
+    de verdade, inverta a segunda palavra quando a primeira for "Falso".
+  </p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha: o "negativo" do Falso Negativo</span>
+  O Falso Negativo <strong>não é um caso negativo</strong>. Ele é uma fraude real que
+  o modelo chamou de negativa. Por isso as fraudes reais são <strong>VP + FN</strong>
+  (a primeira linha) e as notas que o modelo apontou são <strong>VP + FP</strong>
+  (a primeira coluna). É dessas duas somas que nascem o recall (revocação) e a
+  precision (precisão).
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Treino rápido 1</div>
+  <p class="statement">Um falso negativo corresponde a um caso que, na realidade, pertence à classe positiva, mas que o modelo classificou como negativo.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="certo">Isso. "Negativo" é o que o modelo disse; "Falso" diz que ele errou. Logo, na verdade era positivo (fraude).</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Falso Negativo = o modelo disse negativo e errou, então o caso real era positivo.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Treino rápido 2</div>
+  <p class="statement">A soma dos falsos positivos com os verdadeiros positivos corresponde ao total de casos que, na realidade, pertencem à classe positiva.</p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback" data-for="errado">Isso. VP + FP é tudo o que o <strong>modelo apontou</strong> (a coluna). Os positivos reais são VP + FN (a linha). No cenário: 40 + 60 = 100 apontadas, mas 40 + 10 = 50 fraudes reais.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. VP + FP é o total que o modelo <em>apontou</em> como positivo (é o denominador da precision). Os positivos <em>reais</em> são VP + FN (o denominador do recall).</div>
 </div>
 
 <div class="box">
