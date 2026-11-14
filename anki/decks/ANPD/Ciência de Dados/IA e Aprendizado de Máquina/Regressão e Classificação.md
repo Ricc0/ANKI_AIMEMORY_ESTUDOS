@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação
 
-13 card(s).
+15 card(s).
 
 ## 1. Qual a diferença entre <b>regressão</b> e <b>classificação</b>?
 
@@ -79,4 +79,16 @@ Tags: `anpd,ia` `matriz-confusao` `metricas` `pegadinha`
 <b>R² = 1 − SQres / SQtot</b>: a soma dos erros² do modelo dividida pela soma dos erros² de prever sempre a média.<br><br>Se o modelo erra <b>mais</b> que a média, SQres &gt; SQtot e o R² fica <b>negativo</b>. Ex.: apartamentos de 10, 20 e 30 (média 20, SQtot = 200); previstos 30, 10, 20 → SQres = 400 + 100 + 100 = 600 → R² = 1 − 3 = <b>−2</b>.
 
 Tags: `anpd,ia` `metricas` `pegadinha` `regressao`
+
+## 14. Como conseguir recall (revocação) de 100% sem nenhuma inteligência?
+
+Dizendo <b>"positivo" para todo mundo</b>. Num teste de COVID que dá positivo para as 1.000 pessoas, os 50 doentes são pegos: recall = 50/50 = <b>100%</b>.<br><br>Mas a precision (precisão) despenca: 50/1.000 = 5%. Por isso o recall <b>nunca</b> deve ser olhado sozinho.
+
+Tags: `anpd,ia` `metricas` `pegadinha` `recall`
+
+## 15. O recall (revocação) é afetado pelos falsos positivos?
+
+<b>Não.</b> Recall = VP / (VP + FN): só olha a linha dos <b>doentes de verdade</b>. Os saudáveis que deram positivo (FP) não entram na conta.<br><br>Quem pune o FP é a precision (precisão), que divide por VP + FP.
+
+Tags: `anpd,ia` `metricas` `pegadinha` `recall`
 

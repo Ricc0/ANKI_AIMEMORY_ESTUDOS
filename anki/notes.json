@@ -2514,5 +2514,35 @@
                        "Frente":  "Por que o R² (Coefficient of Determination · Coeficiente de Determinação) pode ser negativo?",
                        "Verso":  "\u003cb\u003eR² = 1 − SQres / SQtot\u003c/b\u003e: a soma dos erros² do modelo dividida pela soma dos erros² de prever sempre a média.\u003cbr\u003e\u003cbr\u003eSe o modelo erra \u003cb\u003emais\u003c/b\u003e que a média, SQres \u0026gt; SQtot e o R² fica \u003cb\u003enegativo\u003c/b\u003e. Ex.: apartamentos de 10, 20 e 30 (média 20, SQtot = 200); previstos 30, 10, 20 → SQres = 400 + 100 + 100 = 600 → R² = 1 − 3 = \u003cb\u003e−2\u003c/b\u003e."
                    }
+    },
+    {
+        "noteId":  1794680844930,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "metricas",
+                     "pegadinha",
+                     "recall"
+                 ],
+        "fields":  {
+                       "Frente":  "Como conseguir recall (revocação) de 100% sem nenhuma inteligência?",
+                       "Verso":  "Dizendo \u003cb\u003e\"positivo\" para todo mundo\u003c/b\u003e. Num teste de COVID que dá positivo para as 1.000 pessoas, os 50 doentes são pegos: recall = 50/50 = \u003cb\u003e100%\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eMas a precision (precisão) despenca: 50/1.000 = 5%. Por isso o recall \u003cb\u003enunca\u003c/b\u003e deve ser olhado sozinho."
+                   }
+    },
+    {
+        "noteId":  1794680844931,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "metricas",
+                     "pegadinha",
+                     "recall"
+                 ],
+        "fields":  {
+                       "Frente":  "O recall (revocação) é afetado pelos falsos positivos?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Recall = VP / (VP + FN): só olha a linha dos \u003cb\u003edoentes de verdade\u003c/b\u003e. Os saudáveis que deram positivo (FP) não entram na conta.\u003cbr\u003e\u003cbr\u003eQuem pune o FP é a precision (precisão), que divide por VP + FP."
+                   }
     }
 ]
