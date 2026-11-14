@@ -50,9 +50,9 @@ A curva ROC cruza a <b>TPR</b> (True Positive Rate · Taxa de Verdadeiros Positi
 
 Tags: `anpd` `ia` `metricas`
 
-## 9. Como ler os nomes VP, FN, FP e VN sem decorar?
+## 9. Como ler os nomes VP, FN, FP e VN sem decorar? (ex.: <b>Falso Negativo</b>)
 
-<b>Segunda palavra = o que o modelo disse</b> (Positivo = apontou fraude; Negativo = disse ok).<br><b>Primeira palavra = se ele acertou</b> (Verdadeiro = acertou; Falso = errou).<br><br>Ex.: <b>Falso Negativo</b> = disse "ok" e errou, logo <b>era fraude</b>. <b>Falso Positivo</b> = disse "fraude" e errou, logo <b>era normal</b>.
+O nome tem duas palavras. Em <b>Falso Negativo</b>:<br>• <b>1ª palavra (Falso)</b> = o modelo <b>acertou ou errou</b>? → errou.<br>• <b>2ª palavra (Negativo)</b> = o que o modelo <b>disse</b> → "não é fraude".<br>Então: disse "não é fraude" e errou → <b>era fraude</b>.<br><br>Na sigla FN: F = 1ª palavra, N = 2ª.<br>Regra: se a 1ª palavra é <b>Falso</b>, a realidade é o <b>contrário</b> da 2ª.<br><br>VP = era fraude · FP = era normal · FN = era fraude · VN = era normal.
 
 Tags: `anpd,ia` `matriz-confusao` `metricas` `pegadinha`
 

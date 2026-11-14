@@ -74,16 +74,36 @@
 
 <div class="box">
   <strong>Como ler os nomes sem decorar</strong>
-  <p style="margin:0.4rem 0 0.2rem">Cada nome tem duas palavras, e cada uma responde uma pergunta:</p>
-  <ul style="margin:0.2rem 0">
-    <li><strong>A segunda palavra</strong> é <span class="anchor">O QUE O MODELO DISSE</span>: <em>Positivo</em> = apontou fraude; <em>Negativo</em> = disse que está ok.</li>
-    <li><strong>A primeira palavra</strong> diz <span class="anchor">SE ELE ACERTOU</span>: <em>Verdadeiro</em> = acertou; <em>Falso</em> = errou.</li>
-  </ul>
+  <p style="margin:0.4rem 0 0.2rem">
+    Todo nome de quadrado tem <strong>duas palavras</strong>. Pegue, por exemplo,
+    <strong>Falso Negativo</strong>:
+  </p>
+  <pre style="font-size:0.85rem;line-height:1.5">  FALSO      NEGATIVO
+    │            │
+    │            └─ 2ª palavra do nome: o que o MODELO DISSE
+    │               (Negativo = disse "não é fraude")
+    │
+    └─ 1ª palavra do nome: o modelo ACERTOU ou ERROU?
+       (Falso = errou)</pre>
+  <p style="margin:0.2rem 0">
+    Lendo junto: o modelo disse "não é fraude" e errou, então <strong>era fraude</strong>.
+    Na sigla é igual: em <strong>FN</strong>, o <strong>F</strong> é a 1ª palavra (Falso)
+    e o <strong>N</strong> é a 2ª (Negativo).
+  </p>
+  <div class="table-scroll">
+    <table class="cmp">
+      <thead><tr><th>Nome</th><th>1ª palavra: acertou?</th><th>2ª palavra: o modelo disse</th><th>Na realidade era</th></tr></thead>
+      <tbody>
+        <tr><th>Verdadeiro Positivo (VP)</th><td>Verdadeiro = acertou</td><td>Positivo = "é fraude"</td><td>fraude</td></tr>
+        <tr><th>Falso Positivo (FP)</th><td>Falso = errou</td><td>Positivo = "é fraude"</td><td>normal (alarme falso)</td></tr>
+        <tr><th>Falso Negativo (FN)</th><td>Falso = errou</td><td>Negativo = "não é fraude"</td><td>fraude (passou batido)</td></tr>
+        <tr><th>Verdadeiro Negativo (VN)</th><td>Verdadeiro = acertou</td><td>Negativo = "não é fraude"</td><td>normal</td></tr>
+      </tbody>
+    </table>
+  </div>
   <p style="margin:0.4rem 0 0">
-    Então <strong>Falso Negativo</strong> = o modelo disse "ok" (negativo) e <em>errou</em>:
-    na verdade <strong>era fraude</strong>. E <strong>Falso Positivo</strong> = o modelo
-    disse "fraude" e errou: <strong>era uma nota normal</strong>. Para saber o que era
-    de verdade, inverta a segunda palavra quando a primeira for "Falso".
+    Regra prática: quando a 1ª palavra é <strong>Falso</strong>, a realidade é o
+    <strong>contrário</strong> da 2ª palavra.
   </p>
 </div>
 

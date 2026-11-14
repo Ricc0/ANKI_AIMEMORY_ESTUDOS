@@ -2452,8 +2452,8 @@
                      "pegadinha"
                  ],
         "fields":  {
-                       "Frente":  "Como ler os nomes VP, FN, FP e VN sem decorar?",
-                       "Verso":  "\u003cb\u003eSegunda palavra = o que o modelo disse\u003c/b\u003e (Positivo = apontou fraude; Negativo = disse ok).\u003cbr\u003e\u003cb\u003ePrimeira palavra = se ele acertou\u003c/b\u003e (Verdadeiro = acertou; Falso = errou).\u003cbr\u003e\u003cbr\u003eEx.: \u003cb\u003eFalso Negativo\u003c/b\u003e = disse \"ok\" e errou, logo \u003cb\u003eera fraude\u003c/b\u003e. \u003cb\u003eFalso Positivo\u003c/b\u003e = disse \"fraude\" e errou, logo \u003cb\u003eera normal\u003c/b\u003e."
+                       "Frente":  "Como ler os nomes VP, FN, FP e VN sem decorar? (ex.: \u003cb\u003eFalso Negativo\u003c/b\u003e)",
+                       "Verso":  "O nome tem duas palavras. Em \u003cb\u003eFalso Negativo\u003c/b\u003e:\u003cbr\u003e• \u003cb\u003e1ª palavra (Falso)\u003c/b\u003e = o modelo \u003cb\u003eacertou ou errou\u003c/b\u003e? → errou.\u003cbr\u003e• \u003cb\u003e2ª palavra (Negativo)\u003c/b\u003e = o que o modelo \u003cb\u003edisse\u003c/b\u003e → \"não é fraude\".\u003cbr\u003eEntão: disse \"não é fraude\" e errou → \u003cb\u003eera fraude\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eNa sigla FN: F = 1ª palavra, N = 2ª.\u003cbr\u003eRegra: se a 1ª palavra é \u003cb\u003eFalso\u003c/b\u003e, a realidade é o \u003cb\u003econtrário\u003c/b\u003e da 2ª.\u003cbr\u003e\u003cbr\u003eVP = era fraude · FP = era normal · FN = era fraude · VN = era normal."
                    }
     },
     {
