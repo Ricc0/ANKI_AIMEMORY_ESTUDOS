@@ -33,6 +33,10 @@ try { [void](Invoke-Anki 'version'); $ankiOk = $true } catch {
 }
 
 if ($ankiOk) {
+    # Envia/recebe cards e revisões do AnkiWeb (celular). Exige login feito uma vez no Anki.
+    try { [void](Invoke-Anki 'sync'); Write-Host "AnkiWeb: sincronizado (celular recebe os cards novos)." }
+    catch { Write-Warning "AnkiWeb não sincronizou: $($_.Exception.Message). Faça login uma vez em Ferramentas > Sincronizar no Anki." }
+
     $ankiDir = Join-Path $repo 'anki'
     if (Test-Path $ankiDir) { Remove-Item -Recurse -Force $ankiDir }
 

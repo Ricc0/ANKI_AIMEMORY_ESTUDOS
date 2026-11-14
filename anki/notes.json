@@ -212,7 +212,7 @@
                  ],
         "fields":  {
                        "Frente":  "Qual a diferença entre \u003cb\u003eregressão\u003c/b\u003e e \u003cb\u003eclassificação\u003c/b\u003e?",
-                       "Verso":  "\u003cb\u003eRegressão\u003c/b\u003e: prevê um \u003cb\u003evalor contínuo\u003c/b\u003e (valor de contrato, prazo em dias).\u003cbr\u003e\u003cb\u003eClassificação\u003c/b\u003e: prevê uma \u003cb\u003ecategoria\u003c/b\u003e (fraude/não fraude, tipo de irregularidade)."
+                       "Verso":  "\u003cb\u003eRegressão\u003c/b\u003e: prevê um \u003cb\u003evalor contínuo\u003c/b\u003e (valor de contrato, prazo em dias). O ajuste clássico da regressão linear é por \u003cb\u003eOLS\u003c/b\u003e (Ordinary Least Squares · Mínimos Quadrados Ordinários, MQO).\u003cbr\u003e\u003cb\u003eClassificação\u003c/b\u003e: prevê uma \u003cb\u003ecategoria\u003c/b\u003e (fraude/não fraude, tipo de irregularidade)."
                    }
     },
     {
@@ -240,8 +240,8 @@
                      "metricas"
                  ],
         "fields":  {
-                       "Frente":  "MAE, MSE, RMSE e R²: o que mede cada um?",
-                       "Verso":  "\u003cb\u003eMAE\u003c/b\u003e: média do |erro|. Fica na mesma unidade e é mais robusto a outliers.\u003cbr\u003e\u003cb\u003eMSE\u003c/b\u003e: média do erro². Pune muito os erros grandes, e a unidade fica ao quadrado.\u003cbr\u003e\u003cb\u003eRMSE\u003c/b\u003e: raiz do MSE, de volta à unidade original.\u003cbr\u003e\u003cb\u003eR²\u003c/b\u003e: fração da variância explicada. 1 = perfeito, 0 = igual a prever a média, negativo = pior que a média."
+                       "Frente":  "MAE, MSE, RMSE e R² (EAM, EQM, REQM e coeficiente de determinação): o que mede cada um?",
+                       "Verso":  "\u003cb\u003eMAE\u003c/b\u003e (Mean Absolute Error · Erro Absoluto Médio, EAM): média do |erro|. Fica na unidade original e é mais robusto a outliers.\u003cbr\u003e\u003cb\u003eMSE\u003c/b\u003e (Mean Squared Error · Erro Quadrático Médio, EQM): média do erro². Pune muito os erros grandes, e a unidade fica ao quadrado.\u003cbr\u003e\u003cb\u003eRMSE\u003c/b\u003e (Root Mean Squared Error · Raiz do Erro Quadrático Médio, REQM): √MSE, de volta à unidade original.\u003cbr\u003e\u003cb\u003eR²\u003c/b\u003e (Coefficient of Determination · Coeficiente de Determinação): fração da variância explicada. 1 = perfeito, 0 = igual a prever a média, negativo = pior que a média."
                    }
     },
     {
@@ -255,8 +255,8 @@
                      "pegadinha"
                  ],
         "fields":  {
-                       "Frente":  "Precisão × recall: o que cada um responde?",
-                       "Verso":  "\u003cb\u003ePrecisão\u003c/b\u003e = VP / (VP + FP): \u003ci\u003edos casos que o modelo apontou como fraude, quantos eram fraude?\u003c/i\u003e\u003cbr\u003e\u003cb\u003eRecall\u003c/b\u003e (sensibilidade) = VP / (VP + FN): \u003ci\u003ede todas as fraudes reais, quantas o modelo pegou?\u003c/i\u003e"
+                       "Frente":  "Precision (precisão) × recall (revocação): o que cada um responde?",
+                       "Verso":  "\u003cb\u003ePrecision · Precisão\u003c/b\u003e = TP/(TP+FP) = VP/(VP+FP): \u003ci\u003edos casos que o modelo apontou como fraude, quantos eram fraude?\u003c/i\u003e\u003cbr\u003e\u003cb\u003eRecall · Revocação\u003c/b\u003e (sensibilidade; TPR, True Positive Rate · Taxa de Verdadeiros Positivos) = TP/(TP+FN) = VP/(VP+FN): \u003ci\u003ede todas as fraudes reais, quantas o modelo pegou?\u003c/i\u003e\u003cbr\u003e\u003cbr\u003eTP/VP = True Positive · Verdadeiro Positivo; FP = False Positive · Falso Positivo; FN = False Negative · Falso Negativo."
                    }
     },
     {
@@ -269,8 +269,8 @@
                      "metricas"
                  ],
         "fields":  {
-                       "Frente":  "Quando priorizar recall e quando priorizar precisão?",
-                       "Verso":  "\u003cb\u003eRecall\u003c/b\u003e: quando \u003cb\u003edeixar passar\u003c/b\u003e um caso é caro (fraude não detectada, doença).\u003cbr\u003e\u003cb\u003ePrecisão\u003c/b\u003e: quando o \u003cb\u003ealarme falso\u003c/b\u003e é caro (equipe de auditoria limitada, acusar inocente).\u003cbr\u003e\u003cbr\u003eSubir um costuma baixar o outro (mexendo no limiar)."
+                       "Frente":  "Quando priorizar recall (revocação) e quando priorizar precision (precisão)?",
+                       "Verso":  "\u003cb\u003eRecall · Revocação\u003c/b\u003e: quando \u003cb\u003edeixar passar\u003c/b\u003e um caso é caro (fraude não detectada, doença), ou seja, quando o FN (False Negative · Falso Negativo) custa caro.\u003cbr\u003e\u003cb\u003ePrecision · Precisão\u003c/b\u003e: quando o \u003cb\u003ealarme falso\u003c/b\u003e é caro (equipe de auditoria limitada, acusar inocente), ou seja, quando o FP (False Positive · Falso Positivo) custa caro.\u003cbr\u003e\u003cbr\u003eSubir um costuma baixar o outro (mexendo no limiar)."
                    }
     },
     {
@@ -283,8 +283,8 @@
                      "metricas"
                  ],
         "fields":  {
-                       "Frente":  "O que é o \u003cb\u003eF1-score\u003c/b\u003e?",
-                       "Verso":  "É a \u003cb\u003emédia harmônica\u003c/b\u003e entre precisão e recall: 2·P·R / (P + R).\u003cbr\u003e\u003cbr\u003eEle só fica alto se as \u003cb\u003eduas\u003c/b\u003e métricas forem altas e pune quando uma delas é baixa."
+                       "Frente":  "O que é o \u003cb\u003eF1-score\u003c/b\u003e (medida F1)?",
+                       "Verso":  "É a \u003cb\u003emédia harmônica\u003c/b\u003e entre precision (precisão) e recall (revocação): 2·P·R / (P + R).\u003cbr\u003e\u003cbr\u003eEle só fica alto se as \u003cb\u003eduas\u003c/b\u003e métricas forem altas e pune quando uma delas é baixa."
                    }
     },
     {
@@ -298,8 +298,8 @@
                      "pegadinha"
                  ],
         "fields":  {
-                       "Frente":  "Por que a acurácia engana com classes desbalanceadas?",
-                       "Verso":  "Com 1% de fraude, um modelo que diz \u003cb\u003esempre “não é fraude”\u003c/b\u003e acerta \u003cb\u003e99%\u003c/b\u003e, mas tem \u003cb\u003erecall 0\u003c/b\u003e: não pega nenhuma fraude.\u003cbr\u003e\u003cbr\u003eNesse caso, use precisão, recall, F1 e AUC."
+                       "Frente":  "Por que a accuracy (acurácia) engana com classes desbalanceadas?",
+                       "Verso":  "Com 1% de fraude, um modelo que diz \u003cb\u003esempre “não é fraude”\u003c/b\u003e tem \u003cb\u003e99% de accuracy (acurácia)\u003c/b\u003e, mas \u003cb\u003erecall (revocação) 0\u003c/b\u003e: não pega nenhuma fraude.\u003cbr\u003e\u003cbr\u003eNesse caso, use precision (precisão), recall (revocação), F1-score (medida F1) e AUC (área sob a curva)."
                    }
     },
     {
@@ -312,8 +312,8 @@
                      "metricas"
                  ],
         "fields":  {
-                       "Frente":  "O que mede a \u003cb\u003eAUC-ROC\u003c/b\u003e?",
-                       "Verso":  "A curva ROC mostra a taxa de verdadeiros positivos × a taxa de falsos positivos em \u003cb\u003etodos os limiares\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eAUC = área sob a curva = probabilidade de o modelo dar nota maior a um positivo do que a um negativo. \u003cb\u003e0,5 = aleatório\u003c/b\u003e, \u003cb\u003e1 = perfeito\u003c/b\u003e. Não depende do limiar escolhido."
+                       "Frente":  "O que mede a \u003cb\u003eAUC-ROC\u003c/b\u003e (Area Under the Curve – Receiver Operating Characteristic · Área sob a Curva ROC – Característica de Operação do Receptor)?",
+                       "Verso":  "A curva ROC cruza a \u003cb\u003eTPR\u003c/b\u003e (True Positive Rate · Taxa de Verdadeiros Positivos, TVP) com a \u003cb\u003eFPR\u003c/b\u003e (False Positive Rate · Taxa de Falsos Positivos, TFP) em \u003cb\u003etodos os limiares\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eAUC = área sob a curva = probabilidade de o modelo dar nota maior a um positivo do que a um negativo. \u003cb\u003e0,5 = aleatório\u003c/b\u003e, \u003cb\u003e1 = perfeito\u003c/b\u003e. Não depende do limiar escolhido."
                    }
     },
     {
@@ -528,8 +528,8 @@
                      "regularizacao"
                  ],
         "fields":  {
-                       "Frente":  "L1 (Lasso) × L2 (Ridge)",
-                       "Verso":  "\u003cb\u003eL1\u003c/b\u003e: penaliza |w| e \u003cb\u003ezera\u003c/b\u003e coeficientes, então também faz \u003cb\u003eseleção de variáveis\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eL2\u003c/b\u003e: penaliza w² e \u003cb\u003eencolhe sem zerar\u003c/b\u003e. Lida bem com variáveis \u003cb\u003ecorrelacionadas\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eElastic Net\u003c/b\u003e: combina as duas."
+                       "Frente":  "L1 · Lasso × L2 · Ridge",
+                       "Verso":  "\u003cb\u003eL1 · Lasso\u003c/b\u003e (Least Absolute Shrinkage and Selection Operator · Regressão Lasso): penaliza |w| e \u003cb\u003ezera\u003c/b\u003e coeficientes, então também faz \u003cb\u003eseleção de variáveis\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eL2 · Ridge\u003c/b\u003e (Ridge Regression · Regressão em crista): penaliza w² e \u003cb\u003eencolhe sem zerar\u003c/b\u003e. Lida bem com variáveis \u003cb\u003ecorrelacionadas\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eElastic Net\u003c/b\u003e (Rede elástica): combina as duas."
                    }
     },
     {

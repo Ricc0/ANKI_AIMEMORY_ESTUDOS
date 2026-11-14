@@ -20,14 +20,18 @@
 </tbody></table></div>
 
 <h2>Métricas</h2>
+<p class="source" style="margin-top:-0.3rem">TP/VP = True Positive · Verdadeiro Positivo; FP = False Positive · Falso Positivo; FN = False Negative · Falso Negativo; TN/VN = True Negative · Verdadeiro Negativo.</p>
 <div class="table-scroll"><table class="cmp"><tbody>
-  <tr><th>MAE / MSE / RMSE</th><td>|erro| médio / erro² médio / √MSE. O MSE e o RMSE punem os erros grandes.</td></tr>
-  <tr><th>R²</th><td>Variância explicada. 0 = prever a média. Pode ser negativo.</td></tr>
-  <tr><th>Precisão</th><td>VP / (VP + FP): dos que apontei, quantos acertei.</td></tr>
-  <tr><th>Recall</th><td>VP / (VP + FN): das fraudes reais, quantas peguei.</td></tr>
-  <tr><th>F1</th><td>Média harmônica de precisão e recall.</td></tr>
-  <tr><th>AUC-ROC</th><td>Desempenho em todos os limiares. 0,5 = chute, 1 = perfeito.</td></tr>
-  <tr><th>Acurácia</th><td>(VP + VN) / total. Engana com classes desbalanceadas.</td></tr>
+  <tr><th>MAE</th><td><em>Mean Absolute Error</em> · Erro Absoluto Médio (EAM): média de |erro|, na unidade original.</td></tr>
+  <tr><th>MSE</th><td><em>Mean Squared Error</em> · Erro Quadrático Médio (EQM): média de erro². Pune erros grandes.</td></tr>
+  <tr><th>RMSE</th><td><em>Root Mean Squared Error</em> · Raiz do Erro Quadrático Médio (REQM): √MSE, de volta à unidade original.</td></tr>
+  <tr><th>OLS</th><td><em>Ordinary Least Squares</em> · Mínimos Quadrados Ordinários (MQO): ajuste da regressão linear que minimiza a soma dos erros².</td></tr>
+  <tr><th>R²</th><td><em>Coefficient of Determination</em> · Coeficiente de Determinação: variância explicada. 0 = prever a média. Pode ser negativo.</td></tr>
+  <tr><th>Precision</th><td>Precisão = VP / (VP + FP): dos que apontei, quantos acertei.</td></tr>
+  <tr><th>Recall</th><td>Revocação (sensibilidade, TPR · Taxa de Verdadeiros Positivos) = VP / (VP + FN): das fraudes reais, quantas peguei.</td></tr>
+  <tr><th>F1-score</th><td>Medida F1: média harmônica de precisão e recall.</td></tr>
+  <tr><th>AUC-ROC</th><td><em>Area Under the Curve – Receiver Operating Characteristic</em> · Área sob a Curva ROC: TPR × FPR (Taxa de Falsos Positivos) em todos os limiares. 0,5 = chute, 1 = perfeito.</td></tr>
+  <tr><th>Accuracy</th><td>Acurácia = (VP + VN) / total. Engana com classes desbalanceadas.</td></tr>
 </tbody></table></div>
 
 <h2>Não supervisionado</h2>
@@ -51,8 +55,8 @@
   <tr><th>Viés-variância</th><td>Erro = viés² + variância + ruído irredutível.</td></tr>
   <tr><th>k-fold</th><td>k partições, treina em k−1, testa na restante, faz a média.</td></tr>
   <tr><th>Vazamento (leakage)</th><td>Informação do teste ou do futuro no treino. Sintoma: bom demais.</td></tr>
-  <tr><th>L1 (Lasso)</th><td>Penaliza |w|. Zera coeficientes e seleciona variáveis.</td></tr>
-  <tr><th>L2 (Ridge)</th><td>Penaliza w². Encolhe sem zerar e lida bem com variáveis correlacionadas.</td></tr>
+  <tr><th>L1 · Lasso</th><td><em>Least Absolute Shrinkage and Selection Operator</em> · Regressão Lasso. Penaliza |w|. Zera coeficientes e seleciona variáveis.</td></tr>
+  <tr><th>L2 · Ridge</th><td><em>Ridge Regression</em> · Regressão em crista. Penaliza w². Encolhe sem zerar e lida bem com variáveis correlacionadas.</td></tr>
   <tr><th>λ</th><td>Maior = modelo mais simples. Exagerar leva a subajuste.</td></tr>
   <tr><th>Dropout / early stopping</th><td>Desligar neurônios ao acaso / parar quando a validação piora.</td></tr>
 </tbody></table></div>

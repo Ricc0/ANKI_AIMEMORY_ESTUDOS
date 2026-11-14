@@ -32,9 +32,9 @@ Tags: `anpd` `ia` `overfitting` `validacao`
 
 Tags: `anpd` `ia` `overfitting`
 
-## 6. L1 (Lasso) × L2 (Ridge)
+## 6. L1 · Lasso × L2 · Ridge
 
-<b>L1</b>: penaliza |w| e <b>zera</b> coeficientes, então também faz <b>seleção de variáveis</b>.<br><b>L2</b>: penaliza w² e <b>encolhe sem zerar</b>. Lida bem com variáveis <b>correlacionadas</b>.<br><b>Elastic Net</b>: combina as duas.
+<b>L1 · Lasso</b> (Least Absolute Shrinkage and Selection Operator · Regressão Lasso): penaliza |w| e <b>zera</b> coeficientes, então também faz <b>seleção de variáveis</b>.<br><b>L2 · Ridge</b> (Ridge Regression · Regressão em crista): penaliza w² e <b>encolhe sem zerar</b>. Lida bem com variáveis <b>correlacionadas</b>.<br><b>Elastic Net</b> (Rede elástica): combina as duas.
 
 Tags: `anpd` `ia` `pegadinha` `regularizacao`
 

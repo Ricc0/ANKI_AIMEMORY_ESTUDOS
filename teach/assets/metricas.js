@@ -5,10 +5,10 @@
 // recall e F1 a cada alteração. Os valores data-* são o cenário inicial.
 document.querySelectorAll('.calc-metricas').forEach(function (box) {
   const campos = [
-    ['vp', 'VP · fraude apontada como fraude'],
-    ['fn', 'FN · fraude que passou'],
-    ['fp', 'FP · alarme falso'],
-    ['vn', 'VN · normal tida como normal']
+    ['vp', 'TP/VP · True Positive · fraude apontada como fraude'],
+    ['fn', 'FN · False Negative · fraude que passou'],
+    ['fp', 'FP · False Positive · alarme falso'],
+    ['vn', 'TN/VN · True Negative · normal tida como normal']
   ];
   const grid = document.createElement('div');
   grid.className = 'calc-grid';
@@ -40,10 +40,10 @@ document.querySelectorAll('.calc-metricas').forEach(function (box) {
     const rec = v.vp / (v.vp + v.fn);
     const f1 = 2 * prec * rec / (prec + rec);
     const linhas = [
-      ['Acurácia', '(VP+VN) / total', acc],
-      ['Precisão', 'VP / (VP+FP)', prec],
-      ['Recall', 'VP / (VP+FN)', rec],
-      ['F1', '2·P·R / (P+R)', f1]
+      ['Accuracy · Acurácia', '(VP+VN) / total', acc],
+      ['Precision · Precisão', 'VP / (VP+FP)', prec],
+      ['Recall · Revocação', 'VP / (VP+FN)', rec],
+      ['F1-score · Medida F1', '2·P·R / (P+R)', f1]
     ];
     out.innerHTML = linhas.map(function (l) {
       return '<div class="calc-metric"><span class="calc-name">' + l[0] +

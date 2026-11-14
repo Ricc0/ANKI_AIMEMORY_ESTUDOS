@@ -12,6 +12,8 @@
 - Toda explicação vira **cards no Anki** (deck `ANPD::<Trilha>::<Matéria>::<Assunto>`) e tudo vai para o GitHub (`sync.ps1` na raiz do repositório).
 - Quer ver **todos os artigos da LGPD**, em lotes de ~4–6 artigos (Lotes 1–14). Manter o mapa no índice atualizado.
 
+- **Siglas bilíngues (nov/2026):** em métricas e regressão, sempre a sigla e a expansão em inglês e em português. Ex.: MAE (Mean Absolute Error · Erro Absoluto Médio, EAM). Em cabeçalho de tabela, a expansão vai num `<small>` embaixo da sigla.
+
 ## Padrão das lições
 - Uma lição por tópico: kicker → h1 → lede → conceito → diagrama SVG → exemplos resolvidos (≥ 2 por conceito novo) → `.pegadinha` → prática com `.quiz` → fonte principal + citações `[n]` → `.ask-teacher` → `.nav`.
 - Começar com `<!doctype html>`, `<meta charset="utf-8">` e viewport. Reusar `assets/` (style.css, quiz.js, metricas.js). Componente novo vai para `assets/`.

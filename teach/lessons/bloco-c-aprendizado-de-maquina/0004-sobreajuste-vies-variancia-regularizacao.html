@@ -89,9 +89,9 @@
     <caption>L1 × L2 × Elastic Net<sup class="cite"><a href="#f4">[4]</a></sup>.</caption>
     <thead><tr><th></th><th>Penalidade</th><th>Efeito nos coeficientes</th><th>Bom para</th></tr></thead>
     <tbody>
-      <tr><th>L1 (Lasso)</th><td>|w|</td><td><strong>Zera</strong> alguns, então também seleciona variáveis</td><td>Modelos enxutos e interpretáveis</td></tr>
-      <tr><th>L2 (Ridge)</th><td>w²</td><td><strong>Encolhe sem zerar</strong></td><td>Variáveis correlacionadas (divide o peso entre elas)</td></tr>
-      <tr><th>Elastic Net</th><td>L1 + L2</td><td>Zera algumas e encolhe as demais</td><td>Grupos de variáveis correlacionadas com seleção</td></tr>
+      <tr><th>L1 · Lasso<small>Least Absolute Shrinkage and Selection Operator<br>Regressão Lasso (regularização L1)</small></th><td>|w|</td><td><strong>Zera</strong> alguns, então também seleciona variáveis</td><td>Modelos enxutos e interpretáveis</td></tr>
+      <tr><th>L2 · Ridge<small>Ridge Regression<br>Regressão em crista (regularização L2)</small></th><td>w²</td><td><strong>Encolhe sem zerar</strong></td><td>Variáveis correlacionadas (divide o peso entre elas)</td></tr>
+      <tr><th>Elastic Net<small>Rede elástica (L1 + L2)</small></th><td>L1 + L2</td><td>Zera algumas e encolhe as demais</td><td>Grupos de variáveis correlacionadas com seleção</td></tr>
     </tbody>
   </table>
 </div>
@@ -156,7 +156,7 @@
 
 <div class="quiz" data-key="errado">
   <div class="q-num">Item 5 · Caso prático</div>
-  <p class="statement">Um modelo de detecção de fraudes obteve F1 de 0,98 no conjunto de treinamento e de 0,61 no de teste. Para corrigir esse comportamento, recomenda-se reduzir a regularização, de modo que o modelo capte mais padrões dos dados.</p>
+  <p class="statement">Um modelo de detecção de fraudes obteve F1-score (medida F1) de 0,98 no conjunto de treinamento e de 0,61 no de teste. Para corrigir esse comportamento, recomenda-se reduzir a regularização, de modo que o modelo capte mais padrões dos dados.</p>
   <div class="options">
     <button class="opt" data-answer="certo">Certo</button>
     <button class="opt" data-answer="errado">Errado</button>
