@@ -1,0 +1,295 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Independência e Teorema de Bayes</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco B · Probabilidade e Estatística — Lição 2</div>
+<h1>Probabilidade condicional, independência e Teorema de Bayes</h1>
+<p class="lede">
+  Esta lição fecha o núcleo de probabilidade "pura" do edital. O Teorema de
+  Bayes, em particular, é a base matemática direta do classificador
+  <strong>Naive Bayes</strong> que você vai encontrar no bloco de Aprendizado
+  de Máquina — o que aprender aqui volta a aparecer lá.
+</p>
+
+<h2>Probabilidade condicional</h2>
+<p>
+  P(A|B) é a probabilidade de A ocorrer, <strong>dado que já sabemos</strong>
+  que B ocorreu. Definição:
+</p>
+<div class="box formula-box">
+  P(A|B) = P(A ∩ B) / P(B), &nbsp; com P(B) &gt; 0
+</div>
+<p>
+  Em palavras: dentre os casos em que B aconteceu, qual fração também tem A?
+  B vira o novo "espaço amostral" — reduzimos o universo de possibilidades.
+</p>
+<div class="box">
+  <strong>Exemplo resolvido</strong>
+  <p>
+    Lance dois dados honestos. Seja A = "a soma é 8" e B = "o primeiro dado
+    deu 3". Existem 36 resultados possíveis igualmente prováveis.
+    B = {(3,1),(3,2),(3,3),(3,4),(3,5),(3,6)}, 6 resultados, P(B) = 6/36.
+    Destes, só (3,5) dá soma 8. Logo A ∩ B = {(3,5)}, P(A∩B) = 1/36.
+  </p>
+  <p>
+    P(A|B) = (1/36) / (6/36) = 1/6. Faz sentido: se o primeiro dado já é 3,
+    só o segundo dado dando 5 fecha soma 8 — 1 chance em 6.
+  </p>
+</div>
+
+<h2>Independência</h2>
+<p>
+  A e B são <strong>independentes</strong> quando saber que um ocorreu não
+  muda nada sobre a chance do outro
+  <sup class="cite"><a href="https://www.khanacademy.org/math/ap-statistics/probability-ap/stats-conditional-probability/a/check-independence-conditional-probability" target="_blank" rel="noopener">[1]</a></sup>:
+</p>
+<div class="box formula-box">
+  P(A|B) = P(A) &nbsp;⟺&nbsp; P(A ∩ B) = P(A) · P(B)
+</div>
+<p>
+  A segunda forma é a mais usada na prática, porque não exige dividir por
+  P(B) e funciona mesmo quando queremos <em>checar</em> se dois eventos são
+  independentes a partir de probabilidades conhecidas.
+</p>
+<div class="box">
+  <strong>Exemplo resolvido — checando independência</strong>
+  <p>
+    Em uma população, P(fuma) = 0,3, P(tem doença X) = 0,1, e
+    P(fuma ∩ doença X) = 0,05. São independentes?
+  </p>
+  <p>
+    Se fossem, esperaríamos P(fuma)·P(doença) = 0,3 × 0,1 = 0,03. Mas o
+    valor observado é 0,05 ≠ 0,03 — <strong>não</strong> são independentes;
+    fumar está associado a uma chance maior da doença do que se fossem
+    eventos sem relação.
+  </p>
+</div>
+
+<h2>Teorema de Bayes</h2>
+<p>
+  Bayes "inverte" a condicional: relaciona P(A|B) com P(B|A), que muitas
+  vezes é mais fácil de medir diretamente.
+</p>
+<div class="box formula-box">
+  P(A|B) = [ P(B|A) · P(A) ] / P(B)
+</div>
+<p>
+  Quando P(B) não é dada diretamente, expanda usando a
+  <strong>lei da probabilidade total</strong> (aqui para o caso binário,
+  A e seu complemento Aᶜ):
+</p>
+<div class="box formula-box">
+  P(B) = P(B|A)·P(A) + P(B|Aᶜ)·P(Aᶜ)
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido — filtro de spam</strong>
+  <p>
+    30% dos e-mails que você recebe são spam: P(spam) = 0,3,
+    P(não-spam) = 0,7. A palavra "grátis" aparece em 40% dos spams,
+    mas só em 5% dos e-mails legítimos: P("grátis"|spam) = 0,4,
+    P("grátis"|não-spam) = 0,05.
+  </p>
+  <p>
+    Um e-mail chegou com a palavra "grátis". Qual a chance de ser spam?
+  </p>
+  <p>
+    Primeiro, a probabilidade total de ver "grátis":<br>
+    P("grátis") = 0,4×0,3 + 0,05×0,7 = 0,12 + 0,035 = 0,155
+  </p>
+  <p>
+    Agora Bayes:<br>
+    P(spam|"grátis") = (0,4 × 0,3) / 0,155 = 0,12 / 0,155 ≈ <strong>0,774</strong>
+  </p>
+  <p>
+    Ou seja: só de ver a palavra "grátis", a chance de spam sobe de 30%
+    (prior) para ~77% (posterior). É exatamente essa lógica — multiplicar
+    um "prior" por uma "verossimilhança" — que o classificador
+    <strong>Naive Bayes</strong> usa, só que combinando várias palavras
+    de uma vez.
+  </p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 380 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="180" y="18" text-anchor="middle" font-size="13" font-weight="600">e-mail recebido</text>
+      <line x1="180" y1="24" x2="80" y2="70"></line>
+      <line x1="180" y1="24" x2="280" y2="70"></line>
+      <text x="105" y="50" font-size="12" class="muted">P=0,3</text>
+      <text x="245" y="50" font-size="12" class="muted">P=0,7</text>
+      <rect class="node accent-fill" x="30" y="72" width="100" height="26" rx="4"></rect>
+      <text x="80" y="90" text-anchor="middle" font-size="13">spam</text>
+      <rect class="node" x="230" y="72" width="100" height="26" rx="4"></rect>
+      <text x="280" y="90" text-anchor="middle" font-size="13">não-spam</text>
+
+      <line x1="80" y1="98" x2="45" y2="140"></line>
+      <line x1="80" y1="98" x2="115" y2="140"></line>
+      <text x="20" y="122" font-size="11" class="muted">0,4</text>
+      <text x="120" y="122" font-size="11" class="muted">0,6</text>
+      <rect class="node ok-fill" x="10" y="142" width="70" height="24" rx="4"></rect>
+      <text x="45" y="158" text-anchor="middle" font-size="11">"grátis"</text>
+      <text x="45" y="182" text-anchor="middle" font-size="12" font-weight="600">0,12</text>
+      <rect class="node" x="90" y="142" width="70" height="24" rx="4"></rect>
+      <text x="125" y="158" text-anchor="middle" font-size="11">"não"</text>
+      <text x="125" y="182" text-anchor="middle" font-size="12" class="muted">0,18</text>
+
+      <line x1="280" y1="98" x2="245" y2="140"></line>
+      <line x1="280" y1="98" x2="315" y2="140"></line>
+      <text x="220" y="122" font-size="11" class="muted">0,05</text>
+      <text x="320" y="122" font-size="11" class="muted">0,95</text>
+      <rect class="node bad-fill" x="210" y="142" width="70" height="24" rx="4"></rect>
+      <text x="245" y="158" text-anchor="middle" font-size="11">"grátis"</text>
+      <text x="245" y="182" text-anchor="middle" font-size="12" font-weight="600">0,035</text>
+      <rect class="node" x="290" y="142" width="70" height="24" rx="4"></rect>
+      <text x="325" y="158" text-anchor="middle" font-size="11">"não"</text>
+      <text x="325" y="182" text-anchor="middle" font-size="12" class="muted">0,665</text>
+    </svg>
+    <figcaption>
+      Árvore de probabilidade. Os dois ramos destacados ("grátis") somam
+      0,12 + 0,035 = 0,155 = P("grátis") — o denominador de Bayes. A fatia
+      verde (spam ∩ "grátis" = 0,12) domina a soma, por isso o posterior
+      P(spam|"grátis") = 0,12/0,155 ≈ 0,774 fica alto.
+    </figcaption>
+  </figure>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha clássica</span>
+  P(A|B) e P(B|A) <strong>não são a mesma coisa</strong> — é a "falácia da
+  taxa base" (base rate fallacy), um dos erros mais cobrados em prova
+  <sup class="cite"><a href="https://www.youtube.com/watch?v=lG4VkPoG3ko" target="_blank" rel="noopener">[2]</a></sup>.
+  No exemplo do spam, P("grátis"|spam) = 0,4 é bem diferente de
+  P(spam|"grátis") ≈ 0,774. Confundir os dois é o erro mais comum em
+  itens de Bayes.
+  <p style="margin-top:0.8rem">
+    <strong>Exemplo clássico — teste médico:</strong> uma doença rara afeta
+    1% da população (P(doença) = 0,01). Um teste tem 90% de sensibilidade
+    (P(positivo|doença) = 0,9) e 5% de falso positivo
+    (P(positivo|saudável) = 0,05). Um paciente testou positivo — qual a
+    chance real de ele ter a doença?
+  </p>
+  <p>
+    P(positivo) = 0,9×0,01 + 0,05×0,99 = 0,009 + 0,0495 = 0,0585<br>
+    P(doença|positivo) = 0,009 / 0,0585 ≈ <strong>0,154</strong>
+  </p>
+  <p>
+    Mesmo com um teste "bom" (90% de sensibilidade), a chance real de ter a
+    doença após um positivo é só ~15% — porque a doença é rara, a maioria
+    dos positivos vem de falsos positivos entre a enorme população saudável.
+    Isso é a taxa base dominando o resultado — e é exatamente o tipo de
+    conta que a banca espera que você saiba fazer, não só reconhecer.
+  </p>
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 1</div>
+  <p class="statement">
+    Se A e B são eventos independentes com P(A) = 0,2 e P(B) = 0,5, então
+    P(A ∩ B) = 0,1.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto. Independência ⇒ P(A∩B) = P(A)·P(B) = 0,2 × 0,5 = 0,1.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia a fórmula de independência: P(A∩B) = P(A)·P(B) = 0,2×0,5 = 0,1.
+    A afirmação está certa.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 2</div>
+  <p class="statement">
+    Em um teste diagnóstico, se a probabilidade de um resultado positivo
+    dado que o paciente tem a doença é 0,9 (P(positivo|doença) = 0,9),
+    então a probabilidade de o paciente ter a doença dado um resultado
+    positivo também é 0,9 (P(doença|positivo) = 0,9).
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Isso marcaria como certa, mas é a falácia da taxa base — veja abaixo.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Correto, o item está <strong>errado</strong>. P(positivo|doença) e
+    P(doença|positivo) são condicionais diferentes (Bayes as relaciona,
+    mas não as iguala) — o valor de P(doença|positivo) depende também da
+    prevalência da doença P(doença) e da taxa de falsos positivos.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 3</div>
+  <p class="statement">
+    Se P(A) = 0,3, P(B) = 0,4 e P(A ∩ B) = 0,2, então A e B não são
+    estatisticamente independentes.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto. Se fossem independentes, P(A∩B) deveria ser 0,3×0,4 = 0,12.
+    Como o valor real é 0,2 ≠ 0,12, não são independentes.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Confira: P(A)·P(B) = 0,3×0,4 = 0,12, mas P(A∩B) dado é 0,2. Como são
+    diferentes, os eventos NÃO são independentes — o item está certo.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 4</div>
+  <p class="statement">
+    No exemplo do teste médico (doença com prevalência de 1%, teste com
+    90% de sensibilidade e 5% de falso positivo), um resultado positivo
+    implica probabilidade maior que 50% de o paciente ter a doença.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Isso marcaria como certa, mas o cálculo dá bem menos que 50% — veja abaixo.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Correto, o item está <strong>errado</strong>. P(doença|positivo) ≈
+    0,154 — só 15,4%, bem abaixo de 50%, por causa da baixa prevalência
+    da doença (efeito da taxa base).
+  </div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  Bussab & Morettin, <em>Estatística Básica</em>, seção de probabilidade
+  condicional e Teorema de Bayes. Se quiser uma segunda explicação visual,
+  o vídeo "The medical test paradox, and redesigning Bayes' rule" do canal
+  3Blue1Brown (YouTube) — referência de alta qualidade fora da lista
+  original, mas vale assistir contanto que ajude a fixar.
+</p>
+<p class="source">
+  Referências citadas nesta lição:
+  [1] <a href="https://www.khanacademy.org/math/ap-statistics/probability-ap/stats-conditional-probability/a/check-independence-conditional-probability" target="_blank" rel="noopener">Conditional probability and independence — Khan Academy</a> ·
+  [2] <a href="https://www.youtube.com/watch?v=lG4VkPoG3ko" target="_blank" rel="noopener">The medical test paradox — 3Blue1Brown</a>
+</p>
+
+<div class="ask-teacher">
+  Alguma parte não ficou clara? Pergunte ao seu professor (aqui, na
+  conversa) — é para isso que ele está aqui. Não avance com dúvida.
+</div>
+
+<div class="nav">
+  <a href="0001-espaco-amostral-e-axiomas.html">← Lição 1: espaço amostral e axiomas</a>
+  <span>Próxima: variáveis aleatórias discretas e função de probabilidade</span>
+</div>
+
+<script src="../../assets/quiz.js"></script>

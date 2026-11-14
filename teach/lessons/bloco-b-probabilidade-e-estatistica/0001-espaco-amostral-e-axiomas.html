@@ -1,0 +1,254 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espaço amostral e os axiomas da probabilidade</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco B · Probabilidade e Estatística — Lição 1</div>
+<h1>Espaço amostral, eventos e os axiomas da probabilidade</h1>
+<p class="lede">
+  Este é o ponto de partida do "delta técnico": a base sobre a qual toda a
+  Probabilidade e Estatística do edital é construída. É conteúdo que não se
+  comprime — sem isso, distribuições, inferência e até avaliação de modelos
+  de Machine Learning não fazem sentido depois.
+</p>
+
+<h2>Espaço amostral e evento</h2>
+<p>
+  Um <strong>experimento aleatório</strong> é qualquer processo cujo resultado
+  não pode ser previsto com certeza, mas cujos resultados possíveis são
+  conhecidos. O <strong>espaço amostral</strong> (<code>S</code> ou <code>Ω</code>)
+  é o conjunto de todos os resultados possíveis desse experimento.
+</p>
+<p>
+  Um <strong>evento</strong> é qualquer subconjunto de <code>S</code>. Se
+  jogamos um dado de 6 faces, <code>S = {1,2,3,4,5,6}</code>, e "sair número
+  par" é o evento <code>A = {2,4,6}</code>.
+</p>
+
+<h2>Os três axiomas (Kolmogorov)</h2>
+<p>
+  Toda a teoria da probabilidade é construída sobre três regras simples,
+  formalizadas por Andrei Kolmogorov em 1933
+  <sup class="cite"><a href="https://en.wikipedia.org/wiki/Probability_axioms" target="_blank" rel="noopener">[1]</a></sup>.
+  Para qualquer evento <code>A</code> em <code>S</code>:
+</p>
+<div class="box formula-box">
+  1. P(A) ≥ 0 <br>
+  2. P(S) = 1 <br>
+  3. Se A e B são mutuamente exclusivos (A ∩ B = ∅), então P(A ∪ B) = P(A) + P(B)
+</div>
+<p>
+  O axioma 1 diz que probabilidade nunca é negativa. O axioma 2 diz que
+  "algo do espaço amostral acontece" tem certeza absoluta (probabilidade 1).
+  O axioma 3 diz que, se dois eventos não podem acontecer ao mesmo tempo,
+  a chance de "um ou outro" é a soma das chances individuais.
+</p>
+
+<h2>Regras derivadas dos axiomas</h2>
+<p>Duas consequências que caem direto em prova:</p>
+<ul>
+  <li>
+    <strong>Complemento:</strong> <code>P(Aᶜ) = 1 − P(A)</code>
+    — se P(chover) = 0,3, então P(não chover) = 0,7.
+  </li>
+  <li>
+    <strong>União geral (inclusão-exclusão):</strong>
+    <code>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</code>
+    — subtrai a interseção para não contá-la duas vezes. Só vira a soma
+    simples do axioma 3 quando A e B são mutuamente exclusivos
+    (aí P(A ∩ B) = 0). Ver a
+    <sup class="cite"><a href="https://www.khanacademy.org/math/statistics-probability/probability-library/addition-rule-lib/a/addition-rule-for-probability-basic" target="_blank" rel="noopener">[2]</a></sup>
+    regra da adição da Khan Academy para outros exemplos.
+  </li>
+</ul>
+
+<div class="box">
+  <strong>Exemplo resolvido — por que subtrair a interseção</strong>
+  <p>
+    Lance um dado honesto de 6 faces, S = {1,2,3,4,5,6}.
+    A = "número par" = {2,4,6}, P(A) = 3/6 = 0,5.
+    B = "número maior que 3" = {4,5,6}, P(B) = 3/6 = 0,5.
+  </p>
+  <p>
+    Somar direto daria P(A) + P(B) = 1,0 (certeza absoluta) — mas
+    A ∪ B = {2,4,5,6}, então o valor real é P(A∪B) = 4/6 ≈ 0,667.
+    A soma ingênua errou porque 4 e 6 estão em <em>ambos</em> os eventos e
+    foram contados duas vezes. A interseção é A ∩ B = {4,6}, P(A∩B) = 2/6 = 1/3.
+    Corrigindo: P(A∪B) = 0,5 + 0,5 − 1/3 = 0,667 ✓ — bate com a contagem direta.
+  </p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 360 210" xmlns="http://www.w3.org/2000/svg">
+      <circle class="accent-fill" cx="150" cy="105" r="80"></circle>
+      <circle class="accent-fill-2" cx="220" cy="105" r="80"></circle>
+      <text x="95" y="40" font-size="15" font-weight="600">A · par</text>
+      <text x="230" y="40" font-size="15" font-weight="600">B · &gt; 3</text>
+      <text x="115" y="110" font-size="20">2</text>
+      <text x="181" y="145" font-size="20" font-weight="700">6</text>
+      <text x="181" y="110" font-size="20" font-weight="700">4</text>
+      <text x="252" y="110" font-size="20">5</text>
+      <text x="30" y="30" font-size="16" class="muted">1</text>
+      <text x="330" y="190" font-size="16" class="muted">3</text>
+      <text x="185" y="195" font-size="13" class="muted" text-anchor="middle">S = {1,2,3,4,5,6}</text>
+    </svg>
+    <figcaption>
+      A interseção (4 e 6) fica na área em comum. Somar P(A) + P(B) conta o 4 e o 6 duas vezes — por isso a fórmula geral subtrai P(A∩B).
+    </figcaption>
+  </figure>
+
+  <p>
+    Se A e B não tivessem nada em comum (mutuamente exclusivos), P(A∩B)
+    seria 0 e a fórmula viraria a soma simples do axioma 3 — a soma simples
+    é um caso particular, não a regra geral.
+  </p>
+</div>
+
+<div class="box">
+  <strong>Segundo exemplo — mesma regra, outro contexto</strong>
+  <p>
+    Em uma amostra de 200 estações de rádio-base fiscalizadas, 60 tiveram
+    alguma não-conformidade técnica (evento A) e 50 tiveram atraso no envio
+    de relatório (evento B). Dessas, 20 tiveram os dois problemas ao mesmo
+    tempo (A ∩ B). Qual a probabilidade de uma estação sorteada
+    aleatoriamente ter <em>pelo menos um</em> dos dois problemas?
+  </p>
+  <p>
+    P(A) = 60/200 = 0,30 · P(B) = 50/200 = 0,25 · P(A∩B) = 20/200 = 0,10<br>
+    P(A∪B) = 0,30 + 0,25 − 0,10 = <strong>0,45</strong> — 45% das estações
+    têm pelo menos um dos dois problemas.
+  </p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha clássica</span>
+  Eventos <strong>mutuamente exclusivos</strong> (não podem ocorrer juntos)
+  não são a mesma coisa que eventos <strong>independentes</strong> (a
+  ocorrência de um não afeta a probabilidade do outro). Na verdade, se dois
+  eventos têm probabilidade positiva e são mutuamente exclusivos, eles são
+  necessariamente <em>dependentes</em> — saber que A ocorreu garante que B
+  não ocorreu. Bancas adoram trocar um termo pelo outro em itens certo/errado.
+  <p style="margin-top:0.8rem">
+    <strong>Exemplo 1 (mutuamente exclusivos ⇒ dependentes):</strong>
+    tire uma carta de um baralho. A = "é um Rei", B = "é uma Dama". Nunca
+    ocorrem juntas, P(A∩B) = 0. Mas P(A|B) = P(A∩B)/P(B) = 0, enquanto
+    P(A) sozinha é 4/52 ≈ 0,077. Como P(A|B) ≠ P(A), saber que B ocorreu
+    <em>mudou</em> a chance de A — isso é dependência, não independência.
+  </p>
+  <p>
+    <strong>Exemplo 2 (independentes, não mutuamente exclusivos):</strong>
+    lance dois dados separados. A = "primeiro dado é par" (P=0,5),
+    B = "segundo dado dá 6" (P=1/6). Podem ocorrer juntas — não são
+    mutuamente exclusivas — e P(A∩B) = 0,5 × 1/6 = 1/12, exatamente o
+    produto das probabilidades individuais. Isso é independência de verdade.
+  </p>
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">
+    Em um experimento aleatório com espaço amostral S, se A e B são eventos
+    tais que P(A) = 0,4 e P(B) = 0,5, então P(A ∪ B) = 0,9, independentemente
+    de A e B serem ou não mutuamente exclusivos.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Isso marcaria a resposta como certa — mas a afirmação está errada, veja abaixo.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Correto, o item está <strong>errado</strong>. A soma direta só vale se A e B
+    forem mutuamente exclusivos. Em geral,
+    P(A ∪ B) = P(A) + P(B) − P(A ∩ B) ≤ 0,9, e só será exatamente 0,9 se
+    P(A ∩ B) = 0.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 2</div>
+  <p class="statement">
+    Se P(A) = 0,65, então a probabilidade do evento complementar de A é 0,35.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto. P(Aᶜ) = 1 − P(A) = 1 − 0,65 = 0,35.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Não — reveja a regra do complemento: P(Aᶜ) = 1 − P(A). Aqui daria 0,35.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 3</div>
+  <p class="statement">
+    Dois eventos A e B, ambos com probabilidade positiva, que são mutuamente
+    exclusivos não podem ser estatisticamente independentes.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — é exatamente a pegadinha acima. Saber que A ocorreu muda a
+    probabilidade de B para zero, então B não é independente de A.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia a caixa "Pegadinha clássica" acima: mutuamente exclusivo com
+    P &gt; 0 implica dependência, nunca independência.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">
+    Considerando o exemplo das 200 estações fiscalizadas (30% com
+    não-conformidade, 25% com atraso de relatório, 10% com os dois
+    problemas), a probabilidade de uma estação sorteada não ter nenhum dos
+    dois problemas é 0,55.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto. P(A∪B) = 0,45, logo P(nenhum) = P((A∪B)ᶜ) = 1 − 0,45 = 0,55
+    — combinando a regra do complemento com a da união.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Recalcule: P(A∪B) = 0,45 (do exemplo acima). "Nenhum dos dois" é o
+    complemento de A∪B, então 1 − 0,45 = 0,55. O item está certo.
+  </div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  Bussab & Morettin, <em>Estatística Básica</em>, capítulo de Probabilidade
+  (introdução, espaço amostral e axiomas). É a fonte indicada no plano de
+  estudos para todo o bloco de Probabilidade — leia a seção correspondente
+  antes da próxima lição.
+</p>
+<p class="source">
+  Referências citadas nesta lição:
+  [1] <a href="https://en.wikipedia.org/wiki/Probability_axioms" target="_blank" rel="noopener">Probability axioms — Wikipedia</a> ·
+  [2] <a href="https://www.khanacademy.org/math/statistics-probability/probability-library/addition-rule-lib/a/addition-rule-for-probability-basic" target="_blank" rel="noopener">Addition rule for probability — Khan Academy</a>
+</p>
+
+<div class="ask-teacher">
+  Alguma parte não ficou clara? Pergunte ao seu professor (aqui, na
+  conversa) — é para isso que ele está aqui. Não avance com dúvida.
+</div>
+
+<div class="nav">
+  <span>Lição 1 de 12+ · Bloco B</span>
+  <a href="0002-independencia-e-bayes.html">Próxima: independência e Teorema de Bayes →</a>
+</div>
+
+<script src="../../assets/quiz.js"></script>

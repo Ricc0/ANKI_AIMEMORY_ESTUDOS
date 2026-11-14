@@ -731,5 +731,1351 @@
                        "Frente":  "Por que, na administração pública, o modelo simples costuma ganhar quando o ganho é pequeno?",
                        "Verso":  "Porque \u003cb\u003einterpretabilidade\u003c/b\u003e, \u003cb\u003eauditabilidade\u003c/b\u003e e a \u003cb\u003emotivação\u003c/b\u003e das decisões pesam muito. Pelo princípio da \u003cb\u003eparcimônia\u003c/b\u003e (navalha de Occam), com desempenho parecido, fica o modelo mais simples."
                    }
+    },
+    {
+        "noteId":  1794671715616,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-01",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O sigilo do art. 5º, XII, da CF protege dados já \u003cb\u003earmazenados\u003c/b\u003e?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e O inciso XII protege a \u003cb\u003ecomunicação\u003c/b\u003e de dados (o fluxo, em trânsito). O dado já registrado (ex.: extrato de ligações) é protegido por outros dispositivos, como a intimidade (art. 5º, X)."
+                   }
+    },
+    {
+        "noteId":  1794671715617,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-01"
+                 ],
+        "fields":  {
+                       "Frente":  "O que o STF decidiu na \u003cb\u003eADI 6.387\u003c/b\u003e (2020)?",
+                       "Verso":  "Suspendeu a MP 954/2020, que obrigava as operadoras a compartilhar dados de clientes com o IBGE, e reconheceu a \u003cb\u003eproteção de dados / autodeterminação informativa\u003c/b\u003e como \u003cb\u003edireito fundamental autônomo\u003c/b\u003e, antes de haver texto expresso na CF."
+                   }
+    },
+    {
+        "noteId":  1794671715618,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-01",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual a ordem cronológica entre LGPD, ADI 6.387 e EC 115?",
+                       "Verso":  "\u003cb\u003eLGPD (2018) → ADI 6.387/STF (2020) → EC 115/2022.\u003c/b\u003e\u003cbr\u003e\u003cbr\u003eA EC 115 não criou o direito: positivou o que o STF já reconhecia e o tornou cláusula pétrea."
+                   }
+    },
+    {
+        "noteId":  1794671715619,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-01"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais três dispositivos a EC 115/2022 inseriu na Constituição?",
+                       "Verso":  "• \u003cb\u003eArt. 5º, LXXIX\u003c/b\u003e: direito fundamental à proteção dos dados pessoais, inclusive nos meios digitais.\u003cbr\u003e• \u003cb\u003eArt. 21, XXVI\u003c/b\u003e: competência \u003cb\u003eadministrativa\u003c/b\u003e da União para organizar e fiscalizar.\u003cbr\u003e• \u003cb\u003eArt. 22, XXX\u003c/b\u003e: competência \u003cb\u003elegislativa privativa\u003c/b\u003e da União."
+                   }
+    },
+    {
+        "noteId":  1794671715620,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-01"
+                 ],
+        "fields":  {
+                       "Frente":  "A proteção de dados pessoais é cláusula pétrea?",
+                       "Verso":  "\u003cb\u003eSim.\u003c/b\u003e Está no art. 5º (direitos e garantias individuais) e por isso é protegida pelo art. 60, §4º, IV, da CF contra emendas que tendam a aboli-la."
+                   }
+    },
+    {
+        "noteId":  1794671715621,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-01"
+                 ],
+        "fields":  {
+                       "Frente":  "O que garante o \u003cb\u003ehabeas data\u003c/b\u003e (art. 5º, LXXII)?",
+                       "Verso":  "a) \u003cb\u003eConhecer\u003c/b\u003e informações relativas ao impetrante em registros ou bancos de dados de entidades governamentais ou de caráter público.\u003cbr\u003eb) \u003cb\u003eRetificar\u003c/b\u003e dados, quando não se prefira fazê-lo por processo sigiloso, judicial ou administrativo."
+                   }
+    },
+    {
+        "noteId":  1794671715622,
+        "deckName":  "ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-02",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "A LGPD protege dados de \u003cb\u003epessoa jurídica\u003c/b\u003e?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Protege a \u003cb\u003epessoa natural\u003c/b\u003e (art. 1º). Mas ela se aplica ao tratamento feito por qualquer agente: pessoa natural ou jurídica, de direito público ou privado."
+                   }
+    },
+    {
+        "noteId":  1794671715623,
+        "deckName":  "ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-02"
+                 ],
+        "fields":  {
+                       "Frente":  "As normas gerais da LGPD obrigam quais entes?",
+                       "Verso":  "São de \u003cb\u003einteresse nacional\u003c/b\u003e e devem ser observadas pela \u003cb\u003eUnião, Estados, DF e Municípios\u003c/b\u003e (art. 1º, parágrafo único)."
+                   }
+    },
+    {
+        "noteId":  1794671715624,
+        "deckName":  "ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-02",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais são os 7 fundamentos da LGPD (art. 2º)?",
+                       "Verso":  "I respeito à privacidade; II autodeterminação informativa; III liberdade de expressão, informação, comunicação e opinião; IV inviolabilidade da intimidade, honra e imagem; V \u003cb\u003edesenvolvimento econômico e tecnológico e inovação\u003c/b\u003e; VI \u003cb\u003elivre iniciativa, livre concorrência e defesa do consumidor\u003c/b\u003e; VII direitos humanos, livre desenvolvimento da personalidade, dignidade e cidadania."
+                   }
+    },
+    {
+        "noteId":  1794671715625,
+        "deckName":  "ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-02"
+                 ],
+        "fields":  {
+                       "Frente":  "Quando a LGPD se aplica (art. 3º)?",
+                       "Verso":  "Independentemente do meio, do país da sede ou de onde estejam os dados, desde que:\u003cbr\u003eI a operação ocorra no território nacional;\u003cbr\u003eII o objetivo seja ofertar bens/serviços ou tratar dados de indivíduos localizados no Brasil;\u003cbr\u003eIII os dados tenham sido coletados no Brasil (titular aqui no momento da coleta)."
+                   }
+    },
+    {
+        "noteId":  1794671715626,
+        "deckName":  "ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-02"
+                 ],
+        "fields":  {
+                       "Frente":  "Quando a LGPD \u003cb\u003enão\u003c/b\u003e se aplica (art. 4º)?",
+                       "Verso":  "I pessoa natural, fins \u003cb\u003eexclusivamente particulares e não econômicos\u003c/b\u003e;\u003cbr\u003eII fins exclusivamente jornalísticos, artísticos ou acadêmicos;\u003cbr\u003eIII segurança pública, defesa nacional, segurança do Estado, investigação e repressão de infrações penais;\u003cbr\u003eIV dados vindos do exterior, sem compartilhamento com agentes brasileiros, de país com proteção adequada."
+                   }
+    },
+    {
+        "noteId":  1794671715627,
+        "deckName":  "ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-02",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Tratamento para fins \u003cb\u003eacadêmicos\u003c/b\u003e fica totalmente fora da LGPD?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e O art. 4º, II, \u003ci\u003eb\u003c/i\u003e, manda aplicar os \u003cb\u003earts. 7º e 11\u003c/b\u003e: é preciso base legal e, para dados sensíveis, uma hipótese do art. 11."
+                   }
+    },
+    {
+        "noteId":  1794671715628,
+        "deckName":  "ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-02",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Pessoa de direito privado pode tratar dados de segurança pública (art. 4º, III)?",
+                       "Verso":  "Em regra é \u003cb\u003evedado (§2º)\u003c/b\u003e, exceto em procedimentos sob tutela de pessoa jurídica de direito público, com \u003cb\u003einforme específico à ANPD\u003c/b\u003e. E nunca a \u003cb\u003etotalidade\u003c/b\u003e do banco, salvo se o capital for integralmente público (§4º). O §1º remete a legislação específica."
+                   }
+    },
+    {
+        "noteId":  1794671715629,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-03",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Controlador × operador × encarregado",
+                       "Verso":  "\u003cb\u003eControlador\u003c/b\u003e: a quem competem as \u003cb\u003edecisões\u003c/b\u003e sobre o tratamento (art. 5º, VI).\u003cbr\u003e\u003cb\u003eOperador\u003c/b\u003e: trata os dados \u003cb\u003eem nome do controlador\u003c/b\u003e (VII).\u003cbr\u003e\u003cb\u003eEncarregado\u003c/b\u003e: \u003cb\u003ecanal de comunicação\u003c/b\u003e entre controlador, titulares e ANPD (VIII). Não decide."
+                   }
+    },
+    {
+        "noteId":  1794671715630,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-03",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Quem são os \u003cb\u003eagentes de tratamento\u003c/b\u003e?",
+                       "Verso":  "Só o \u003cb\u003econtrolador e o operador\u003c/b\u003e (art. 5º, IX). O encarregado \u003cb\u003enão\u003c/b\u003e é agente de tratamento."
+                   }
+    },
+    {
+        "noteId":  1794671715631,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-03"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é dado pessoal (art. 5º, I)?",
+                       "Verso":  "Informação relacionada a pessoa natural \u003cb\u003eidentificada ou identificável\u003c/b\u003e. Não precisa ter o nome: se dá para chegar à pessoa, é dado pessoal."
+                   }
+    },
+    {
+        "noteId":  1794671715632,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-03"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais dados são \u003cb\u003esensíveis\u003c/b\u003e (art. 5º, II)?",
+                       "Verso":  "Origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização religiosa, filosófica ou política, dado de saúde ou vida sexual, dado genético ou biométrico, \u003cb\u003equando vinculado a pessoa natural\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715633,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-03",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Dado anonimizado é dado pessoal?",
+                       "Verso":  "Em regra \u003cb\u003enão\u003c/b\u003e (art. 12), \u003cb\u003esalvo\u003c/b\u003e se a anonimização for revertida com meios próprios ou \u003cb\u003epuder ser revertida com esforços razoáveis\u003c/b\u003e. O razoável considera custo, tempo e tecnologias disponíveis (§1º)."
+                   }
+    },
+    {
+        "noteId":  1794671715634,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-03",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Dado \u003cb\u003epseudonimizado\u003c/b\u003e sai da LGPD?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Na pseudonimização (art. 13, §4º) o dado só volta a ser associado à pessoa com uma informação adicional guardada à parte pelo controlador. É reversível, então continua sendo dado pessoal."
+                   }
+    },
+    {
+        "noteId":  1794671715635,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-03"
+                 ],
+        "fields":  {
+                       "Frente":  "Dados usados para \u003cb\u003eperfil comportamental\u003c/b\u003e são dados pessoais?",
+                       "Verso":  "Podem ser considerados dados pessoais quando usados para formar o perfil comportamental de pessoa natural \u003cb\u003eidentificada\u003c/b\u003e (art. 12, §2º)."
+                   }
+    },
+    {
+        "noteId":  1794671715636,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-03"
+                 ],
+        "fields":  {
+                       "Frente":  "Como a LGPD define \u003cb\u003econsentimento\u003c/b\u003e?",
+                       "Verso":  "Manifestação \u003cb\u003elivre, informada e inequívoca\u003c/b\u003e pela qual o titular concorda com o tratamento para uma \u003cb\u003efinalidade determinada\u003c/b\u003e (art. 5º, XII). Autorizações genéricas são \u003cb\u003enulas\u003c/b\u003e (art. 8º, §4º)."
+                   }
+    },
+    {
+        "noteId":  1794671715637,
+        "deckName":  "ANPD::LGPD e ANPD::04 Princípios",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-04"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais são os princípios do art. 6º?",
+                       "Verso":  "No caput, a \u003cb\u003eboa-fé\u003c/b\u003e. Depois: I finalidade; II adequação; III necessidade; IV livre acesso; V qualidade dos dados; VI transparência; VII segurança; VIII prevenção; IX não discriminação; X responsabilização e prestação de contas."
+                   }
+    },
+    {
+        "noteId":  1794671715638,
+        "deckName":  "ANPD::LGPD e ANPD::04 Princípios",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-04",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Finalidade × adequação × necessidade",
+                       "Verso":  "\u003cb\u003eFinalidade\u003c/b\u003e (PARA QUÊ?): propósitos legítimos, específicos, explícitos e informados, sem tratamento posterior incompatível.\u003cbr\u003e\u003cb\u003eAdequação\u003c/b\u003e (COMBINA?): compatibilidade com as finalidades informadas, conforme o contexto.\u003cbr\u003e\u003cb\u003eNecessidade\u003c/b\u003e (MÍNIMO?): dados pertinentes, proporcionais e não excessivos."
+                   }
+    },
+    {
+        "noteId":  1794671715639,
+        "deckName":  "ANPD::LGPD e ANPD::04 Princípios",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-04"
+                 ],
+        "fields":  {
+                       "Frente":  "O que garante o princípio do \u003cb\u003elivre acesso\u003c/b\u003e?",
+                       "Verso":  "Consulta \u003cb\u003efacilitada e gratuita\u003c/b\u003e sobre a forma e a duração do tratamento e sobre a integralidade dos dados pessoais (art. 6º, IV)."
+                   }
+    },
+    {
+        "noteId":  1794671715640,
+        "deckName":  "ANPD::LGPD e ANPD::04 Princípios",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-04",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "A transparência é irrestrita?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Garante informações claras, precisas e facilmente acessíveis, \u003cb\u003eobservados os segredos comercial e industrial\u003c/b\u003e (art. 6º, VI)."
+                   }
+    },
+    {
+        "noteId":  1794671715641,
+        "deckName":  "ANPD::LGPD e ANPD::04 Princípios",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-04",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O princípio da não discriminação proíbe qualquer diferenciação?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Proíbe o tratamento para fins discriminatórios \u003cb\u003eilícitos ou abusivos\u003c/b\u003e (art. 6º, IX)."
+                   }
+    },
+    {
+        "noteId":  1794671715642,
+        "deckName":  "ANPD::LGPD e ANPD::04 Princípios",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-04",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O que exige a responsabilização e prestação de contas (accountability)?",
+                       "Verso":  "Que o agente \u003cb\u003edemonstre\u003c/b\u003e a adoção de medidas eficazes e capazes de comprovar o cumprimento das normas, \u003cb\u003einclusive a eficácia\u003c/b\u003e delas (art. 6º, X). Não confundir com a responsabilidade civil por danos (arts. 42–45)."
+                   }
+    },
+    {
+        "noteId":  1794671715643,
+        "deckName":  "ANPD::LGPD e ANPD::04 Princípios",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-04"
+                 ],
+        "fields":  {
+                       "Frente":  "Segurança × prevenção",
+                       "Verso":  "\u003cb\u003eSegurança\u003c/b\u003e (VII): medidas técnicas e administrativas contra acessos não autorizados e situações acidentais ou ilícitas.\u003cbr\u003e\u003cb\u003ePrevenção\u003c/b\u003e (VIII): medidas para \u003cb\u003eprevenir a ocorrência de danos\u003c/b\u003e. Age antes do dano."
+                   }
+    },
+    {
+        "noteId":  1794671715644,
+        "deckName":  "ANPD::LGPD e ANPD::05 Bases legais",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-05",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O consentimento é a base legal preferencial?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e As 10 bases do art. 7º estão no \u003cb\u003emesmo patamar\u003c/b\u003e. Um tratamento pode ser lícito sem consentimento (contrato, obrigação legal, legítimo interesse...)."
+                   }
+    },
+    {
+        "noteId":  1794671715645,
+        "deckName":  "ANPD::LGPD e ANPD::05 Bases legais",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-05"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais são as 10 bases legais do art. 7º?",
+                       "Verso":  "I consentimento; II obrigação legal ou regulatória; III políticas públicas (adm. pública); IV estudos por órgão de pesquisa; V execução de contrato, a pedido do titular; VI exercício regular de direitos em processo; VII proteção da vida ou incolumidade física; VIII tutela da saúde (profissionais/serviços de saúde ou autoridade sanitária); IX legítimo interesse; X proteção do crédito."
+                   }
+    },
+    {
+        "noteId":  1794671715646,
+        "deckName":  "ANPD::LGPD e ANPD::05 Bases legais",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-05",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Regras do consentimento nos arts. 8º e 9º",
+                       "Verso":  "Por escrito ou outro meio que demonstre a vontade; se escrito, em \u003cb\u003ecláusula destacada\u003c/b\u003e. \u003cb\u003eÔnus da prova do controlador\u003c/b\u003e. Genérico é nulo. \u003cb\u003eRevogável a qualquer momento\u003c/b\u003e, por procedimento gratuito e facilitado. Nulo se as informações forem enganosas ou abusivas (art. 9º, §1º)."
+                   }
+    },
+    {
+        "noteId":  1794671715647,
+        "deckName":  "ANPD::LGPD e ANPD::05 Bases legais",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-05"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as amarras do \u003cb\u003elegítimo interesse\u003c/b\u003e (art. 10)?",
+                       "Verso":  "Finalidades legítimas a partir de situações concretas. §1º só os dados \u003cb\u003eestritamente necessários\u003c/b\u003e; §2º medidas de \u003cb\u003etransparência\u003c/b\u003e; §3º a ANPD pode solicitar \u003cb\u003eRIPD\u003c/b\u003e. Não vale para dados sensíveis."
+                   }
+    },
+    {
+        "noteId":  1794671715648,
+        "deckName":  "ANPD::LGPD e ANPD::05 Bases legais",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-05"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as fases do teste do legítimo interesse (Guia ANPD)?",
+                       "Verso":  "1. \u003cb\u003eFinalidade\u003c/b\u003e legítima?\u003cbr\u003e2. O tratamento é \u003cb\u003enecessário\u003c/b\u003e?\u003cbr\u003e3. \u003cb\u003eBalanceamento\u003c/b\u003e: os direitos e as legítimas expectativas do titular não prevalecem?"
+                   }
+    },
+    {
+        "noteId":  1794671715649,
+        "deckName":  "ANPD::LGPD e ANPD::05 Bases legais",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-05",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Dados tornados manifestamente públicos pelo titular podem ser usados para qualquer fim?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Dispensam o consentimento (art. 7º, §4º), mas o tratamento deve considerar a \u003cb\u003efinalidade, a boa-fé e o interesse público\u003c/b\u003e que justificaram a divulgação (§3º). Princípios e direitos continuam valendo."
+                   }
+    },
+    {
+        "noteId":  1794671715650,
+        "deckName":  "ANPD::LGPD e ANPD::05 Bases legais",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-05"
+                 ],
+        "fields":  {
+                       "Frente":  "O rol do art. 7º e o do art. 10 são taxativos ou exemplificativos?",
+                       "Verso":  "\u003cb\u003eArt. 7º: taxativo\u003c/b\u003e (\"somente poderá ser realizado nas seguintes hipóteses\").\u003cbr\u003e\u003cb\u003eArt. 10: exemplificativo\u003c/b\u003e (\"incluem, mas não se limitam a\")."
+                   }
+    },
+    {
+        "noteId":  1794671715651,
+        "deckName":  "ANPD::LGPD e ANPD::06 Sensíveis, crianças e término",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-06"
+                 ],
+        "fields":  {
+                       "Frente":  "Como deve ser o consentimento para dados sensíveis?",
+                       "Verso":  "\u003cb\u003eEspecífico e destacado\u003c/b\u003e, para finalidades específicas, dado pelo titular ou seu responsável legal (art. 11, I). Mais exigente que o do art. 7º, I."
+                   }
+    },
+    {
+        "noteId":  1794671715652,
+        "deckName":  "ANPD::LGPD e ANPD::06 Sensíveis, crianças e término",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-06",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais bases do art. 7º \u003cb\u003enão\u003c/b\u003e existem para dados sensíveis?",
+                       "Verso":  "\u003cb\u003eLegítimo interesse\u003c/b\u003e, \u003cb\u003eproteção do crédito\u003c/b\u003e e \u003cb\u003eexecução de contrato\u003c/b\u003e como base autônoma. Atenção: a alínea \u003ci\u003ed\u003c/i\u003e do art. 11, II admite o exercício regular de direitos, \u003ci\u003einclusive em contrato\u003c/i\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715653,
+        "deckName":  "ANPD::LGPD e ANPD::06 Sensíveis, crianças e término",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-06"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as hipóteses sem consentimento para dados sensíveis (art. 11, II)?",
+                       "Verso":  "a) obrigação legal ou regulatória; b) políticas públicas pela adm. pública; c) estudos por órgão de pesquisa; d) exercício regular de direitos (inclusive em contrato e processos); e) proteção da vida ou incolumidade física; f) tutela da saúde; g) prevenção à fraude e segurança do titular em identificação e autenticação."
+                   }
+    },
+    {
+        "noteId":  1794671715654,
+        "deckName":  "ANPD::LGPD e ANPD::06 Sensíveis, crianças e término",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-06"
+                 ],
+        "fields":  {
+                       "Frente":  "O que a LGPD proíbe com dados de saúde (art. 11, §§4º e 5º)?",
+                       "Verso":  "§4º: compartilhar dados de saúde entre controladores para \u003cb\u003evantagem econômica\u003c/b\u003e, salvo nos serviços de saúde para \u003cb\u003eportabilidade\u003c/b\u003e pedida pelo titular ou \u003cb\u003etransações financeiras e administrativas\u003c/b\u003e.\u003cbr\u003e§5º: operadoras de planos usarem dados de saúde para \u003cb\u003eseleção de riscos\u003c/b\u003e na contratação ou exclusão de beneficiários."
+                   }
+    },
+    {
+        "noteId":  1794671715655,
+        "deckName":  "ANPD::LGPD e ANPD::06 Sensíveis, crianças e término",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-06",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O que diz o \u003cb\u003eEnunciado CD/ANPD nº 1/2023\u003c/b\u003e?",
+                       "Verso":  "Dados de \u003cb\u003ecrianças e adolescentes\u003c/b\u003e podem ser tratados com base nas hipóteses do \u003cb\u003eart. 7º ou do art. 11\u003c/b\u003e, desde que observado e prevalecente o seu \u003cb\u003emelhor interesse\u003c/b\u003e, avaliado no caso concreto. O consentimento dos pais não é a única base."
+                   }
+    },
+    {
+        "noteId":  1794671715656,
+        "deckName":  "ANPD::LGPD e ANPD::06 Sensíveis, crianças e término",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-06",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O que exige o art. 14, §1º, e a quem se aplica?",
+                       "Verso":  "Quando a base é o consentimento e o titular é \u003cb\u003ecriança\u003c/b\u003e: consentimento \u003cb\u003eespecífico e em destaque\u003c/b\u003e de pelo menos um dos pais ou do responsável legal. Vale só para \u003cb\u003ecrianças\u003c/b\u003e (até 12 anos incompletos, pelo ECA), não para adolescentes."
+                   }
+    },
+    {
+        "noteId":  1794671715657,
+        "deckName":  "ANPD::LGPD e ANPD::06 Sensíveis, crianças e término",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-06"
+                 ],
+        "fields":  {
+                       "Frente":  "Quando dados de crianças podem ser coletados sem o consentimento do §1º (art. 14, §3º)?",
+                       "Verso":  "Para \u003cb\u003econtatar os pais ou o responsável\u003c/b\u003e (uso único e sem armazenamento) \u003cb\u003eou para a proteção da criança\u003c/b\u003e. Em nenhum caso podem ser repassados a terceiro sem o consentimento do §1º."
+                   }
+    },
+    {
+        "noteId":  1794671715658,
+        "deckName":  "ANPD::LGPD e ANPD::06 Sensíveis, crianças e término",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-06",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Término (art. 15) × conservação (art. 16)",
+                       "Verso":  "\u003cb\u003eTérmino:\u003c/b\u003e finalidade alcançada ou dados desnecessários; fim do período; comunicação do titular (inclusive revogação), resguardado o interesse público; determinação da ANPD.\u003cbr\u003e\u003cb\u003eConservação:\u003c/b\u003e obrigação legal; pesquisa; transferência a terceiro; uso exclusivo do controlador, sem acesso de terceiro, \u003cb\u003edesde que anonimizados\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715659,
+        "deckName":  "ANPD::LGPD e ANPD::07 Direitos do titular",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-07"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais os 9 direitos do art. 18?",
+                       "Verso":  "I confirmação da existência de tratamento; II acesso; III correção; IV anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou irregulares; V portabilidade; VI eliminação dos dados tratados com consentimento; VII informação sobre uso compartilhado; VIII informação sobre a possibilidade de não consentir e suas consequências; IX revogação do consentimento."
+                   }
+    },
+    {
+        "noteId":  1794671715660,
+        "deckName":  "ANPD::LGPD e ANPD::07 Direitos do titular",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-07",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Eliminação do inciso IV × do inciso VI do art. 18",
+                       "Verso":  "\u003cb\u003eIV\u003c/b\u003e: dados desnecessários, excessivos ou em desconformidade, \u003cb\u003equalquer que seja a base legal\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eVI\u003c/b\u003e: dados tratados \u003cb\u003ecom consentimento\u003c/b\u003e, exceto nas hipóteses de conservação do art. 16."
+                   }
+    },
+    {
+        "noteId":  1794671715661,
+        "deckName":  "ANPD::LGPD e ANPD::07 Direitos do titular",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-07"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais os prazos do art. 19 para confirmação e acesso?",
+                       "Verso":  "Formato \u003cb\u003esimplificado: imediatamente\u003c/b\u003e.\u003cbr\u003eDeclaração \u003cb\u003eclara e completa\u003c/b\u003e (origem, critérios, finalidade): \u003cb\u003eaté 15 dias\u003c/b\u003e do requerimento."
+                   }
+    },
+    {
+        "noteId":  1794671715662,
+        "deckName":  "ANPD::LGPD e ANPD::07 Direitos do titular",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-07"
+                 ],
+        "fields":  {
+                       "Frente":  "A portabilidade inclui dados anonimizados?",
+                       "Verso":  "\u003cb\u003eNão\u003c/b\u003e (art. 18, §7º). Ela exige requisição expressa, segue a regulamentação da ANPD e respeita os segredos comercial e industrial."
+                   }
+    },
+    {
+        "noteId":  1794671715663,
+        "deckName":  "ANPD::LGPD e ANPD::07 Direitos do titular",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-07",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual o alcance do direito de revisão do art. 20?",
+                       "Verso":  "Decisões tomadas \u003cb\u003eunicamente\u003c/b\u003e com base em tratamento automatizado que afetem os interesses do titular, inclusive as que definem perfil pessoal, profissional, de consumo, de crédito ou da personalidade. §1º: informações sobre critérios e procedimentos. §2º: se negadas por segredo, a ANPD pode fazer \u003cb\u003eauditoria\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715664,
+        "deckName":  "ANPD::LGPD e ANPD::07 Direitos do titular",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-07",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "A revisão de decisão automatizada precisa ser feita por pessoa natural?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e A Lei 13.853/2019 retirou a exigência de revisão por pessoa natural, e o §3º do art. 20 foi vetado. A lei garante o direito de \u003cb\u003esolicitar a revisão\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715665,
+        "deckName":  "ANPD::LGPD e ANPD::07 Direitos do titular",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-07"
+                 ],
+        "fields":  {
+                       "Frente":  "Custo e onde o titular pode reclamar",
+                       "Verso":  "Atendimento \u003cb\u003esem custos\u003c/b\u003e (§5º). Pode peticionar contra o controlador perante a \u003cb\u003eANPD\u003c/b\u003e (§1º) e os \u003cb\u003eorganismos de defesa do consumidor\u003c/b\u003e (§8º). Pode se \u003cb\u003eopor\u003c/b\u003e a tratamento com dispensa de consentimento em caso de descumprimento da lei (§2º)."
+                   }
+    },
+    {
+        "noteId":  1794671715666,
+        "deckName":  "ANPD::LGPD e ANPD::07 Direitos do titular",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-07"
+                 ],
+        "fields":  {
+                       "Frente":  "O que dizem os arts. 21 e 22?",
+                       "Verso":  "\u003cb\u003eArt. 21\u003c/b\u003e: dados referentes ao exercício regular de direitos pelo titular não podem ser usados em seu prejuízo.\u003cbr\u003e\u003cb\u003eArt. 22\u003c/b\u003e: a defesa dos titulares pode ser exercida em juízo, \u003cb\u003eindividual ou coletivamente\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715667,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-08"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual o fundamento do tratamento pelo Poder Público (art. 23)?",
+                       "Verso":  "Atender à \u003cb\u003efinalidade pública\u003c/b\u003e, na persecução do \u003cb\u003einteresse público\u003c/b\u003e, para executar \u003cb\u003ecompetências legais\u003c/b\u003e ou cumprir \u003cb\u003eatribuições legais\u003c/b\u003e. Exige informar as hipóteses de tratamento (I) e indicar encarregado (III)."
+                   }
+    },
+    {
+        "noteId":  1794671715668,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-08",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O Poder Público pode usar o legítimo interesse?",
+                       "Verso":  "Só em situações \u003cb\u003eexcepcionais\u003c/b\u003e, fora das prerrogativas estatais típicas (guias da ANPD). No exercício de competências legais, a base é a própria \u003cb\u003eatribuição legal\u003c/b\u003e. Itens absolutos (\"nunca\" ou \"livremente\") tendem a estar errados."
+                   }
+    },
+    {
+        "noteId":  1794671715669,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-08",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual regime se aplica a empresas públicas e sociedades de economia mista (art. 24)?",
+                       "Verso":  "Em \u003cb\u003eregime de concorrência\u003c/b\u003e (art. 173 da CF): o mesmo das empresas privadas.\u003cbr\u003eQuando \u003cb\u003eoperacionalizam políticas públicas\u003c/b\u003e: o regime do Poder Público (Capítulo IV). O que conta é a função exercida."
+                   }
+    },
+    {
+        "noteId":  1794671715670,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-08",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O Poder Público pode transferir dados a entidades privadas (art. 26, §1º)?",
+                       "Verso":  "Em regra é \u003cb\u003evedado\u003c/b\u003e, exceto: execução descentralizada de atividade pública (fim específico); dados de \u003cb\u003eacesso público\u003c/b\u003e; \u003cb\u003eprevisão legal\u003c/b\u003e ou contratos/convênios; \u003cb\u003eprevenção de fraudes\u003c/b\u003e ou proteção do titular (vedado outro uso). Contratos e convênios são comunicados à ANPD (§2º)."
+                   }
+    },
+    {
+        "noteId":  1794671715671,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-08"
+                 ],
+        "fields":  {
+                       "Frente":  "O que exige o art. 27?",
+                       "Verso":  "A comunicação ou o uso compartilhado de dados de PJ de direito público a pessoa de direito privado será \u003cb\u003einformado à ANPD\u003c/b\u003e e \u003cb\u003edependerá de consentimento\u003c/b\u003e, exceto: hipóteses de dispensa de consentimento; uso compartilhado com publicidade (art. 23, I); exceções do art. 26, §1º."
+                   }
+    },
+    {
+        "noteId":  1794671715672,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-08",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "A ANPD pode multar órgão público?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Art. 31: envia \u003cb\u003einforme\u003c/b\u003e com medidas para cessar a violação. Art. 52, §3º: pode aplicar as sanções \u003cb\u003eI, IV, V, VI, X, XI e XII\u003c/b\u003e, mas não as multas (II e III). A comunicação aos órgãos de controle interno vem do \u003cb\u003eart. 55-J\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715673,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-08"
+                 ],
+        "fields":  {
+                       "Frente":  "Que leis regem os direitos do titular perante o Poder Público (art. 23, §3º)?",
+                       "Verso":  "Legislação específica, em especial a \u003cb\u003eLei do Habeas Data\u003c/b\u003e (9.507/1997), a \u003cb\u003eLei do Processo Administrativo\u003c/b\u003e (9.784/1999) e a \u003cb\u003eLAI\u003c/b\u003e (12.527/2011)."
+                   }
+    },
+    {
+        "noteId":  1794671715674,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-08"
+                 ],
+        "fields":  {
+                       "Frente":  "O que a ANPD pode pedir ao Poder Público (arts. 29 e 32)?",
+                       "Verso":  "Art. 29: informações sobre o âmbito e a natureza dos dados, a qualquer momento, e emitir \u003cb\u003eparecer técnico\u003c/b\u003e complementar.\u003cbr\u003eArt. 32: a publicação de \u003cb\u003eRIPD\u003c/b\u003e e sugerir padrões e boas práticas."
+                   }
+    },
+    {
+        "noteId":  1794671715675,
+        "deckName":  "ANPD::LGPD e ANPD::09 Transferência internacional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-09"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual a lógica do art. 33?",
+                       "Verso":  "A transferência internacional \u003cb\u003esomente é permitida\u003c/b\u003e nos casos listados (rol taxativo, incisos I a IX). Não é uma permissão geral com proibições pontuais."
+                   }
+    },
+    {
+        "noteId":  1794671715676,
+        "deckName":  "ANPD::LGPD e ANPD::09 Transferência internacional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-09"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as 4 garantias do art. 33, II?",
+                       "Verso":  "a) \u003cb\u003ecláusulas contratuais específicas\u003c/b\u003e para determinada transferência; b) \u003cb\u003ecláusulas-padrão\u003c/b\u003e contratuais; c) \u003cb\u003enormas corporativas globais\u003c/b\u003e; d) \u003cb\u003eselos, certificados e códigos de conduta\u003c/b\u003e regularmente emitidos."
+                   }
+    },
+    {
+        "noteId":  1794671715677,
+        "deckName":  "ANPD::LGPD e ANPD::09 Transferência internacional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-09",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Para país sem adequação, as garantias do inciso II são o único caminho?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Há também os incisos III a IX: cooperação jurídica internacional, proteção da vida, \u003cb\u003eautorização da ANPD\u003c/b\u003e, acordo de cooperação, política pública, \u003cb\u003econsentimento específico\u003c/b\u003e e as hipóteses do art. 7º, II, V e VI."
+                   }
+    },
+    {
+        "noteId":  1794671715678,
+        "deckName":  "ANPD::LGPD e ANPD::09 Transferência internacional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-09",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Como deve ser o consentimento para transferência internacional (art. 33, VIII)?",
+                       "Verso":  "\u003cb\u003eEspecífico e em destaque\u003c/b\u003e para a transferência, com \u003cb\u003einformação prévia sobre o caráter internacional da operação\u003c/b\u003e, distinguindo-a claramente de outras finalidades."
+                   }
+    },
+    {
+        "noteId":  1794671715679,
+        "deckName":  "ANPD::LGPD e ANPD::09 Transferência internacional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-09",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O art. 33, IX abrange todas as bases do art. 7º?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Só os incisos \u003cb\u003eII\u003c/b\u003e (obrigação legal), \u003cb\u003eV\u003c/b\u003e (contrato) e \u003cb\u003eVI\u003c/b\u003e (exercício regular de direitos) do art. 7º."
+                   }
+    },
+    {
+        "noteId":  1794671715680,
+        "deckName":  "ANPD::LGPD e ANPD::09 Transferência internacional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-09",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais os 6 critérios de adequação do art. 34?",
+                       "Verso":  "I normas gerais e setoriais do país de destino; II natureza dos dados; III observância dos princípios e direitos da LGPD; IV medidas de segurança previstas em regulamento; V \u003cb\u003egarantias judiciais e institucionais\u003c/b\u003e; VI outras circunstâncias específicas da transferência.\u003cbr\u003e\u003cbr\u003eNão constam \"autoridade supervisora\" nem \"restrições a transferências ulteriores\"."
+                   }
+    },
+    {
+        "noteId":  1794671715681,
+        "deckName":  "ANPD::LGPD e ANPD::09 Transferência internacional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-09"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual o papel da ANPD nos arts. 35–36 e na Res. 19/2024?",
+                       "Verso":  "Art. 35: a ANPD \u003cb\u003edefine o conteúdo das cláusulas-padrão\u003c/b\u003e e verifica as demais garantias; pode designar organismos de certificação. Art. 36: alterações nas garantias devem ser comunicadas à ANPD. A \u003cb\u003eRes. CD/ANPD 19/2024\u003c/b\u003e regulamenta as transferências e aprova as cláusulas-padrão."
+                   }
+    },
+    {
+        "noteId":  1794671715682,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-10"
+                 ],
+        "fields":  {
+                       "Frente":  "Quem deve manter registro das operações (art. 37)?",
+                       "Verso":  "O \u003cb\u003econtrolador e o operador\u003c/b\u003e, especialmente quando o tratamento se basear no \u003cb\u003elegítimo interesse\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715683,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-10",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O RIPD é obrigatório antes de qualquer tratamento?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e A ANPD \u003cb\u003epoderá determinar\u003c/b\u003e ao controlador que o elabore (art. 38). Conteúdo mínimo: tipos de dados, metodologia de coleta e de segurança, análise das medidas, salvaguardas e mitigação de risco."
+                   }
+    },
+    {
+        "noteId":  1794671715684,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-10",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Quem indica o encarregado e como divulgá-lo (art. 41)?",
+                       "Verso":  "O \u003cb\u003econtrolador\u003c/b\u003e (caput). Identidade e contato divulgados publicamente, \u003cb\u003epreferencialmente\u003c/b\u003e no site (§1º). A ANPD pode prever \u003cb\u003edispensa\u003c/b\u003e (§3º): agentes de pequeno porte não são obrigados (Res. 2/2022, art. 11). A Res. 18/2024 regulamenta o encarregado."
+                   }
+    },
+    {
+        "noteId":  1794671715685,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-10"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as atividades do encarregado (art. 41, §2º)?",
+                       "Verso":  "I aceitar reclamações e comunicações dos titulares e adotar providências; II receber comunicações da ANPD; III orientar funcionários e contratados; IV executar as demais atribuições do controlador ou de normas complementares."
+                   }
+    },
+    {
+        "noteId":  1794671715686,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-10",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Quando o operador responde solidariamente (art. 42, §1º)?",
+                       "Verso":  "Quando \u003cb\u003edescumprir a legislação\u003c/b\u003e ou \u003cb\u003enão seguir as instruções lícitas\u003c/b\u003e do controlador. Nesse caso ele \u003cb\u003eequipara-se ao controlador\u003c/b\u003e. Os controladores diretamente envolvidos também respondem solidariamente. A solidariedade não é automática."
+                   }
+    },
+    {
+        "noteId":  1794671715687,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-10",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as excludentes de responsabilidade (art. 43)?",
+                       "Verso":  "O agente só não responde se \u003cb\u003eprovar\u003c/b\u003e: I que não realizou o tratamento; II que não houve violação à legislação; III culpa exclusiva do titular ou de terceiro.\u003cbr\u003e\u003cbr\u003e\"Ausência de culpa\" \u003cb\u003enão\u003c/b\u003e é excludente."
+                   }
+    },
+    {
+        "noteId":  1794671715688,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-10"
+                 ],
+        "fields":  {
+                       "Frente":  "Quando o juiz pode inverter o ônus da prova (art. 42, §2º)?",
+                       "Verso":  "\u003cb\u003ePoderá\u003c/b\u003e (faculdade) inverter a favor do titular quando a alegação for \u003cb\u003everossímil\u003c/b\u003e, houver \u003cb\u003ehipossuficiência\u003c/b\u003e ou a prova for \u003cb\u003eexcessivamente onerosa\u003c/b\u003e para o titular."
+                   }
+    },
+    {
+        "noteId":  1794671715689,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "lote-10"
+                 ],
+        "fields":  {
+                       "Frente":  "Quando o tratamento é irregular (art. 44) e o que vale nas relações de consumo (art. 45)?",
+                       "Verso":  "Irregular quando não observar a legislação ou \u003cb\u003enão fornecer a segurança que o titular pode esperar\u003c/b\u003e, considerados o modo, o resultado e os riscos esperados e as técnicas da época. Nas relações de consumo, continuam valendo as regras do \u003cb\u003eCDC\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715690,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Axiomas e regras",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "probabilidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais são os 3 axiomas de Kolmogorov?",
+                       "Verso":  "1. P(A) ≥ 0.\u003cbr\u003e2. P(S) = 1.\u003cbr\u003e3. Se A e B são mutuamente exclusivos (A ∩ B = ∅), P(A ∪ B) = P(A) + P(B)."
+                   }
+    },
+    {
+        "noteId":  1794671715691,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Axiomas e regras",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "probabilidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual a regra geral da união?",
+                       "Verso":  "\u003cb\u003eP(A ∪ B) = P(A) + P(B) − P(A ∩ B)\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eEx.: dado, A = par, B = maior que 3: 0,5 + 0,5 − 2/6 = 4/6. A soma simples só vale para eventos mutuamente exclusivos."
+                   }
+    },
+    {
+        "noteId":  1794671715692,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Axiomas e regras",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "probabilidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual a regra do complemento?",
+                       "Verso":  "\u003cb\u003eP(Aᶜ) = 1 − P(A)\u003c/b\u003e. Ex.: se 45% têm pelo menos um problema, 55% não têm nenhum."
+                   }
+    },
+    {
+        "noteId":  1794671715693,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Axiomas e regras",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "pegadinha",
+                     "probabilidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Eventos mutuamente exclusivos são independentes?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Se ambos têm probabilidade positiva, são \u003cb\u003edependentes\u003c/b\u003e: saber que A ocorreu garante que B não ocorreu."
+                   }
+    },
+    {
+        "noteId":  1794671715694,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Condicional e Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "probabilidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Como se calcula a probabilidade condicional?",
+                       "Verso":  "\u003cb\u003eP(A|B) = P(A ∩ B) / P(B)\u003c/b\u003e, com P(B) \u003e 0. B vira o novo espaço amostral."
+                   }
+    },
+    {
+        "noteId":  1794671715695,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Condicional e Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "probabilidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Como checar se dois eventos são independentes?",
+                       "Verso":  "\u003cb\u003eP(A ∩ B) = P(A) · P(B)\u003c/b\u003e (equivale a P(A|B) = P(A)).\u003cbr\u003e\u003cbr\u003eEx.: P(A) = 0,3, P(B) = 0,4, P(A ∩ B) = 0,2 ≠ 0,12, logo não são independentes."
+                   }
+    },
+    {
+        "noteId":  1794671715696,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Condicional e Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "probabilidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Teorema de Bayes e probabilidade total",
+                       "Verso":  "\u003cb\u003eP(A|B) = P(B|A) · P(A) / P(B)\u003c/b\u003e\u003cbr\u003e\u003cb\u003eP(B) = P(B|A)·P(A) + P(B|Aᶜ)·P(Aᶜ)\u003c/b\u003e\u003cbr\u003e\u003cbr\u003eEx. spam: 0,4·0,3 / (0,4·0,3 + 0,05·0,7) ≈ 0,774."
+                   }
+    },
+    {
+        "noteId":  1794671715697,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Condicional e Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "pegadinha",
+                     "probabilidade"
+                 ],
+        "fields":  {
+                       "Frente":  "P(positivo|doença) = 0,9 implica P(doença|positivo) = 0,9?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Com prevalência de 1%, sensibilidade de 90% e 5% de falso positivo: P(doença|+) = 0,009 / 0,0585 ≈ \u003cb\u003e15,4%\u003c/b\u003e. A taxa base domina o resultado."
+                   }
+    },
+    {
+        "noteId":  1794671715698,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Naive Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "ia",
+                     "naive-bayes"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual a suposição \"ingênua\" do Naive Bayes?",
+                       "Verso":  "As features são \u003cb\u003econdicionalmente independentes entre si, dada a classe\u003c/b\u003e: P(x₁,…,xₙ|classe) ≈ ∏ P(xᵢ|classe)."
+                   }
+    },
+    {
+        "noteId":  1794671715699,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Naive Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "ia",
+                     "naive-bayes"
+                 ],
+        "fields":  {
+                       "Frente":  "Qual a regra de decisão do Naive Bayes?",
+                       "Verso":  "Escolher a classe que maximiza \u003cb\u003eP(classe) · ∏ P(xᵢ|classe)\u003c/b\u003e (prior × verossimilhanças). Não é preciso dividir por P(evidência), porque ela é igual para todas as classes."
+                   }
+    },
+    {
+        "noteId":  1794671715700,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Naive Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "ia",
+                     "naive-bayes",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O Naive Bayes é inútil quando as features são correlacionadas?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e A suposição costuma ser falsa, mas o método funciona bem porque o que importa é qual classe tem o \u003cb\u003emaior score relativo\u003c/b\u003e, não as probabilidades exatas."
+                   }
+    },
+    {
+        "noteId":  1794671715701,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Naive Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "ia",
+                     "naive-bayes"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que as implementações do Naive Bayes usam logaritmos?",
+                       "Verso":  "Multiplicar muitas probabilidades pequenas causa \u003cb\u003eunderflow numérico\u003c/b\u003e. Somar \u003cb\u003elog-probabilidades\u003c/b\u003e dá a mesma decisão sem esse problema."
+                   }
+    },
+    {
+        "noteId":  1794671715702,
+        "deckName":  "ANPD::Ciência de Dados::BI e Analytics::Banco de dados e SQL",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "bi",
+                     "sql"
+                 ],
+        "fields":  {
+                       "Frente":  "Chave primária × chave estrangeira",
+                       "Verso":  "\u003cb\u003ePK\u003c/b\u003e: identifica unicamente cada registro.\u003cbr\u003e\u003cb\u003eFK\u003c/b\u003e: coluna que referencia a PK de outra tabela, criando um relacionamento (ex.: Pedidos.id_cliente → Clientes.id_cliente, 1:N)."
+                   }
+    },
+    {
+        "noteId":  1794671715703,
+        "deckName":  "ANPD::Ciência de Dados::BI e Analytics::Banco de dados e SQL",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "bi",
+                     "pegadinha",
+                     "sql"
+                 ],
+        "fields":  {
+                       "Frente":  "WHERE × HAVING",
+                       "Verso":  "\u003cb\u003eWHERE\u003c/b\u003e filtra \u003cb\u003elinhas antes\u003c/b\u003e do agrupamento.\u003cbr\u003e\u003cb\u003eHAVING\u003c/b\u003e filtra \u003cb\u003egrupos depois\u003c/b\u003e do GROUP BY (pode até eliminar todos os grupos)."
+                   }
+    },
+    {
+        "noteId":  1794671715704,
+        "deckName":  "ANPD::Ciência de Dados::BI e Analytics::Banco de dados e SQL",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "bi",
+                     "pegadinha",
+                     "sql"
+                 ],
+        "fields":  {
+                       "Frente":  "WHERE coluna = NULL retorna as linhas nulas?",
+                       "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Nunca retorna linhas: NULL não é igual a nada, nem a si mesmo. O correto é \u003cb\u003eWHERE coluna IS NULL\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715705,
+        "deckName":  "ANPD::Ciência de Dados::BI e Analytics::Banco de dados e SQL",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "bi",
+                     "sql"
+                 ],
+        "fields":  {
+                       "Frente":  "Para que serve o JOIN?",
+                       "Verso":  "Combinar tabelas relacionadas casando a FK com a PK (ex.: \u003ccode\u003eJOIN Clientes c ON p.id_cliente = c.id_cliente\u003c/code\u003e), para trazer o nome do cliente junto com seus pedidos."
+                   }
+    },
+    {
+        "noteId":  1794671715706,
+        "deckName":  "ANPD::Ciência de Dados::Big Data::Fundamentos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "big-data"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais são os Vs do big data?",
+                       "Verso":  "\u003cb\u003eVolume\u003c/b\u003e, \u003cb\u003eVelocidade\u003c/b\u003e (taxa de chegada, inclusive streaming) e \u003cb\u003eVariedade\u003c/b\u003e (estruturado, semiestruturado, não estruturado). Extensões: \u003cb\u003eVeracidade\u003c/b\u003e e \u003cb\u003eValor\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794671715707,
+        "deckName":  "ANPD::Ciência de Dados::Big Data::Fundamentos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "big-data"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as etapas do fluxo de big data?",
+                       "Verso":  "\u003cb\u003eIngestão\u003c/b\u003e (batch ou streaming) → \u003cb\u003eprocessamento\u003c/b\u003e (limpeza, transformação, agregação) → \u003cb\u003earmazenamento\u003c/b\u003e (data lake, data warehouse) → \u003cb\u003edisponibilização\u003c/b\u003e (dashboards, APIs, relatórios)."
+                   }
+    },
+    {
+        "noteId":  1794671715708,
+        "deckName":  "ANPD::Ciência de Dados::Big Data::Fundamentos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "big-data",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Data lake × data warehouse",
+                       "Verso":  "\u003cb\u003eData lake\u003c/b\u003e: dado bruto, qualquer formato, \u003cb\u003eschema-on-read\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eData warehouse\u003c/b\u003e: dado tratado e modelado (fatos/dimensões), \u003cb\u003eschema-on-write\u003c/b\u003e, otimizado para consulta. São complementares."
+                   }
+    },
+    {
+        "noteId":  1794671715709,
+        "deckName":  "ANPD::Ciência de Dados::Big Data::Fundamentos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "big-data"
+                 ],
+        "fields":  {
+                       "Frente":  "ETL × ELT",
+                       "Verso":  "\u003cb\u003eETL\u003c/b\u003e: transforma \u003cb\u003eantes\u003c/b\u003e de carregar no destino.\u003cbr\u003e\u003cb\u003eELT\u003c/b\u003e: carrega o dado bruto e transforma \u003cb\u003edepois\u003c/b\u003e, dentro do destino. Mais flexível para mudar regras, mas guarda mais dado bruto."
+                   }
     }
 ]

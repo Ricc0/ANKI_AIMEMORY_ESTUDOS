@@ -1,52 +1,102 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lições · Ciência de Dados</title>
+<title>Lições · Concurso ANPD</title>
 <link rel="stylesheet" href="../assets/style.css">
 
-<div class="kicker">Concurso ANPD · Trilha de Ciência de Dados · Roteiro: edital CGU (TI · Ciência de Dados, Cebraspe)</div>
+<div class="kicker">Concurso ANPD · Especialista em Regulação de Proteção de Dados</div>
 <h1>Índice de lições</h1>
 <p class="lede">
-  Lições curtas, uma por tópico, cada uma com conceito, exemplo resolvido,
-  pegadinhas e itens <strong>certo/errado no padrão Cebraspe</strong>. Faça
-  em ordem: cada lição prepara a seguinte. Os cards de revisão espaçada
-  estão no Anki, em <code>ANPD → Ciência de Dados → IA e Aprendizado de Máquina</code>.
+  Duas trilhas no mesmo curso: o <strong>núcleo jurídico</strong> (LGPD e atos
+  da ANPD, o que mais pesa na prova) e a <strong>trilha de Ciência de Dados</strong>,
+  estudada pelo edital da CGU (TI · Ciência de Dados, Cebraspe). Cada lição tem
+  conceito, exemplos resolvidos, pegadinhas e itens certo/errado. Os cards de
+  revisão estão no Anki, no deck <code>ANPD</code>.
 </p>
 
-<div class="box">
-  <strong>Por que o edital da CGU?</strong>
-  <p style="margin:0.4rem 0 0">
-    O alvo é a <strong>ANPD</strong>. O edital da CGU para TI · Ciência de
-    Dados serve só como roteiro detalhado do conteúdo técnico. A trilha
-    jurídica (LGPD e normas da ANPD) fica no workspace próprio da ANPD.
-  </p>
-</div>
-
-<h2>Bloco A · IA e Aprendizado de Máquina</h2>
-<p class="source" style="margin-top:-0.3rem">Fundamentos: tipos de aprendizado, tarefas, avaliação e generalização.</p>
+<h2>Bloco A · LGPD e atos da ANPD <span class="tag max">peso máximo</span></h2>
+<p class="source" style="margin-top:-0.3rem">A lei que a própria agência aplica: o coração da prova. Siga em ordem.</p>
 <ul>
-  <li><a href="bloco-a-ia-e-aprendizado-de-maquina/0001-paradigmas-de-aprendizado.html">1. Os quatro paradigmas de aprendizado</a></li>
-  <li><a href="bloco-a-ia-e-aprendizado-de-maquina/0002-regressao-classificacao-metricas.html">2. Regressão, classificação e métricas</a> <span class="tag alta">calculadora interativa</span></li>
-  <li><a href="bloco-a-ia-e-aprendizado-de-maquina/0003-nao-supervisionado.html">3. Não supervisionado: agrupamento, dimensionalidade e anomalias</a></li>
-  <li><a href="bloco-a-ia-e-aprendizado-de-maquina/0004-sobreajuste-vies-variancia-regularizacao.html">4. Sobreajuste, viés-variância e regularização</a></li>
-  <li><a href="bloco-a-ia-e-aprendizado-de-maquina/0005-ensembles-e-baseline.html">5. Ensembles e a comparação com o baseline</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0001-fundamento-constitucional.html">1. Fundamento constitucional da proteção de dados pessoais</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0002-objeto-fundamentos-e-ambito.html">2. Objeto, fundamentos e âmbito de aplicação (arts. 1º–4º)</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0003-conceitos-agentes-dados-anonimizacao.html">3. Conceitos: agentes, dados e anonimização (art. 5º + arts. 12–13)</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0004-principios-art-6.html">4. Os 10 princípios do tratamento (art. 6º)</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0005-bases-legais-arts-7-10.html">5. Bases legais dos dados comuns (arts. 7º–10)</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0006-dados-sensiveis-criancas-termino.html">6. Dados sensíveis, crianças e término (arts. 11, 14, 15–16 + Enunciado 1/2023)</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0007-direitos-do-titular-arts-17-22.html">7. Direitos do titular e decisão automatizada (arts. 17–22)</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0008-poder-publico-arts-23-32.html">8. Tratamento pelo Poder Público (arts. 23–32)</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0009-transferencia-internacional-arts-33-36.html">9. Transferência internacional de dados (arts. 33–36 + Res. 19/2024)</a></li>
+  <li><a href="bloco-a-lgpd-e-anpd/0010-agentes-encarregado-responsabilidade-arts-37-45.html">10. Agentes, encarregado e responsabilidade (arts. 37–45 + Res. 18/2024)</a></li>
 </ul>
 
-<h3>Próximos tópicos do bloco</h3>
+<h3>Mapa completo da LGPD, em lotes</h3>
+<p class="source" style="margin-top:-0.2rem">
+  A ordem é pedagógica, mas cobre a lei inteira (arts. 1º–65). As etiquetas
+  indicam a prioridade na reta final:
+  <span class="tag max">máxima</span> decorar ·
+  <span class="tag alta">alta</span> cai muito ·
+  <span class="tag media">base</span> entender, sem decorar.
+</p>
 <ul style="color:var(--ink-soft)">
-  <li>Modelos em detalhe: árvores de decisão, k-NN, SVM e Naive Bayes</li>
-  <li>Pré-processamento: padronização, encoding e classes desbalanceadas</li>
-  <li>Redes neurais e deep learning</li>
-  <li>Interpretabilidade e IA responsável no setor público</li>
+  <li><s>Lotes 1–10 · arts. 1º–45</s>: Lições 1–10</li>
+  <li><strong>Lote 11 · Segurança, incidentes e boas práticas (arts. 46–51 + Res. 15/2024 e 1/2021)</strong>: próxima <span class="tag alta">alta</span></li>
+  <li>Lote 12 · Sanções administrativas e dosimetria (arts. 52–54 + Res. 4/2023) <span class="tag max">máxima · prior. 1</span></li>
+  <li>Lote 13 · A ANPD e o CNPD (arts. 55-A a 55-M, 58-A, 58-B + Lei 15.352/2026) <span class="tag max">máxima · prior. 1</span></li>
+  <li>Lote 14 · Disposições finais e interfaces (arts. 60–65) <span class="tag media">base</span></li>
+</ul>
+
+<h2>Fronts que entram depois do núcleo LGPD</h2>
+<ul style="color:var(--ink-soft)">
+  <li>Bloco F · ECA Digital, plataformas e IA (Lei 15.211/2025 + Decreto 12.880/2026) <span class="tag alta">competência nova</span></li>
+  <li>Bloco G · Tronco regulatório: teoria da regulação, Lei 13.848/2019, Lei 9.784/1999, AIR <span class="tag media">médio</span></li>
+  <li>Bloco H · Direito administrativo e constitucional aplicados <span class="tag media">médio</span></li>
+  <li>Transversal · Português (no loop de cada lição) + Inglês instrumental <span class="tag media">base</span></li>
+</ul>
+
+<hr>
+
+<h2>Trilha de Ciência de Dados <span class="tag media">roteiro: edital CGU</span></h2>
+<p class="source" style="margin-top:-0.3rem">
+  Reativada em nov/2026 usando o edital da CGU (TI · Ciência de Dados,
+  Cebraspe) como roteiro. Ela continua sendo uma aposta: a ANPD ainda não
+  anunciou especialidade (ver learning-record 0003), então o núcleo jurídico
+  segue como prioridade.
+</p>
+
+<h3>Bloco B · Probabilidade e Estatística</h3>
+<ul>
+  <li><a href="bloco-b-probabilidade-e-estatistica/0001-espaco-amostral-e-axiomas.html">1. Espaço amostral, eventos e os axiomas da probabilidade</a></li>
+  <li><a href="bloco-b-probabilidade-e-estatistica/0002-independencia-e-bayes.html">2. Probabilidade condicional, independência e Teorema de Bayes</a></li>
+</ul>
+
+<h3>Bloco C · Aprendizado de Máquina e IA</h3>
+<ul>
+  <li><a href="bloco-c-aprendizado-de-maquina/0001-paradigmas-de-aprendizado.html">1. Os quatro paradigmas de aprendizado</a></li>
+  <li><a href="bloco-c-aprendizado-de-maquina/0002-regressao-classificacao-metricas.html">2. Regressão, classificação e métricas</a> <span class="tag alta">calculadora interativa</span></li>
+  <li><a href="bloco-c-aprendizado-de-maquina/0003-nao-supervisionado.html">3. Não supervisionado: agrupamento, dimensionalidade e anomalias</a></li>
+  <li><a href="bloco-c-aprendizado-de-maquina/0004-sobreajuste-vies-variancia-regularizacao.html">4. Sobreajuste, viés-variância e regularização</a></li>
+  <li><a href="bloco-c-aprendizado-de-maquina/0005-ensembles-e-baseline.html">5. Ensembles e a comparação com o baseline</a></li>
+  <li><a href="bloco-c-aprendizado-de-maquina/0006-classificacao-e-naive-bayes.html">6. Classificação supervisionada e Naive Bayes</a></li>
+</ul>
+
+<h3>Bloco D · BI e Analytics</h3>
+<ul>
+  <li><a href="bloco-d-bi-e-analytics/0001-banco-de-dados-e-sql-basico.html">1. Banco de dados relacional e SQL essencial</a></li>
+</ul>
+
+<h3>Bloco E · Big Data</h3>
+<ul>
+  <li><a href="bloco-e-big-data/0001-fundamentos-de-big-data.html">1. Fundamentos de Big Data: características e fluxo</a></li>
 </ul>
 
 <h2>Referência rápida</h2>
 <ul>
-  <li><a href="../reference/glossario.html">Glossário de IA e Aprendizado de Máquina</a> (para revisar e imprimir)</li>
+  <li><a href="../reference/glossario.html">Glossário de IA e Aprendizado de Máquina</a></li>
+  <li><a href="../reference/lgpd-texto-compilado.md">LGPD: texto compilado (arts. 1º–65)</a></li>
 </ul>
 
 <div class="ask-teacher">
-  Veja também <a href="../MISSION.md">MISSION.md</a> (objetivo),
+  Veja também <a href="../MISSION.md">MISSION.md</a> (objetivo e escopo),
   <a href="../RESOURCES.md">RESOURCES.md</a> (fontes) e
   <a href="../NOTES.md">NOTES.md</a> (como as lições são feitas). Dúvida em
   qualquer ponto? Pergunte ao seu professor aqui na conversa.

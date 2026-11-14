@@ -1,0 +1,252 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banco de dados relacional e SQL básico</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco D · BI e Analytics — Lição 1 (introdução ao bloco)</div>
+<h1>Banco de dados relacional: conceitos básicos e SQL essencial</h1>
+<p class="lede">
+  Primeira lição do bloco de BI/Analytics. Antes de Data Warehouse e
+  modelagem dimensional, você precisa do vocabulário básico de banco de
+  dados relacional e da sintaxe SQL mínima para ler e escrever consultas —
+  é a base de tudo que vem depois nesse bloco.
+</p>
+
+<h2>Vocabulário básico</h2>
+<ul>
+  <li><strong>Tabela:</strong> uma coleção de dados organizados em linhas e colunas, sobre uma entidade (ex.: tabela <code>Pedidos</code>).</li>
+  <li><strong>Registro (linha/tupla):</strong> uma instância única na tabela (um pedido específico).</li>
+  <li><strong>Campo (coluna/atributo):</strong> uma propriedade de cada registro (data, valor, cliente).</li>
+  <li><strong>Chave primária (PK):</strong> coluna (ou conjunto de colunas) que identifica unicamente cada registro.</li>
+  <li><strong>Chave estrangeira (FK):</strong> coluna que referencia a chave primária de outra tabela, criando um relacionamento.</li>
+  <li><strong>Esquema:</strong> a estrutura completa — quais tabelas existem, quais colunas cada uma tem, e como se relacionam.</li>
+</ul>
+
+<div class="box">
+  <strong>Exemplo de esquema</strong>
+  <p>Duas tabelas relacionadas:</p>
+  <pre><code>Clientes(id_cliente PK, nome, cidade)
+Pedidos(id_pedido PK, id_cliente FK, valor, data)</code></pre>
+  <p>
+    <code>Pedidos.id_cliente</code> é chave estrangeira: aponta para
+    <code>Clientes.id_cliente</code>. Isso evita repetir nome e cidade do
+    cliente em cada linha de pedido — cada dado mora em um só lugar
+    (é a ideia de <em>normalização</em>).
+  </p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 360 130" xmlns="http://www.w3.org/2000/svg">
+      <rect class="node accent-fill" x="20" y="20" width="140" height="90" rx="6"></rect>
+      <text x="90" y="42" text-anchor="middle" font-size="13" font-weight="600">Clientes</text>
+      <line x1="20" y1="50" x2="160" y2="50" stroke="currentColor" class="muted"></line>
+      <text x="30" y="68" font-size="11" font-weight="700">id_cliente (PK)</text>
+      <text x="30" y="84" font-size="11" class="muted">nome</text>
+      <text x="30" y="100" font-size="11" class="muted">cidade</text>
+
+      <rect class="node accent-fill-2" x="200" y="20" width="140" height="90" rx="6"></rect>
+      <text x="270" y="42" text-anchor="middle" font-size="13" font-weight="600">Pedidos</text>
+      <line x1="200" y1="50" x2="340" y2="50" class="muted"></line>
+      <text x="210" y="68" font-size="11" font-weight="700">id_pedido (PK)</text>
+      <text x="210" y="84" font-size="11" font-weight="700">id_cliente (FK)</text>
+      <text x="210" y="100" font-size="11" class="muted">valor, data</text>
+
+      <line x1="160" y1="70" x2="200" y2="70" marker-end="url(#arrow)"></line>
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"></path>
+        </marker>
+      </defs>
+      <text x="180" y="63" text-anchor="middle" font-size="10" class="muted">1:N</text>
+    </svg>
+    <figcaption>
+      Relacionamento 1:N — um cliente pode ter vários pedidos, mas cada
+      pedido pertence a exatamente um cliente. A seta liga a PK de Clientes à FK de Pedidos que a referencia.
+    </figcaption>
+  </figure>
+</div>
+
+<h2>SQL essencial: SELECT, WHERE, ORDER BY</h2>
+<p>Para deixar os exemplos concretos, considere estes dados reais nas tabelas:</p>
+<div class="box">
+  <strong>Clientes</strong>
+  <pre><code>id_cliente | nome     | cidade
+-----------|----------|----------
+1          | Ana      | Brasília
+2          | Bruno    | Salvador</code></pre>
+  <strong>Pedidos</strong>
+  <pre><code>id_pedido | id_cliente | valor  | data
+----------|------------|--------|-----------
+101       | 1          | 80,00  | 2026-07-01
+102       | 1          | 250,00 | 2026-07-15
+103       | 2          | 400,00 | 2026-07-20</code></pre>
+</div>
+
+<pre><code>SELECT id_pedido, valor, data
+FROM Pedidos
+WHERE valor &gt; 100
+ORDER BY data DESC;</code></pre>
+<p>
+  Lê-se: "traga id_pedido, valor e data da tabela Pedidos, apenas onde o
+  valor é maior que 100, ordenado da data mais recente para a mais antiga."
+  Resultado, usando os dados acima:
+</p>
+<pre><code>id_pedido | valor  | data
+----------|--------|-----------
+103       | 400,00 | 2026-07-20
+102       | 250,00 | 2026-07-15</code></pre>
+<p>
+  O pedido 101 (valor 80,00) fica de fora — não passa no filtro
+  <code>valor &gt; 100</code>. Os pedidos 102 e 103 passam, e aparecem
+  ordenados da data mais recente (103) para a mais antiga (102), como pede
+  o <code>ORDER BY data DESC</code>.
+</p>
+
+<p>Funções de agregação combinadas com <code>GROUP BY</code> resumem dados:</p>
+<pre><code>SELECT id_cliente, SUM(valor) AS total_gasto, COUNT(*) AS n_pedidos
+FROM Pedidos
+GROUP BY id_cliente
+HAVING SUM(valor) &gt; 500;</code></pre>
+<p>
+  <code>GROUP BY</code> agrupa as linhas por cliente antes de agregar;
+  <code>HAVING</code> filtra os grupos resultantes (diferente de
+  <code>WHERE</code>, que filtra linhas <em>antes</em> de agrupar). Com os
+  dados acima: cliente 1 soma 80+250=330; cliente 2 soma 400. Nenhum grupo
+  passa de 500 — o resultado é uma tabela <strong>vazia</strong>. É um
+  detalhe fácil de esquecer: HAVING pode eliminar todas as linhas.
+</p>
+
+<div class="box">
+  <strong>Exemplo resolvido — JOIN</strong>
+  <p>Para trazer o nome do cliente junto com seus pedidos:</p>
+  <pre><code>SELECT c.nome, p.valor, p.data
+FROM Pedidos p
+JOIN Clientes c ON p.id_cliente = c.id_cliente;</code></pre>
+  <p>
+    O <code>JOIN</code> combina as duas tabelas casando
+    <code>p.id_cliente</code> (FK) com <code>c.id_cliente</code> (PK) —
+    é assim que se navega entre tabelas relacionadas
+    <sup class="cite"><a href="https://www.postgresql.org/docs/current/tutorial-join.html" target="_blank" rel="noopener">[1]</a></sup>.
+    Resultado:
+  </p>
+  <pre><code>nome  | valor  | data
+------|--------|-----------
+Ana   | 80,00  | 2026-07-01
+Ana   | 250,00 | 2026-07-15
+Bruno | 400,00 | 2026-07-20</code></pre>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha clássica</span>
+  <code>WHERE campo = NULL</code> <strong>nunca</strong> retorna linhas,
+  mesmo quando existem valores nulos na coluna — NULL não é igual a nada,
+  nem a si mesmo, em lógica SQL padrão (é "desconhecido"). Para filtrar
+  nulos, o correto é <code>WHERE campo IS NULL</code>. Bancas adoram
+  colocar <code>= NULL</code> num item para testar se você sabe disso.
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">
+    A cláusula <code>WHERE</code> é usada para filtrar grupos após a
+    aplicação de <code>GROUP BY</code>, enquanto <code>HAVING</code> filtra
+    linhas individuais antes do agrupamento.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Isso marcaria como certa, mas as definições estão trocadas — veja abaixo.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Correto, o item está <strong>errado</strong> — é o inverso: WHERE
+    filtra linhas antes de agrupar; HAVING filtra grupos depois.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 2</div>
+  <p class="statement">
+    A expressão <code>WHERE valor = NULL</code> retorna corretamente todas
+    as linhas em que a coluna valor está nula.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Isso marcaria como certa, mas é a pegadinha clássica acima.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Correto, o item está <strong>errado</strong>. <code>= NULL</code>
+    nunca retorna linhas; o correto é <code>IS NULL</code>.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 3</div>
+  <p class="statement">
+    Uma chave estrangeira em uma tabela referencia a chave primária de
+    outra tabela, estabelecendo um relacionamento entre elas.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — é a definição de chave estrangeira (FK).
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia o vocabulário básico: é exatamente essa a função da FK. O item
+    está certo.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 4</div>
+  <p class="statement">
+    Considerando os dados de exemplo (3 pedidos, cliente 1 com 2 pedidos
+    somando 330,00 e cliente 2 com 1 pedido de 400,00), a consulta com
+    <code>GROUP BY id_cliente HAVING SUM(valor) &gt; 500</code> retorna o
+    cliente 2 como resultado.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Isso marcaria como certa, mas nenhum grupo passa de 500 — veja abaixo.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Correto, o item está <strong>errado</strong>. Cliente 1 soma 330,00 e
+    cliente 2 soma apenas 400,00 — nenhum ultrapassa 500, então o
+    resultado é uma tabela vazia, sem nenhuma linha.
+  </div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  SQLBolt (sqlbolt.com) — tutorial interativo gratuito, prática direta no
+  navegador. Faça as lições de SELECT, WHERE, JOIN e GROUP BY antes da
+  próxima lição deste bloco.
+</p>
+<p class="source">
+  Referência citada nesta lição:
+  [1] <a href="https://www.postgresql.org/docs/current/tutorial-join.html" target="_blank" rel="noopener">Joins Between Tables — documentação oficial do PostgreSQL</a>
+</p>
+
+<div class="ask-teacher">
+  Alguma parte não ficou clara? Pergunte ao seu professor (aqui, na
+  conversa) — é para isso que ele está aqui. Não avance com dúvida.
+</div>
+
+<div class="nav">
+  <span>Bloco D · Lição 1</span>
+  <span>Bloco D continua com: Data Warehouse, fatos e dimensões</span>
+</div>
+
+<script src="../../assets/quiz.js"></script>

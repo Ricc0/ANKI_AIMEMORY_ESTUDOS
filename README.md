@@ -5,7 +5,8 @@ Backup versionado dos meus estudos para o concurso da CGU.
 - `anki/notes.json`: todos os cards do Anki (deck, campos, tags), exportados pelo AnkiConnect.
 - `anki/decks/`: os mesmos cards em Markdown, um arquivo por deck (`CGU/<Matéria>/<Assunto>.md`).
 - `ai-memory/`: as páginas da wiki do ai-memory "estudos" (regras e anotações permanentes).
-- `teach/`: lições interativas em HTML (formato da skill `teach`). Comece por `teach/lessons/index.html`.
+- `teach/`: lições interativas em HTML (formato da skill `teach`), com o núcleo jurídico (LGPD e ANPD) e a trilha de ciência de dados. Comece por `teach/lessons/index.html`.
+- `teach/materiais/`: lei, editais e plano de estudos. Material de terceiros fica fora do Git (ver `.gitignore`).
 
 ## Como atualizar
 

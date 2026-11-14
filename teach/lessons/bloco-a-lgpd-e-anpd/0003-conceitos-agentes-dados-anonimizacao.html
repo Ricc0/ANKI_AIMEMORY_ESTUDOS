@@ -1,0 +1,449 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LGPD: conceitos, agentes, dados e anonimização (art. 5º + arts. 12–13)</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco A · LGPD e atos da ANPD — Lição 3 · Peso no edital: máximo</div>
+<h1>Conceitos-chave: quem é quem, o que é dado e o que é anonimização</h1>
+<p class="lede">
+  Esta é a lição do <strong>vocabulário</strong> da LGPD — o art. 5º define
+  as palavras que você vai usar em <em>todas</em> as próximas lições (bases
+  legais, direitos do titular, sanções). Errar um conceito aqui derruba uma
+  cadeia inteira de questões. Por isso vamos devagar e com o texto legal na
+  mão. Toda citação abaixo foi conferida na edição oficial da lei
+  <sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<h2>Parte 1 · Os agentes: quem é quem <span class="tag alta">cai muito</span></h2>
+<p>
+  O art. 5º define cinco papéis. A relação entre eles é o coração da LGPD —
+  guarde o diagrama abaixo, ele resolve dezenas de questões.
+</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
+    <!-- titular -->
+    <rect class="node accent-fill" x="30" y="100" width="110" height="40" rx="6"></rect>
+    <text x="85" y="118" text-anchor="middle" font-size="12">TITULAR</text>
+    <text x="85" y="132" text-anchor="middle" font-size="8.5" class="muted">a pessoa natural</text>
+
+    <!-- controlador -->
+    <rect class="node accent-fill" x="200" y="30" width="120" height="42" rx="6"></rect>
+    <text x="260" y="49" text-anchor="middle" font-size="12">CONTROLADOR</text>
+    <text x="260" y="63" text-anchor="middle" font-size="8.5" class="muted">DECIDE o tratamento</text>
+
+    <!-- operador -->
+    <rect class="node" x="200" y="168" width="120" height="42" rx="6"></rect>
+    <text x="260" y="187" text-anchor="middle" font-size="12">OPERADOR</text>
+    <text x="260" y="201" text-anchor="middle" font-size="8.5" class="muted">EXECUTA por ele</text>
+
+    <!-- encarregado -->
+    <rect class="node accent-fill-2" x="370" y="100" width="100" height="42" rx="6"></rect>
+    <text x="420" y="118" text-anchor="middle" font-size="11">ENCARREGADO</text>
+    <text x="420" y="132" text-anchor="middle" font-size="8" class="muted">(DPO) — canal</text>
+
+    <!-- arrows -->
+    <line x1="140" y1="115" x2="200" y2="55" marker-end="url(#a)"></line>
+    <line x1="140" y1="125" x2="200" y2="185" marker-end="url(#a)"></line>
+    <line x1="260" y1="72" x2="260" y2="168" marker-end="url(#a)"></line>
+    <text x="272" y="122" font-size="8.5" class="muted">dá ordens</text>
+    <line x1="320" y1="51" x2="370" y2="112" marker-end="url(#a)"></line>
+    <line x1="320" y1="189" x2="370" y2="128" marker-end="url(#a)"></line>
+    <line x1="370" y1="128" x2="145" y2="128" marker-end="url(#a)" stroke-dasharray="4 3"></line>
+
+    <text x="240" y="228" text-anchor="middle" font-size="8.5" class="muted">controlador + operador = "agentes de tratamento" (art. 5º, IX)</text>
+
+    <defs>
+      <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"></path>
+      </marker>
+    </defs>
+  </svg>
+  <figcaption>
+    O <strong>controlador</strong> decide (o "porquê" e o "como"); o
+    <strong>operador</strong> apenas executa em nome dele. O
+    <strong>encarregado</strong> (DPO) é o canal de comunicação entre
+    controlador, titulares e ANPD — não é quem decide nem quem executa.
+  </figcaption>
+</figure>
+
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Titular</strong> (art. 5º, V): "pessoa
+    natural a quem se referem os dados pessoais que são objeto de tratamento".</p>
+  <p style="margin:0.2rem 0"><strong>Controlador</strong> (art. 5º, VI):
+    pessoa natural ou jurídica, de direito público ou privado, "a quem
+    competem as <strong>decisões</strong> referentes ao tratamento".</p>
+  <p style="margin:0.2rem 0"><strong>Operador</strong> (art. 5º, VII):
+    pessoa natural ou jurídica que "realiza o tratamento de dados pessoais
+    <strong>em nome do controlador</strong>".</p>
+  <p style="margin:0.2rem 0"><strong>Encarregado</strong> (art. 5º, VIII):
+    pessoa indicada pelo controlador e operador para atuar como
+    <strong>canal de comunicação</strong> entre o controlador, os titulares
+    e a ANPD.</p>
+  <p style="margin:0.2rem 0"><strong>Agentes de tratamento</strong> (art.
+    5º, IX): "o controlador e o operador" — os dois juntos, apenas.</p>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 1 — controlador × operador</strong>
+  <p>
+    Uma clínica contrata uma empresa de nuvem para hospedar os prontuários
+    dos pacientes. A empresa de nuvem só armazena e processa o que a clínica
+    manda, seguindo as instruções dela. Quem é o quê?
+  </p>
+  <p>
+    A <strong>clínica é a controladora</strong> — ela decide coletar os
+    dados, para qual finalidade e por quanto tempo. A empresa de nuvem é a
+    <strong>operadora</strong> — trata os dados "em nome do controlador"
+    (art. 5º, VII). Note que o operador também pode ser pessoa jurídica de
+    <em>direito privado</em> e responde pela LGPD; ser "só a nuvem" não o
+    isenta.
+  </p>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 2 — encarregado não é quem decide</strong>
+  <p>
+    Numa questão, afirma-se: "o encarregado é o responsável por definir as
+    finalidades e os meios do tratamento de dados na organização". Certo ou
+    errado?
+  </p>
+  <p>
+    <strong>Errado.</strong> Quem define finalidades e meios (quem
+    <em>decide</em>) é o <strong>controlador</strong> (art. 5º, VI). O
+    encarregado é o <strong>canal de comunicação</strong> (art. 5º, VIII) —
+    a banca troca os papéis de propósito.
+  </p>
+</div>
+
+<h2>Parte 2 · A taxonomia do dado <span class="tag max">núcleo</span></h2>
+<p>
+  Quatro definições do art. 5º formam um espectro. Onde um dado cai nesse
+  espectro decide <em>se</em> e <em>como</em> a LGPD se aplica a ele.
+</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 480 170" xmlns="http://www.w3.org/2000/svg">
+    <line x1="20" y1="60" x2="460" y2="60"></line>
+    <text x="240" y="22" text-anchor="middle" font-size="10" class="muted">← mais protegido pela LGPD · menos protegido →</text>
+
+    <rect class="node bad-fill" x="20" y="70" width="120" height="46" rx="6"></rect>
+    <text x="80" y="90" text-anchor="middle" font-size="11">Dado sensível</text>
+    <text x="80" y="104" text-anchor="middle" font-size="8" class="muted">art. 5º, II — proteção reforçada</text>
+
+    <rect class="node accent-fill" x="150" y="70" width="110" height="46" rx="6"></rect>
+    <text x="205" y="90" text-anchor="middle" font-size="11">Dado pessoal</text>
+    <text x="205" y="104" text-anchor="middle" font-size="8" class="muted">art. 5º, I</text>
+
+    <rect class="node accent-fill-2" x="270" y="70" width="115" height="46" rx="6"></rect>
+    <text x="327" y="87" text-anchor="middle" font-size="10">Pseudonimizado</text>
+    <text x="327" y="100" text-anchor="middle" font-size="8" class="muted">ainda é pessoal</text>
+    <text x="327" y="111" text-anchor="middle" font-size="8" class="muted">(reversível)</text>
+
+    <rect class="node ok-fill" x="395" y="70" width="70" height="46" rx="6"></rect>
+    <text x="430" y="88" text-anchor="middle" font-size="10">Anonimi-</text>
+    <text x="430" y="99" text-anchor="middle" font-size="10">zado</text>
+    <text x="430" y="112" text-anchor="middle" font-size="7.5" class="muted">fora da LGPD*</text>
+
+    <text x="240" y="150" text-anchor="middle" font-size="8.5" class="muted">*salvo se reversível com esforços razoáveis (art. 12) — aí VOLTA a ser dado pessoal</text>
+  </svg>
+  <figcaption>
+    Dado sensível é uma espécie <em>dentro</em> de dado pessoal (com regras
+    mais rígidas — Lição 6). Pseudonimizado continua sendo dado pessoal.
+    Só o anonimizado sai da LGPD — e ainda assim de forma condicional.
+  </figcaption>
+</figure>
+
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Dado pessoal</strong> (art. 5º, I):
+    "informação relacionada a pessoa natural <strong>identificada ou
+    identificável</strong>". Repare no "identificável": não precisa estar
+    o nome — se dá para chegar à pessoa, é dado pessoal.</p>
+  <p style="margin:0.2rem 0"><strong>Dado pessoal sensível</strong> (art.
+    5º, II): dado sobre origem racial ou étnica, convicção religiosa,
+    opinião política, filiação a sindicato/organização religiosa,
+    filosófica ou política, dado referente à saúde ou à vida sexual, dado
+    genético ou biométrico, quando vinculado a uma pessoa natural. Lista
+    <strong>fechada</strong> — decore-a. Atenção ao art. 11, §1º: as regras de dado sensível valem também para qualquer tratamento que <em>revele</em> dado sensível e possa causar dano ao titular.</p>
+  <p style="margin:0.2rem 0"><strong>Dado anonimizado</strong> (art. 5º,
+    III): dado "relativo a titular que <strong>não possa ser
+    identificado</strong>, considerando a utilização de meios técnicos
+    razoáveis e disponíveis na ocasião de seu tratamento".</p>
+  <p style="margin:0.2rem 0"><strong>Tratamento</strong> (art. 5º, X):
+    "toda operação realizada com dados pessoais" — coleta, uso, acesso,
+    armazenamento, eliminação... a lista é exemplificativa e amplíssima.
+    Quase tudo que se faz com um dado é "tratamento".</p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha clássica — o consentimento</span>
+  O art. 5º, XII define <strong>consentimento</strong> como "manifestação
+  <strong>livre, informada e inequívoca</strong> pela qual o titular
+  concorda com o tratamento de seus dados pessoais para uma
+  <strong>finalidade determinada</strong>". Guarde as quatro palavras: um
+  consentimento <em>genérico</em> ("autorizo o uso dos meus dados para o
+  que a empresa quiser") é <strong>nulo</strong>, porque não há finalidade
+  determinada. E — adiantando a Lição 5 — consentimento é apenas
+  <em>uma</em> das dez bases legais, não a mais importante.
+</div>
+
+<h2>Parte 3 · Anonimização × pseudonimização <span class="tag alta">pega quem decora errado</span></h2>
+<p>
+  Este é um dos pontos mais cobrados do capítulo — e o mais confundido.
+  A diferença está em <strong>uma palavra: reversibilidade</strong>.
+</p>
+
+<div class="box formula-box" style="text-align:left;font-size:1rem">
+  <strong>Art. 12.</strong> "Os dados anonimizados <strong>não serão
+  considerados dados pessoais</strong> para os fins desta Lei,
+  <strong>salvo</strong> quando o processo de anonimização ao qual foram
+  submetidos for revertido, utilizando exclusivamente meios próprios,
+  <strong>ou</strong> quando, com <strong>esforços razoáveis</strong>,
+  puder ser revertido."
+</div>
+<p>
+  Ou seja: anonimizar tira o dado da LGPD — <em>mas só enquanto ele
+  continuar irreversível</em>. Se, com esforços razoáveis, dá para
+  reverter e reidentificar a pessoa, o dado <strong>volta a ser dado
+  pessoal</strong> e a LGPD volta a incidir. O §1º diz que "razoável"
+  se mede por fatores objetivos (custo e tempo para reverter, tecnologias
+  disponíveis).
+</p>
+
+<div class="box">
+  <strong>Exemplo resolvido 3 — anonimização que não anonimiza</strong>
+  <p>
+    Uma empresa "anonimiza" uma base tirando nome e CPF, mas mantém CEP
+    completo + data de nascimento + gênero. Estudos mostram que essa
+    combinação reidentifica a maioria das pessoas de uma cidade. Esse dado
+    é anonimizado para a LGPD?
+  </p>
+  <p>
+    <strong>Não.</strong> Como a reidentificação é possível "com esforços
+    razoáveis", o art. 12 diz que ele <strong>continua sendo dado
+    pessoal</strong>. Remover campos óbvios não basta: o teste é se a
+    pessoa <em>pode</em> ser identificada, não se o nome está lá.
+  </p>
+</div>
+
+<p>
+  Já a <strong>pseudonimização</strong> (art. 13, §4º) é o tratamento pelo
+  qual o dado "perde a possibilidade de associação... a um indivíduo,
+  <strong>senão pelo uso de informação adicional mantida separadamente</strong>
+  pelo controlador em ambiente controlado e seguro". Traduzindo: existe uma
+  "chave" guardada à parte que <em>reverte</em> a qualquer momento. Por ser
+  <strong>sempre reversível</strong>, dado pseudonimizado
+  <strong>continua sendo dado pessoal</strong> e nunca sai da LGPD.
+</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg">
+    <rect class="node ok-fill" x="20" y="30" width="180" height="70" rx="6"></rect>
+    <text x="110" y="55" text-anchor="middle" font-size="12">ANONIMIZAÇÃO</text>
+    <text x="110" y="74" text-anchor="middle" font-size="9" class="muted">irreversível (idealmente)</text>
+    <text x="110" y="88" text-anchor="middle" font-size="9" class="muted">→ SAI da LGPD (art. 12)</text>
+
+    <rect class="node accent-fill-2" x="260" y="30" width="180" height="70" rx="6"></rect>
+    <text x="350" y="55" text-anchor="middle" font-size="12">PSEUDONIMIZAÇÃO</text>
+    <text x="350" y="74" text-anchor="middle" font-size="9" class="muted">reversível pela "chave" separada</text>
+    <text x="350" y="88" text-anchor="middle" font-size="9" class="muted">→ CONTINUA dado pessoal (art. 13 §4º)</text>
+  </svg>
+  <figcaption>
+    A regra de bolso: <strong>anonimizou → saiu</strong> (enquanto
+    irreversível); <strong>pseudonimizou → continua dentro</strong>.
+  </figcaption>
+</figure>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha clássica — perfil comportamental</span>
+  O art. 12, §2º acrescenta: podem "igualmente" ser considerados dados
+  pessoais aqueles usados para <strong>formação do perfil comportamental</strong>
+  de determinada pessoa natural, <strong>se identificada</strong>. Ou seja,
+  perfilamento que chega a uma pessoa identificada é dado pessoal — a banca
+  gosta de afirmar que "perfil comportamental nunca é dado pessoal", o que
+  está errado.
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">
+    O operador é a pessoa, natural ou jurídica, a quem competem as decisões
+    referentes ao tratamento dos dados pessoais.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="errado">
+    Correto, o item está <strong>errado</strong>. A definição dada é a de
+    <em>controlador</em> (art. 5º, VI); o operador apenas executa "em nome
+    do controlador" (art. 5º, VII).
+  </div>
+  <div class="feedback incorrect" data-for="certo">
+    Na verdade está <strong>errado</strong>: quem decide o tratamento é o
+    controlador (art. 5º, VI). O operador trata os dados em nome dele
+    (art. 5º, VII).
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 2</div>
+  <p class="statement">
+    Um dado do qual se retiraram nome e CPF, mas que ainda permite
+    reidentificar a pessoa com esforços razoáveis, continua sendo
+    considerado dado pessoal pela LGPD.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — é exatamente a ressalva do art. 12 (reversível com esforços
+    razoáveis → volta a ser dado pessoal).
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia o art. 12: se a anonimização pode ser revertida com esforços
+    razoáveis, o dado permanece pessoal. O item está certo.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 3</div>
+  <p class="statement">
+    A pseudonimização, por tornar o dado irreconhecível, retira o dado
+    pseudonimizado do âmbito de aplicação da LGPD, tal como a anonimização.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="errado">
+    Correto, o item está <strong>errado</strong>. Pseudonimizado é sempre
+    reversível pela chave guardada à parte (art. 13, §4º) → continua dado
+    pessoal. Quem pode sair da LGPD é o anonimizado (art. 12).
+  </div>
+  <div class="feedback incorrect" data-for="certo">
+    Na verdade está <strong>errado</strong>: o dado pseudonimizado é
+    reversível (art. 13, §4º) e continua sendo pessoal. Só a anonimização
+    (art. 12) pode retirar o dado da LGPD.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">
+    O consentimento, na LGPD, deve ser manifestação livre, informada e
+    inequívoca do titular para uma finalidade determinada, sendo inválido
+    o consentimento genérico.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — art. 5º, XII, mais a exigência de finalidade determinada que
+    fulmina o consentimento genérico.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia o art. 5º, XII: livre, informada e inequívoca, para finalidade
+    determinada. O item está certo.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 5</div>
+  <p class="statement">
+    Dado biométrico, quando vinculado a uma pessoa natural, é classificado
+    pela LGPD como dado pessoal sensível.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — o art. 5º, II inclui dado genético ou biométrico, quando
+    vinculado a uma pessoa natural, no rol de dados sensíveis.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia o art. 5º, II: dado biométrico vinculado a pessoa natural é
+    sensível. O item está certo.
+  </div>
+</div>
+
+<div class="portugues">
+  <span class="label">Português na prática · interpretação de texto legal</span>
+  <p style="margin-top:0">
+    A banca adora testar leitura fina de dispositivo legal. Reveja o
+    <strong>art. 12</strong>: <em>"Os dados anonimizados não serão
+    considerados dados pessoais... <strong>salvo</strong> quando o processo
+    de anonimização... for revertido... <strong>ou</strong> quando, com
+    esforços razoáveis, <strong>puder</strong> ser revertido."</em>
+  </p>
+  <p>
+    Dois pontos de língua que viram questão:
+  </p>
+  <ul style="margin-top:0.3rem">
+    <li><strong>"salvo"</strong> introduz uma <em>exceção</em> — equivale a
+      "exceto se" / "a não ser que". Tudo que vem depois de "salvo"
+      <em>afasta</em> a regra dita antes.</li>
+    <li><strong>"puder"</strong> é futuro do subjuntivo do verbo
+      <em>poder</em> (não "poder"). Sinaliza hipótese/condição futura —
+      típico de norma jurídica.</li>
+  </ul>
+  <div class="quiz" data-key="errado" style="margin-top:0.8rem">
+    <div class="q-num">Reescrita — mantém o sentido?</div>
+    <p class="statement">
+      "Os dados anonimizados serão considerados dados pessoais somente
+      quando não puderem ser revertidos." — Essa reescrita preserva o
+      sentido do art. 12?
+    </p>
+    <div class="options">
+      <button class="opt" data-answer="certo">Preserva</button>
+      <button class="opt" data-answer="errado">Inverte</button>
+    </div>
+    <div class="feedback correct" data-for="errado">
+      Correto — a reescrita <strong>inverte</strong> o sentido. O original
+      diz que anonimizado <em>não</em> é pessoal, <em>salvo</em> se
+      reversível; a reescrita afirma que ele só é pessoal quando <em>não</em>
+      puder ser revertido — exatamente o contrário.
+    </div>
+    <div class="feedback incorrect" data-for="certo">
+      Na verdade a reescrita <strong>inverte</strong> a lógica. No art. 12,
+      anonimizado <em>não</em> é dado pessoal, <em>exceto</em> se reversível.
+      Trocar "salvo se reversível" por "somente se irreversível" vira o
+      sentido de cabeça para baixo.
+    </div>
+  </div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  Lei nº 13.709/2018 (LGPD), art. 5º (definições), art. 6º (princípios) e
+  arts. 12–13 (anonimização e pseudonimização). Leia a <strong>lei
+  seca</strong> — os incisos do art. 5º caem com redação literal.
+</p>
+<p class="source" id="f1">
+  [1] <em>Lei Geral de Proteção de Dados Pessoais — Lei nº 13.709/2018</em>,
+  edição oficial (texto conferido palavra por palavra para esta lição, no
+  arquivo <code>Lei_geral_protecao_dados_pessoais_1ed.pdf</code> do
+  workspace). Confira também o texto compilado no
+  <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">Planalto</a>
+  para eventuais alterações posteriores.
+</p>
+
+<div class="ask-teacher">
+  Alguma definição não colou? Pergunte ao seu professor (aqui, na conversa).
+  Este é o vocabulário-base — não avance para bases legais com dúvida em
+  controlador × operador ou anonimização × pseudonimização.
+</div>
+
+<div class="nav">
+  <a href="0002-objeto-fundamentos-e-ambito.html">← Lição 2: objeto, fundamentos e âmbito</a>
+  <span>Próxima: os 10 princípios (art. 6º)</span>
+</div>
+
+<script src="../../assets/quiz.js"></script>

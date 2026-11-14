@@ -1,0 +1,210 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classificação supervisionada e Naive Bayes</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco C · Aprendizado de Máquina · Lição 6</div>
+<h1>Classificação supervisionada e o classificador Naive Bayes</h1>
+<p class="lede">
+  Primeiro modelo do bloco visto em detalhe. Em vez de começar do zero, vamos aproveitar o Teorema de Bayes que você já viu no Bloco B —
+  o classificador Naive Bayes é literalmente esse teorema aplicado a um
+  problema de classificação. Essa ponte entre os blocos é proposital: no
+  edital, "Técnicas de classificação" começa exatamente por aqui.
+</p>
+
+<h2>O que é classificação supervisionada</h2>
+<p>
+  Em <strong>aprendizado supervisionado</strong>, você tem exemplos já
+  rotulados (ex.: e-mails marcados como "spam" ou "não-spam") e quer
+  aprender uma regra que, dado um exemplo <em>novo</em> e não rotulado,
+  preveja o rótulo correto. <strong>Classificação</strong> é o caso em que
+  o rótulo é uma categoria (spam/não-spam, doente/saudável), diferente de
+  <strong>regressão</strong>, em que o alvo é um número contínuo.
+</p>
+
+<h2>De Bayes ao Naive Bayes</h2>
+<p>
+  Na Lição 2 do Bloco B, calculamos P(spam|"grátis") usando Bayes com uma
+  única palavra como evidência. Um classificador de verdade usa
+  <strong>várias palavras (features) ao mesmo tempo</strong>. O problema:
+  calcular P("grátis" e "promoção" e "urgente" | spam) exigiria conhecer
+  como essas palavras interagem entre si — caro e difícil de estimar com
+  poucos dados.
+</p>
+<p>
+  A saída do Naive Bayes é uma suposição simplificadora — daí o nome
+  <em>naive</em> (ingênuo): assumir que, dado o rótulo, as features são
+  <strong>condicionalmente independentes</strong> entre si:
+</p>
+<div class="box formula-box">
+  P(x₁, x₂, …, xₙ | classe) ≈ P(x₁|classe) · P(x₂|classe) · … · P(xₙ|classe)
+</div>
+<p>
+  Combinada com Bayes, a regra de decisão vira: escolha a classe que
+  maximiza P(classe) · P(x₁|classe) · P(x₂|classe) · … — ou seja, o prior
+  da classe vezes o produto das verossimilhanças de cada feature.
+</p>
+
+<div class="box">
+  <strong>Exemplo resolvido</strong>
+  <p>
+    Retomando o filtro de spam: P(spam) = 0,3, P(não-spam) = 0,7.
+    Um e-mail novo contém as palavras "grátis" e "urgente".
+  </p>
+  <p>
+    P("grátis"|spam) = 0,4 · &nbsp; P("urgente"|spam) = 0,5<br>
+    P("grátis"|não-spam) = 0,05 · &nbsp; P("urgente"|não-spam) = 0,02
+  </p>
+  <p>
+    Score(spam) = 0,3 × 0,4 × 0,5 = 0,06<br>
+    Score(não-spam) = 0,7 × 0,05 × 0,02 = 0,0007
+  </p>
+  <p>
+    Score(spam) &gt;&gt; Score(não-spam) → o e-mail é classificado como
+    <strong>spam</strong>. Note que não precisamos dividir por P(evidência)
+    para decidir — como ela é igual nos dois scores, só afeta a escala, não
+    qual classe vence.
+  </p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 380 120" xmlns="http://www.w3.org/2000/svg">
+      <text x="10" y="24" font-size="13">spam</text>
+      <rect class="node accent-fill" x="70" y="10" width="280" height="24" rx="3"></rect>
+      <text x="360" y="27" font-size="12" text-anchor="end" font-weight="600">0,06</text>
+
+      <text x="10" y="64" font-size="13">não-spam</text>
+      <rect class="node bad-fill" x="70" y="50" width="3.3" height="24" rx="3"></rect>
+      <text x="360" y="67" font-size="12" text-anchor="end" font-weight="600">0,0007</text>
+
+      <text x="70" y="100" font-size="11" class="muted">
+        barras na escala real — spam vence por quase 100×, não é uma decisão apertada
+      </text>
+    </svg>
+    <figcaption>
+      Comparação dos scores em escala real (0,06 vs. 0,0007). A diferença
+      entre as classes costuma ser grande — é raro o Naive Bayes "empatar".
+    </figcaption>
+  </figure>
+</div>
+
+<div class="box">
+  <strong>Segundo exemplo — três features, e por que se usa log</strong>
+  <p>
+    Adicione uma terceira palavra ao e-mail: "clique". Suponha
+    P("clique"|spam) = 0,3 e P("clique"|não-spam) = 0,01. Recalculando:
+  </p>
+  <p>
+    Score(spam) = 0,3 × 0,4 × 0,5 × 0,3 = 0,018<br>
+    Score(não-spam) = 0,7 × 0,05 × 0,02 × 0,01 = 0,000007
+  </p>
+  <p>
+    Com mais features, os produtos ficam cada vez menores (multiplicar
+    várias probabilidades &lt; 1 encolhe rápido) e podem estourar a
+    precisão numérica de um computador. Por isso, implementações reais
+    (como o <code>scikit-learn</code>) trabalham em
+    <strong>log-probabilidade</strong>: somam logaritmos em vez de
+    multiplicar probabilidades — o resultado da comparação entre classes é
+    o mesmo, mas sem risco de underflow numérico
+    <sup class="cite"><a href="https://scikit-learn.org/stable/modules/naive_bayes.html" target="_blank" rel="noopener">[1]</a></sup>.
+  </p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha clássica</span>
+  A suposição "naive" de independência entre features é quase sempre
+  <strong>falsa</strong> na prática (palavras como "grátis" e "promoção"
+  tendem a aparecer juntas) — mas o algoritmo funciona bem mesmo assim,
+  porque o que importa é a classe com maior score relativo, não os valores
+  de probabilidade exatos. Bancas gostam de testar se você sabe que "naive"
+  é uma limitação conhecida e aceita, não um defeito que invalida o método.
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 1</div>
+  <p class="statement">
+    O classificador Naive Bayes assume que as features são condicionalmente
+    independentes entre si, dado o valor da classe.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — é exatamente essa suposição que dá nome ao método.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia: a suposição de independência condicional dado a classe é a
+    definição do "naive" no nome. O item está certo.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 2</div>
+  <p class="statement">
+    Por assumir independência entre as features, o Naive Bayes é
+    considerado um método inadequado para uso prático sempre que as
+    features reais são correlacionadas entre si.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Isso marcaria como certa, mas é a pegadinha — veja abaixo.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Correto, o item está <strong>errado</strong>. Na prática, o Naive
+    Bayes costuma funcionar bem mesmo com features correlacionadas, porque
+    a classificação depende do score relativo entre classes, não de
+    probabilidades exatas.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 3</div>
+  <p class="statement">
+    Implementações práticas do Naive Bayes costumam somar logaritmos de
+    probabilidades em vez de multiplicar as probabilidades diretamente,
+    para evitar problemas de precisão numérica com muitas features.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — é o truque do log-espaço citado acima, usado por bibliotecas
+    como o scikit-learn.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia o segundo exemplo: multiplicar muitas probabilidades pequenas
+    causa underflow numérico, então se soma log-probabilidades em vez
+    disso. O item está certo.
+  </div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  ISLR (<em>An Introduction to Statistical Learning</em>), capítulo de
+  classificação — seção sobre Naive Bayes e comparação com regressão
+  logística e LDA. Gratuito em statlearning.com.
+</p>
+<p class="source">
+  Referência citada nesta lição:
+  [1] <a href="https://scikit-learn.org/stable/modules/naive_bayes.html" target="_blank" rel="noopener">Naive Bayes — scikit-learn user guide</a>
+</p>
+
+<div class="ask-teacher">
+  Alguma parte não ficou clara? Pergunte ao seu professor (aqui, na
+  conversa) — é para isso que ele está aqui. Não avance com dúvida.
+</div>
+
+<div class="nav">
+  <a href="0005-ensembles-e-baseline.html">← Lição 5: ensembles e baseline</a>
+  <span>Bloco C continua com: regressão logística</span>
+</div>
+
+<script src="../../assets/quiz.js"></script>

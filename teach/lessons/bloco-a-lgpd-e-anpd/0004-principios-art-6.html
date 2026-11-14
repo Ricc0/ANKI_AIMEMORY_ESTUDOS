@@ -1,0 +1,525 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LGPD: os 10 princípios do art. 6º</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+<p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
+<div class="kicker">Bloco A · LGPD e atos da ANPD — Lição 4 · Lote 4 · Peso: alta</div>
+<h1>Os 10 princípios do tratamento (art. 6º)</h1>
+<p class="lede">
+  Toda operação com dados pessoais tem que passar por uma <strong>régua</strong>:
+  a boa-fé e os dez princípios do art. 6º. Eles valem <em>sempre</em> —
+  qualquer que seja a base legal (Lição 5). Ter uma base legal não dispensa
+  os princípios. Texto conferido na edição oficial<sup class="cite"><a href="#f1">[1]</a></sup>.
+</p>
+
+<div class="box formula-box" style="text-align:left;font-size:1rem">
+  <strong>Art. 6º</strong> "As atividades de tratamento de dados pessoais
+  deverão observar a <strong>boa-fé</strong> e os seguintes princípios: [...]"
+</div>
+<p>
+  Repare: a <strong>boa-fé</strong> vem no <em>caput</em>, antes da lista —
+  é o guarda-chuva que orienta a leitura de todos os dez. Depois vêm os
+  princípios, incisos I a X.
+</p>
+
+<h2>Um mapa para não decorar solto</h2>
+<p>
+  Dez princípios é muita coisa para a memória. Agrupe-os em quatro famílias
+  — assim você recupera o conjunto puxando por um "gancho":
+</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg">
+    <rect class="node accent-fill" x="20" y="15" width="200" height="70" rx="6"></rect>
+    <text x="120" y="34" text-anchor="middle" font-size="11">① A TRINCA FINALÍSTICA</text>
+    <text x="120" y="52" text-anchor="middle" font-size="9" class="muted">finalidade · adequação</text>
+    <text x="120" y="66" text-anchor="middle" font-size="9" class="muted">· necessidade</text>
+    <text x="120" y="79" text-anchor="middle" font-size="8" class="muted">(por que / combina / o mínimo)</text>
+
+    <rect class="node accent-fill-2" x="260" y="15" width="200" height="70" rx="6"></rect>
+    <text x="360" y="34" text-anchor="middle" font-size="11">② VOLTADOS AO TITULAR</text>
+    <text x="360" y="52" text-anchor="middle" font-size="9" class="muted">livre acesso · qualidade</text>
+    <text x="360" y="66" text-anchor="middle" font-size="9" class="muted">· transparência</text>
+
+    <rect class="node accent-fill-2" x="20" y="105" width="200" height="70" rx="6"></rect>
+    <text x="120" y="124" text-anchor="middle" font-size="11">③ PROTEÇÃO / RISCO</text>
+    <text x="120" y="142" text-anchor="middle" font-size="9" class="muted">segurança · prevenção</text>
+    <text x="120" y="156" text-anchor="middle" font-size="9" class="muted">· não discriminação</text>
+
+    <rect class="node accent-fill" x="260" y="105" width="200" height="70" rx="6"></rect>
+    <text x="360" y="124" text-anchor="middle" font-size="11">④ ACCOUNTABILITY</text>
+    <text x="360" y="146" text-anchor="middle" font-size="9" class="muted">responsabilização e</text>
+    <text x="360" y="160" text-anchor="middle" font-size="9" class="muted">prestação de contas</text>
+
+    <text x="240" y="205" text-anchor="middle" font-size="9" class="muted">3 + 3 + 3 + 1 = 10 princípios · tudo sob a boa-fé (caput)</text>
+    <text x="240" y="228" text-anchor="middle" font-size="8.5" class="muted">gancho de memória: "por quê → para o titular → contra o risco → e prove que fez"</text>
+  </svg>
+  <figcaption>
+    A família ① (finalidade, adequação, necessidade) é a mais cobrada e a
+    mais confundida — vamos abri-la com cuidado logo abaixo.
+  </figcaption>
+</figure>
+
+<h2>① A trinca finalística — o ponto mais cobrado</h2>
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Finalidade</strong> (I): tratamento
+    para propósitos <em>legítimos, específicos, explícitos e informados</em>
+    ao titular, <strong>sem tratamento posterior incompatível</strong> com
+    essas finalidades. → gatilho: <span class="anchor">PARA QUÊ?</span></p>
+  <p style="margin:0.2rem 0"><strong>Adequação</strong> (II):
+    <em>compatibilidade</em> do tratamento com as finalidades informadas, de
+    acordo com o contexto. → gatilho: <span class="anchor">COMBINA?</span></p>
+  <p style="margin:0.2rem 0"><strong>Necessidade</strong> (III): limitação
+    ao <strong>mínimo necessário</strong> — dados pertinentes, proporcionais
+    e <em>não excessivos</em>. → gatilho: <span class="anchor">MÍNIMO?</span></p>
+</div>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Trinca finalística — art. 6º, incisos I–III · use a coluna "Armadilha" para checar itens de prova.</caption>
+    <thead>
+      <tr>
+        <th>Princípio (inciso)</th>
+        <th>Gatilho</th>
+        <th>Conceito (art. 6º, literal)</th>
+        <th>Armadilha clássica da banca</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Finalidade (I)</th>
+        <td><span class="anchor">PARA QUÊ?</span><br>O propósito é específico, explícito e foi informado?</td>
+        <td>Propósitos <em>legítimos, específicos, explícitos e informados</em>; veda tratamento posterior <em>incompatível</em>.</td>
+        <td>Banca diz "finalidade = usar o mínimo de dados" (isso é <em>necessidade</em>). Ou troca "explícitos" por "implícitos".</td>
+      </tr>
+      <tr>
+        <th>Adequação (II)</th>
+        <td><span class="anchor">COMBINA?</span><br>O uso atual é compatível com o que foi informado?</td>
+        <td><em>Compatibilidade</em> do tratamento com as finalidades informadas, de acordo com o contexto.</td>
+        <td>Banca troca por necessidade ("limitar ao mínimo"). Adequação é sobre <em>compatibilidade de uso</em>, não sobre quantidade de dados.</td>
+      </tr>
+      <tr>
+        <th>Necessidade (III)</th>
+        <td><span class="anchor">MÍNIMO?</span><br>Coletamos só o indispensável?</td>
+        <td>Limitação ao <em>mínimo necessário</em> — dados pertinentes, proporcionais e não excessivos.</td>
+        <td>Banca troca por adequação: "necessidade = compatibilidade com a finalidade" — errado. Dado excessivo ou impertinente = viola <em>necessidade</em>.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 1 — a mesma loja, três princípios</strong>
+  <p>
+    Uma loja online coleta seu nome e endereço para entregar um produto.
+  </p>
+  <ul style="margin:0.3rem 0">
+    <li><strong>Finalidade:</strong> a loja disse que é "para entrega" — é
+      um propósito específico e informado. OK.</li>
+    <li><strong>Necessidade:</strong> se ela também exigir seu
+      <em>número de CPF, renda e estado civil</em> para uma simples entrega,
+      viola a necessidade — pediu além do mínimo.</li>
+    <li><strong>Adequação:</strong> se depois usar o endereço para
+      <em>enviar panfletos de outra empresa</em>, o tratamento deixou de ser
+      compatível com a finalidade informada — viola a adequação (e a
+      finalidade, pelo "tratamento posterior incompatível").</li>
+  </ul>
+</div>
+
+<div class="box">
+  <strong>Diagnóstico — identifique o princípio violado</strong>
+  <p>Leia cada situação e decida qual princípio da trinca é infringido antes de ver a resposta:</p>
+  <ol style="margin:0.3rem 0">
+    <li style="margin-bottom:0.7rem">
+      <em>Um hospital coleta, além de prontuário e CPF, também profissão,
+      renda e estado civil do paciente para "completar o cadastro".</em><br>
+      <strong>→ Necessidade (III).</strong> Dados além do mínimo exigido para
+      o atendimento médico. Gatilho: <span class="anchor">MÍNIMO?</span>
+    </li>
+    <li style="margin-bottom:0.7rem">
+      <em>Uma academia informa que usa e-mail e telefone "para gestão de
+      matrículas". Meses depois, vende a lista para uma seguradora de vida.</em><br>
+      <strong>→ Finalidade (I)</strong> (tratamento posterior incompatível)
+      <em>e</em> <strong>Adequação (II)</strong> (uso incompatível com o
+      que foi declarado). Se a banca afirmar que viola apenas a
+      <em>necessidade</em>, o item estará errado.
+    </li>
+    <li>
+      <em>Um aplicativo de delivery exige data de nascimento como campo
+      obrigatório, embora a informação não seja usada em nenhuma etapa da
+      entrega.</em><br>
+      <strong>→ Necessidade (III).</strong> Dado impertinente ao serviço
+      está sendo exigido. Gatilho: <span class="anchor">MÍNIMO?</span>
+    </li>
+  </ol>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha clássica — não troque a trinca</span>
+  A banca adora <strong>trocar as definições</strong>: dar o conceito de
+  necessidade e chamar de "adequação", ou dizer que "finalidade é usar só o
+  mínimo de dados" (isso é <em>necessidade</em>). Fixe o gatilho:
+  <strong>finalidade = para quê</strong>; <strong>adequação = combina com o
+  que foi dito</strong>; <strong>necessidade = só o mínimo</strong>.
+</div>
+
+<h2>② Voltados ao titular · ③ Proteção · ④ Accountability</h2>
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Livre acesso</strong> (IV): consulta
+    <em>facilitada e gratuita</em> sobre a forma, a duração e a integralidade
+    dos dados.</p>
+  <p style="margin:0.2rem 0"><strong>Qualidade dos dados</strong> (V):
+    exatidão, clareza, relevância e <em>atualização</em>.</p>
+  <p style="margin:0.2rem 0"><strong>Transparência</strong> (VI):
+    informações claras, precisas e acessíveis — <strong>observados os
+    segredos comercial e industrial</strong>.</p>
+  <p style="margin:0.2rem 0"><strong>Segurança</strong> (VII): medidas
+    técnicas e administrativas contra acessos não autorizados e situações
+    acidentais ou ilícitas.</p>
+  <p style="margin:0.2rem 0"><strong>Prevenção</strong> (VIII): medidas para
+    <em>prevenir danos</em> (age antes, não só depois).</p>
+  <p style="margin:0.2rem 0"><strong>Não discriminação</strong> (IX):
+    impossibilidade de tratamento para fins discriminatórios
+    <strong>ilícitos ou abusivos</strong>.</p>
+  <p style="margin:0.2rem 0"><strong>Responsabilização e prestação de
+    contas</strong> (X): o agente deve <em>demonstrar</em> — comprovar — a
+    adoção de medidas eficazes e sua eficácia. É o <em>accountability</em>.</p>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 2 — accountability não é "responsabilidade civil"</strong>
+  <p>
+    Uma empresa sofre um vazamento e alega: "seguimos a LGPD, confie em nós".
+    Sob o princípio da responsabilização e prestação de contas (X), isso
+    basta?
+  </p>
+  <p>
+    <strong>Não.</strong> O princípio X exige <em>demonstrar</em> — mostrar
+    registros, políticas, evidência de que as medidas existiam e eram
+    eficazes. "Confie em nós" não é prestação de contas. E cuidado: esse
+    princípio (<em>accountability</em>, dever de comprovar) é coisa distinta
+    da <strong>responsabilidade civil</strong> por danos (arts. 42–45, Lote 10) — a banca gosta de embaralhar os dois.
+  </p>
+</div>
+
+<div class="pegadinha">
+  <span class="label">Pegadinha clássica — transparência tem limite</span>
+  A transparência (VI) não é absoluta: o próprio inciso ressalva os
+  <strong>segredos comercial e industrial</strong>. Item que diga
+  "transparência total e irrestrita" está errado. E na não discriminação
+  (IX), o texto proíbe discriminação <em>ilícita ou abusiva</em> — não
+  "qualquer diferenciação".
+</div>
+
+<h2>Pratique: certo ou errado</h2>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 1</div>
+  <p class="statement">
+    O princípio da necessidade consiste na compatibilidade do tratamento com
+    as finalidades informadas ao titular, de acordo com o contexto.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="errado">
+    Correto, o item está <strong>errado</strong>. Essa é a definição de
+    <em>adequação</em> (II). Necessidade (III) é a limitação ao mínimo de
+    dados.
+  </div>
+  <div class="feedback incorrect" data-for="certo">
+    Na verdade está <strong>errado</strong>: o texto descrito é o da
+    adequação (II). Necessidade é usar só o mínimo de dados (III).
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 2</div>
+  <p class="statement">
+    Segundo o art. 6º, o tratamento de dados pessoais deve observar a boa-fé,
+    além dos princípios expressamente listados nos incisos.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — a boa-fé está no <em>caput</em> do art. 6º, ao lado dos dez
+    princípios.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia o <em>caput</em> do art. 6º: "deverão observar a boa-fé e os
+    seguintes princípios". O item está certo.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 3</div>
+  <p class="statement">
+    O princípio da transparência assegura ao titular informações totais e
+    irrestritas, não admitindo qualquer limitação por segredo comercial.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="errado">
+    Correto, o item está <strong>errado</strong>. O inciso VI ressalva
+    expressamente os segredos comercial e industrial.
+  </div>
+  <div class="feedback incorrect" data-for="certo">
+    Na verdade está <strong>errado</strong>: a transparência (VI) só vale observados os segredos comercial e industrial. Não é irrestrita.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 4</div>
+  <p class="statement">
+    Pelo princípio da responsabilização e prestação de contas, o agente deve
+    demonstrar a adoção de medidas eficazes de proteção de dados e a eficácia
+    dessas medidas.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — é o <em>accountability</em> do inciso X: demonstrar e comprovar.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia o inciso X: exige demonstração da adoção e da eficácia das
+    medidas. O item está certo.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 5</div>
+  <p class="statement">
+    O princípio da prevenção impõe a adoção de medidas para prevenir a
+    ocorrência de danos em virtude do tratamento de dados pessoais.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — inciso VIII, literal. Prevenção age <em>antes</em> do dano.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Releia o inciso VIII: adoção de medidas para prevenir danos. O item está
+    certo.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 6 · Trinca finalística</div>
+  <p class="statement">
+    O princípio da adequação (art. 6º, II) determina que o tratamento de
+    dados pessoais deve limitar-se ao mínimo necessário para a realização
+    das finalidades, abrangendo apenas dados pertinentes, proporcionais e
+    não excessivos.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="errado">
+    Correto, o item está <strong>errado</strong>. Esse é o conceito de
+    <em>necessidade</em> (III). Adequação (II) é sobre
+    <em>compatibilidade</em> do tratamento com as finalidades informadas —
+    gatilho: <span class="anchor">COMBINA?</span>
+  </div>
+  <div class="feedback incorrect" data-for="certo">
+    Na verdade está <strong>errado</strong>. O texto descreve a
+    <em>necessidade</em> (III). Adequação diz respeito à compatibilidade do
+    uso com a finalidade declarada, não à quantidade de dados coletados.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 7 · Trinca finalística</div>
+  <p class="statement">
+    Uma empresa de saúde coletou dados dos pacientes para oferecer
+    atendimento médico e, meses depois, passou a utilizá-los para fins de
+    pesquisa de mercado, sem nova comunicação ao titular. Tal conduta viola
+    o princípio da finalidade (I), por configurar tratamento posterior
+    incompatível com as finalidades originalmente informadas.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — o art. 6º, I, veda expressamente o "tratamento posterior
+    incompatível" com as finalidades informadas. Usar dados de atendimento
+    médico para pesquisa de mercado é exatamente isso.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Na verdade está <strong>certo</strong>. O inciso I proíbe tratamento
+    posterior incompatível com a finalidade declarada. Pesquisa de mercado ≠
+    atendimento médico.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 8 · Trinca finalística</div>
+  <p class="statement">
+    Nos termos do art. 6º, I, da LGPD, são admissíveis finalidades de
+    tratamento que, embora não explicitadas ao titular, possam ser inferidas
+    do contexto do serviço prestado.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="errado">
+    Correto, o item está <strong>errado</strong>. O inciso I exige que as
+    finalidades sejam <em>explícitas e informadas</em> ao titular. Não há
+    espaço para finalidades "inferidas" ou "implícitas" — trocar "explícitas"
+    por "implícitas" é pegadinha clássica.
+  </div>
+  <div class="feedback incorrect" data-for="certo">
+    Na verdade está <strong>errado</strong>. O art. 6º, I, exige
+    finalidades <em>explícitas e informadas</em>. Finalidades meramente
+    "inferidas do contexto" não satisfazem o princípio da finalidade.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 9 · Trinca finalística</div>
+  <p class="statement">
+    Uma locadora de veículos exige dos clientes, além de nome, CNH e cartão
+    de crédito, dados sobre religião e filiação partidária para completar o
+    cadastro. Tal exigência viola o princípio da necessidade (III), pois os
+    dados coletados são excessivos e não pertinentes à finalidade do serviço.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — dado impertinente ao serviço de locação é dado excessivo.
+    Necessidade (III): gatilho <span class="anchor">MÍNIMO?</span> Religião e
+    filiação partidária não são o mínimo necessário para alugar um carro.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Na verdade está <strong>certo</strong>. Dado não pertinente à finalidade
+    = excessivo = viola a <em>necessidade</em> (III). A afirmação do item
+    está correta.
+  </div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 10 · Trinca finalística</div>
+  <p class="statement">
+    O princípio da necessidade (III) e o da adequação (II) possuem o mesmo
+    objeto: ambos limitam a quantidade de dados coletados ao estritamente
+    indispensável para a finalidade declarada.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="errado">
+    Correto, o item está <strong>errado</strong>. São princípios distintos:
+    <em>adequação</em> → o uso é compatível com o que foi informado?
+    (<span class="anchor">COMBINA?</span>);
+    <em>necessidade</em> → o volume de dados é o mínimo?
+    (<span class="anchor">MÍNIMO?</span>). Reduzi-los ao mesmo objeto
+    apaga a diferença.
+  </div>
+  <div class="feedback incorrect" data-for="certo">
+    Na verdade está <strong>errado</strong>. Adequação pergunta se o
+    <em>uso é compatível</em> com a finalidade declarada; necessidade
+    pergunta se a <em>quantidade</em> de dados é o mínimo. Não têm o mesmo
+    objeto.
+  </div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 11 · Trinca finalística</div>
+  <p class="statement">
+    Uma plataforma de streaming informa que usa o histórico de filmes
+    assistidos "para recomendar conteúdo". Meses depois, compartilha esse
+    histórico com anunciantes para publicidade direcionada, sem nova
+    comunicação ao titular. Essa conduta viola o princípio da adequação
+    (II), pois o tratamento não é compatível com as finalidades informadas.
+  </p>
+  <div class="options">
+    <button class="opt" data-answer="certo">Certo</button>
+    <button class="opt" data-answer="errado">Errado</button>
+  </div>
+  <div class="feedback correct" data-for="certo">
+    Correto — compartilhar o histórico com anunciantes não é compatível com
+    a finalidade de "recomendar conteúdo" declarada ao titular.
+    <em>Adequação</em> (II): gatilho <span class="anchor">COMBINA?</span>
+    A conduta também viola a <em>finalidade</em> (I) pelo tratamento
+    posterior incompatível, mas a afirmação sobre adequação está correta.
+  </div>
+  <div class="feedback incorrect" data-for="errado">
+    Na verdade está <strong>certo</strong>. Compartilhar o histórico com
+    anunciantes sob a capa de "recomendar conteúdo" é uso incompatível com
+    a finalidade declarada — viola a adequação (II). A proposição está
+    correta.
+  </div>
+</div>
+
+<div class="portugues">
+  <span class="label">Português na prática · leitura de rol e adjetivos que restringem</span>
+  <p style="margin-top:0">
+    No inciso IX: <em>"não discriminação: impossibilidade de realização do
+    tratamento para fins discriminatórios <strong>ilícitos ou abusivos</strong>."</em>
+    Os adjetivos <strong>restringem</strong> o alcance da proibição — só a
+    discriminação ilícita <em>ou</em> abusiva é vedada, não toda e qualquer
+    diferenciação. Trocar os adjetivos por um advérbio absoluto ("qualquer",
+    "toda") muda o sentido.
+  </p>
+  <div class="quiz" data-key="errado" style="margin-top:0.8rem">
+    <div class="q-num">Reescrita — mantém o sentido?</div>
+    <p class="statement">
+      "O tratamento não pode, em nenhuma hipótese, gerar qualquer distinção
+      entre titulares." — Essa reescrita preserva o sentido do inciso IX?
+    </p>
+    <div class="options">
+      <button class="opt" data-answer="certo">Preserva</button>
+      <button class="opt" data-answer="errado">Amplia</button>
+    </div>
+    <div class="feedback correct" data-for="errado">
+      Correto — a reescrita <strong>amplia</strong> indevidamente. O inciso
+      IX veda apenas a discriminação <em>ilícita ou abusiva</em>; "qualquer
+      distinção, em nenhuma hipótese" proíbe muito mais do que a lei.
+    </div>
+    <div class="feedback incorrect" data-for="certo">
+      Na verdade a reescrita <strong>amplia</strong> o sentido. A lei proíbe
+      fins discriminatórios <em>ilícitos ou abusivos</em> — não "qualquer
+      distinção". Os adjetivos são o limite da proibição.
+    </div>
+  </div>
+</div>
+
+<h2>Fonte principal recomendada</h2>
+<p class="source">
+  Lei nº 13.709/2018 (LGPD), art. 6º, incisos I a X. Leia a lei seca — os
+  princípios caem com redação literal e por troca de definições.
+</p>
+<p class="source" id="f1">
+  [1] <em>Lei Geral de Proteção de Dados Pessoais — Lei nº 13.709/2018</em>,
+  edição oficial (arquivo <code>Lei_geral_protecao_dados_pessoais_1ed.pdf</code>
+  do workspace), art. 6º conferido literalmente. Texto compilado também no
+  <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">Planalto</a>.
+</p>
+
+<div class="ask-teacher">
+  Travou na diferença entre finalidade, adequação e necessidade? Pergunte
+  aqui — vale a pena fixar essa trinca antes de seguir para as bases legais.
+</div>
+
+<div class="nav">
+  <a href="0003-conceitos-agentes-dados-anonimizacao.html">← Lição 3: conceitos, agentes e anonimização</a>
+  <span>Próxima: bases legais dos dados comuns (arts. 7º–10)</span>
+</div>
+
+<script src="../../assets/quiz.js"></script>
