@@ -6,172 +6,588 @@
 
 <p style="margin:0 0 0.5rem"><a href="../index.html" style="font-family:-apple-system,'Segoe UI',sans-serif;font-size:0.8rem">← Índice de lições</a></p>
 <div class="kicker">Bloco C · Aprendizado de Máquina · Lição 3</div>
-<h1>Não supervisionado: agrupamento, dimensionalidade e anomalias</h1>
+<h1>Não supervisionado: agrupamento, redução de dimensionalidade e anomalias</h1>
 <p class="lede">
-  Sem rótulo, o modelo não prevê uma resposta: ele <strong>descreve</strong>
-  os dados. Esta lição cobre as três tarefas que a banca cobra e as
-  armadilhas de cada uma. A mais importante: <strong>anomalia não é sinônimo de problema</strong>.
+  No aprendizado <strong>não supervisionado</strong>, ninguém dá a resposta certa
+  ao modelo. Ele recebe só os dados e precisa achar sozinho alguma
+  <strong>organização</strong> neles. Esta lição explica, do zero, as três coisas
+  que ele faz: <strong>juntar parecidos</strong> (agrupamento), <strong>resumir
+  muitas colunas em poucas</strong> (redução de dimensionalidade) e
+  <strong>apontar o que é estranho</strong> (detecção de anomalias)<sup class="cite"><a href="#f1">[1]</a></sup>.
 </p>
 
-<h2>Agrupamento: três algoritmos, três ideias de "grupo"</h2>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="seta" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="currentColor"></path></marker>
+</defs></svg>
+
+<h2>Parte 1 · Agrupamento: juntar quem é parecido</h2>
+<p>
+  <strong>Agrupar</strong> (em inglês, <em>clustering</em>) é separar os dados em
+  grupos de itens parecidos entre si, <strong>sem ninguém dizer antes quais grupos
+  existem</strong>. Exemplo: um aplicativo de música junta, sozinho, as músicas
+  que soam parecidas (ritmo, energia, instrumentos) para montar playlists.
+</p>
+<p>Existem três algoritmos que a prova cobra. Cada um tem uma ideia diferente do que é um "grupo":</p>
 
 <figure class="diagram">
-  <svg viewBox="0 0 480 190" xmlns="http://www.w3.org/2000/svg">
-    <text x="120" y="18" text-anchor="middle" font-size="11">k-means: grupos "esféricos"</text>
-    <circle cx="75" cy="85" r="38" class="accent-fill"></circle>
-    <circle cx="165" cy="95" r="38" class="accent-fill-2"></circle>
-    <circle cx="65" cy="80" r="3" class="ok-fill"></circle><circle cx="85" cy="95" r="3" class="ok-fill"></circle><circle cx="70" cy="100" r="3" class="ok-fill"></circle><circle cx="90" cy="72" r="3" class="ok-fill"></circle>
-    <circle cx="160" cy="90" r="3" class="ok-fill"></circle><circle cx="175" cy="105" r="3" class="ok-fill"></circle><circle cx="150" cy="105" r="3" class="ok-fill"></circle><circle cx="178" cy="82" r="3" class="ok-fill"></circle>
-    <text x="120" y="160" text-anchor="middle" font-size="9" class="muted">precisa de k · todo ponto entra num grupo</text>
+  <svg viewBox="0 0 750 290" xmlns="http://www.w3.org/2000/svg">
+    <line x1="250" y1="10" x2="250" y2="280"></line>
+    <line x1="500" y1="10" x2="500" y2="280"></line>
 
-    <text x="360" y="18" text-anchor="middle" font-size="11">DBSCAN: grupos por densidade</text>
-    <path d="M 270 110 Q 310 40 360 80 Q 400 110 440 60" class="arrow" style="stroke:var(--accent);stroke-width:16;stroke-opacity:0.22;stroke-linecap:round"></path>
-    <circle cx="275" cy="105" r="3" class="ok-fill"></circle><circle cx="295" cy="75" r="3" class="ok-fill"></circle><circle cx="320" cy="60" r="3" class="ok-fill"></circle><circle cx="345" cy="72" r="3" class="ok-fill"></circle><circle cx="370" cy="88" r="3" class="ok-fill"></circle><circle cx="400" cy="95" r="3" class="ok-fill"></circle><circle cx="425" cy="75" r="3" class="ok-fill"></circle>
-    <circle cx="300" cy="140" r="4" class="bad-fill"></circle><circle cx="440" cy="135" r="4" class="bad-fill"></circle>
-    <text x="370" y="145" text-anchor="middle" font-size="9" class="muted">pontos vermelhos = ruído</text>
-    <text x="360" y="160" text-anchor="middle" font-size="9" class="muted">sem k · qualquer formato · marca ruído</text>
+    <!-- k-means -->
+    <text x="125" y="32" text-anchor="middle" class="title">k-means</text>
+    <g class="c1">
+      <circle cx="55" cy="85" r="5"></circle><circle cx="70" cy="76" r="5"></circle><circle cx="88" cy="88" r="5"></circle>
+      <circle cx="58" cy="106" r="5"></circle><circle cx="82" cy="112" r="5"></circle><circle cx="46" cy="98" r="5"></circle>
+      <circle cx="72" cy="124" r="5"></circle><circle cx="94" cy="104" r="5"></circle><circle cx="40" cy="78" r="5"></circle>
+    </g>
+    <g class="c2">
+      <circle cx="150" cy="165" r="5"></circle><circle cx="170" cy="158" r="5"></circle><circle cx="188" cy="175" r="5"></circle>
+      <circle cx="155" cy="192" r="5"></circle><circle cx="176" cy="198" r="5"></circle><circle cx="142" cy="180" r="5"></circle>
+      <circle cx="184" cy="210" r="5"></circle><circle cx="198" cy="190" r="5"></circle><circle cx="162" cy="214" r="5"></circle>
+    </g>
+    <circle cx="68" cy="99" r="12" class="c1" style="fill-opacity:0.35"></circle>
+    <path d="M60 99 H76 M68 91 V107" class="thick" style="stroke:var(--ink)"></path>
+    <circle cx="170" cy="187" r="12" class="c2" style="fill-opacity:0.35"></circle>
+    <path d="M162 187 H178 M170 179 V195" class="thick" style="stroke:var(--ink)"></path>
+    <text x="125" y="258" text-anchor="middle" font-size="11" class="muted">+ = centro de cada grupo</text>
 
-    <text x="240" y="183" text-anchor="middle" font-size="9" class="muted">o k-means cortaria essa "banana" em pedaços redondos; o DBSCAN a reconhece inteira</text>
+    <!-- DBSCAN -->
+    <text x="375" y="32" text-anchor="middle" class="title">DBSCAN</text>
+    <g class="c3">
+      <circle cx="278" cy="105" r="5"></circle><circle cx="287" cy="93" r="5"></circle><circle cx="298" cy="84" r="5"></circle>
+      <circle cx="311" cy="79" r="5"></circle><circle cx="325" cy="78" r="5"></circle><circle cx="339" cy="81" r="5"></circle>
+      <circle cx="351" cy="88" r="5"></circle><circle cx="360" cy="98" r="5"></circle>
+      <circle cx="290" cy="106" r="5"></circle><circle cx="300" cy="96" r="5"></circle><circle cx="313" cy="91" r="5"></circle>
+      <circle cx="327" cy="90" r="5"></circle><circle cx="340" cy="93" r="5"></circle><circle cx="350" cy="101" r="5"></circle>
+    </g>
+    <circle cx="272" cy="120" r="5" class="hollow s3"></circle>
+    <circle cx="366" cy="112" r="5" class="hollow s3"></circle>
+    <g class="c4">
+      <circle cx="415" cy="180" r="5"></circle><circle cx="430" cy="174" r="5"></circle><circle cx="445" cy="182" r="5"></circle>
+      <circle cx="420" cy="195" r="5"></circle><circle cx="435" cy="190" r="5"></circle><circle cx="448" cy="198" r="5"></circle>
+      <circle cx="427" cy="208" r="5"></circle>
+    </g>
+    <circle cx="462" cy="210" r="5" class="hollow s4"></circle>
+    <circle cx="405" cy="165" r="5" class="hollow s4"></circle>
+    <path d="M296 196 L306 206 M306 196 L296 206" class="xmark"></path>
+    <path d="M466 82 L476 92 M476 82 L466 92" class="xmark"></path>
+    <path d="M336 220 L346 230 M346 220 L336 230" class="xmark"></path>
+    <path d="M386 128 L396 138 M396 128 L386 138" class="xmark"></path>
+    <circle cx="325" cy="80" r="24" class="dash" style="stroke:var(--ink-soft)"></circle>
+    <circle cx="272" cy="258" r="5" class="c3"></circle><text x="281" y="262" font-size="11">núcleo</text>
+    <circle cx="336" cy="258" r="5" class="hollow s3"></circle><text x="345" y="262" font-size="11">borda</text>
+    <path d="M393 253 L401 263 M401 253 L393 263" class="xmark"></path><text x="407" y="262" font-size="11">ruído</text>
+    <text x="325" y="50" text-anchor="middle" font-size="10" class="muted">raio ε</text>
+
+    <!-- Hierárquico -->
+    <text x="625" y="32" text-anchor="middle" class="title">Hierárquico</text>
+    <path d="M530 225 V210 H565 V225" class="thick s1"></path>
+    <path d="M605 225 V210 H640 V225" class="thick s2"></path>
+    <path d="M547.5 210 V150 H622.5 V210" class="thick" style="stroke:var(--ink-soft)"></path>
+    <path d="M585 150 V80 H705 V225" class="thick" style="stroke:var(--ink-soft)"></path>
+    <path d="M512 185 H740" class="dash" style="stroke:var(--c5)"></path>
+    <text x="738" y="179" text-anchor="end" font-size="10" style="fill:var(--c5)">corte → 3 grupos</text>
+    <g font-size="11" text-anchor="middle">
+      <text x="530" y="243">A</text><text x="565" y="243">B</text><text x="605" y="243">C</text><text x="640" y="243">D</text><text x="705" y="243">E</text>
+    </g>
+    <text x="625" y="262" text-anchor="middle" font-size="11" class="muted">árvore de junções (dendrograma)</text>
   </svg>
-  <figcaption>O k-means pensa em centros e distâncias, e o DBSCAN pensa em vizinhança densa. O hierárquico, por sua vez, monta uma árvore (dendrograma) de junções.</figcaption>
+  <figcaption>
+    <strong>k-means</strong>: cada ponto vai para o centro (+) mais próximo.
+    <strong>DBSCAN</strong>: grupo é onde os pontos estão <em>apertados</em>
+    (inclusive em formato de meia-lua); quem fica sozinho é marcado como ruído (×).
+    <strong>Hierárquico</strong>: vai juntando os mais próximos e desenha uma árvore;
+    você "corta" a árvore na altura que quiser.
+  </figcaption>
+</figure>
+
+<h3>1.1 · k-means (k-médias): grupos em volta de centros</h3>
+<p>
+  O nome diz tudo: <strong>k</strong> é o número de grupos, que <strong>você</strong>
+  escolhe, e <strong>means</strong> (médias) são os centros de cada grupo. O
+  algoritmo repete dois passos até nada mudar:
+</p>
+<ol>
+  <li><strong>Atribuir:</strong> cada ponto vai para o grupo do centro mais próximo.</li>
+  <li><strong>Atualizar:</strong> cada centro vira a média dos pontos do seu grupo.</li>
+</ol>
+
+<div class="box">
+  <strong>Exemplo resolvido: separar 6 pessoas em 2 grupos pela idade</strong>
+  <p>Idades: <strong>18, 20, 22, 60, 62, 64</strong>. Escolhemos <strong>k = 2</strong> e chutamos os centros iniciais em 20 e 30.</p>
+  <figure class="diagram" style="margin:0.8rem 0">
+    <svg viewBox="0 0 520 150" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="80" x2="495" y2="80"></line>
+      <g font-size="10" class="muted" text-anchor="middle">
+        <text x="30" y="98">10</text><text x="183" y="98">30</text><text x="337" y="98">50</text><text x="490" y="98">70</text>
+      </g>
+      <g class="c1"><circle cx="91" cy="80" r="6"></circle><circle cx="107" cy="80" r="6"></circle><circle cx="122" cy="80" r="6"></circle></g>
+      <g class="c2"><circle cx="413" cy="80" r="6"></circle><circle cx="429" cy="80" r="6"></circle><circle cx="444" cy="80" r="6"></circle></g>
+      <g font-size="10" text-anchor="middle"><text x="91" y="66">18</text><text x="107" y="66">20</text><text x="122" y="66">22</text><text x="413" y="66">60</text><text x="429" y="66">62</text><text x="444" y="66">64</text></g>
+      <path d="M107 30 l-7 -12 h14 Z M183 30 l-7 -12 h14 Z" class="hollow" style="stroke:var(--ink-soft)"></path>
+      <text x="145" y="14" text-anchor="middle" font-size="10" class="muted">chute inicial: 20 e 30</text>
+      <path d="M107 118 l-7 12 h14 Z" class="c1"></path><path d="M429 118 l-7 12 h14 Z" class="c2"></path>
+      <text x="268" y="128" text-anchor="middle" font-size="10">centros finais: 20 e 62</text>
+    </svg>
+  </figure>
+  <p><strong>Rodada 1, atribuir:</strong> 18, 20 e 22 estão mais perto de 20; 60, 62 e 64 estão mais perto de 30. <strong>Atualizar:</strong> o centro 1 vira (18+20+22)/3 = <strong>20</strong>; o centro 2 vira (60+62+64)/3 = <strong>62</strong>.</p>
+  <p style="margin-bottom:0"><strong>Rodada 2:</strong> ninguém troca de grupo, então o algoritmo para. Resultado: grupo dos "jovens" (centro 20) e dos "mais velhos" (centro 62). Ninguém disse ao algoritmo que esses grupos existiam.</p>
+</div>
+
+<div class="box">
+  <strong>Limitações do k-means (caem em prova)</strong>
+  <ul style="margin:0.4rem 0 0">
+    <li>É preciso <strong>escolher k antes</strong>. Ajudam o <em>método do cotovelo</em> (testar vários k e ver onde o ganho para de compensar) e a <em>silhueta</em> (mede se cada ponto está bem encaixado no seu grupo).</li>
+    <li>Funciona bem com grupos <strong>redondos</strong> e de tamanho parecido. Num grupo em formato de <strong>meia-lua</strong>, ele corta errado.</li>
+    <li>É sensível à <strong>escala</strong> (idade em anos × salário em reais: o salário domina a distância), a <strong>valores extremos</strong> e ao chute inicial.</li>
+    <li><strong>Todo ponto</strong> entra em algum grupo, mesmo o que não se parece com nada.</li>
+  </ul>
+</div>
+
+<h3>1.2 · DBSCAN: grupo é onde há gente apertada</h3>
+<p>
+  <strong>DBSCAN</strong> (<em>Density-Based Spatial Clustering of Applications with
+  Noise</em> · agrupamento espacial baseado em densidade, com ruído). Pense numa
+  <strong>praça</strong>: rodas de amigos conversando bem juntos são grupos; quem
+  está sozinho num banco não pertence a roda nenhuma. Ele usa só duas regras,
+  definidas por você:
+</p>
+<ul>
+  <li><strong>ε (épsilon)</strong>: o <em>raio</em> da vizinhança ("quem está a menos de 1 metro de mim?").</li>
+  <li><strong>minPts</strong>: o mínimo de vizinhos dentro desse raio para a região contar como "apertada".</li>
+</ul>
+
+<figure class="diagram">
+  <svg viewBox="0 0 540 230" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="150" cy="115" r="58" class="dash" style="stroke:var(--ink-soft)"></circle>
+    <g class="c3">
+      <circle cx="150" cy="115" r="7"></circle>
+      <circle cx="120" cy="95" r="6"></circle><circle cx="175" cy="90" r="6"></circle><circle cx="186" cy="134" r="6"></circle>
+      <circle cx="128" cy="146" r="6"></circle><circle cx="160" cy="152" r="6"></circle>
+    </g>
+    <text x="150" y="133" text-anchor="middle" font-size="12" font-weight="700">P</text>
+    <circle cx="197" cy="78" r="6" class="hollow s3"></circle>
+    <text x="210" y="70" font-size="12" font-weight="700">B</text>
+    <path d="M412 52 L424 64 M424 52 L412 64" class="xmark"></path>
+    <circle cx="418" cy="58" r="40" class="dash" style="stroke:var(--ink-soft)"></circle>
+    <text x="440" y="50" font-size="12" font-weight="700">N</text>
+    <g font-size="11">
+      <text x="250" y="120"><tspan font-weight="700">P · núcleo</tspan>: 5 vizinhos no raio ε (mínimo = 4)</text>
+      <text x="250" y="150"><tspan font-weight="700">B · borda</tspan>: está no raio de um núcleo,</text>
+      <text x="250" y="164">mas sozinho não tem vizinhos suficientes</text>
+      <text x="250" y="194"><tspan font-weight="700">N · ruído</tspan>: ninguém no seu raio</text>
+      <text x="250" y="208">e longe de qualquer núcleo</text>
+    </g>
+    <text x="150" y="196" text-anchor="middle" font-size="10" class="muted">raio ε</text>
+  </svg>
+  <figcaption>Com minPts = 4: P é <strong>núcleo</strong> (o "miolo" do grupo), B é <strong>borda</strong> (entra no grupo, mas na beirada) e N é <strong>ruído</strong> (não entra em grupo nenhum). O grupo cresce encadeando núcleos que estão no raio uns dos outros.</figcaption>
+</figure>
+
+<div class="box">
+  <strong>Por que o DBSCAN é útil</strong>
+  <ul style="margin:0.4rem 0 0">
+    <li><strong>Não precisa escolher k</strong>: o número de grupos sai sozinho.</li>
+    <li>Acha grupos de <strong>qualquer formato</strong> (meia-lua, anel), porque segue a densidade, e não a distância a um centro.</li>
+    <li>Marca <strong>ruído</strong>: o ponto solitário não é forçado a entrar num grupo.</li>
+    <li><strong>Fraqueza:</strong> se um grupo é muito apertado e outro é espalhado, um único ε não serve para os dois.</li>
+  </ul>
+</div>
+
+<h3>1.3 · Agrupamento hierárquico: uma árvore de junções</h3>
+<p>
+  O hierárquico <strong>aglomerativo</strong> começa com cada ponto sozinho e, a cada
+  passo, <strong>junta os dois grupos mais próximos</strong>, até sobrar um grupo só.
+  O registro dessas junções é uma árvore chamada <strong>dendrograma</strong>.
+  A altura de cada junção é a distância entre os grupos que se uniram.
+</p>
+
+<div class="box">
+  <strong>Exemplo resolvido: agrupar 5 celulares pelo preço</strong>
+  <p>Preços (em R$ mil): <strong>A = 1, B = 2, C = 6, D = 7, E = 15</strong>. Distância entre grupos = a menor distância entre seus membros (ligação simples).</p>
+  <div class="table-scroll">
+    <table class="cmp">
+      <thead><tr><th>Passo</th><th>Junta</th><th>Distância (altura no desenho)</th></tr></thead>
+      <tbody>
+        <tr><th>1</th><td>A (1) com B (2)</td><td>2 − 1 = <strong>1</strong></td></tr>
+        <tr><th>2</th><td>C (6) com D (7)</td><td>7 − 6 = <strong>1</strong></td></tr>
+        <tr><th>3</th><td>{A, B} com {C, D}</td><td>menor distância: C − B = 6 − 2 = <strong>4</strong></td></tr>
+        <tr><th>4</th><td>{A, B, C, D} com E (15)</td><td>menor distância: E − D = 15 − 7 = <strong>8</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <figure class="diagram" style="margin:0.8rem 0">
+    <svg viewBox="0 0 540 270" xmlns="http://www.w3.org/2000/svg">
+      <line x1="45" y1="220" x2="45" y2="40"></line>
+      <g font-size="10" class="muted" text-anchor="end"><text x="40" y="223">0</text><text x="40" y="202">1</text><text x="40" y="138">4</text><text x="40" y="53">8</text></g>
+      <text x="20" y="130" font-size="10" class="muted" transform="rotate(-90 20 130)">distância da junção</text>
+      <path d="M80 220 V199 H150 V220" class="thick s1"></path>
+      <path d="M230 220 V199 H300 V220" class="thick s2"></path>
+      <path d="M115 199 V135 H265 V199" class="thick" style="stroke:var(--ink-soft)"></path>
+      <path d="M190 135 V50 H430 V220" class="thick" style="stroke:var(--ink-soft)"></path>
+      <g font-size="12" text-anchor="middle" font-weight="700"><text x="80" y="240">A</text><text x="150" y="240">B</text><text x="230" y="240">C</text><text x="300" y="240">D</text><text x="430" y="240">E</text></g>
+      <g font-size="10" text-anchor="middle" class="muted"><text x="80" y="254">R$ 1 mil</text><text x="150" y="254">R$ 2 mil</text><text x="230" y="254">R$ 6 mil</text><text x="300" y="254">R$ 7 mil</text><text x="430" y="254">R$ 15 mil</text></g>
+      <path d="M50 156 H520" class="dash" style="stroke:var(--c5)"></path>
+      <text x="518" y="150" text-anchor="end" font-size="10" style="fill:var(--c5)">corte na altura 3 → 3 grupos: {A,B} {C,D} {E}</text>
+      <path d="M50 92 H520" class="dash" style="stroke:var(--c4)"></path>
+      <text x="518" y="86" text-anchor="end" font-size="10" style="fill:var(--c4)">corte na altura 6 → 2 grupos: {A,B,C,D} {E}</text>
+    </svg>
+  </figure>
+  <p style="margin-bottom:0">
+    <strong>Lendo o desenho:</strong> você <strong>não escolhe k antes</strong>. Olha a
+    árvore e decide onde cortar. Corte baixo dá mais grupos ("baratos", "médios",
+    "caro"); corte alto dá menos grupos ("até R$ 7 mil" e "caro"). A desvantagem é
+    que o cálculo fica pesado com muitos pontos, porque compara todos com todos.
+  </p>
+</div>
+
+<div class="table-scroll">
+  <table class="cmp">
+    <caption>Resumo dos três algoritmos.</caption>
+    <thead><tr><th></th><th>k-means</th><th>DBSCAN</th><th>Hierárquico</th></tr></thead>
+    <tbody>
+      <tr><th>Escolher nº de grupos antes?</th><td>Sim (k)</td><td>Não (escolhe ε e minPts)</td><td>Não (corta a árvore depois)</td></tr>
+      <tr><th>Formato dos grupos</th><td>Redondos</td><td>Qualquer formato</td><td>Depende da ligação usada</td></tr>
+      <tr><th>Trata ruído?</th><td>Não: todo ponto entra</td><td><strong>Sim</strong>: marca ruído</td><td>Não</td></tr>
+      <tr><th>Ponto fraco</th><td>k, escala, formato</td><td>Densidades muito diferentes</td><td>Lento com muitos dados</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Parte 2 · Redução de dimensionalidade</h2>
+
+<h3>2.1 · Primeiro: o que é uma "dimensão"?</h3>
+<p>
+  Nos dados, <strong>cada coluna (cada característica) é uma dimensão</strong>. Para
+  descrever um apartamento você pode usar área, quartos, banheiros, andar, idade
+  do prédio, distância do metrô... Cada uma dessas informações é um
+  <strong>eixo</strong> num gráfico.
+</p>
+<ul>
+  <li><strong>2 colunas</strong> (área e preço): dá para desenhar num gráfico de papel.</li>
+  <li><strong>3 colunas</strong>: um gráfico em cubo, ainda dá para imaginar.</li>
+  <li><strong>50 colunas</strong>: cada apartamento é um ponto num espaço de 50 eixos. Impossível de desenhar ou imaginar, mas é assim que o modelo "enxerga" os dados.</li>
+</ul>
+<p>
+  <strong>Reduzir a dimensionalidade</strong> é transformar muitas colunas em
+  <strong>poucas</strong>, perdendo o mínimo possível de informação.
+</p>
+
+<h3>2.2 · Por que isso importa para o modelo</h3>
+<div class="box">
+  <ol style="margin:0.2rem 0 0">
+    <li><strong>Ver os dados.</strong> Ninguém enxerga 50 eixos. Resumindo em 2, dá para pôr num gráfico e ver se há grupos.</li>
+    <li><strong>Colunas repetindo informação.</strong> "Área em m²" e "área em pés²" dizem a mesma coisa. Altura e peso andam juntos. Ficar com as duas só pesa no modelo.</li>
+    <li><strong>A maldição da dimensionalidade.</strong> Veja o próximo quadro.</li>
+    <li><strong>Custo e ruído.</strong> Menos colunas, treino mais rápido, menos chance de o modelo decorar ruído (sobreajuste, <a href="0004-sobreajuste-vies-variancia-regularizacao.html">Lição 4</a>).</li>
+  </ol>
+</div>
+
+<div class="box">
+  <strong>A maldição da dimensionalidade, em números</strong>
+  <p>Imagine dividir cada eixo em 10 faixas e querer pelo menos 1 exemplo em cada "caixinha":</p>
+  <div class="table-scroll">
+    <table class="cmp">
+      <thead><tr><th>Nº de colunas</th><th>Nº de caixinhas</th></tr></thead>
+      <tbody>
+        <tr><th>1</th><td>10</td></tr>
+        <tr><th>2</th><td>10 × 10 = 100</td></tr>
+        <tr><th>3</th><td>1.000</td></tr>
+        <tr><th>10</th><td>10.000.000.000 (dez bilhões)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-bottom:0">
+    Cada coluna nova multiplica o espaço por 10. Os dados ficam <strong>espalhados
+    e ralos</strong>, e quase todo ponto fica longe de todo ponto. Métodos que
+    dependem de distância (k-means, k-NN) perdem o sentido, porque "perto" e
+    "longe" passam a ser quase iguais.
+  </p>
+</div>
+
+<h3>2.3 · Dois jeitos de reduzir</h3>
+<div class="table-scroll">
+  <table class="cmp">
+    <thead><tr><th></th><th>Seleção de variáveis</th><th>Extração de variáveis</th></tr></thead>
+    <tbody>
+      <tr><th>O que faz</th><td><strong>Escolhe</strong> algumas colunas que já existem e descarta o resto</td><td><strong>Cria colunas novas</strong> misturando as originais</td></tr>
+      <tr><th>Exemplo</th><td>Ficar só com "área" e "bairro"</td><td>PCA: cria uma coluna "tamanho" a partir de altura e peso</td></tr>
+      <tr><th>Dá para explicar?</th><td>Sim, as colunas continuam as mesmas</td><td>Pouco, a coluna nova é uma mistura</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>2.4 · PCA: resumir colunas que andam juntas</h3>
+<p>
+  <strong>PCA</strong> (<em>Principal Component Analysis</em> · Análise de Componentes
+  Principais, ACP) é a técnica de extração mais famosa. A ideia, sem fórmula:
+  procurar a <strong>direção em que os dados mais variam</strong> e usá-la como
+  uma coluna nova.
+</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 540 270" xmlns="http://www.w3.org/2000/svg">
+    <line x1="50" y1="220" x2="275" y2="220"></line><line x1="50" y1="220" x2="50" y2="30"></line>
+    <text x="160" y="244" text-anchor="middle" font-size="11" class="muted">altura →</text>
+    <text x="28" y="125" text-anchor="middle" font-size="11" class="muted" transform="rotate(-90 28 125)">peso →</text>
+    <g class="c1">
+      <circle cx="70" cy="192" r="5"></circle><circle cx="85" cy="182" r="5"></circle><circle cx="95" cy="171" r="5"></circle>
+      <circle cx="105" cy="162" r="5"></circle><circle cx="120" cy="158" r="5"></circle><circle cx="130" cy="146" r="5"></circle>
+      <circle cx="140" cy="139" r="5"></circle><circle cx="150" cy="128" r="5"></circle><circle cx="165" cy="121" r="5"></circle>
+      <circle cx="175" cy="110" r="5"></circle><circle cx="186" cy="103" r="5"></circle><circle cx="200" cy="96" r="5"></circle>
+      <circle cx="212" cy="86" r="5"></circle><circle cx="90" cy="163" r="5"></circle><circle cx="160" cy="137" r="5"></circle>
+      <circle cx="125" cy="150" r="5"></circle><circle cx="182" cy="117" r="5"></circle><circle cx="115" cy="167" r="5"></circle>
+      <circle cx="145" cy="150" r="5"></circle><circle cx="198" cy="105" r="5"></circle>
+    </g>
+    <path d="M68 205 L232 74" class="thick s2" marker-end="url(#seta)" style="color:var(--c2)"></path>
+    <path d="M146 140 L168 167" class="thick s5" marker-end="url(#seta)" style="color:var(--c5)"></path>
+    <text x="150" y="58" font-size="11" style="fill:var(--c2)" font-weight="700">PC1: "tamanho do corpo"</text>
+    <text x="150" y="71" font-size="10" class="muted">quase toda a variação está aqui</text>
+    <text x="176" y="182" font-size="11" style="fill:var(--c5)" font-weight="700">PC2: "mais magro ou</text>
+    <text x="176" y="195" font-size="11" style="fill:var(--c5)" font-weight="700">mais encorpado"</text>
+    <text x="176" y="208" font-size="10" class="muted">pouca variação</text>
+
+    <path d="M290 140 L322 140" class="thick" style="stroke:var(--ink-soft);color:var(--ink-soft)" marker-end="url(#seta)"></path>
+    <text x="425" y="100" text-anchor="middle" font-size="12" font-weight="700">depois do PCA: 1 coluna só</text>
+    <line x1="335" y1="140" x2="520" y2="140"></line>
+    <g class="c1">
+      <circle cx="342" cy="140" r="5"></circle><circle cx="354" cy="140" r="5"></circle><circle cx="365" cy="140" r="5"></circle>
+      <circle cx="377" cy="140" r="5"></circle><circle cx="389" cy="140" r="5"></circle><circle cx="401" cy="140" r="5"></circle>
+      <circle cx="413" cy="140" r="5"></circle><circle cx="425" cy="140" r="5"></circle><circle cx="437" cy="140" r="5"></circle>
+      <circle cx="449" cy="140" r="5"></circle><circle cx="461" cy="140" r="5"></circle><circle cx="473" cy="140" r="5"></circle>
+      <circle cx="486" cy="140" r="5"></circle><circle cx="499" cy="140" r="5"></circle><circle cx="511" cy="140" r="5"></circle>
+    </g>
+    <text x="425" y="166" text-anchor="middle" font-size="11" style="fill:var(--c2)" font-weight="700">PC1 ("tamanho")</text>
+    <text x="425" y="182" text-anchor="middle" font-size="10" class="muted">quem é pequeno fica à esquerda, quem é grande à direita</text>
+  </svg>
+  <figcaption>Altura e peso andam juntos: quem é mais alto costuma pesar mais. O PCA acha a direção principal (PC1, laranja), que resume as duas colunas numa só, o "tamanho". A segunda direção (PC2, rosa) tem pouca variação e pode ser descartada sem perder muita informação.</figcaption>
+</figure>
+
+<div class="box">
+  <strong>Exemplo resolvido: o que o PCA entrega</strong>
+  <p>
+    Você tem 2 colunas (altura e peso) de 1.000 pessoas. O PCA devolve 2 colunas
+    novas, ordenadas da mais importante para a menos importante, junto com o
+    quanto cada uma explica da variação total:
+  </p>
+  <ul style="margin:0.2rem 0">
+    <li><strong>PC1 ("tamanho")</strong>: explica <strong>90%</strong> da variação.</li>
+    <li><strong>PC2 ("mais magro ou mais encorpado")</strong>: explica <strong>10%</strong>.</li>
+  </ul>
+  <p style="margin-bottom:0">
+    Ficando só com a PC1, você passa de 2 colunas para 1 e mantém 90% da
+    informação. Com 50 colunas é a mesma coisa: muitas vezes as 5 primeiras
+    componentes explicam quase tudo, e o resto pode ser descartado.
+  </p>
+</div>
+
+<div class="box">
+  <strong>As quatro regras do PCA que a banca cobra</strong>
+  <ul style="margin:0.4rem 0 0">
+    <li><strong>Padronize antes.</strong> Se a altura está em metros (1,6 a 1,9) e o peso em gramas (60.000 a 90.000), o peso "parece" variar muito mais só por causa da unidade, e domina o PCA. Padronizar coloca todas as colunas na mesma escala.</li>
+    <li>As componentes são <strong>não correlacionadas</strong> (perpendiculares entre si) e vêm <strong>ordenadas pela variância</strong> que explicam.</li>
+    <li>É <strong>linear</strong>: só enxerga relações em linha reta. Não consegue "desenrolar" formatos curvos.</li>
+    <li>É <strong>não supervisionado</strong>: não olha a resposta (y). A direção de maior variação não é, necessariamente, a mais útil para prever alguma coisa.</li>
+  </ul>
+</div>
+
+<h3>2.5 · t-SNE e UMAP: "mapas" para enxergar os dados</h3>
+<p>
+  <strong>t-SNE</strong> (<em>t-distributed Stochastic Neighbor Embedding</em> ·
+  incorporação estocástica de vizinhos com distribuição t) e <strong>UMAP</strong>
+  (<em>Uniform Manifold Approximation and Projection</em> · aproximação e projeção
+  uniforme de variedades) têm um objetivo bem específico: <strong>desenhar dados
+  com muitas dimensões num gráfico 2D</strong>, mantendo perto quem era vizinho.
+</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 540 230" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <rect x="40" y="50" width="120" height="120" class="node" style="fill:var(--paper)"></rect>
+      <g class="c1">
+        <rect x="55" y="62" width="90" height="15"></rect>
+        <rect x="125" y="77" width="15" height="15"></rect><rect x="115" y="92" width="15" height="15"></rect>
+        <rect x="105" y="107" width="15" height="15"></rect><rect x="95" y="122" width="15" height="15"></rect>
+        <rect x="85" y="137" width="15" height="15"></rect>
+      </g>
+      <text x="100" y="190" text-anchor="middle" font-size="11">1 imagem de um "7"</text>
+      <text x="100" y="205" text-anchor="middle" font-size="10" class="muted">28 × 28 = 784 pixels = 784 dimensões</text>
+    </g>
+    <path d="M178 110 L250 110" class="thick" style="stroke:var(--ink-soft);color:var(--ink-soft)" marker-end="url(#seta)"></path>
+    <text x="214" y="100" text-anchor="middle" font-size="11" font-weight="700">t-SNE / UMAP</text>
+    <g class="c1"><circle cx="300" cy="60" r="5"></circle><circle cx="312" cy="52" r="5"></circle><circle cx="318" cy="66" r="5"></circle><circle cx="305" cy="74" r="5"></circle><circle cx="292" cy="68" r="5"></circle></g>
+    <g class="c2"><circle cx="460" cy="55" r="5"></circle><circle cx="472" cy="62" r="5"></circle><circle cx="466" cy="45" r="5"></circle><circle cx="452" cy="66" r="5"></circle><circle cx="478" cy="50" r="5"></circle></g>
+    <g class="c3"><circle cx="380" cy="160" r="5"></circle><circle cx="392" cy="152" r="5"></circle><circle cx="398" cy="166" r="5"></circle><circle cx="386" cy="174" r="5"></circle><circle cx="372" cy="168" r="5"></circle></g>
+    <g class="c4"><circle cx="490" cy="165" r="5"></circle><circle cx="502" cy="158" r="5"></circle><circle cx="508" cy="172" r="5"></circle><circle cx="495" cy="180" r="5"></circle></g>
+    <g font-size="13" font-weight="700" text-anchor="middle">
+      <text x="305" y="40" style="fill:var(--c1)">7</text><text x="466" y="33" style="fill:var(--c2)">1</text>
+      <text x="386" y="140" style="fill:var(--c3)">0</text><text x="500" y="146" style="fill:var(--c4)">3</text>
+    </g>
+    <text x="400" y="212" text-anchor="middle" font-size="10" class="muted">cada ponto = 1 imagem · imagens do mesmo número ficam juntas</text>
+  </svg>
+  <figcaption>Milhares de imagens de números escritos à mão, cada uma com 784 dimensões, viram um mapa 2D. Ninguém disse ao t-SNE qual número cada imagem é, e mesmo assim os "7" se juntam, os "1" se juntam, e assim por diante.</figcaption>
 </figure>
 
 <div class="table-scroll">
   <table class="cmp">
-    <caption>Comparação dos algoritmos de agrupamento<sup class="cite"><a href="#f1">[1]</a></sup>.</caption>
-    <thead><tr><th>Algoritmo</th><th>Como pensa</th><th>Pontos fortes</th><th>Limitações</th></tr></thead>
+    <caption>PCA × t-SNE × UMAP.</caption>
+    <thead><tr><th></th><th>PCA</th><th>t-SNE</th><th>UMAP</th></tr></thead>
     <tbody>
-      <tr><th>k-means</th><td>Escolhe k centros, liga cada ponto ao mais próximo, recalcula e repete</td><td>Rápido e simples</td><td>Exige <strong>k</strong> (cotovelo, silhueta). Supõe grupos <strong>esféricos</strong>. Sensível a escala, outliers e ao ponto de partida. Sem noção de ruído</td></tr>
-      <tr><th>Hierárquico</th><td>Junta os grupos mais próximos passo a passo e desenha um <strong>dendrograma</strong></td><td>Não exige k antes: você <em>corta a árvore</em> na altura desejada</td><td>Pesado com muitos pontos</td></tr>
-      <tr><th>DBSCAN</th><td>Grupo = região <strong>densa</strong> (minPts vizinhos dentro de um raio eps)</td><td>Formatos arbitrários, sem k, marca <strong>ruído</strong></td><td>Sofre quando os grupos têm densidades muito diferentes</td></tr>
+      <tr><th>Tipo</th><td><strong>Linear</strong></td><td><strong>Não linear</strong></td><td><strong>Não linear</strong></td></tr>
+      <tr><th>Uso principal</th><td>Reduzir colunas antes de treinar um modelo</td><td><strong>Visualizar</strong> em 2D/3D</td><td>Visualizar e, às vezes, reduzir para modelos</td></tr>
+      <tr><th>Preserva</th><td>A variação global</td><td>A vizinhança <strong>local</strong> (quem está perto de quem)</td><td>A vizinhança local e um pouco mais da estrutura global</td></tr>
+      <tr><th>Velocidade</th><td>Rápido</td><td>Lento em bases grandes</td><td>Mais rápido que o t-SNE</td></tr>
+      <tr><th>Dados novos</th><td>Aplica a mesma transformação</td><td>Não tem jeito direto de projetar um ponto novo</td><td>Consegue projetar pontos novos</td></tr>
     </tbody>
   </table>
 </div>
 
-<h2>Redução de dimensionalidade</h2>
-<p>
-  <strong>Por que reduzir?</strong> Pela <span class="anchor">MALDIÇÃO DA DIMENSIONALIDADE</span>.
-  Com centenas de variáveis, o espaço fica tão grande que os dados ficam
-  esparsos e todo ponto fica longe de todo ponto. Métodos baseados em
-  distância, como k-NN e k-means, perdem o sentido, e seriam necessários
-  exponencialmente mais dados.
-</p>
-<div class="box">
-  <p style="margin:0.2rem 0"><strong>PCA:</strong> é <em>linear</em>. Encontra as direções em que os dados mais variam e as usa como novos eixos (componentes), sem correlação entre si e ordenados pela variância que preservam<sup class="cite"><a href="#f2">[2]</a></sup>. Exige <strong>padronizar</strong> as variáveis antes (senão quem tem números grandes, como valores em reais, domina) e os componentes perdem o significado de negócio.</p>
-  <p style="margin:0.2rem 0"><strong>t-SNE e UMAP:</strong> são <em>não lineares</em> e preservam a vizinhança local. Servem para <strong>ver</strong> os dados em 2D.</p>
+<div class="pegadinha">
+  <span class="label">Pegadinha: o que um gráfico de t-SNE NÃO mostra</span>
+  No t-SNE, o <strong>tamanho dos grupos</strong> e a <strong>distância entre os
+  grupos</strong> não significam nada confiável<sup class="cite"><a href="#f3">[3]</a></sup>.
+  Se no mapa o grupo "7" ficou longe do "1", isso <em>não</em> quer dizer que
+  eles são mais diferentes do que o "7" e o "0". O que o gráfico garante é só
+  que <strong>pontos vizinhos se parecem</strong>. O resultado também muda com o
+  parâmetro <em>perplexity</em> e com a semente aleatória.
 </div>
 
-<div class="pegadinha">
-  <span class="label">Pegadinha: lendo um gráfico de t-SNE</span>
-  No gráfico de t-SNE, o <strong>tamanho</strong> dos grupos e a
-  <strong>distância entre eles</strong> não significam nada confiável<sup class="cite"><a href="#f3">[3]</a></sup>.
-  Um item que diga "o grupo A está mais distante do C, logo é mais
-  diferente" a partir de um t-SNE está errado.
+<h2>Parte 3 · Detecção de anomalias: achar o que é estranho</h2>
+<p>
+  Uma <strong>anomalia</strong> (ou <em>outlier</em>) é um ponto muito diferente
+  do resto. Exemplo do dia a dia: numa rua em que as casas gastam em torno de
+  200 kWh de luz por mês, uma casa que gasta 450 kWh chama a atenção. Pode ser
+  um problema (um fio com fuga de energia) ou só uma família com home office e
+  ar-condicionado.
+</p>
+
+<div class="box">
+  <strong>Exemplo resolvido 1: z-score (escore padrão)</strong>
+  <p>
+    O <strong>z-score</strong> diz <em>quantos desvios-padrão</em> um valor está
+    longe da média. O desvio-padrão é o "tamanho típico" da variação. Na rua:
+    média = 200 kWh, desvio-padrão = 50 kWh.
+  </p>
+  <p style="margin-bottom:0">
+    Casa com 450 kWh: z = (450 − 200) / 50 = <strong>5</strong>. A regra usual é
+    |z| &gt; 3 → anômala. <strong>Problema:</strong> se já houver casas
+    exageradas na rua, elas puxam a média e o desvio para cima e "escondem" as
+    outras.
+  </p>
+</div>
+
+<div class="box">
+  <strong>Exemplo resolvido 2: IQR (Interquartile Range · amplitude interquartil)</strong>
+  <p>
+    Ordene as contas da menor para a maior. <strong>Q1</strong> é o valor abaixo do
+    qual ficam 25% das casas; <strong>Q3</strong>, o valor abaixo do qual ficam 75%.
+    Digamos Q1 = 150 e Q3 = 250. Então <strong>IQR = Q3 − Q1 = 100</strong>.
+  </p>
+  <p style="margin-bottom:0">
+    Os limites são Q1 − 1,5 × IQR = 150 − 150 = <strong>0</strong> e Q3 + 1,5 × IQR =
+    250 + 150 = <strong>400</strong>. Como 450 &gt; 400, a casa é atípica.
+    <strong>Vantagem:</strong> os quartis quase não se mexem por causa de alguns
+    valores extremos, por isso o IQR é mais <em>robusto</em> que o z-score.
+  </p>
 </div>
 
 <div class="table-scroll">
   <table class="cmp">
-    <caption>Seleção × extração de variáveis.</caption>
-    <thead><tr><th></th><th>Seleção</th><th>Extração</th></tr></thead>
+    <caption>Técnicas para muitas colunas ao mesmo tempo<sup class="cite"><a href="#f4">[4]</a></sup>.</caption>
+    <thead><tr><th>Técnica</th><th>Ideia em uma frase</th></tr></thead>
     <tbody>
-      <tr><th>O que faz</th><td>Escolhe colunas que <strong>já existem</strong></td><td>Cria <strong>colunas novas</strong> combinando as originais</td></tr>
-      <tr><th>Exemplo</th><td>Lasso (L1), filtros por correlação</td><td>PCA</td></tr>
-      <tr><th>Interpretação</th><td>Mantida</td><td>Perdida em boa parte</td></tr>
+      <tr><th>Isolation Forest<small>floresta de isolamento</small></th><td>Faz cortes aleatórios nos dados. Um ponto estranho fica <strong>isolado com poucos cortes</strong>; um ponto normal, no meio da multidão, precisa de muitos.</td></tr>
+      <tr><th>One-Class SVM<small>máquina de vetores de suporte de uma classe</small></th><td>Desenha uma fronteira em volta do que é normal. Quem cai fora é suspeito.</td></tr>
+      <tr><th>Autoencoder<small>autocodificador</small></th><td>Uma rede neural aprende a comprimir e reconstruir os dados normais. Quando ela reconstrói mal um ponto (<strong>erro de reconstrução alto</strong>), é porque ele não se parece com o que ela conhece.</td></tr>
     </tbody>
   </table>
 </div>
 
-<h2>Detecção de anomalias</h2>
-<div class="box">
-  <p style="margin:0.2rem 0"><strong>z-score</strong> (|z| &gt; 3) e <strong>IQR</strong> (fora de Q1 − 1,5·IQR ou de Q3 + 1,5·IQR): simples e olham uma variável por vez. O IQR é mais robusto, porque a média e o desvio usados no z-score são puxados pelos próprios outliers.</p>
-  <p style="margin:0.2rem 0"><strong>Isolation Forest:</strong> faz cortes aleatórios nos dados. Um ponto anômalo fica <em>isolado com poucos cortes</em>, enquanto um normal, no meio da multidão, precisa de muitos<sup class="cite"><a href="#f4">[4]</a></sup>.</p>
-  <p style="margin:0.2rem 0"><strong>One-Class SVM:</strong> aprende a fronteira do que é normal. O que cai fora dela é suspeito.</p>
-  <p style="margin:0.2rem 0"><strong>Autoencoder:</strong> uma rede neural aprende a comprimir e reconstruir dados normais. Quando ela reconstrói mal um ponto (<em>erro de reconstrução alto</em>), é porque ele não se parece com o que ela conhece.</p>
-</div>
-
-<div class="box">
-  <strong>Exemplo resolvido: a conta de luz atípica</strong>
-  <p style="margin-bottom:0">
-    O Isolation Forest marcou uma casa cuja conta de luz é 8 vezes maior que
-    a mediana do bairro. É um problema, como um fio com fuga de energia?
-    <strong>Não necessariamente.</strong> Pode ser só uma família que montou
-    um home office com ar-condicionado. A detecção de anomalias costuma ser
-    não supervisionada justamente porque quase não há exemplos rotulados de
-    "problema". O ponto marcado é um <span class="anchor">INDÍCIO</span> para
-    alguém verificar, nunca uma prova.
-  </p>
+<div class="pegadinha">
+  <span class="label">Pegadinha: anomalia não é prova</span>
+  A detecção de anomalias costuma ser <strong>não supervisionada</strong> porque
+  quase nunca há exemplos rotulados do problema. E o ponto marcado é só um
+  <strong>indício</strong> para alguém verificar. Item que diga que "a anomalia
+  comprova o defeito/erro/irregularidade" está errado.
 </div>
 
 <h2>Pratique: certo ou errado</h2>
 
-<div class="quiz" data-key="errado">
+<div class="quiz" data-key="certo">
   <div class="q-num">Item 1</div>
-  <p class="statement">O algoritmo k-means dispensa a definição prévia do número de grupos e é capaz de identificar agrupamentos de formato arbitrário.</p>
-  <div class="options">
-    <button class="opt" data-answer="certo">Certo</button>
-    <button class="opt" data-answer="errado">Errado</button>
-  </div>
-  <div class="feedback" data-for="errado">Isso. O item descreve o <strong>DBSCAN</strong>. O k-means exige k e supõe grupos esféricos.</div>
-  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Quem dispensa k e acha formatos arbitrários é o DBSCAN. O k-means precisa de k.</div>
+  <p class="statement">Em uma base de dados com 50 variáveis descritivas, cada observação pode ser representada como um ponto em um espaço de 50 dimensões.</p>
+  <div class="options"><button class="opt" data-answer="certo">Certo</button><button class="opt" data-answer="errado">Errado</button></div>
+  <div class="feedback" data-for="certo">Isso. Cada coluna é um eixo, ou seja, uma dimensão.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Cada variável (coluna) é uma dimensão. Com 50 colunas, cada linha é um ponto num espaço de 50 eixos.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 2</div>
+  <p class="statement">A análise de componentes principais (PCA) é técnica supervisionada, pois utiliza a variável-alvo para definir as direções de maior variância dos dados.</p>
+  <div class="options"><button class="opt" data-answer="certo">Certo</button><button class="opt" data-answer="errado">Errado</button></div>
+  <div class="feedback" data-for="errado">Isso. O PCA é <strong>não supervisionado</strong>: olha só as colunas X, nunca a resposta y.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. O PCA ignora a variável-alvo. Ele só procura onde os dados variam mais.</div>
 </div>
 
 <div class="quiz" data-key="certo">
-  <div class="q-num">Item 2</div>
-  <p class="statement">O PCA é uma técnica linear de extração de variáveis que gera componentes não correlacionados, ordenados pela proporção de variância preservada.</p>
-  <div class="options">
-    <button class="opt" data-answer="certo">Certo</button>
-    <button class="opt" data-answer="errado">Errado</button>
-  </div>
-  <div class="feedback" data-for="certo">Isso. O PCA é linear, faz extração (cria variáveis novas) e gera componentes ortogonais ordenados por variância.</div>
-  <div class="feedback" data-for="errado">O item está <strong>certo</strong>: é a definição do PCA. Cuidado só para não confundir extração com seleção.</div>
-</div>
-
-<div class="quiz" data-key="errado">
   <div class="q-num">Item 3</div>
-  <p class="statement">Em um gráfico gerado por t-SNE, a distância entre dois agrupamentos indica com fidelidade o grau de diferença entre eles no espaço original.</p>
-  <div class="options">
-    <button class="opt" data-answer="certo">Certo</button>
-    <button class="opt" data-answer="errado">Errado</button>
-  </div>
-  <div class="feedback" data-for="errado">Isso. O t-SNE preserva a vizinhança <em>local</em>. As distâncias globais e o tamanho dos grupos não são confiáveis.</div>
-  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. O t-SNE serve para visualizar a vizinhança local. A distância entre grupos no gráfico não tem significado confiável.</div>
+  <p class="statement">Antes da aplicação do PCA, recomenda-se padronizar as variáveis, pois aquelas medidas em escalas numericamente maiores tenderiam a dominar as componentes principais.</p>
+  <div class="options"><button class="opt" data-answer="certo">Certo</button><button class="opt" data-answer="errado">Errado</button></div>
+  <div class="feedback" data-for="certo">Isso. Peso em gramas "pareceria" variar muito mais que altura em metros só por causa da unidade.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Sem padronizar, a coluna com números maiores domina o PCA, mesmo sem ser a mais informativa.</div>
 </div>
 
 <div class="quiz" data-key="errado">
   <div class="q-num">Item 4</div>
-  <p class="statement">Ponto identificado como anomalia por um modelo de Isolation Forest em leituras de sensores de uma máquina constitui prova suficiente de defeito no equipamento.</p>
-  <div class="options">
-    <button class="opt" data-answer="certo">Certo</button>
-    <button class="opt" data-answer="errado">Errado</button>
-  </div>
-  <div class="feedback" data-for="errado">Isso. Anomalia é <strong>indício</strong> para investigar. Muitas anomalias são legítimas.</div>
-  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Anomalia ≠ defeito. O ponto marcado orienta a investigação, mas não prova nada.</div>
+  <p class="statement">Em uma visualização obtida por t-SNE, a distância entre dois agrupamentos indica com fidelidade o grau de diferença entre eles no espaço original.</p>
+  <div class="options"><button class="opt" data-answer="certo">Certo</button><button class="opt" data-answer="errado">Errado</button></div>
+  <div class="feedback" data-for="errado">Isso. O t-SNE garante só a vizinhança <em>local</em>. A distância entre grupos e o tamanho deles no mapa não são confiáveis.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. No t-SNE, o que vale é "quem é vizinho de quem". A distância entre grupos não tem significado confiável.</div>
 </div>
 
 <div class="quiz" data-key="certo">
-  <div class="q-num">Item 5 · Caso prático</div>
-  <p class="statement">Na identificação de valores atípicos em uma base de pagamentos que contém alguns valores extremos, o critério do intervalo interquartil (IQR) tende a ser mais robusto que o z-score, pois os quartis são pouco afetados pelos próprios outliers.</p>
-  <div class="options">
-    <button class="opt" data-answer="certo">Certo</button>
-    <button class="opt" data-answer="errado">Errado</button>
-  </div>
-  <div class="feedback" data-for="certo">Isso. A média e o desvio-padrão do z-score são puxados pelos outliers. Os quartis quase não se mexem, e o IQR também não exige distribuição normal.</div>
-  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Os outliers inflam a média e o desvio usados no z-score, mas quase não alteram os quartis.</div>
+  <div class="q-num">Item 5</div>
+  <p class="statement">O algoritmo k-means exige a definição prévia do número de grupos e tende a apresentar desempenho ruim quando os grupos têm formato alongado ou curvo, como uma meia-lua.</p>
+  <div class="options"><button class="opt" data-answer="certo">Certo</button><button class="opt" data-answer="errado">Errado</button></div>
+  <div class="feedback" data-for="certo">Isso. Ele funciona em volta de centros, então prefere grupos redondos. Para formatos curvos, o DBSCAN é melhor.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. O k-means precisa de k e corta errado grupos em meia-lua.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 6</div>
+  <p class="statement">No DBSCAN, um ponto é classificado como ruído quando possui, dentro do raio ε, pelo menos o número mínimo de vizinhos definido pelo parâmetro minPts.</p>
+  <div class="options"><button class="opt" data-answer="certo">Certo</button><button class="opt" data-answer="errado">Errado</button></div>
+  <div class="feedback" data-for="errado">Isso. Quem tem pelo menos minPts vizinhos no raio é <strong>núcleo</strong>. Ruído é o ponto sem vizinhos suficientes e fora do raio de qualquer núcleo.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>: ele descreve o ponto <strong>núcleo</strong>. O ruído fica isolado, longe de qualquer núcleo.</div>
+</div>
+
+<div class="quiz" data-key="certo">
+  <div class="q-num">Item 7</div>
+  <p class="statement">No agrupamento hierárquico, cortar o dendrograma em uma altura maior tende a produzir uma quantidade menor de grupos.</p>
+  <div class="options"><button class="opt" data-answer="certo">Certo</button><button class="opt" data-answer="errado">Errado</button></div>
+  <div class="feedback" data-for="certo">Isso. No exemplo dos celulares: corte na altura 3 → 3 grupos; corte na altura 6 → 2 grupos.</div>
+  <div class="feedback" data-for="errado">O item está <strong>certo</strong>. Quanto mais alto o corte, mais junções ficam abaixo dele, e menos grupos sobram.</div>
+</div>
+
+<div class="quiz" data-key="errado">
+  <div class="q-num">Item 8</div>
+  <p class="statement">O ponto identificado como anomalia por um modelo de Isolation Forest em leituras de sensores de uma máquina constitui prova suficiente de defeito no equipamento.</p>
+  <div class="options"><button class="opt" data-answer="certo">Certo</button><button class="opt" data-answer="errado">Errado</button></div>
+  <div class="feedback" data-for="errado">Isso. Anomalia é <strong>indício</strong> para verificar. Muitas anomalias são legítimas.</div>
+  <div class="feedback" data-for="certo">O item está <strong>errado</strong>. Anomalia ≠ defeito. O ponto marcado orienta a verificação, mas não prova nada.</div>
 </div>
 
 <h2>Fonte principal recomendada</h2>
-<p class="source">
-  <em>An Introduction to Statistical Learning</em>, cap. 12 (aprendizado não
-  supervisionado: PCA, k-means e agrupamento hierárquico).
-</p>
-<p class="source" id="f1">[1] scikit-learn, <a href="https://scikit-learn.org/stable/modules/clustering.html" target="_blank" rel="noopener">Clustering</a>, com uma tabela comparativa dos algoritmos.</p>
-<p class="source" id="f2">[2] scikit-learn, <a href="https://scikit-learn.org/stable/modules/decomposition.html" target="_blank" rel="noopener">Decomposing signals in components (PCA)</a>.</p>
-<p class="source" id="f3">[3] Wattenberg, Viégas e Johnson, <a href="https://distill.pub/2016/misread-tsne/" target="_blank" rel="noopener">How to Use t-SNE Effectively</a>, Distill, 2016.</p>
+<p class="source"><em>An Introduction to Statistical Learning</em>, cap. 12 (aprendizado não supervisionado: PCA, k-means e agrupamento hierárquico, com figuras muito boas).</p>
+<p class="source" id="f1">[1] James et al., <em>An Introduction to Statistical Learning</em>, <a href="https://www.statlearning.com/" target="_blank" rel="noopener">statlearning.com</a>, cap. 12.</p>
+<p class="source" id="f2">[2] scikit-learn, <a href="https://scikit-learn.org/stable/modules/clustering.html" target="_blank" rel="noopener">Clustering</a> (com uma figura que compara os algoritmos em formatos diferentes) e <a href="https://scikit-learn.org/stable/modules/decomposition.html" target="_blank" rel="noopener">PCA</a>.</p>
+<p class="source" id="f3">[3] Wattenberg, Viégas e Johnson, <a href="https://distill.pub/2016/misread-tsne/" target="_blank" rel="noopener">How to Use t-SNE Effectively</a>, Distill, 2016 (interativo).</p>
 <p class="source" id="f4">[4] scikit-learn, <a href="https://scikit-learn.org/stable/modules/outlier_detection.html" target="_blank" rel="noopener">Novelty and Outlier Detection</a>.</p>
 
 <div class="ask-teacher">
-  Ficou na dúvida sobre como escolher k, ou sobre quando o DBSCAN falha?
-  Pergunte aqui na conversa.
+  Alguma parte ainda não fez sentido? Diga qual (k-means, DBSCAN, hierárquico,
+  dimensão, PCA, t-SNE/UMAP ou anomalias) que eu explico de outro jeito, com
+  outro exemplo.
 </div>
 
 <div class="nav">

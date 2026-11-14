@@ -13,10 +13,12 @@
   --bad: #a3372c;
   --code-bg: #f0ede4;
   --max-width: 42rem;
+  --c1: #3b7dd8; --c2: #e08a2e; --c3: #2f9e66; --c4: #8e5bc9; --c5: #d24c6a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --c1: #6fa3ec; --c2: #f0a95a; --c3: #5cc48f; --c4: #b48ce4; --c5: #ec7d96;
     --ink: #e8e4da;
     --ink-soft: #b3ada0;
     --paper: #1c1a17;
@@ -31,6 +33,7 @@
 }
 
 :root[data-theme="dark"] {
+  --c1: #6fa3ec; --c2: #f0a95a; --c3: #5cc48f; --c4: #b48ce4; --c5: #ec7d96;
   --ink: #e8e4da;
   --ink-soft: #b3ada0;
   --paper: #1c1a17;
@@ -44,6 +47,7 @@
 }
 
 :root[data-theme="light"] {
+  --c1: #3b7dd8; --c2: #e08a2e; --c3: #2f9e66; --c4: #8e5bc9; --c5: #d24c6a;
   --ink: #1a1a1a;
   --ink-soft: #4a4a4a;
   --paper: #fdfcf9;
@@ -395,3 +399,13 @@ table.cmp th small { display: block; white-space: normal; font-weight: 400; font
 /* Quiz de alternativas: empilha as opções */
 .quiz .options.stack { flex-direction: column; align-items: stretch; }
 .quiz .options.stack button.opt { text-align: left; }
+/* Paleta categórica para diagramas (um grupo = uma cor) */
+.diagram .c1 { fill: var(--c1); } .diagram .c2 { fill: var(--c2); } .diagram .c3 { fill: var(--c3); }
+.diagram .c4 { fill: var(--c4); } .diagram .c5 { fill: var(--c5); }
+.diagram .s1 { stroke: var(--c1); } .diagram .s2 { stroke: var(--c2); } .diagram .s3 { stroke: var(--c3); }
+.diagram .s4 { stroke: var(--c4); } .diagram .s5 { stroke: var(--c5); }
+.diagram .hollow { fill: var(--paper); stroke-width: 2; }
+.diagram .xmark { stroke: var(--ink-soft); stroke-width: 2.2; stroke-linecap: round; fill: none; }
+.diagram .thick { stroke-width: 3; fill: none; stroke-linecap: round; }
+.diagram .dash { stroke-dasharray: 5 4; fill: none; }
+.diagram .title { font-weight: 700; font-size: 15px; }
