@@ -1,6 +1,6 @@
 # ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade
 
-8 card(s).
+9 card(s).
 
 ## 1. Quem deve manter registro das operações (art. 37)?
 
@@ -49,4 +49,10 @@ Tags: `anpd` `lgpd` `lote-10`
 Irregular quando não observar a legislação ou <b>não fornecer a segurança que o titular pode esperar</b>, considerados o modo, o resultado e os riscos esperados e as técnicas da época. Nas relações de consumo, continuam valendo as regras do <b>CDC</b>.
 
 Tags: `anpd` `lgpd` `lote-10`
+
+## 9. Solidariedade, direito de regresso e responsabilidade objetiva
+
+<b>Solidariedade</b>: a vítima pode cobrar o valor inteiro de qualquer um dos responsáveis.<br><b>Regresso</b>: quem pagou cobra depois a parte dos outros.<br><b>Objetiva</b>: responde mesmo sem culpa; <b>subjetiva</b>: só com culpa.<br><b>Hipossuficiente</b>: a parte mais fraca, sem meios de provar.
+
+Tags: `anpd` `lgpd` `vocabulario`
 

@@ -1,6 +1,6 @@
 # ANPD::LGPD e ANPD::01 Fundamento constitucional
 
-6 card(s).
+9 card(s).
 
 ## 1. O sigilo do art. 5º, XII, da CF protege dados já <b>armazenados</b>?
 
@@ -37,4 +37,22 @@ Tags: `anpd` `lgpd` `lote-01`
 a) <b>Conhecer</b> informações relativas ao impetrante em registros ou bancos de dados de entidades governamentais ou de caráter público.<br>b) <b>Retificar</b> dados, quando não se prefira fazê-lo por processo sigiloso, judicial ou administrativo.
 
 Tags: `anpd` `lgpd` `lote-01`
+
+## 7. Como se lê a estrutura de um artigo de lei (caput, inciso, alínea, parágrafo)?
+
+<b>Artigo</b> (Art. 4º): a primeira frase é o <b>caput</b>.<br><b>Inciso</b>: número romano (I, II...), item de lista.<br><b>Alínea</b>: letra (a, b...), subitem de inciso.<br><b>Parágrafo</b> (§): completa o artigo ou abre exceção.<br><br>"Art. 4º, II, b" = artigo 4º, inciso II, alínea b.
+
+Tags: `anpd` `lgpd` `vocabulario`
+
+## 8. O que significam CF, STF, ADI, MP e EC?
+
+<b>CF</b>: Constituição Federal.<br><b>STF</b>: Supremo Tribunal Federal (palavra final sobre a Constituição).<br><b>ADI</b>: Ação Direta de Inconstitucionalidade (pedido ao STF para derrubar uma norma).<br><b>MP</b>: Medida Provisória (norma urgente do Presidente com força de lei).<br><b>EC</b>: Emenda Constitucional (muda o texto da Constituição).
+
+Tags: `anpd` `lgpd` `vocabulario`
+
+## 9. Competência administrativa × competência legislativa privativa
+
+<b>Administrativa</b>: poder de organizar e fiscalizar (art. 21, XXVI: a União organiza e fiscaliza a proteção de dados).<br><b>Legislativa privativa</b>: só aquele ente pode fazer leis sobre o tema (art. 22, XXX: só a União legisla sobre proteção de dados).
+
+Tags: `anpd` `lgpd` `vocabulario`
 

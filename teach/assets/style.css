@@ -222,6 +222,10 @@ figure.diagram figcaption {
 .diagram .bad-fill { fill: var(--bad); fill-opacity: 0.18; stroke: var(--bad); }
 .diagram line, .diagram path.arrow { stroke: var(--ink-soft); stroke-width: 1.5; fill: none; }
 .diagram rect.node { fill: var(--paper); stroke: var(--rule); stroke-width: 1.5; }
+.diagram rect.node.accent-fill { fill: var(--accent); fill-opacity: 0.18; stroke: var(--accent); }
+.diagram rect.node.accent-fill-2 { fill: var(--accent-soft); fill-opacity: 0.18; stroke: var(--accent-soft); }
+.diagram rect.node.ok-fill { fill: var(--ok); fill-opacity: 0.18; stroke: var(--ok); }
+.diagram rect.node.bad-fill { fill: var(--bad); fill-opacity: 0.18; stroke: var(--bad); }
 
 /* Inline citation links */
 sup.cite { font-size: 0.72em; }

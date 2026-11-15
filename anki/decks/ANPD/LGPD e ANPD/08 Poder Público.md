@@ -1,6 +1,6 @@
 # ANPD::LGPD e ANPD::08 Poder Público
 
-8 card(s).
+9 card(s).
 
 ## 1. Qual o fundamento do tratamento pelo Poder Público (art. 23)?
 
@@ -49,4 +49,10 @@ Tags: `anpd` `lgpd` `lote-08`
 Art. 29: informações sobre o âmbito e a natureza dos dados, a qualquer momento, e emitir <b>parecer técnico</b> complementar.<br>Art. 32: a publicação de <b>RIPD</b> e sugerir padrões e boas práticas.
 
 Tags: `anpd` `lgpd` `lote-08`
+
+## 9. Empresa pública × sociedade de economia mista (SEM); o que é a LAI?
+
+<b>Empresa pública</b>: capital 100% público (ex.: Caixa).<br><b>SEM</b>: o Estado é o sócio majoritário, mas há sócios privados (ex.: Petrobras, Banco do Brasil).<br><b>LAI</b>: Lei de Acesso à Informação (Lei 12.527/2011).
+
+Tags: `anpd` `lgpd` `vocabulario`
 

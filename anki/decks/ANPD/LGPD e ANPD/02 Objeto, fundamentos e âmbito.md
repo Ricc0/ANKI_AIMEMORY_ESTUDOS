@@ -1,6 +1,6 @@
 # ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito
 
-7 card(s).
+8 card(s).
 
 ## 1. A LGPD protege dados de <b>pessoa jurídica</b>?
 
@@ -43,4 +43,10 @@ Tags: `anpd` `lgpd` `lote-02` `pegadinha`
 Em regra é <b>vedado (§2º)</b>, exceto em procedimentos sob tutela de pessoa jurídica de direito público, com <b>informe específico à ANPD</b>. E nunca a <b>totalidade</b> do banco, salvo se o capital for integralmente público (§4º). O §1º remete a legislação específica.
 
 Tags: `anpd` `lgpd` `lote-02` `pegadinha`
+
+## 8. Pessoa natural × pessoa jurídica; direito público × privado
+
+<b>Pessoa natural</b> = ser humano; <b>pessoa jurídica</b> = organização (empresa, associação, órgão). A LGPD protege só a pessoa natural.<br><b>Direito público</b> = Estado; <b>direito privado</b> = empresas e pessoas. A LGPD vale para os dois.
+
+Tags: `anpd` `lgpd` `vocabulario`
 

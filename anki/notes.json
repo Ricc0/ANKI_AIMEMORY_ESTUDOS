@@ -2869,5 +2869,160 @@
                        "Frente":  "Calibração e Brier score: exemplo",
                        "Verso":  "\u003cb\u003eCalibrado\u003c/b\u003e: dos 100 pacientes com \"risco 70%\", cerca de 70 estão doentes. Se só 40 → descalibrado.\u003cbr\u003e\u003cb\u003eBrier\u003c/b\u003e = média de (p − y)². Disse 0,9 e estava doente: (0,9 − 1)² = 0,01. Disse 0,9 e estava saudável: 0,81. \u003cb\u003eMenor = melhor\u003c/b\u003e."
                    }
+    },
+    {
+        "noteId":  1794704452350,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "Como se lê a estrutura de um artigo de lei (caput, inciso, alínea, parágrafo)?",
+                       "Verso":  "\u003cb\u003eArtigo\u003c/b\u003e (Art. 4º): a primeira frase é o \u003cb\u003ecaput\u003c/b\u003e.\u003cbr\u003e\u003cb\u003eInciso\u003c/b\u003e: número romano (I, II...), item de lista.\u003cbr\u003e\u003cb\u003eAlínea\u003c/b\u003e: letra (a, b...), subitem de inciso.\u003cbr\u003e\u003cb\u003eParágrafo\u003c/b\u003e (§): completa o artigo ou abre exceção.\u003cbr\u003e\u003cbr\u003e\"Art. 4º, II, b\" = artigo 4º, inciso II, alínea b."
+                   }
+    },
+    {
+        "noteId":  1794704452377,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "O que significam CF, STF, ADI, MP e EC?",
+                       "Verso":  "\u003cb\u003eCF\u003c/b\u003e: Constituição Federal.\u003cbr\u003e\u003cb\u003eSTF\u003c/b\u003e: Supremo Tribunal Federal (palavra final sobre a Constituição).\u003cbr\u003e\u003cb\u003eADI\u003c/b\u003e: Ação Direta de Inconstitucionalidade (pedido ao STF para derrubar uma norma).\u003cbr\u003e\u003cb\u003eMP\u003c/b\u003e: Medida Provisória (norma urgente do Presidente com força de lei).\u003cbr\u003e\u003cb\u003eEC\u003c/b\u003e: Emenda Constitucional (muda o texto da Constituição)."
+                   }
+    },
+    {
+        "noteId":  1794704452378,
+        "deckName":  "ANPD::LGPD e ANPD::01 Fundamento constitucional",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "Competência administrativa × competência legislativa privativa",
+                       "Verso":  "\u003cb\u003eAdministrativa\u003c/b\u003e: poder de organizar e fiscalizar (art. 21, XXVI: a União organiza e fiscaliza a proteção de dados).\u003cbr\u003e\u003cb\u003eLegislativa privativa\u003c/b\u003e: só aquele ente pode fazer leis sobre o tema (art. 22, XXX: só a União legisla sobre proteção de dados)."
+                   }
+    },
+    {
+        "noteId":  1794704452379,
+        "deckName":  "ANPD::LGPD e ANPD::02 Objeto, fundamentos e âmbito",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "Pessoa natural × pessoa jurídica; direito público × privado",
+                       "Verso":  "\u003cb\u003ePessoa natural\u003c/b\u003e = ser humano; \u003cb\u003epessoa jurídica\u003c/b\u003e = organização (empresa, associação, órgão). A LGPD protege só a pessoa natural.\u003cbr\u003e\u003cb\u003eDireito público\u003c/b\u003e = Estado; \u003cb\u003edireito privado\u003c/b\u003e = empresas e pessoas. A LGPD vale para os dois."
+                   }
+    },
+    {
+        "noteId":  1794704452380,
+        "deckName":  "ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "O que significam ANPD e DPO?",
+                       "Verso":  "\u003cb\u003eANPD\u003c/b\u003e: Agência Nacional de Proteção de Dados (antes, \"Autoridade Nacional\"), o órgão que fiscaliza e regulamenta a LGPD.\u003cbr\u003e\u003cb\u003eDPO\u003c/b\u003e: Data Protection Officer, o \u003cb\u003eencarregado\u003c/b\u003e, ponte entre a empresa, os titulares e a ANPD."
+                   }
+    },
+    {
+        "noteId":  1794704452381,
+        "deckName":  "ANPD::LGPD e ANPD::05 Bases legais",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é RIPD e o que é ônus da prova?",
+                       "Verso":  "\u003cb\u003eRIPD\u003c/b\u003e: Relatório de Impacto à Proteção de Dados Pessoais, documento que descreve um tratamento, seus riscos e como reduzi-los.\u003cbr\u003e\u003cb\u003eÔnus da prova\u003c/b\u003e: quem tem a obrigação de provar. Na LGPD, provar que o consentimento foi válido é ônus do \u003cb\u003econtrolador\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794704452382,
+        "deckName":  "ANPD::LGPD e ANPD::08 Poder Público",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "Empresa pública × sociedade de economia mista (SEM); o que é a LAI?",
+                       "Verso":  "\u003cb\u003eEmpresa pública\u003c/b\u003e: capital 100% público (ex.: Caixa).\u003cbr\u003e\u003cb\u003eSEM\u003c/b\u003e: o Estado é o sócio majoritário, mas há sócios privados (ex.: Petrobras, Banco do Brasil).\u003cbr\u003e\u003cb\u003eLAI\u003c/b\u003e: Lei de Acesso à Informação (Lei 12.527/2011)."
+                   }
+    },
+    {
+        "noteId":  1794704452383,
+        "deckName":  "ANPD::LGPD e ANPD::10 Agentes, encarregado e responsabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "lgpd",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "Solidariedade, direito de regresso e responsabilidade objetiva",
+                       "Verso":  "\u003cb\u003eSolidariedade\u003c/b\u003e: a vítima pode cobrar o valor inteiro de qualquer um dos responsáveis.\u003cbr\u003e\u003cb\u003eRegresso\u003c/b\u003e: quem pagou cobra depois a parte dos outros.\u003cbr\u003e\u003cb\u003eObjetiva\u003c/b\u003e: responde mesmo sem culpa; \u003cb\u003esubjetiva\u003c/b\u003e: só com culpa.\u003cbr\u003e\u003cb\u003eHipossuficiente\u003c/b\u003e: a parte mais fraca, sem meios de provar."
+                   }
+    },
+    {
+        "noteId":  1794704452384,
+        "deckName":  "ANPD::Ciência de Dados::Probabilidade e Estatística::Axiomas e regras",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "probabilidade",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "O que significam os símbolos ∪, ∩, Aᶜ, P(A|B) e ∅?",
+                       "Verso":  "\u003cb\u003eA ∪ B\u003c/b\u003e: A \u003ci\u003eou\u003c/i\u003e B (união).\u003cbr\u003e\u003cb\u003eA ∩ B\u003c/b\u003e: A \u003ci\u003ee\u003c/i\u003e B (interseção).\u003cbr\u003e\u003cb\u003eAᶜ\u003c/b\u003e: \u003ci\u003enão\u003c/i\u003e A (complemento).\u003cbr\u003e\u003cb\u003eP(A|B)\u003c/b\u003e: probabilidade de A \u003ci\u003esabendo\u003c/i\u003e que B aconteceu.\u003cbr\u003e\u003cb\u003e∅\u003c/b\u003e: conjunto vazio (A ∩ B = ∅ → nunca acontecem juntos)."
+                   }
+    },
+    {
+        "noteId":  1794704452385,
+        "deckName":  "ANPD::Ciência de Dados::BI e Analytics::Banco de dados e SQL",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "bi",
+                     "sql",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "O que significam BI, SQL, PK, FK e NULL?",
+                       "Verso":  "\u003cb\u003eBI\u003c/b\u003e: Business Intelligence (inteligência de negócios).\u003cbr\u003e\u003cb\u003eSQL\u003c/b\u003e: Structured Query Language (linguagem de consulta estruturada).\u003cbr\u003e\u003cb\u003ePK\u003c/b\u003e: Primary Key (chave primária).\u003cbr\u003e\u003cb\u003eFK\u003c/b\u003e: Foreign Key (chave estrangeira).\u003cbr\u003e\u003cb\u003eNULL\u003c/b\u003e: valor ausente (não é zero nem texto vazio)."
+                   }
+    },
+    {
+        "noteId":  1794704452386,
+        "deckName":  "ANPD::Ciência de Dados::Big Data::Fundamentos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd",
+                     "big-data",
+                     "vocabulario"
+                 ],
+        "fields":  {
+                       "Frente":  "Batch × streaming; o que é esquema (schema) e API?",
+                       "Verso":  "\u003cb\u003eBatch\u003c/b\u003e (lote): processa um bloco de tempos em tempos. \u003cb\u003eStreaming\u003c/b\u003e (fluxo): processa continuamente, à medida que os dados chegam.\u003cbr\u003e\u003cb\u003eEsquema\u003c/b\u003e: a estrutura dos dados (colunas e tipos).\u003cbr\u003e\u003cb\u003eAPI\u003c/b\u003e: Application Programming Interface, a \"porta\" pela qual um sistema entrega dados a outro."
+                   }
     }
 ]

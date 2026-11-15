@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::Big Data::Fundamentos
 
-4 card(s).
+5 card(s).
 
 ## 1. Quais são os Vs do big data?
 
@@ -25,4 +25,10 @@ Tags: `anpd` `big-data` `pegadinha`
 <b>ETL</b>: transforma <b>antes</b> de carregar no destino.<br><b>ELT</b>: carrega o dado bruto e transforma <b>depois</b>, dentro do destino. Mais flexível para mudar regras, mas guarda mais dado bruto.
 
 Tags: `anpd` `big-data`
+
+## 5. Batch × streaming; o que é esquema (schema) e API?
+
+<b>Batch</b> (lote): processa um bloco de tempos em tempos. <b>Streaming</b> (fluxo): processa continuamente, à medida que os dados chegam.<br><b>Esquema</b>: a estrutura dos dados (colunas e tipos).<br><b>API</b>: Application Programming Interface, a "porta" pela qual um sistema entrega dados a outro.
+
+Tags: `anpd` `big-data` `vocabulario`
 

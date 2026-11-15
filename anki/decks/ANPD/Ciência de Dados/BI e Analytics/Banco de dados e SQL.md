@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::BI e Analytics::Banco de dados e SQL
 
-4 card(s).
+5 card(s).
 
 ## 1. Chave primária × chave estrangeira
 
@@ -25,4 +25,10 @@ Tags: `anpd` `bi` `pegadinha` `sql`
 Combinar tabelas relacionadas casando a FK com a PK (ex.: <code>JOIN Clientes c ON p.id_cliente = c.id_cliente</code>), para trazer o nome do cliente junto com seus pedidos.
 
 Tags: `anpd` `bi` `sql`
+
+## 5. O que significam BI, SQL, PK, FK e NULL?
+
+<b>BI</b>: Business Intelligence (inteligência de negócios).<br><b>SQL</b>: Structured Query Language (linguagem de consulta estruturada).<br><b>PK</b>: Primary Key (chave primária).<br><b>FK</b>: Foreign Key (chave estrangeira).<br><b>NULL</b>: valor ausente (não é zero nem texto vazio).
+
+Tags: `anpd` `bi` `sql` `vocabulario`
 

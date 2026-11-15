@@ -1,6 +1,6 @@
 # ANPD::LGPD e ANPD::05 Bases legais
 
-7 card(s).
+8 card(s).
 
 ## 1. O consentimento é a base legal preferencial?
 
@@ -43,4 +43,10 @@ Tags: `anpd` `lgpd` `lote-05` `pegadinha`
 <b>Art. 7º: taxativo</b> ("somente poderá ser realizado nas seguintes hipóteses").<br><b>Art. 10: exemplificativo</b> ("incluem, mas não se limitam a").
 
 Tags: `anpd` `lgpd` `lote-05`
+
+## 8. O que é RIPD e o que é ônus da prova?
+
+<b>RIPD</b>: Relatório de Impacto à Proteção de Dados Pessoais, documento que descreve um tratamento, seus riscos e como reduzi-los.<br><b>Ônus da prova</b>: quem tem a obrigação de provar. Na LGPD, provar que o consentimento foi válido é ônus do <b>controlador</b>.
+
+Tags: `anpd` `lgpd` `vocabulario`
 

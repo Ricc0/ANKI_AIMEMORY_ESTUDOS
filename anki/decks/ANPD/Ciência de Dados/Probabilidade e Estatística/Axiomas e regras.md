@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::Probabilidade e Estatística::Axiomas e regras
 
-4 card(s).
+5 card(s).
 
 ## 1. Quais são os 3 axiomas de Kolmogorov?
 
@@ -25,4 +25,10 @@ Tags: `anpd` `probabilidade`
 <b>Não.</b> Se ambos têm probabilidade positiva, são <b>dependentes</b>: saber que A ocorreu garante que B não ocorreu.
 
 Tags: `anpd` `pegadinha` `probabilidade`
+
+## 5. O que significam os símbolos ∪, ∩, Aᶜ, P(A|B) e ∅?
+
+<b>A ∪ B</b>: A <i>ou</i> B (união).<br><b>A ∩ B</b>: A <i>e</i> B (interseção).<br><b>Aᶜ</b>: <i>não</i> A (complemento).<br><b>P(A|B)</b>: probabilidade de A <i>sabendo</i> que B aconteceu.<br><b>∅</b>: conjunto vazio (A ∩ B = ∅ → nunca acontecem juntos).
+
+Tags: `anpd` `probabilidade` `vocabulario`
 

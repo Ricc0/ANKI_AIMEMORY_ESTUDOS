@@ -1,6 +1,6 @@
 # ANPD::LGPD e ANPD::03 Conceitos, agentes e anonimização
 
-8 card(s).
+9 card(s).
 
 ## 1. Controlador × operador × encarregado
 
@@ -49,4 +49,10 @@ Tags: `anpd` `lgpd` `lote-03`
 Manifestação <b>livre, informada e inequívoca</b> pela qual o titular concorda com o tratamento para uma <b>finalidade determinada</b> (art. 5º, XII). Autorizações genéricas são <b>nulas</b> (art. 8º, §4º).
 
 Tags: `anpd` `lgpd` `lote-03`
+
+## 9. O que significam ANPD e DPO?
+
+<b>ANPD</b>: Agência Nacional de Proteção de Dados (antes, "Autoridade Nacional"), o órgão que fiscaliza e regulamenta a LGPD.<br><b>DPO</b>: Data Protection Officer, o <b>encarregado</b>, ponte entre a empresa, os titulares e a ANPD.
+
+Tags: `anpd` `lgpd` `vocabulario`
 
