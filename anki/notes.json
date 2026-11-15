@@ -2544,5 +2544,127 @@
                        "Frente":  "O recall (revocação) é afetado pelos falsos positivos?",
                        "Verso":  "\u003cb\u003eNão.\u003c/b\u003e Recall = VP / (VP + FN): só olha a linha dos \u003cb\u003edoentes de verdade\u003c/b\u003e. Os saudáveis que deram positivo (FP) não entram na conta.\u003cbr\u003e\u003cbr\u003eQuem pune o FP é a precision (precisão), que divide por VP + FP."
                    }
+    },
+    {
+        "noteId":  1794685481227,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "agrupamento",
+                     "anpd,ia"
+                 ],
+        "fields":  {
+                       "Frente":  "Como o k-means funciona, passo a passo?",
+                       "Verso":  "Você escolhe \u003cb\u003ek\u003c/b\u003e (nº de grupos). Depois repete até nada mudar:\u003cbr\u003e1. \u003cb\u003eAtribuir\u003c/b\u003e: cada ponto vai para o centro mais próximo.\u003cbr\u003e2. \u003cb\u003eAtualizar\u003c/b\u003e: cada centro vira a média dos pontos do grupo.\u003cbr\u003e\u003cbr\u003eEx.: idades 18, 20, 22, 60, 62, 64 com k = 2 → centros finais 20 e 62."
+                   }
+    },
+    {
+        "noteId":  1794685481228,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "agrupamento",
+                     "anpd,ia",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "DBSCAN: o que são ε, minPts, núcleo, borda e ruído?",
+                       "Verso":  "\u003cb\u003eDBSCAN\u003c/b\u003e (Density-Based Spatial Clustering of Applications with Noise · agrupamento espacial baseado em densidade, com ruído).\u003cbr\u003e\u003cb\u003eε\u003c/b\u003e = raio da vizinhança; \u003cb\u003eminPts\u003c/b\u003e = mínimo de vizinhos no raio.\u003cbr\u003e\u003cb\u003eNúcleo\u003c/b\u003e: tem ≥ minPts vizinhos no raio.\u003cbr\u003e\u003cb\u003eBorda\u003c/b\u003e: está no raio de um núcleo, mas não tem vizinhos suficientes.\u003cbr\u003e\u003cb\u003eRuído\u003c/b\u003e: isolado, longe de qualquer núcleo."
+                   }
+    },
+    {
+        "noteId":  1794685481229,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "agrupamento",
+                     "anpd,ia"
+                 ],
+        "fields":  {
+                       "Frente":  "Agrupamento hierárquico: como se lê o dendrograma e o corte?",
+                       "Verso":  "Começa com cada ponto sozinho e junta os 2 grupos mais próximos a cada passo. A \u003cb\u003ealtura\u003c/b\u003e da junção é a distância.\u003cbr\u003e\u003cbr\u003eEx.: celulares de R$ 1, 2, 6, 7 e 15 mil → junções a 1, 1, 4 e 8. \u003cb\u003eCorte a 3\u003c/b\u003e → 3 grupos {1,2} {6,7} {15}; \u003cb\u003ecorte a 6\u003c/b\u003e → 2 grupos. Corte mais alto = menos grupos."
+                   }
+    },
+    {
+        "noteId":  1794685481230,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "reducao-dimensionalidade"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é uma \"dimensão\" nos dados?",
+                       "Verso":  "Cada \u003cb\u003ecoluna\u003c/b\u003e (característica) é uma dimensão, ou seja, um eixo. Um apartamento descrito por 50 colunas é um ponto num espaço de 50 dimensões.\u003cbr\u003e\u003cbr\u003e\u003cb\u003eReduzir a dimensionalidade\u003c/b\u003e = transformar muitas colunas em poucas, perdendo o mínimo de informação."
+                   }
+    },
+    {
+        "noteId":  1794685481231,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "reducao-dimensionalidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que reduzir a dimensionalidade? (4 motivos)",
+                       "Verso":  "1. \u003cb\u003eVisualizar\u003c/b\u003e (ninguém vê 50 eixos).\u003cbr\u003e2. \u003cb\u003eColunas redundantes\u003c/b\u003e (área em m² e em pés²; altura e peso).\u003cbr\u003e3. \u003cb\u003eMaldição da dimensionalidade\u003c/b\u003e: 10 faixas por eixo → 10 colunas = 10 bilhões de caixinhas; os dados ficam ralos e as distâncias perdem o sentido.\u003cbr\u003e4. \u003cb\u003eCusto e ruído\u003c/b\u003e: menos colunas, menos sobreajuste."
+                   }
+    },
+    {
+        "noteId":  1794685481232,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pca",
+                     "reducao-dimensionalidade"
+                 ],
+        "fields":  {
+                       "Frente":  "PCA em linguagem simples (exemplo altura e peso)",
+                       "Verso":  "\u003cb\u003ePCA\u003c/b\u003e (Principal Component Analysis · Análise de Componentes Principais, ACP) acha a \u003cb\u003edireção em que os dados mais variam\u003c/b\u003e e a usa como coluna nova.\u003cbr\u003e\u003cbr\u003eAltura e peso andam juntos → \u003cb\u003ePC1 = \"tamanho do corpo\"\u003c/b\u003e (explica ~90%); PC2 = \"mais magro ou mais encorpado\" (~10%). Fica-se só com a PC1: de 2 colunas para 1."
+                   }
+    },
+    {
+        "noteId":  1794685481233,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pca",
+                     "pegadinha",
+                     "reducao-dimensionalidade"
+                 ],
+        "fields":  {
+                       "Frente":  "Quais as 4 regras do PCA que caem em prova?",
+                       "Verso":  "1. \u003cb\u003ePadronizar antes\u003c/b\u003e (peso em gramas dominaria a altura em metros).\u003cbr\u003e2. Componentes \u003cb\u003enão correlacionadas\u003c/b\u003e (perpendiculares) e \u003cb\u003eordenadas pela variância\u003c/b\u003e.\u003cbr\u003e3. É \u003cb\u003elinear\u003c/b\u003e.\u003cbr\u003e4. É \u003cb\u003enão supervisionado\u003c/b\u003e: não usa a resposta y."
+                   }
+    },
+    {
+        "noteId":  1794685481234,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "reducao-dimensionalidade",
+                     "tsne"
+                 ],
+        "fields":  {
+                       "Frente":  "O que significam t-SNE e UMAP e para que servem?",
+                       "Verso":  "\u003cb\u003et-SNE\u003c/b\u003e: t-distributed Stochastic Neighbor Embedding (incorporação estocástica de vizinhos com distribuição t).\u003cbr\u003e\u003cb\u003eUMAP\u003c/b\u003e: Uniform Manifold Approximation and Projection (aproximação e projeção uniforme de variedades).\u003cbr\u003e\u003cbr\u003eAmbos são \u003cb\u003enão lineares\u003c/b\u003e e servem para \u003cb\u003edesenhar dados de muitas dimensões em 2D\u003c/b\u003e, mantendo vizinhos juntos (ex.: imagens de dígitos com 784 pixels). O UMAP é mais rápido e projeta pontos novos."
+                   }
+    },
+    {
+        "noteId":  1794685481235,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Não Supervisionado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anomalias",
+                     "anpd,ia"
+                 ],
+        "fields":  {
+                       "Frente":  "z-score × IQR: exemplo com conta de luz",
+                       "Verso":  "\u003cb\u003ez-score\u003c/b\u003e = (valor − média) / desvio. Média 200 kWh, desvio 50, casa com 450 → z = 5 (\u0026gt; 3 → anômala).\u003cbr\u003e\u003cb\u003eIQR\u003c/b\u003e (Interquartile Range · amplitude interquartil) = Q3 − Q1. Q1 = 150, Q3 = 250 → IQR = 100; limite superior = 250 + 1,5 × 100 = 400 → 450 é atípico.\u003cbr\u003e\u003cbr\u003eO IQR é mais \u003cb\u003erobusto\u003c/b\u003e: os extremos quase não mexem nos quartis."
+                   }
     }
 ]

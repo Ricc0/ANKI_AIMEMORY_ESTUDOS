@@ -17,7 +17,7 @@
 </p>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <marker id="seta" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="currentColor"></path></marker>
+  <marker id="seta" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="currentColor"></path></marker>
 </defs></svg>
 
 <h2>Parte 1 · Agrupamento: juntar quem é parecido</h2>
@@ -358,7 +358,8 @@
       <circle cx="486" cy="140" r="5"></circle><circle cx="499" cy="140" r="5"></circle><circle cx="511" cy="140" r="5"></circle>
     </g>
     <text x="425" y="166" text-anchor="middle" font-size="11" style="fill:var(--c2)" font-weight="700">PC1 ("tamanho")</text>
-    <text x="425" y="182" text-anchor="middle" font-size="10" class="muted">quem é pequeno fica à esquerda, quem é grande à direita</text>
+    <text x="425" y="182" text-anchor="middle" font-size="10" class="muted">pequenos à esquerda,</text>
+    <text x="425" y="195" text-anchor="middle" font-size="10" class="muted">grandes à direita</text>
   </svg>
   <figcaption>Altura e peso andam juntos: quem é mais alto costuma pesar mais. O PCA acha a direção principal (PC1, laranja), que resume as duas colunas numa só, o "tamanho". A segunda direção (PC2, rosa) tem pouca variação e pode ser descartada sem perder muita informação.</figcaption>
 </figure>
@@ -423,7 +424,8 @@
       <text x="305" y="40" style="fill:var(--c1)">7</text><text x="466" y="33" style="fill:var(--c2)">1</text>
       <text x="386" y="140" style="fill:var(--c3)">0</text><text x="500" y="146" style="fill:var(--c4)">3</text>
     </g>
-    <text x="400" y="212" text-anchor="middle" font-size="10" class="muted">cada ponto = 1 imagem · imagens do mesmo número ficam juntas</text>
+    <text x="400" y="204" text-anchor="middle" font-size="10" class="muted">cada ponto = 1 imagem</text>
+    <text x="400" y="217" text-anchor="middle" font-size="10" class="muted">imagens do mesmo número ficam juntas</text>
   </svg>
   <figcaption>Milhares de imagens de números escritos à mão, cada uma com 784 dimensões, viram um mapa 2D. Ninguém disse ao t-SNE qual número cada imagem é, e mesmo assim os "7" se juntam, os "1" se juntam, e assim por diante.</figcaption>
 </figure>
