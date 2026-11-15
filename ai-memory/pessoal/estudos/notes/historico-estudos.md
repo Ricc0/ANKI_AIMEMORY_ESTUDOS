@@ -6,15 +6,16 @@ tier: semantic
 type: Note
 generated:
   by: process:ai-memory/2.2.1
-  at: 2026-11-15T03:24:40Z
+  at: 2026-11-15T03:28:35Z
 ---
 # Histórico de estudos e mudanças
 
 Diário do que foi feito, com o mais recente no topo. Ver [[registrar-tudo-no-ai-memory]].
 
 ## 2026-11-15
+- Registrados os métodos de revisão (lição → Anki → caderno no TEC → revisão dos erros → itens inéditos → histórico) como parte central do estudo. Ver [[metodos-de-revisao]].
 - Criado no TecConcursos o caderno de LGPD, com 304 itens C/E do Cebraspe. Ver [[tecconcursos]].
-- O usuário perguntou se tudo vai para o ai-memory. Criada a regra [[registrar-tudo-no-ai-memory]] e este histórico.
+- O usuário perguntou se tudo vai para o ai-memory. Criada a regra [[registrar-tudo-no-ai-memory]] e este histórico. Commit a05a1ae.
 
 ## 2026-11-14
 - Infraestrutura: Anki 26.09.4 com AnkiConnect e sincronização com o AnkiWeb (celular); repositório Ricc0/ANKI_AIMEMORY_ESTUDOS fora do OneDrive; script `sync.ps1`.
