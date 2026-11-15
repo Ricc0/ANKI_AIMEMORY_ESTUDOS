@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Ensembles
 
-7 card(s).
+10 card(s).
 
 ## 1. O que é um <b>ensemble</b> e por que funciona?
 
@@ -43,4 +43,22 @@ Tags: `anpd` `ensembles` `ia`
 <b>Bagging</b> = <b>paralelo</b>, reduz <b>variância</b> (ex.: Random Forest).<br><b>Boosting</b> = <b>sequencial</b>, reduz <b>viés</b> (ex.: XGBoost).<br><br>Custo dos dois: perdem <b>interpretabilidade</b> e ficam mais pesados.
 
 Tags: `anpd` `ensembles` `ia` `pegadinha`
+
+## 8. O que é uma árvore de decisão?
+
+Uma sequência de <b>perguntas de sim ou não</b> até uma resposta, como um fluxograma. Ex.: "mais de 3 links?" → "remetente conhecido?" → SPAM.<br><br>Árvore <b>profunda</b> decora (alta variância). Árvore <b>rasa</b> é fraca (alto viés). Bagging usa profundas; boosting usa rasas.
+
+Tags: `anpd,ia` `arvores` `ensembles`
+
+## 9. O que é uma amostra bootstrap? (exemplo)
+
+Sorteio <b>com reposição</b> do mesmo tamanho da base. De {A, B, C, D, E} pode sair {A, A, C, D, E}: o B ficou de fora e o A repetiu.<br><br>Cada árvore do bagging treina numa amostra diferente.
+
+Tags: `anpd,ia` `ensembles`
+
+## 10. Como o Gradient Boosting corrige erros? (exemplo do resíduo)
+
+Apartamento de R$ 500 mil: árvore 1 prevê 400 → <b>resíduo</b> 100. Árvore 2 prevê o resíduo (80) → total 480. Árvore 3 prevê 15 → total 495.<br><br>Cada árvore nova aprende <b>o que sobrou de erro</b>. No AdaBoost, os exemplos errados ganham <b>peso maior</b>.
+
+Tags: `anpd,ia` `boosting` `ensembles`
 

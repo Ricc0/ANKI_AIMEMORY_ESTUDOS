@@ -85,9 +85,28 @@
 <ul>
   <li><strong>Suavidade:</strong> pontos próximos têm o mesmo rótulo.</li>
   <li><strong>Cluster:</strong> a fronteira entre classes passa por regiões com poucos dados.</li>
-  <li><strong>Variedade (manifold):</strong> os dados vivem numa estrutura de dimensão menor do que o número de variáveis.</li>
+  <li><strong>Variedade (manifold):</strong> mesmo com muitas colunas, os dados variam por poucos motivos. Fotos de rostos têm milhares de pixels, mas mudam basicamente por ângulo, luz e expressão.</li>
 </ul>
 
+<figure class="diagram">
+  <svg viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
+    <g style="fill:var(--ink-soft);fill-opacity:0.35">
+      <circle cx="80" cy="80" r="5"></circle><circle cx="100" cy="65" r="5"></circle><circle cx="120" cy="90" r="5"></circle><circle cx="95" cy="105" r="5"></circle>
+      <circle cx="70" cy="110" r="5"></circle><circle cx="130" cy="70" r="5"></circle><circle cx="140" cy="105" r="5"></circle><circle cx="110" cy="120" r="5"></circle>
+      <circle cx="60" cy="90" r="5"></circle><circle cx="150" cy="88" r="5"></circle>
+      <circle cx="350" cy="80" r="5"></circle><circle cx="370" cy="65" r="5"></circle><circle cx="390" cy="92" r="5"></circle><circle cx="365" cy="105" r="5"></circle>
+      <circle cx="340" cy="110" r="5"></circle><circle cx="400" cy="70" r="5"></circle><circle cx="410" cy="108" r="5"></circle><circle cx="380" cy="120" r="5"></circle>
+      <circle cx="330" cy="92" r="5"></circle><circle cx="420" cy="88" r="5"></circle>
+    </g>
+    <circle cx="105" cy="88" r="9" class="c1"></circle>
+    <circle cx="375" cy="88" r="9" class="c2"></circle>
+    <text x="105" y="150" text-anchor="middle" font-size="11" style="fill:var(--c1)" font-weight="700">1 laudo: "pneumonia"</text>
+    <text x="375" y="150" text-anchor="middle" font-size="11" style="fill:var(--c2)" font-weight="700">1 laudo: "normal"</text>
+    <text x="240" y="92" text-anchor="middle" font-size="10" class="muted">pontos cinza = sem laudo</text>
+    <text x="260" y="172" text-anchor="middle" font-size="10" class="muted">cada nuvem "herda" o rótulo do único ponto rotulado que tem dentro dela</text>
+  </svg>
+  <figcaption>A ideia do semissupervisionado em um desenho: só 2 radiografias têm laudo (os pontos coloridos), mas as outras formam duas nuvens bem separadas. Se a suposição de cluster vale, toda a nuvem da esquerda deve ser "pneumonia" e toda a da direita, "normal".</figcaption>
+</figure>
 <div class="pegadinha">
   <span class="label">Pegadinha: "mais dados sempre ajudam"</span>
   Se os spams <strong>não</strong> formam um grupo separado (spammers imitam e-mails normais, por exemplo), ou se os primeiros pseudo-rótulos
@@ -105,6 +124,33 @@
   estado) que maximize a <em>recompensa acumulada</em>, normalmente com um
   desconto γ sobre o futuro<sup class="cite"><a href="#f3">[3]</a></sup>.
 </p>
+<figure class="diagram">
+  <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="sx" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="currentColor"></path></marker></defs>
+    <rect x="30" y="70" width="150" height="60" rx="8" class="c1" style="fill-opacity:0.18;stroke:var(--c1)"></rect>
+    <text x="105" y="96" text-anchor="middle" font-size="13" font-weight="700">AGENTE</text>
+    <text x="105" y="114" text-anchor="middle" font-size="11" class="muted">o robô aspirador</text>
+    <rect x="340" y="70" width="150" height="60" rx="8" class="c3" style="fill-opacity:0.18;stroke:var(--c3)"></rect>
+    <text x="415" y="96" text-anchor="middle" font-size="13" font-weight="700">AMBIENTE</text>
+    <text x="415" y="114" text-anchor="middle" font-size="11" class="muted">a casa</text>
+    <path d="M180 82 C 240 30, 280 30, 338 82" class="thick" style="stroke:var(--c1);color:var(--c1)" marker-end="url(#sx)"></path>
+    <text x="260" y="34" text-anchor="middle" font-size="11" style="fill:var(--c1)" font-weight="700">ação: "ir para a esquerda"</text>
+    <path d="M340 120 C 280 172, 240 172, 182 120" class="thick" style="stroke:var(--c3);color:var(--c3)" marker-end="url(#sx)"></path>
+    <text x="260" y="180" text-anchor="middle" font-size="11" style="fill:var(--c3)" font-weight="700">novo estado + recompensa</text>
+    <text x="260" y="195" text-anchor="middle" font-size="10" class="muted">"estou na sala" · +1 se limpou sujeira, −1 se bateu na parede</text>
+  </svg>
+  <figcaption>O ciclo do aprendizado por reforço: o agente age, o ambiente responde com a nova situação (estado) e uma nota (recompensa), e o agente ajusta sua <strong>política</strong> (a regra "nesta situação, faço tal coisa"). Ninguém diz qual era a ação certa.</figcaption>
+</figure>
+
+<div class="box">
+  <strong>O que é o desconto γ (gama)?</strong>
+  <p style="margin-bottom:0">
+    É um número entre 0 e 1 que diz <strong>quanto vale o futuro</strong>. Com
+    γ = 0,9, uma recompensa de 10 pontos vale 10 se vier agora, 10 × 0,9 = 9 se
+    vier no próximo passo e 10 × 0,9 × 0,9 = 8,1 no seguinte. γ perto de 0 deixa o
+    agente imediatista; γ perto de 1 o faz pensar no longo prazo.
+  </p>
+</div>
 
 <div class="table-scroll">
   <table class="cmp">
@@ -124,7 +170,7 @@
     <li><strong>Exploração × explotação:</strong> se o agente só repete o
       que já deu certo, nunca descobre algo melhor. Se só testa coisas
       novas, nunca aproveita o que aprendeu. Uma solução clássica é o
-      <em>ε-greedy</em>, que explora ao acaso com probabilidade ε.</li>
+      <em>ε-greedy</em>. O ε (épsilon) é uma probabilidade pequena, como 10%: em 90% das vezes o agente faz a melhor ação que conhece e, em 10%, testa uma ação ao acaso. É como ir quase sempre ao restaurante favorito, mas de vez em quando experimentar um novo.</li>
     <li><strong>Atribuição de crédito:</strong> com recompensa atrasada,
       é difícil saber qual das 80 jogadas decidiu a partida.</li>
     <li><strong>Reward hacking:</strong> o agente otimiza a recompensa

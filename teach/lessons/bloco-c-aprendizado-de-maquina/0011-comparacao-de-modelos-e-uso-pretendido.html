@@ -35,6 +35,20 @@
     </tbody>
   </table>
 </div>
+<div class="box">
+  <strong>Exemplo resolvido: McNemar com números</strong>
+  <p>
+    Dois modelos de triagem foram testados nos mesmos 500 pacientes. Em 15 casos
+    só o A acertou (b = 15); em 5, só o B acertou (c = 5).
+  </p>
+  <p style="margin-bottom:0">
+    Estatística = (|15 − 5| − 1)² / (15 + 5) = 81 / 20 = <strong>4,05</strong>. O valor de
+    referência da <strong>distribuição qui-quadrado (χ²)</strong> com 1 grau de liberdade,
+    a 5% de significância, é <strong>3,84</strong>. Como 4,05 &gt; 3,84, a diferença é
+    considerada real, e não sorte. Se fosse b = 12 e c = 8, daria
+    (4 − 1)² / 20 = 0,45, e os modelos empatariam.
+  </p>
+</div>
 
 <h2>A métrica tem que refletir o uso</h2>
 <div class="table-scroll">
@@ -66,6 +80,20 @@
   </p>
 </div>
 
+<div class="box">
+  <strong>Exemplo resolvido: o que é calibração</strong>
+  <p>
+    Um modelo diz "risco de 70%" para 100 pacientes. Se ele é <strong>calibrado</strong>,
+    cerca de 70 deles estão mesmo doentes. Se só 40 estão, o modelo exagera o risco:
+    está <strong>descalibrado</strong>, mesmo que ordene bem quem tem mais risco.
+  </p>
+  <p style="margin-bottom:0">
+    O <strong>Brier score</strong> mede isso pela média de (probabilidade − resposta)²,
+    em que a resposta é 1 (doente) ou 0 (saudável). Disse 0,9 e a pessoa estava doente:
+    (0,9 − 1)² = 0,01, quase sem erro. Disse 0,9 e ela estava saudável: (0,9 − 0)² = 0,81,
+    erro grande. <strong>Quanto menor o Brier, melhor.</strong>
+  </p>
+</div>
 <h2>Adequação ao uso vai além da métrica</h2>
 <div class="box">
   <p style="margin:0.2rem 0"><strong>Explicabilidade:</strong> se a decisão é <em>unicamente</em> automatizada e afeta o titular, ele pode pedir revisão e informações sobre os critérios (LGPD, art. 20 e §1º). Um modelo impossível de explicar pode ser inadequado, mesmo sendo mais preciso.</p>

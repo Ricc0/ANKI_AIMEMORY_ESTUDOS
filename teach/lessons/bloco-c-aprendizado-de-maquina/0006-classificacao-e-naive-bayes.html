@@ -25,6 +25,15 @@
 </p>
 
 <h2>De Bayes ao Naive Bayes</h2>
+<div class="box">
+  <strong>Vocabulário desta lição (com o exemplo do spam)</strong>
+  <ul style="margin:0.4rem 0 0">
+    <li><strong>Feature</strong> (característica): uma coluna dos dados, como "o e-mail tem a palavra grátis?".</li>
+    <li><strong>Prior</strong> (probabilidade a priori): a chance da classe <em>antes</em> de olhar o e-mail. Se 30% dos e-mails são spam, P(spam) = 0,3.</li>
+    <li><strong>Verossimilhança</strong> (likelihood): a chance de ver aquela característica <em>dado</em> que é daquela classe. Ex.: P("grátis" | spam) = 0,4, ou seja, 40% dos spams têm "grátis".</li>
+    <li><strong>Posterior</strong> (probabilidade a posteriori): a chance da classe <em>depois</em> de olhar o e-mail, P(spam | "grátis"). É o que o classificador quer.</li>
+  </ul>
+</div>
 <p>
   Na Lição 2 do Bloco B, calculamos P(spam|"grátis") usando Bayes com uma
   única palavra como evidência. Um classificador de verdade usa
@@ -106,7 +115,7 @@
     (como o <code>scikit-learn</code>) trabalham em
     <strong>log-probabilidade</strong>: somam logaritmos em vez de
     multiplicar probabilidades — o resultado da comparação entre classes é
-    o mesmo, mas sem risco de underflow numérico
+    o mesmo, mas sem risco de <em>underflow</em> numérico, que é quando o número fica tão pequeno (0,000000…) que o computador o arredonda para zero
     <sup class="cite"><a href="https://scikit-learn.org/stable/modules/naive_bayes.html" target="_blank" rel="noopener">[1]</a></sup>.
   </p>
 </div>
@@ -190,7 +199,7 @@
 <p class="source">
   ISLR (<em>An Introduction to Statistical Learning</em>), capítulo de
   classificação — seção sobre Naive Bayes e comparação com regressão
-  logística e LDA. Gratuito em statlearning.com.
+  logística e LDA (Linear Discriminant Analysis · análise discriminante linear). Gratuito em statlearning.com.
 </p>
 <p class="source">
   Referência citada nesta lição:

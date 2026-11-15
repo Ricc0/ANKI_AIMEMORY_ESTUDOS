@@ -15,6 +15,36 @@
   adotado<sup class="cite"><a href="#f1">[1]</a></sup>.
 </p>
 
+<h2>Antes: o que é uma árvore de decisão</h2>
+<p>
+  Quase todo ensemble é feito de <strong>árvores de decisão</strong>. Uma árvore é
+  uma sequência de <strong>perguntas de sim ou não</strong> sobre as
+  características, até chegar numa resposta, como num fluxograma.
+</p>
+<figure class="diagram">
+  <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+    <rect x="190" y="15" width="140" height="36" rx="6" class="node" style="fill:var(--paper);stroke:var(--ink-soft)"></rect>
+    <text x="260" y="38" text-anchor="middle" font-size="12" font-weight="700">mais de 3 links?</text>
+    <rect x="70" y="95" width="160" height="36" rx="6" class="node" style="fill:var(--paper);stroke:var(--ink-soft)"></rect>
+    <text x="150" y="118" text-anchor="middle" font-size="12" font-weight="700">remetente conhecido?</text>
+    <rect x="320" y="95" width="130" height="36" rx="6" class="c3" style="fill-opacity:0.25;stroke:var(--c3)"></rect>
+    <text x="385" y="118" text-anchor="middle" font-size="12" font-weight="700">NÃO SPAM</text>
+    <rect x="20" y="170" width="120" height="36" rx="6" class="c3" style="fill-opacity:0.25;stroke:var(--c3)"></rect>
+    <text x="80" y="193" text-anchor="middle" font-size="12" font-weight="700">NÃO SPAM</text>
+    <rect x="160" y="170" width="120" height="36" rx="6" class="c5" style="fill-opacity:0.25;stroke:var(--c5)"></rect>
+    <text x="220" y="193" text-anchor="middle" font-size="12" font-weight="700">SPAM</text>
+    <path d="M230 51 L170 95 M290 51 L370 95 M120 131 L85 170 M180 131 L215 170" style="stroke:var(--ink-soft);stroke-width:1.5;fill:none"></path>
+    <g font-size="10" class="muted"><text x="185" y="72">sim</text><text x="335" y="72">não</text><text x="80" y="153">sim</text><text x="205" y="153">não</text></g>
+    <text x="370" y="170" font-size="10" class="muted">profundidade = nº de perguntas</text>
+    <text x="370" y="184" font-size="10" class="muted">em sequência (aqui, 2)</text>
+  </svg>
+  <figcaption>Uma árvore que decide se um e-mail é spam. O algoritmo aprende sozinho quais perguntas fazer e em que ordem.</figcaption>
+</figure>
+<div class="box">
+  <p style="margin:0.2rem 0"><strong>Árvore profunda</strong> (muitas perguntas): decora o treino, tem <strong>alta variância</strong> e muda muito se os dados mudarem um pouco.</p>
+  <p style="margin:0.2rem 0"><strong>Árvore rasa</strong> (1 ou 2 perguntas): é um modelo <strong>fraco</strong>, simples demais, com <strong>alto viés</strong>.</p>
+  <p style="margin:0.2rem 0">O bagging junta várias árvores profundas para reduzir a variância. O boosting junta várias árvores rasas para reduzir o viés.</p>
+</div>
 <h2>Por que um comitê funciona</h2>
 <p>
   Se vários modelos erram de formas <strong>diferentes</strong>, os erros
@@ -60,6 +90,34 @@
   </table>
 </div>
 
+<div class="box">
+  <strong>Exemplo resolvido 1: o que é uma amostra bootstrap</strong>
+  <p style="margin-bottom:0">
+    Base com 5 e-mails: {A, B, C, D, E}. Sorteia-se 5 vezes <strong>com reposição</strong>
+    (o e-mail sorteado volta para o saco e pode sair de novo). Amostra 1 =
+    {A, A, C, D, E}: o B ficou de fora e o A saiu duas vezes. Amostra 2 =
+    {B, C, C, D, E}. Cada árvore do bagging treina numa amostra diferente, e por
+    isso elas ficam um pouco diferentes entre si.
+  </p>
+</div>
+<div class="box">
+  <strong>Exemplo resolvido 2: boosting corrigindo os erros, passo a passo</strong>
+  <p>Prever o preço de um apartamento que vale <strong>R$ 500 mil</strong>:</p>
+  <ul style="margin:0.2rem 0">
+    <li><strong>Árvore 1</strong> prevê 400. Sobra um erro (o <strong>resíduo</strong>) de 500 − 400 = 100.</li>
+    <li><strong>Árvore 2</strong> não tenta prever o preço: tenta prever <strong>o erro que sobrou</strong> e acerta 80. Previsão total: 400 + 80 = 480. Resíduo: 20.</li>
+    <li><strong>Árvore 3</strong> prevê 15 do resíduo restante. Total: 495.</li>
+  </ul>
+  <p style="margin-bottom:0">
+    Esse é o <strong>Gradient Boosting</strong>: cada árvore nova ajusta o que as
+    anteriores erraram. "Gradiente" é a direção em que o erro diminui; para o erro
+    quadrático, essa direção é o próprio resíduo. O <strong>AdaBoost</strong> faz algo
+    parecido de outro jeito: os exemplos que a árvore anterior errou ganham
+    <strong>peso maior</strong>, então a próxima presta mais atenção neles.
+    <strong>XGBoost</strong> e <strong>LightGBM</strong> são implementações rápidas do
+    Gradient Boosting.
+  </p>
+</div>
 <div class="pegadinha">
   <span class="label">Pegadinha: boosting não é imune</span>
   Como insiste nos erros, o boosting pode <strong>decorar ruído e

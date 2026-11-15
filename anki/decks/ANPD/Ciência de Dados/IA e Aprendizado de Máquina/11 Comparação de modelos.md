@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos
 
-7 card(s).
+9 card(s).
 
 ## 1. Quais as regras para uma comparação justa entre modelos?
 
@@ -43,4 +43,16 @@ Tags: `anpd,ia` `comparacao`
 <b>Explicabilidade</b> (LGPD, art. 20: revisão e critérios de decisões unicamente automatizadas); <b>não discriminação</b> (art. 6º, IX); dados disponíveis no momento da previsão; custo, manutenção e auditabilidade (parcimônia).
 
 Tags: `anpd,ia` `comparacao` `lgpd`
+
+## 8. McNemar com números: b = 15, c = 5. Os modelos são diferentes?
+
+(|15 − 5| − 1)² / (15 + 5) = 81 / 20 = <b>4,05</b>. O valor de referência da <b>qui-quadrado (χ²)</b> com 1 grau de liberdade, a 5%, é <b>3,84</b>. Como 4,05 &gt; 3,84 → <b>diferença real</b>.<br><br>Com b = 12 e c = 8: (4 − 1)² / 20 = 0,45 → empate.
+
+Tags: `anpd,ia` `comparacao`
+
+## 9. Calibração e Brier score: exemplo
+
+<b>Calibrado</b>: dos 100 pacientes com "risco 70%", cerca de 70 estão doentes. Se só 40 → descalibrado.<br><b>Brier</b> = média de (p − y)². Disse 0,9 e estava doente: (0,9 − 1)² = 0,01. Disse 0,9 e estava saudável: 0,81. <b>Menor = melhor</b>.
+
+Tags: `anpd,ia` `comparacao`
 

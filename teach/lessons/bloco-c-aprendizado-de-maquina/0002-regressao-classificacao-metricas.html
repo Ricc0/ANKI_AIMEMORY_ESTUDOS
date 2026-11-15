@@ -35,6 +35,34 @@
   classe: "probabilidade de spam = 0,83 → é spam". O nome vem de ser uma
   regressão sobre o log das chances, mas a tarefa que ela resolve é classificar.
 </div>
+<div class="box">
+  <strong>Como a regressão logística chega numa probabilidade</strong>
+  <p>
+    Primeiro ela calcula um <strong>escore</strong>: soma de pesos × características
+    (ex.: 0,8 × nº de links + 1,5 × "tem a palavra grátis" − 2 × "remetente conhecido").
+    Esse escore pode dar qualquer número, como −7 ou +12. A <strong>função
+    sigmoide</strong> "espreme" qualquer número para dentro do intervalo entre 0 e 1,
+    e o resultado vira uma probabilidade.
+  </p>
+  <figure class="diagram" style="margin:0.6rem 0">
+    <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="170" x2="485" y2="170"></line><line x1="260" y1="175" x2="260" y2="15"></line>
+      <polyline points="40,169.6 76.7,169 113.3,167.3 150,162.9 186.7,152.2 223.3,129.7 260,95 296.7,60.4 333.3,37.9 370,27.1 406.7,22.7 443.3,21 480,20.4" class="thick s1"></polyline>
+      <path d="M40 95 H485" class="dash" style="stroke:var(--c5)"></path>
+      <text x="482" y="89" text-anchor="end" font-size="10" style="fill:var(--c5)">limiar 0,5</text>
+      <g font-size="10" class="muted"><text x="44" y="186">−6</text><text x="256" y="186">0</text><text x="470" y="186">+6</text><text x="248" y="24" text-anchor="end">1</text><text x="248" y="168" text-anchor="end">0</text></g>
+      <circle cx="333.3" cy="37.9" r="5" class="c2"></circle><text x="342" y="55" font-size="11" style="fill:var(--c2)" font-weight="700">escore +2 → 0,88 → spam</text>
+      <circle cx="186.7" cy="152.2" r="5" class="c3"></circle><text x="275" y="148" font-size="11" style="fill:var(--c3)" font-weight="700">← escore −2 → 0,12 → não spam</text>
+      <text x="260" y="203" text-anchor="middle" font-size="10" class="muted">escore (soma de pesos × características) →</text>
+    </svg>
+  </figure>
+  <p style="margin-bottom:0">
+    <strong>"Log das chances"</strong>: chance é p / (1 − p). Uma probabilidade de 0,8 dá
+    chance de 0,8 / 0,2 = <strong>4 para 1</strong>. A regressão logística modela o
+    <em>logaritmo</em> dessa chance como uma soma de pesos, e é daí que vem o nome
+    "regressão".
+  </p>
+</div>
 
 <h2>Métricas de regressão</h2>
 <div class="table-scroll">
@@ -42,7 +70,7 @@
     <caption>Todas medem o erro = valor real − valor previsto. Exemplo: prever o preço de apartamentos.</caption>
     <thead><tr><th>Métrica</th><th>O que é</th><th>Quando usar</th></tr></thead>
     <tbody>
-      <tr><th>MAE<small>Mean Absolute Error<br>Erro Absoluto Médio (EAM)</small></th><td>Média de |erro|</td><td>Erro na unidade original, robusto a outliers ("erra em média R$ 12 mil no preço")</td></tr>
+      <tr><th>MAE<small>Mean Absolute Error<br>Erro Absoluto Médio (EAM)</small></th><td>Média de |erro|</td><td>Erro na unidade original, robusto a outliers, que são valores muito fora do padrão, como uma cobertura de luxo no meio de apartamentos simples ("erra em média R$ 12 mil no preço")</td></tr>
       <tr><th>MSE<small>Mean Squared Error<br>Erro Quadrático Médio (EQM)</small></th><td>Média de erro²</td><td>Quando errar muito é bem pior que errar pouco. A unidade fica ao quadrado</td></tr>
       <tr><th>RMSE<small>Root Mean Squared Error<br>Raiz do Erro Quadrático Médio (REQM)</small></th><td>√MSE</td><td>Pune erros grandes, mas volta à unidade original</td></tr>
       <tr><th>R²<small>Coefficient of Determination<br>Coeficiente de Determinação</small></th><td>1 − (erro² do modelo / erro² de prever sempre a média)</td><td>1 = perfeito, 0 = igual a prever sempre a média, <strong>negativo = pior que a média</strong></td></tr>
@@ -135,9 +163,36 @@
 <div class="box">
   <p style="margin:0.2rem 0"><strong>Precision · Precisão = VP / (VP + FP)</strong> → divide pela <strong>coluna</strong>: <span class="anchor">DOS QUE DERAM POSITIVO</span>, quantos estão doentes mesmo? No cenário: 40 / 100 = 0,40.</p>
   <p style="margin:0.2rem 0"><strong>Recall · Revocação = VP / (VP + FN)</strong> → divide pela <strong>linha</strong>: <span class="anchor">DOS QUE ESTÃO DOENTES</span>, quantos o teste pegou? No cenário: 40 / 50 = 0,80. Também se chama sensibilidade ou TPR (True Positive Rate · Taxa de Verdadeiros Positivos, TVP).</p>
-  <p style="margin:0.2rem 0"><strong>F1-score · Medida F1 = 2·P·R / (P + R)</strong> → média <em>harmônica</em>, que só fica alta se as duas forem altas.</p>
+  <p style="margin:0.2rem 0"><strong>F1-score · Medida F1 = 2·P·R / (P + R)</strong> → média <em>harmônica</em>, que só fica alta se as duas forem altas. Ex.: P = 1,0 e R = 0,1. A média comum daria 0,55, que parece razoável; o F1 dá 2 × 1 × 0,1 / 1,1 = <strong>0,18</strong> e denuncia o recall péssimo.</p>
   <p style="margin:0.2rem 0"><strong>AUC-ROC</strong> (Area Under the Curve – Receiver Operating Characteristic · Área sob a Curva ROC – Característica de Operação do Receptor) → cruza a TPR com a FPR (False Positive Rate · Taxa de Falsos Positivos, TFP) em <em>todos os limiares</em>: é a probabilidade de um doente receber nota maior que um saudável. 0,5 é chute e 1 é perfeito.</p>
 </div>
+<figure class="diagram">
+  <svg viewBox="0 0 540 270" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 220 C 62 80, 125 32, 250 20 L250 220 Z" class="c1" style="fill-opacity:0.15"></path>
+    <line x1="50" y1="220" x2="250" y2="220"></line><line x1="50" y1="220" x2="50" y2="20"></line>
+    <path d="M50 220 L250 20" class="dash" style="stroke:var(--ink-soft)"></path>
+    <path d="M50 220 C 62 80, 125 32, 250 20" class="thick s1"></path>
+    <text x="175" y="160" font-size="10" class="muted" transform="rotate(-45 175 160)">chute: AUC = 0,5</text>
+    <text x="95" y="62" font-size="11" style="fill:var(--c1)" font-weight="700">modelo bom</text>
+    <text x="95" y="76" font-size="10" style="fill:var(--c1)">área azul ≈ 0,9</text>
+    <g font-size="10" class="muted"><text x="50" y="236" text-anchor="middle">0</text><text x="250" y="236" text-anchor="middle">1</text><text x="42" y="223" text-anchor="end">0</text><text x="42" y="24" text-anchor="end">1</text></g>
+    <text x="150" y="254" text-anchor="middle" font-size="10">FPR: saudáveis que deram positivo →</text>
+    <text x="18" y="120" text-anchor="middle" font-size="10" transform="rotate(-90 18 120)">TPR (recall): doentes pegos →</text>
+    <g font-size="11">
+      <text x="275" y="40" font-weight="700">Como a curva é desenhada</text>
+      <text x="275" y="62">Cada ponto da curva é um <tspan font-weight="700">limiar</tspan> diferente.</text>
+      <text x="275" y="84">Limiar 0,99: quase ninguém dá positivo</text>
+      <text x="275" y="98" class="muted">→ ponto perto de (0, 0), canto de baixo.</text>
+      <text x="275" y="120">Limiar 0,01: quase todo mundo dá positivo</text>
+      <text x="275" y="134" class="muted">→ ponto perto de (1, 1), canto de cima.</text>
+      <text x="275" y="156">Quanto mais a curva "abraça" o canto</text>
+      <text x="275" y="170">superior esquerdo, melhor: pega muitos</text>
+      <text x="275" y="184">doentes com poucos alarmes falsos.</text>
+      <text x="275" y="206"><tspan font-weight="700">AUC</tspan> = área sob a curva (0 a 1).</text>
+    </g>
+  </svg>
+  <figcaption>Curva ROC. O eixo horizontal mostra os alarmes falsos (FPR) e o vertical, os doentes detectados (TPR, que é o recall). A diagonal tracejada é um modelo que chuta. Quanto maior a área sob a curva (AUC), melhor o modelo separa doentes de saudáveis.</figcaption>
+</figure>
 
 <div class="quiz" data-key="certo">
   <div class="q-num">Treino rápido 1</div>

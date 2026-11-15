@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::10 Viés, variância e estabilidade
 
-5 card(s).
+6 card(s).
 
 ## 1. O que a curva de aprendizado mostra no alto viés e na alta variância?
 
@@ -31,4 +31,10 @@ Tags: `anpd,ia` `generalizacao`
 <b>Covariate shift</b>: muda a distribuição de X (ex.: novo aparelho de raio-X muda o contraste das imagens).<br><b>Prior (label) shift</b>: muda a proporção das classes (ex.: gripe passa de 1% para 10% dos atendimentos no inverno).<br><b>Concept drift</b>: muda a <b>relação</b> entre X e y (ex.: spammers aprendem a burlar o filtro).<br><br>Defesas: teste out-of-time, monitoramento e retreino.
 
 Tags: `anpd,ia` `generalizacao` `pegadinha`
+
+## 6. O que é um intervalo de confiança (IC) de 95%?
+
+A faixa onde o valor verdadeiro provavelmente está: se o estudo fosse repetido 100 vezes, cerca de 95 desses intervalos conteriam o valor real.<br><br>Ex.: recall 0,80 em 100 doentes → IC ≈ 0,72 a 0,88.
+
+Tags: `anpd,ia` `generalizacao`
 

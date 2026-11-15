@@ -13,6 +13,15 @@
   previsão</strong>. O resultado é sempre o mesmo: uma nota <strong>boa demais</strong>
   na avaliação e um modelo que decepciona em produção<sup class="cite"><a href="#f1">[1]</a></sup>.
 </p>
+<div class="box">
+  <strong>Termos usados nesta lição</strong>
+  <ul style="margin:0.4rem 0 0">
+    <li><strong>Padronizar</strong>: deixar cada coluna com média 0 e desvio 1, calculando (valor − média) / desvio-padrão. Serve para colunas em unidades diferentes (anos e reais) ficarem comparáveis.</li>
+    <li><strong>Imputação</strong>: preencher valores que estão faltando, por exemplo com a média da coluna.</li>
+    <li><strong>Pipeline</strong>: uma "esteira" que encadeia os passos (padronizar → selecionar colunas → treinar). Na validação cruzada, a esteira inteira é refeita dentro de cada fold.</li>
+    <li><strong>Importância das variáveis</strong>: quanto cada coluna pesa nas decisões do modelo.</li>
+  </ul>
+</div>
 
 <h2>As cinco formas mais comuns</h2>
 <div class="table-scroll">

@@ -2666,5 +2666,208 @@
                        "Frente":  "z-score × IQR: exemplo com conta de luz",
                        "Verso":  "\u003cb\u003ez-score\u003c/b\u003e = (valor − média) / desvio. Média 200 kWh, desvio 50, casa com 450 → z = 5 (\u0026gt; 3 → anômala).\u003cbr\u003e\u003cb\u003eIQR\u003c/b\u003e (Interquartile Range · amplitude interquartil) = Q3 − Q1. Q1 = 150, Q3 = 250 → IQR = 100; limite superior = 250 + 1,5 × 100 = 400 → 450 é atípico.\u003cbr\u003e\u003cbr\u003eO IQR é mais \u003cb\u003erobusto\u003c/b\u003e: os extremos quase não mexem nos quartis."
                    }
+    },
+    {
+        "noteId":  1794703870482,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Paradigmas de Aprendizado",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "reforco"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é o desconto γ (gama) no aprendizado por reforço?",
+                       "Verso":  "Número entre 0 e 1 que diz \u003cb\u003equanto vale o futuro\u003c/b\u003e. Com γ = 0,9, uma recompensa de 10 vale 10 agora, 9 no próximo passo e 8,1 no seguinte.\u003cbr\u003e\u003cbr\u003eγ perto de 0 → agente imediatista; γ perto de 1 → pensa no longo prazo."
+                   }
+    },
+    {
+        "noteId":  1794703870483,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "logistica",
+                     "metricas"
+                 ],
+        "fields":  {
+                       "Frente":  "Como a regressão logística transforma um escore em probabilidade?",
+                       "Verso":  "Calcula um \u003cb\u003eescore\u003c/b\u003e = soma de pesos × características (pode dar −7, +12...). A \u003cb\u003efunção sigmoide\u003c/b\u003e espreme qualquer número para o intervalo entre 0 e 1.\u003cbr\u003e\u003cbr\u003eEscore 0 → 0,5; escore +2 → 0,88; escore −2 → 0,12. Com limiar 0,5: +2 vira spam."
+                   }
+    },
+    {
+        "noteId":  1794703870484,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "logistica",
+                     "metricas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é o \"log das chances\" da regressão logística?",
+                       "Verso":  "Chance = p / (1 − p). Com p = 0,8, a chance é 0,8 / 0,2 = \u003cb\u003e4 para 1\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eA regressão logística modela o \u003cb\u003elogaritmo da chance\u003c/b\u003e como uma soma de pesos, e daí vem o nome \"regressão\". Mas ela \u003cb\u003eclassifica\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794703870485,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "metricas",
+                     "roc"
+                 ],
+        "fields":  {
+                       "Frente":  "Como a curva ROC é desenhada?",
+                       "Verso":  "Cada ponto da curva é um \u003cb\u003elimiar\u003c/b\u003e diferente. Eixo x: FPR (False Positive Rate · Taxa de Falsos Positivos); eixo y: TPR (recall).\u003cbr\u003eLimiar 0,99 → ponto perto de (0, 0); limiar 0,01 → perto de (1, 1).\u003cbr\u003e\u003cbr\u003eCurva que \"abraça\" o canto superior esquerdo = modelo bom. A diagonal = chute (AUC 0,5)."
+                   }
+    },
+    {
+        "noteId":  1794703870486,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "metricas",
+                     "pegadinha"
+                 ],
+        "fields":  {
+                       "Frente":  "Por que o F1-score usa média harmônica, e não a média comum?",
+                       "Verso":  "Porque a harmônica \u003cb\u003epune quando uma das duas é baixa\u003c/b\u003e. Precision 1,0 e recall 0,1: a média comum dá 0,55 (parece ok), mas o F1 = 2 × 1 × 0,1 / 1,1 = \u003cb\u003e0,18\u003c/b\u003e, o que denuncia o recall péssimo."
+                   }
+    },
+    {
+        "noteId":  1794703870487,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "regularizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "O que são os pesos (coeficientes, w) de um modelo?",
+                       "Verso":  "Os números que multiplicam cada característica. Ex.: preço = \u003cb\u003e4.000\u003c/b\u003e × área + \u003cb\u003e30.000\u003c/b\u003e × quartos + \u003cb\u003e900\u003c/b\u003e × cor_da_porta. Treinar = achar esses números.\u003cbr\u003e\u003cbr\u003eSobreajuste costuma aparecer como \u003cb\u003epesos grandes para coisas irrelevantes\u003c/b\u003e (a cor da porta)."
+                   }
+    },
+    {
+        "noteId":  1794703870488,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Sobreajuste e Regularização",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "pegadinha",
+                     "regularizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Mesmo modelo de preço, com L1 e com L2: o que muda no peso da \"cor da porta\"?",
+                       "Verso":  "Sem regularização: 900.\u003cbr\u003e\u003cb\u003eL1 · Lasso\u003c/b\u003e: \u003cb\u003e0\u003c/b\u003e. A coluna é descartada (o L1 seleciona variáveis).\u003cbr\u003e\u003cb\u003eL2 · Ridge\u003c/b\u003e: \u003cb\u003e40\u003c/b\u003e. Encolhe, mas não zera.\u003cbr\u003e\u003cbr\u003eA multa somada ao erro: L1 = λ·Σ|w|; L2 = λ·Σw²."
+                   }
+    },
+    {
+        "noteId":  1794703870489,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "arvores",
+                     "ensembles"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é uma árvore de decisão?",
+                       "Verso":  "Uma sequência de \u003cb\u003eperguntas de sim ou não\u003c/b\u003e até uma resposta, como um fluxograma. Ex.: \"mais de 3 links?\" → \"remetente conhecido?\" → SPAM.\u003cbr\u003e\u003cbr\u003eÁrvore \u003cb\u003eprofunda\u003c/b\u003e decora (alta variância). Árvore \u003cb\u003erasa\u003c/b\u003e é fraca (alto viés). Bagging usa profundas; boosting usa rasas."
+                   }
+    },
+    {
+        "noteId":  1794703870490,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "ensembles"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é uma amostra bootstrap? (exemplo)",
+                       "Verso":  "Sorteio \u003cb\u003ecom reposição\u003c/b\u003e do mesmo tamanho da base. De {A, B, C, D, E} pode sair {A, A, C, D, E}: o B ficou de fora e o A repetiu.\u003cbr\u003e\u003cbr\u003eCada árvore do bagging treina numa amostra diferente."
+                   }
+    },
+    {
+        "noteId":  1794703870491,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Ensembles",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "boosting",
+                     "ensembles"
+                 ],
+        "fields":  {
+                       "Frente":  "Como o Gradient Boosting corrige erros? (exemplo do resíduo)",
+                       "Verso":  "Apartamento de R$ 500 mil: árvore 1 prevê 400 → \u003cb\u003eresíduo\u003c/b\u003e 100. Árvore 2 prevê o resíduo (80) → total 480. Árvore 3 prevê 15 → total 495.\u003cbr\u003e\u003cbr\u003eCada árvore nova aprende \u003cb\u003eo que sobrou de erro\u003c/b\u003e. No AdaBoost, os exemplos errados ganham \u003cb\u003epeso maior\u003c/b\u003e."
+                   }
+    },
+    {
+        "noteId":  1794703870492,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Naive Bayes",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "naive-bayes"
+                 ],
+        "fields":  {
+                       "Frente":  "Prior × verossimilhança × posterior (exemplo do spam)",
+                       "Verso":  "\u003cb\u003ePrior\u003c/b\u003e: chance da classe antes de olhar o e-mail (P(spam) = 0,3).\u003cbr\u003e\u003cb\u003eVerossimilhança\u003c/b\u003e: chance da característica dada a classe (P(\"grátis\" | spam) = 0,4).\u003cbr\u003e\u003cb\u003ePosterior\u003c/b\u003e: chance da classe depois de olhar (P(spam | \"grátis\")), que é o que o classificador quer."
+                   }
+    },
+    {
+        "noteId":  1794703870493,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::09 Vazamento de informação",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "vazamento"
+                 ],
+        "fields":  {
+                       "Frente":  "O que são padronizar, imputação e pipeline?",
+                       "Verso":  "\u003cb\u003ePadronizar\u003c/b\u003e: (valor − média) / desvio-padrão; cada coluna fica com média 0 e desvio 1.\u003cbr\u003e\u003cb\u003eImputação\u003c/b\u003e: preencher valores faltantes (ex.: com a média).\u003cbr\u003e\u003cb\u003ePipeline\u003c/b\u003e: \"esteira\" de passos (padronizar → selecionar → treinar), refeita dentro de cada fold para não vazar."
+                   }
+    },
+    {
+        "noteId":  1794703870494,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::10 Viés, variância e estabilidade",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "generalizacao"
+                 ],
+        "fields":  {
+                       "Frente":  "O que é um intervalo de confiança (IC) de 95%?",
+                       "Verso":  "A faixa onde o valor verdadeiro provavelmente está: se o estudo fosse repetido 100 vezes, cerca de 95 desses intervalos conteriam o valor real.\u003cbr\u003e\u003cbr\u003eEx.: recall 0,80 em 100 doentes → IC ≈ 0,72 a 0,88."
+                   }
+    },
+    {
+        "noteId":  1794703870495,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao"
+                 ],
+        "fields":  {
+                       "Frente":  "McNemar com números: b = 15, c = 5. Os modelos são diferentes?",
+                       "Verso":  "(|15 − 5| − 1)² / (15 + 5) = 81 / 20 = \u003cb\u003e4,05\u003c/b\u003e. O valor de referência da \u003cb\u003equi-quadrado (χ²)\u003c/b\u003e com 1 grau de liberdade, a 5%, é \u003cb\u003e3,84\u003c/b\u003e. Como 4,05 \u0026gt; 3,84 → \u003cb\u003ediferença real\u003c/b\u003e.\u003cbr\u003e\u003cbr\u003eCom b = 12 e c = 8: (4 − 1)² / 20 = 0,45 → empate."
+                   }
+    },
+    {
+        "noteId":  1794703870496,
+        "deckName":  "ANPD::Ciência de Dados::IA e Aprendizado de Máquina::11 Comparação de modelos",
+        "modelName":  "Básico",
+        "tags":  [
+                     "anpd,ia",
+                     "comparacao"
+                 ],
+        "fields":  {
+                       "Frente":  "Calibração e Brier score: exemplo",
+                       "Verso":  "\u003cb\u003eCalibrado\u003c/b\u003e: dos 100 pacientes com \"risco 70%\", cerca de 70 estão doentes. Se só 40 → descalibrado.\u003cbr\u003e\u003cb\u003eBrier\u003c/b\u003e = média de (p − y)². Disse 0,9 e estava doente: (0,9 − 1)² = 0,01. Disse 0,9 e estava saudável: 0,81. \u003cb\u003eMenor = melhor\u003c/b\u003e."
+                   }
     }
 ]

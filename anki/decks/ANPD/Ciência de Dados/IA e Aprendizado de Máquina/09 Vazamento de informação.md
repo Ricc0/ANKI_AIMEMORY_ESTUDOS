@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::09 Vazamento de informação
 
-5 card(s).
+6 card(s).
 
 ## 1. O que é vazamento de informação (data leakage)?
 
@@ -29,6 +29,12 @@ Tags: `anpd,ia` `pegadinha` `vazamento`
 ## 5. Como prevenir vazamento?
 
 Dividir <b>primeiro</b>; usar <b>pipelines</b> reajustados em cada fold; perguntar "essa variável existe no momento da previsão?"; respeitar <b>tempo e grupos</b>; desconfiar de nota <b>boa demais</b> e de uma variável dominante na importância.
+
+Tags: `anpd,ia` `vazamento`
+
+## 6. O que são padronizar, imputação e pipeline?
+
+<b>Padronizar</b>: (valor − média) / desvio-padrão; cada coluna fica com média 0 e desvio 1.<br><b>Imputação</b>: preencher valores faltantes (ex.: com a média).<br><b>Pipeline</b>: "esteira" de passos (padronizar → selecionar → treinar), refeita dentro de cada fold para não vazar.
 
 Tags: `anpd,ia` `vazamento`
 

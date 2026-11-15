@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Paradigmas de Aprendizado
 
-14 card(s).
+15 card(s).
 
 ## 1. O que caracteriza o <b>aprendizado supervisionado</b>?
 
@@ -85,4 +85,10 @@ Tags: `anpd` `ia` `pegadinha` `reforco`
 Precisa de <b>muita interação</b> ou de um <b>simulador</b>. A recompensa pode ser <b>atrasada</b>, o que dificulta saber qual ação foi a responsável (atribuição de crédito). <b>Definir a recompensa</b> é difícil e há risco de reward hacking.<br><br>Raramente é a ferramenta certa para dados tabulares comuns.
 
 Tags: `anpd` `ia` `reforco`
+
+## 15. O que é o desconto γ (gama) no aprendizado por reforço?
+
+Número entre 0 e 1 que diz <b>quanto vale o futuro</b>. Com γ = 0,9, uma recompensa de 10 vale 10 agora, 9 no próximo passo e 8,1 no seguinte.<br><br>γ perto de 0 → agente imediatista; γ perto de 1 → pensa no longo prazo.
+
+Tags: `anpd,ia` `reforco`
 

@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Regressão e Classificação
 
-15 card(s).
+19 card(s).
 
 ## 1. Qual a diferença entre <b>regressão</b> e <b>classificação</b>?
 
@@ -91,4 +91,28 @@ Tags: `anpd,ia` `metricas` `pegadinha` `recall`
 <b>Não.</b> Recall = VP / (VP + FN): só olha a linha dos <b>doentes de verdade</b>. Os saudáveis que deram positivo (FP) não entram na conta.<br><br>Quem pune o FP é a precision (precisão), que divide por VP + FP.
 
 Tags: `anpd,ia` `metricas` `pegadinha` `recall`
+
+## 16. Como a regressão logística transforma um escore em probabilidade?
+
+Calcula um <b>escore</b> = soma de pesos × características (pode dar −7, +12...). A <b>função sigmoide</b> espreme qualquer número para o intervalo entre 0 e 1.<br><br>Escore 0 → 0,5; escore +2 → 0,88; escore −2 → 0,12. Com limiar 0,5: +2 vira spam.
+
+Tags: `anpd,ia` `logistica` `metricas`
+
+## 17. O que é o "log das chances" da regressão logística?
+
+Chance = p / (1 − p). Com p = 0,8, a chance é 0,8 / 0,2 = <b>4 para 1</b>.<br><br>A regressão logística modela o <b>logaritmo da chance</b> como uma soma de pesos, e daí vem o nome "regressão". Mas ela <b>classifica</b>.
+
+Tags: `anpd,ia` `logistica` `metricas` `pegadinha`
+
+## 18. Como a curva ROC é desenhada?
+
+Cada ponto da curva é um <b>limiar</b> diferente. Eixo x: FPR (False Positive Rate · Taxa de Falsos Positivos); eixo y: TPR (recall).<br>Limiar 0,99 → ponto perto de (0, 0); limiar 0,01 → perto de (1, 1).<br><br>Curva que "abraça" o canto superior esquerdo = modelo bom. A diagonal = chute (AUC 0,5).
+
+Tags: `anpd,ia` `metricas` `roc`
+
+## 19. Por que o F1-score usa média harmônica, e não a média comum?
+
+Porque a harmônica <b>pune quando uma das duas é baixa</b>. Precision 1,0 e recall 0,1: a média comum dá 0,55 (parece ok), mas o F1 = 2 × 1 × 0,1 / 1,1 = <b>0,18</b>, o que denuncia o recall péssimo.
+
+Tags: `anpd,ia` `metricas` `pegadinha`
 

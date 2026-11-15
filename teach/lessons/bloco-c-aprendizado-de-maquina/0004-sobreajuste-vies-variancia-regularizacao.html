@@ -80,6 +80,20 @@
 </div>
 
 <h2>Regularização: cobrar pela complexidade</h2>
+<div class="box">
+  <strong>Antes: o que são os "pesos" (w) de um modelo</strong>
+  <p>
+    Um modelo linear que prevê o preço de um apartamento é uma conta assim:
+  </p>
+  <p style="text-align:center;font-family:monospace">preço = 4.000 × área + 30.000 × quartos + 900 × cor_da_porta</p>
+  <p style="margin-bottom:0">
+    Os números 4.000, 30.000 e 900 são os <strong>pesos</strong> (ou
+    <strong>coeficientes</strong>, em fórmulas escritos como <strong>w</strong>). O treino
+    é justamente achar esses números. Um modelo sobreajustado costuma ter
+    <strong>pesos grandes para coisas irrelevantes</strong>: a cor da porta não
+    deveria valer R$ 900 por ponto. Ele decorou uma coincidência dos dados de treino.
+  </p>
+</div>
 <div class="box formula-box">
   erro total = erro + <strong>λ</strong> · penalidade(w)
 </div>
@@ -103,9 +117,42 @@
   exatamente zero. Na L2 a região é um <em>círculo</em>, sem cantos, e os
   coeficientes encolhem, mas quase nunca chegam a zero.
 </p>
+<div class="box">
+  <strong>Exemplo resolvido: a mesma conta, com e sem regularização</strong>
+  <p>Sem regularização: <code>preço = 4.000 × área + 30.000 × quartos + 900 × cor_da_porta</code>.</p>
+  <ul style="margin:0.2rem 0">
+    <li><strong>Com L1 (Lasso):</strong> <code>3.800 × área + 27.000 × quartos + <strong>0</strong> × cor_da_porta</code>. A cor da porta foi <strong>descartada</strong>: o L1 também escolhe colunas.</li>
+    <li><strong>Com L2 (Ridge):</strong> <code>3.700 × área + 25.000 × quartos + <strong>40</strong> × cor_da_porta</code>. Tudo <strong>encolheu</strong>, mas nada zerou.</li>
+  </ul>
+  <p style="margin-bottom:0">A "multa" é somada ao erro durante o treino: L1 = λ × (|w₁| + |w₂| + …) e L2 = λ × (w₁² + w₂² + …). O λ (lambda) é o tamanho da multa.</p>
+</div>
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+    <line x1="40" y1="130" x2="225" y2="130"></line><line x1="130" y1="215" x2="130" y2="30"></line>
+    <path d="M130 70 L190 130 L130 190 L70 130 Z" class="c1" style="fill-opacity:0.2;stroke:var(--c1);stroke-width:2"></path>
+    <ellipse cx="190" cy="48" rx="68" ry="26" transform="rotate(-25 190 48)" class="dash" style="stroke:var(--c2)"></ellipse>
+    <ellipse cx="190" cy="48" rx="38" ry="14" transform="rotate(-25 190 48)" class="dash" style="stroke:var(--c2)"></ellipse>
+    <circle cx="130" cy="70" r="6" class="c5"></circle>
+    <text x="10" y="52" font-size="10" style="fill:var(--c5)" font-weight="700">w₁ = 0 →</text><text x="10" y="65" font-size="10" style="fill:var(--c5)" font-weight="700">coluna descartada</text>
+    <text x="130" y="232" text-anchor="middle" font-size="12" font-weight="700">L1 · Lasso: losango</text>
+    <text x="222" y="145" font-size="10" class="muted">w₁</text><text x="136" y="36" font-size="10" class="muted">w₂</text>
+
+    <line x1="300" y1="130" x2="485" y2="130"></line><line x1="390" y1="215" x2="390" y2="30"></line>
+    <circle cx="390" cy="130" r="60" class="c3" style="fill-opacity:0.2;stroke:var(--c3);stroke-width:2"></circle>
+    <ellipse cx="470" cy="45" rx="68" ry="26" transform="rotate(-25 470 45)" class="dash" style="stroke:var(--c2)"></ellipse>
+    <ellipse cx="470" cy="45" rx="38" ry="14" transform="rotate(-25 470 45)" class="dash" style="stroke:var(--c2)"></ellipse>
+    <circle cx="430" cy="85" r="6" class="c5"></circle>
+    <text x="270" y="28" font-size="10" style="fill:var(--c5)" font-weight="700">os dois pesos encolhem,</text>
+    <text x="270" y="41" font-size="10" style="fill:var(--c5)" font-weight="700">nenhum vira zero</text>
+    <text x="390" y="232" text-anchor="middle" font-size="12" font-weight="700">L2 · Ridge: círculo</text>
+    <text x="482" y="145" font-size="10" class="muted">w₁</text><text x="396" y="36" font-size="10" class="muted">w₂</text>
+  </svg>
+  <figcaption>A área colorida é o "orçamento" de pesos que a regularização permite; as elipses laranja são o erro do modelo (quanto mais perto do centro delas, menor o erro). A solução é o primeiro ponto em que a elipse encosta na área. No <strong>losango</strong>, o encontro costuma ser numa <strong>ponta</strong>, que fica em cima de um eixo, e por isso um peso vira zero. No <strong>círculo</strong>, que não tem pontas, os dois pesos só diminuem.</figcaption>
+</figure>
 <ul>
   <li><strong>λ:</strong> quanto maior, mais simples o modelo fica. Com λ = 0 não há regularização, e com λ grande demais o modelo cai em <strong>subajuste</strong>.</li>
-  <li><strong>Redes neurais:</strong> o <em>dropout</em> desliga neurônios ao acaso durante o treino, e o <em>early stopping</em> para o treino quando o erro na validação começa a subir.</li>
+  <li><strong>Redes neurais</strong> são modelos formados por muitas pequenas unidades de cálculo, os <em>neurônios</em>, ligadas em camadas (são vistas mais à frente no edital). Nelas há duas técnicas extras: o <strong>dropout</strong> desliga ao acaso, a cada rodada do treino, uma parte dos neurônios (ex.: 20%), para a rede não depender de poucos caminhos; e o <strong>early stopping</strong> (parada antecipada) acompanha o erro na validação a cada rodada e <strong>para o treino</strong> quando ele começa a subir.</li>
 </ul>
 
 <h2>Pratique: certo ou errado</h2>

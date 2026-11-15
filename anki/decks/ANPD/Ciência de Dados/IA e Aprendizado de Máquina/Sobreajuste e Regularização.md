@@ -1,6 +1,6 @@
 # ANPD::Ciência de Dados::IA e Aprendizado de Máquina::Sobreajuste e Regularização
 
-10 card(s).
+12 card(s).
 
 ## 1. Subajuste × sobreajuste: como ficam os erros de treino e de teste?
 
@@ -61,4 +61,16 @@ Tags: `anpd` `ia` `regularizacao`
 Quando informação que <b>não estaria disponível</b> na hora de prever (do teste ou do futuro) entra no treino.<br><br>Sintoma: desempenho <b>bom demais</b>. Exemplos: padronizar com os dados todos antes de dividir treino e teste, ou usar uma variável criada depois do fato (ex.: "dias de internação" para prever se o paciente vai ser internado).
 
 Tags: `anpd` `ia` `overfitting` `pegadinha`
+
+## 11. O que são os pesos (coeficientes, w) de um modelo?
+
+Os números que multiplicam cada característica. Ex.: preço = <b>4.000</b> × área + <b>30.000</b> × quartos + <b>900</b> × cor_da_porta. Treinar = achar esses números.<br><br>Sobreajuste costuma aparecer como <b>pesos grandes para coisas irrelevantes</b> (a cor da porta).
+
+Tags: `anpd,ia` `regularizacao`
+
+## 12. Mesmo modelo de preço, com L1 e com L2: o que muda no peso da "cor da porta"?
+
+Sem regularização: 900.<br><b>L1 · Lasso</b>: <b>0</b>. A coluna é descartada (o L1 seleciona variáveis).<br><b>L2 · Ridge</b>: <b>40</b>. Encolhe, mas não zera.<br><br>A multa somada ao erro: L1 = λ·Σ|w|; L2 = λ·Σw².
+
+Tags: `anpd,ia` `pegadinha` `regularizacao`
 
